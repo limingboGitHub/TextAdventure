@@ -119,9 +119,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -300.0
-offset_top = 100.0
+offset_top = 25.0
 offset_right = 300.0
-offset_bottom = 780.0
+offset_bottom = 875.0
 grow_horizontal = 2
 focus_mode = 2
 theme = ExtResource("2_7h2dq")
@@ -129,9 +129,12 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "什么是自定义？
 
-就是该游戏将大部分的游戏内容都以文件配置的形式存储，动态载入。作者功力欠缺，不完美的地方还有很多。玩家如果不满意当前的游戏节奏，不满足于当前的游戏内容，完全可以仅通过配置文件的修改，创造全新的游戏世界，包括且不限于游戏速率、经验倍率、剧情、装备、掉落、地图、NPC、炼金药剂、配方、各种卷轴等。
+就是该游戏将大部分的游戏内容都以文件配置的形式存储，动态载入。不完美的地方还有很多。玩家如果不满意当前的游戏节奏，不满足于当前的游戏内容，完全可以仅通过配置文件的修改，创造全新的游戏世界，包括且不限于游戏速率、经验倍率、剧情、装备、掉落、地图、NPC、炼金药剂、配方、各种卷轴等。
 
-当然，配置文件不是万能的，部分特殊效果还是需要从代码层实现。本游戏代码完全开源，你可以通过访问代码的开源地址[url]www.xxx.com[/url]，结合AI代码编程工具，实现自己想要的改动！"
+当然，配置文件不是万能的，部分特殊效果还是需要从代码层实现。本游戏代码完全开源，你可以通过访问代码的开源地址
+[url]https://gitee.com/sdf2311d/text-adventure.git[/url]
+[url]https://github.com/limingboGitHub/TextAdventure.git[/url]
+结合AI代码编程工具，实现自己想要的改动！"
 selection_enabled = true
 
 [node name="TipLabel" type="Label" parent="CustomControl"]
