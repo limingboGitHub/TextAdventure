@@ -1,4 +1,4 @@
-# TextMapleStory
+# TextAdventure
 
 文字冒险
 
