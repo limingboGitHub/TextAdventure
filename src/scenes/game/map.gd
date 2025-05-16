@@ -485,10 +485,13 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 
 	# 技能半径
 	var radius = skill.radius
+	# 技能目标数量
+	var count = skill.count
 	# 特殊效果增幅
 	if player_scene.data_player.has_skill_enhance(skill.id):
 		var skill_enhance = player_scene.data_player.get_skill_enhance(skill.id)
 		radius += skill_enhance.radius
+		count += skill_enhance.count
 	# 其他增幅
 	radius *= (1 + player_scene.data_player.attack_range_increase)
 
@@ -506,7 +509,7 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 		
 	# 取前skill.count个最近的怪物
 	var target_monster_list = []
-	for i in range(min(skill.count, temp_monster_list.size())):
+	for i in range(min(count, temp_monster_list.size())):
 		target_monster_list.append(temp_monster_list[i].monster)
 	return target_monster_list
 
