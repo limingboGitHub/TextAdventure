@@ -1,0 +1,15 @@
+{
+	"name": "小白虎",
+    "type":"normal",
+	"attack": "32",
+    "defense": "20",
+    "magic": "0",
+    "magic_def": "22",
+    "level": "20",
+    "maxHP": "450",
+    "maxMP": "0",
+    "acc": "130",
+    "eva": "150",
+    "exp": "90",
+    "undead": "0"
+} 

@@ -1,0 +1,54 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>490</x><y>430</y><w>200</w><h>170</h></coordinates><panel_attributes>DataMissionPhase
+--
+data_mission:DataMission
+name: String
+attach_npc_id: String
+messages: Array[String]
+messages_matched:Array[String]
+finish_messages: Array[String]
+requires: Array[MissionRequire]
+rewards: Array[MissionReward]
+is_finish: Bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>460</y><w>150</w><h>70</h></coordinates><panel_attributes>MissionVisibleLimit
+--
+level: Int
+job: String
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>670</y><w>150</w><h>70</h></coordinates><panel_attributes>/MissionRequire/
+--
+/is_can_finish()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>950</x><y>670</y><w>150</w><h>70</h></coordinates><panel_attributes>/MissionReward/
+--
+count: Int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>810</y><w>150</w><h>70</h></coordinates><panel_attributes>MissionRequirePhase
+--
+phase: DataMissionPhase</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>590</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>810</y><w>150</w><h>70</h></coordinates><panel_attributes>MissionRequireKill
+--
+monster_id: String
+target_count: Int
+kill_count: Int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>810</y><w>150</w><h>70</h></coordinates><panel_attributes>MissionRequireCollect
+--
+item_id: String
+target_count: Int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>730</y><w>150</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>730</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;80</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>730</y><w>220</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;80</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>590</y><w>480</w><h>100</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>460;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>810</y><w>150</w><h>70</h></coordinates><panel_attributes>RewardMoney
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>810</y><w>150</w><h>70</h></coordinates><panel_attributes>RewardExp
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1210</x><y>810</y><w>150</w><h>70</h></coordinates><panel_attributes>RewardItem
+--
+id: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>730</y><w>90</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>730</y><w>120</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>730</y><w>230</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;210;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>220</y><w>230</w><h>120</h></coordinates><panel_attributes>DataMission
+--
+name: String
+visible_limit: MissionVisibleLimit
+phase_list: Array[DataMissionPhase]
+is_finish: Bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>330</y><w>160</w><h>120</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>140;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>330</y><w>150</w><h>150</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;130;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>0</y><w>230</w><h>120</h></coordinates><panel_attributes>DataNpc
+--
+..
+phases: Array[DataMissionPhase]
+finish_phases: Array[DataMissionPhase]
+..
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>110</y><w>240</w><h>340</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;320;220;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>0</y><w>230</w><h>120</h></coordinates><panel_attributes>MissionManager
+--
+..
+missions_dic: Map&lt;String,DataMission&gt;
+..
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>110</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>330</y><w>160</w><h>120</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;140;100</additional_attributes></element></diagram>

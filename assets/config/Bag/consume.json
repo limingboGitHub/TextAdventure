@@ -1,0 +1,748 @@
+{
+	"desc": "消耗品",
+	"consume": {
+		"consume_000001": {
+			"name": "面包",
+			"desc": "非常粗糙的面包，恢复50点体力",
+			"type": "recovery",
+			"price": 10,
+			"slotMax": 200,
+			"hp": 50
+		},
+		"consume_000002": {
+			"name": "松饼",
+			"desc": "精心制作的松饼，非常可口，恢复100点体力",
+			"type": "recovery",
+			"price": 25,
+			"slotMax": 200,
+			"hp": 100
+		},
+		"consume_000003": {
+			"name": "烤鸡肉",
+			"desc": "新鲜的烤鸡肉，恢复200点体力",
+			"type": "recovery",
+			"price": 50,
+			"slotMax": 200,
+			"hp": 200
+		},
+		"consume_000004": {
+			"name": "井水",
+			"desc": "清甜可口，恢复50点魔法值",
+			"type": "recovery",
+			"price": 10,
+			"slotMax": 200,
+			"mp": 50
+		},
+		"consume_000005": {
+			"name": "橙汁",
+			"desc": "新鲜的橙汁，恢复100点魔法值",
+			"type": "recovery",
+			"price": 25,
+			"slotMax": 200,
+			"mp": 100
+		},
+		"consume_000006": {
+			"name": "牛奶",
+			"desc": "美味营养的牛奶，恢复200点魔法值",
+			"type": "recovery",
+			"price": 50,
+			"slotMax": 200,
+			"mp": 200
+		},
+		"consume_000007": {
+			"name": "神秘汉堡",
+			"desc": "神秘的汉堡，恢复50%的体力值和魔法值",
+			"type": "recovery",
+			"quality":"稀有",
+			"price": 70,
+			"slotMax": 200,
+			"hpR": 0.5,
+			"mpR": 0.5
+		},
+		"consume_000008": {
+			"name": "龙吟草莓",
+			"desc": "恢复100%的体力值和魔法值",
+			"type": "recovery",
+			"quality":"稀有",
+			"price": 70,
+			"slotMax": 200,
+			"hpR": 1,
+			"mpR": 1
+		},
+		"consume_000009": {
+			"name": "披萨",
+			"desc": "披萨，恢复400点体力",
+			"type": "recovery",
+			"price": 100,
+			"slotMax": 200,
+			"hp": 400
+		},
+		"consume_000010": {
+			"name": "咖啡",
+			"desc": "咖啡，恢复400点魔法值",
+			"type": "recovery",
+			"price": 100,
+			"slotMax": 200,
+			"mp": 400
+		},
+
+		"consume_001001": {
+			"name": "力量药水",
+			"desc": "增加力量2点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"power": 2
+				},
+				"duration": 300
+			}
+		},
+		"consume_001002": {
+			"name": "经验药水",
+			"desc": "增加经验10%",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"details": {
+					"exp_gain": 0.1
+				},
+				"duration": 600
+			}
+		},
+		"consume_001003": {
+			"name": "敏捷药水",
+			"desc": "增加敏捷2点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"agility": 2
+				},
+				"duration": 300
+			}
+		},
+		"consume_001004": {
+			"name": "体力药水",
+			"desc": "增加100点HP上限",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"details": {
+					"max_hp": 100
+				},
+				"duration": 300
+			}
+		},
+		"consume_001005": {
+			"name": "智力药水",
+			"desc": "增加智力2点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"intelligence": 2
+				},
+				"duration": 300
+			}
+		},
+		"consume_001006": {
+			"name": "蛮力药水",
+			"desc": "增加力量4点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"power": 4
+				},
+				"duration": 300
+			}
+		},
+		"consume_001007": {
+			"name": "智者药水",
+			"desc": "增加智力4点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"intelligence": 4
+				},
+				"duration": 300
+			}
+		},
+		"consume_001008": {
+			"name": "运气药水",
+			"desc": "增加幸运2点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"luck": 2
+				},
+				"duration": 300
+			}
+		},
+		"consume_001009": {
+			"name": "神运药水",
+			"desc": "增加幸运4点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 200,
+			"buff": {
+				"ability": {
+					"luck": 4
+				},
+				"duration": 300
+			}
+		},
+
+		"consume_002001": {
+			"name": "[卷轴]最下级力量",
+			"desc": "不是什么稀罕物，尽早使用能最大化它的价值",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"power": 1
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002002": {
+			"name": "[卷轴]最下级智力",
+			"desc": "不是什么稀罕物，尽早使用能最大化它的价值",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"intelligence": 1
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002003": {
+			"name": "[卷轴]最下级敏捷",
+			"desc": "越级打怪必备",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"agility": 1
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002004": {
+			"name": "[卷轴]最下级幸运",
+			"desc": "越级打怪必备",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"luck": 1
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+
+		"consume_002005": {
+			"name": "[卷轴]中级力量",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "优秀",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"power": 2
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002006": {
+			"name": "[卷轴]中级智力",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "优秀",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"intelligence": 2
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002007": {
+			"name": "[卷轴]中级敏捷",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "优秀",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"agility": 2
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002008": {
+			"name": "[卷轴]中级幸运",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "优秀",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"luck": 2
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+
+		"consume_002009": {
+			"name": "[卷轴]高级力量",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"power": 4
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002010": {
+			"name": "[卷轴]高级智力",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"intelligence": 4
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002011": {
+			"name": "[卷轴]高级敏捷",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"agility": 4
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002012": {
+			"name": "[卷轴]高级幸运",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"luck": 4
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002013": {
+			"name": "[卷轴]高级体力",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"max_hp": 50
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002014": {
+			"name": "[卷轴]高级防御",
+			"desc": "略微强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"defense": 4
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+
+		"consume_002050": {
+			"name": "[卷轴]坚定意志",
+			"desc": "拥有坚定的意志时，在战斗中也能持续恢复生命值",
+			"quality": "优秀",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "",
+					"pool": [
+						{
+							"recover_hp": 2
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002051": {
+			"name": "[卷轴]智者的学识",
+			"desc": "用智慧来解决问题",
+			"quality": "优秀",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 0.8,
+			"attribute_random_list": [
+				{
+					"desc": "",
+					"pool": [
+						{
+							"recover_mp": 2
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+
+		"consume_002101": {
+			"name": "[卷轴]战士荣耀",
+			"desc": "斩敌如歌，每声铮鸣皆化生命回响",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000003"
+		},
+		"consume_002102": {
+			"name": "[卷轴]横扫千军",
+			"desc": "万夫不当之勇",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000010"
+		},
+		"consume_002103": {
+			"name": "[卷轴]自损八千",
+			"desc": "莽夫！",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000004"
+		},
+		"consume_002104": {
+			"name": "[卷轴]赤焰",
+			"desc": "艺术就是爆炸💥",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000005"
+		},
+		"consume_002105": {
+			"name": "[卷轴]文韬武略",
+			"desc": "智勇兼备",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000006"
+		},
+		"consume_002106": {
+			"name": "[卷轴]泰坦之魂",
+			"desc": "大就完事了！",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000007"
+		},
+		"consume_002107": {
+			"name": "[卷轴]练级狂人",
+			"desc": "他日夜不停地战斗，经验条是他唯一的信仰。",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "",
+					"pool": [
+						{
+							"exp_gain": 0.1
+						}
+					],
+					"count": 1
+				}
+			]
+		},
+		"consume_002108": {
+			"name": "[卷轴]魔力屏障",
+			"desc": "运用法力凝聚成屏障，代替生命值的消耗",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000001"
+		},
+		"consume_002109": {
+			"name": "[卷轴]飞弹精通",
+			"desc": "精通飞弹的技巧，更快的技能释放",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000008"
+		},
+		"consume_002111": {
+			"name": "[卷轴]巨型爆裂",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000009"
+		},
+		"consume_002112": {
+			"name": "[卷轴]毁灭之力",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000013"
+		},
+		"consume_002113": {
+			"name": "[卷轴]法力涌动",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000015"
+		},
+		"consume_002114": {
+			"name": "[卷轴]巨人之力",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000011"
+		},
+		"consume_002115": {
+			"name": "[卷轴]背水一战",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000012"
+		},
+		"consume_002116": {
+			"name": "[卷轴]血偿",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000016"
+		},
+		"consume_002117": {
+			"name": "[卷轴]血气爆发",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000017"
+		},
+		"consume_002118": {
+			"name": "[卷轴]魔力汲取",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000018"
+		},
+		"consume_002119": {
+			"name": "[卷轴]闪避追击",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000021"
+		},
+		"consume_002120": {
+			"name": "[卷轴]伤口撕裂",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000022"
+		},
+		"consume_002121": {
+			"name": "[卷轴]运气至上",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000024"
+		},
+		"consume_002122": {
+			"name": "[卷轴]护甲撕裂", 
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999,
+			"success_rate": 1,
+			"effect": "effect_000025"
+		}
+	}
+}

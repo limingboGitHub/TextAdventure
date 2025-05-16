@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd787nh4pi8th"]
+
+[ext_resource type="Theme" uid="uid://c30t0vtd80wgl" path="res://theme/damage_text1.tres" id="1_o3umi"]
+[ext_resource type="Script" uid="uid://coliyr6v5c7di" path="res://src/scenes/game/damage_text.gd" id="1_rhyum"]
+
+[node name="Label" type="Label"]
+z_index = 1
+z_as_relative = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -21.0
+offset_right = 37.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o3umi")
+text = "10"
+horizontal_alignment = 1
+script = ExtResource("1_rhyum")

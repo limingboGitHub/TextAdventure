@@ -1,0 +1,15 @@
+{
+	"name": "雪绒兔",
+    "type":"normal",
+	"attack": "34",
+    "defense": "22",
+    "magic": "0",
+    "magic_def": "24",
+    "level": "21",
+    "maxHP": "480",
+    "maxMP": "0",
+    "acc": "140",
+    "eva": "160",
+    "exp": "95",
+    "undead": "0"
+} 

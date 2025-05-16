@@ -1,0 +1,732 @@
+{
+	"map_000001": [
+		{
+			"id": "npc_000001",
+			"name":"铁匠布鲁托",
+			"default_messages":[
+				"我是这最好的铁匠，要买些东西吗？"
+			],
+			"position": {
+				"x": 125,
+				"y": 110
+			},
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"装备":[
+							{
+								"id":"weapon_000001",
+								"price": 2000
+							},
+							{
+								"id":"weapon_000002",
+								"price": 2000
+							},
+							{
+								"id":"weapon_001001",
+								"price": 2000
+							},
+							{
+								"id":"weapon_002001",
+								"price": 2000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000002",
+			"name":"裁缝玛莎",
+			"position": {
+				"x": 250,
+				"y": 110
+			},
+			"default_messages":[
+				"清晨的微风~~轻轻吹拂着我的衣角~啊~~"
+			],
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"装备":[
+							{
+								"id":"upper_body_000001",
+								"price": 2000
+							},
+							{
+								"id":"upper_body_000002",
+								"price": 5000
+							},
+							{
+								"id":"lower_body_000001",
+								"price": 2000
+							},
+							{
+								"id":"lower_body_000002",
+								"price": 5000
+							},
+							{
+								"id":"cap_000001",
+								"price": 2000
+							},
+							{
+								"id":"shoes_000001",
+								"price": 2000
+							},
+							{
+								"id":"shoes_000002",
+								"price":5000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000003",
+			"name":"艾琳",
+			"position": {
+				"x": 375,
+				"y": 110
+			},
+			"default_messages":[
+				"哥哥~"
+			],
+			"function": [
+			]
+		},
+		{
+			"id": "npc_000004",
+			"name":"哨兵罗伊",
+			"position": {
+				"x": 60,
+				"y": 410
+			},
+
+			"default_messages":[
+				"这些烦人的兔子。"
+			],
+			"function": [
+			]
+		},
+		{
+			"id": "npc_000005",
+			"name":"酒馆老板卡尔",
+			"position": {
+				"x": 125,
+				"y": 560
+			},
+			"default_messages":[
+				"来一杯吗？"
+			],
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"消耗":[
+							{	
+								"id":"consume_000001",
+								"price": 25
+							},
+							{	
+								"id":"consume_000002",
+								"price": 50
+							},
+							{	
+								"id":"consume_000003",
+								"price": 100	
+							},
+							{	
+								"id":"consume_000004",
+								"price": 25
+							},
+							{	
+								"id":"consume_000005",
+								"price": 50
+							},
+							{	
+								"id":"consume_000006",
+								"price": 100
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000006",
+			"name":"老村长冈瑟",
+			"position": {
+				"x": 250,
+				"y": 560
+			},
+			"default_messages":[
+				"村子外面很危险，不要随便乱跑呀！"
+			],
+			"function": [
+				{
+					"type":"mission",
+					"mission_id":"mission_000003"
+				}
+			]
+		},
+		{
+			"id": "npc_000007",
+			"name":"老者阿隆",
+			"visible":true,
+			"position": {
+				"x": 375,
+				"y": 560
+			},
+			"default_messages":[
+				"孩子，你好~"
+			],
+			"function": [
+			]
+		},
+		{
+			"id": "npc_000010",
+			"name":"车夫哈尔",
+			"visible":true,
+			"position": {
+				"x": 500,
+				"y": 560
+			},
+			"default_messages":[
+				"你想去外面的世界看看吗？"
+			],
+			"function": [
+				{
+					"type":"teleport",
+					"visible_limit":{
+						"missions":["mission_000007"]
+					},
+					"map_id_list":[
+						"map_000101"
+					]
+				}
+			]
+		},
+		{
+			"id": "npc_000008",
+			"name":"艾伦",
+			"visible":false,
+			"position": {
+				"x": 500,
+				"y": 110
+			},
+			"default_messages":[
+				"谢谢你救了我~"
+			],
+			"function": [
+			]
+		}
+	],
+	"map_000002":[
+		{
+			"id": "npc_000012",
+			"name":"游学者费尔",
+			"visible":true,
+			"position": {
+				"x": 550,
+				"y": 100
+			},
+			"default_messages":[
+				"知识..就是力量。"
+			],
+			"function": [
+			]
+		}
+	],
+	"map_000005":[
+		{
+			"id": "npc_000011",
+			"name":"警示牌",
+			"visible":true,
+			"position": {
+				"x": 400,
+				"y": 580
+			},
+			"default_messages":[
+				"前方狼群狡猾，请注意提升敏捷或运气。携带充足的消耗品冒险会更有效率。"
+			],
+			"function": [
+			]
+		}
+	],
+	"map_000006":[
+		{
+			"id": "npc_000009",
+			"name":"受伤的艾伦",
+			"visible":true,
+			"position": {
+				"x": 125,
+				"y": 110
+			},
+			"default_messages":[
+				"咳咳~"
+			],
+			"function": [
+			]
+		}
+	],
+	"map_000101":[
+		{
+			"id": "npc_000101",
+			"name":"车夫哈尔",
+			"visible":true,
+			"position": {
+				"x": 250,
+				"y": 100
+			},
+			"default_messages":[
+				"这是银盾城，是星丘大陆的中心城市。在这里你可以成为英勇的士兵、充满智慧的学者、或是无学无数的混混。加油吧孩子，祝你好运。"
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000102",
+			"name":"武器商汉克",
+			"position": {
+				"x": 100,
+				"y": 200
+			},
+			"default_messages":[
+				"银盾城最好的武器都在这里！"
+			],
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"装备":[
+							{
+								"id":"weapon_000007",
+								"price": 10000
+							},
+							{
+								"id":"weapon_000008",
+								"price": 20000
+							},
+							{
+								"id":"weapon_000009",
+								"price": 30000
+							},
+							{
+								"id":"weapon_001003",
+								"price": 10000
+							},
+							{
+								"id":"weapon_001004",
+								"price": 20000
+							},
+							{
+								"id":"weapon_001005",
+								"price": 30000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000103",
+			"name":"防具商艾玛",
+			"position": {
+				"x": 500,
+				"y": 200
+			},
+			"default_messages":[
+				"保护自己比攻击敌人更重要！"
+			],
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"装备":[
+							{
+								"id":"upper_body_000003",
+								"price": 8000
+							},
+							{
+								"id":"lower_body_000003",
+								"price": 8000
+							},
+							{
+								"id":"cap_000002",
+								"price": 8000
+							},
+							{
+								"id":"shoes_000003",
+								"price": 8000
+							},
+							{
+								"id":"upper_body_001001",
+								"price": 8000
+							},
+							{
+								"id":"lower_body_001001",
+								"price": 8000
+							},
+							{
+								"id":"cap_001001",
+								"price": 8000
+							},
+							{
+								"id":"shoes_001001",
+								"price": 8000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000104",
+			"name":"杂货商汤姆",
+			"position": {
+				"x": 100,
+				"y": 400
+			},
+			"default_messages":[
+				"冒险需要准备充足！"
+			],
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"消耗":[
+							{	
+								"id":"consume_000001",
+								"price": 25
+							},
+							{	
+								"id":"consume_000002",
+								"price": 50
+							},
+							{	
+								"id":"consume_000003",
+								"price": 100
+							},
+							{	
+								"id":"consume_000009",
+								"price": 200
+							},
+							{	
+								"id":"consume_000004",
+								"price": 25
+							},
+							{	
+								"id":"consume_000005",
+								"price": 50
+							},
+							{	
+								"id":"consume_000006",
+								"price": 100
+							},
+							{	
+								"id":"consume_000010",
+								"price": 200
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000199",
+			"name":"无尽之石",
+			"position": {
+				"x": 550,
+				"y": 50
+			},
+			"default_messages":[
+				"散发着强大而躁动的能量。"
+			],
+			"function": [
+				{
+					"type":"teleport",
+					"visible_limit":{
+						"missions":["mission_000199"]
+					},
+					"map_id_list":[
+						"map_000199"
+					]
+				}
+			]
+		}
+	],
+	"map_000102":[
+		{
+			"id": "npc_000105",
+			"name":"士兵导师雷德",
+			"position": {
+				"x": 250,
+				"y": 450
+			},
+			"default_messages":[
+				"士兵的职责是保护人民，勇敢地战斗在第一线。"
+			],
+			"function": [
+			]
+		},
+		{
+			"id": "npc_000106",
+			"name":"士兵杰克",
+			"position": {
+				"x": 400,
+				"y": 530
+			},
+			"default_messages":[
+				"站岗真是无聊啊..."
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000107",
+			"name":"士兵麦克",
+			"position": {
+				"x": 210,
+				"y": 530
+			},
+			"default_messages":[
+				"今天天气不错。"
+			],
+			"function": []
+		}
+	],
+	"map_000104":[
+		{
+			"id": "npc_000111",
+			"name": "狂人达伦",
+			"position": {"x": 150, "y": 200},
+			"default_messages":[
+				"别烦我，没看到我正忙着练级呢？"
+			],
+			"function": []
+		}
+	],
+	"map_000107":[
+		{
+			"id": "npc_000108",
+			"name": "大学者奥兰多",
+			"position": {"x": 150, "y": 100},
+			"default_messages":[
+				"知识的海洋浩瀚无垠，保持探索之心。"
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000109",
+			"name": "学徒莉娜",
+			"position": {"x": 200, "y": 220},
+			"default_messages":[
+				"奥兰多老师知识渊博，我还有很多需要学习的地方。"
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000110",
+			"name": "学徒托马斯",
+			"position": {"x": 100, "y": 220},
+			"default_messages":[
+				"每天都要阅读这么多书，头都大了。"
+			],
+			"function": []
+		}
+	],
+	"map_000110":[
+		{
+			"id": "npc_000112",
+			"name": "遗忘的管理员艾卡",
+			"position": {"x": 150, "y": 100},
+			"default_messages":[
+				"我的工作就是守护这座图书馆，哪怕死去也是如此..."
+			],
+			"function": []
+		}
+	],
+	"map_000112":[
+		{
+			"id": "npc_000120",
+			"name":"盗贼克罗",
+			"position": {
+				"x": 400,
+				"y": 100
+			},
+			"default_messages":[
+				"即使身处城镇中被唾弃的角落，我们也有着自己的生存之道。"
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000121",
+			"name":"港口商贩莫里",
+			"position": {
+				"x": 150,
+				"y": 450
+			},
+			"default_messages":[
+				"嘘，客人，我这里有些特殊的货物。来自海外的稀罕物件，价格公道。"
+			],
+			"function": [
+				{
+					"type":"shop",
+					"shop_bag":{
+						"装备":[
+							{
+								"id":"weapon_002003",
+								"price": 10000
+							},
+							{
+								"id":"weapon_002004",
+								"price": 20000
+							},
+							{
+								"id":"weapon_002005",
+								"price": 30000
+							},
+							{
+								"id":"cap_002001",
+								"price": 10000
+							},
+							{
+								"id":"cap_002002",
+								"price": 20000
+							},
+							{
+								"id":"shoes_002001",
+								"price": 10000
+							},
+							{
+								"id":"shoes_002002",
+								"price": 20000
+							},
+							{
+								"id":"upper_body_002001",
+								"price": 10000
+							},
+							{
+								"id":"upper_body_002002",
+								"price": 20000
+							},
+							{
+								"id":"lower_body_002001",
+								"price": 10000
+							},
+							{
+								"id":"lower_body_002002",
+								"price": 20000
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"id": "npc_000122",
+			"name":"学者索尔",
+			"position": {
+				"x": 480,
+				"y": 150
+			},
+			"default_messages":[
+				"克罗先生人很不错，我真希望大家都能和平相处。"
+			],
+			"function": []
+		}
+	],
+	"map_000116":[
+		{
+			"id": "npc_000123",
+			"name":"银爪泰克",
+			"visible":false,
+			"position": {
+				"x": 200,
+				"y": 150
+			},
+			"default_messages":[
+				"实验顺利。"
+			],
+			"function": []
+		}
+	],
+	"map_000117":[
+		{
+			"id": "npc_000113",
+			"name": "商队队长",
+			"visible":false,
+			"position": {"x": 150, "y": 100},
+			"default_messages":[
+				"这是怎么回事。"
+			],
+			"function": []
+		}
+	],
+	"map_000118":[
+		{
+			"id": "npc_000114",
+			"name": "商队队长",
+			"visible":false,
+			"position": {"x": 300, "y": 500},
+			"default_messages":[
+				"终于看到冰谷镇了。"
+			],
+			"function": []
+		}
+	],
+	"map_000119":[
+		{
+			"id": "npc_000115",
+			"name": "霍克长老",
+			"position": {"x": 150, "y": 200},
+			"default_messages":[
+				"冰谷镇的异变越来越严重了，我们需要尽快找到解决办法。"
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000116",
+			"name": "铁匠布兰克",
+			"position": {"x": 400, "y": 150},
+			"default_messages":[
+				"我已经在冰谷镇住了50年了。"
+			],
+			"function": []
+		},
+		{
+			"id": "npc_000117",
+			"name": "勇武者洛克",
+			"position": {"x": 200, "y": 150},
+			"default_messages":[
+				"..."
+			],
+			"function": []
+		}
+	],
+	"map_000120":[
+		{
+			"id": "npc_000118",
+			"name": "勇武者洛克",
+			"visible":false,
+			"position": {"x": 300, "y": 300},
+			"default_messages":[
+				"你还好吧？"
+			],
+			"function": []
+		}
+	],
+	"map_000121":[
+		{
+			"id": "npc_000119",
+			"name": "勇武者洛克",
+			"visible":false,
+			"position": {"x": 300, "y": 300},
+			"default_messages":[
+				"这是...远古的封印已经松动"
+			],
+			"function": []
+		}
+	]
+}

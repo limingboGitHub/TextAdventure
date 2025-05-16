@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj31q5ftjanla"]
+
+[ext_resource type="Script" uid="uid://bmhgjatmlk28a" path="res://src/scenes/role.gd" id="1_re7st"]
+[ext_resource type="Script" uid="uid://ncw4cbq13qp8" path="res://src/scenes/widget/touch_button.gd" id="2_5f0ux"]
+
+[node name="Role" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_re7st")
+
+[node name="RoleShow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 60.0
+script = ExtResource("2_5f0ux")
+
+[node name="NameRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -55.0
+offset_top = 63.0
+offset_right = 95.0
+offset_bottom = 93.0
+
+[node name="NameLabel" type="Label" parent="NameRoot"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 0
+text = "新手"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[connection signal="pressed" from="RoleShow" to="." method="_on_role_show_pressed"]

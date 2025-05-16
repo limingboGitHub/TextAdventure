@@ -1,0 +1,406 @@
+{
+	"desc": "武器",
+	"weapon": {
+		"weapon_000001": {
+			"name": "木锤",
+			"desc": "这根木头手感不错~",
+			"require_level": 1,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"attack": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000002": {
+			"name": "伐木斧",
+			"desc": "砍树必备",
+			"require_level": 1,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"attack": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000003": {
+			"name": "村长的佩剑",
+			"desc": "听说村长以前是一个真正的冒险家，这把剑...",
+			"require_level": 5,
+			"quality": "优秀",
+			"price": 500,
+			"attribute_details": {
+				"attack": 6
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_000005": {
+			"name": "新手的诅咒",
+			"desc": "不知道是谁这么损，给这把武器下了诅咒。",
+			"require_level": 5,
+			"quality": "史诗",
+			"price": 1000,
+			"attribute_details": {
+				"attack": -100,
+				"magic": -100
+			},
+			"max_upgrade_times": 8
+		},
+		"weapon_000006": {
+			"name": "GM的武器",
+			"desc": "测试用武器",
+			"require_level": 1,
+			"quality": "史诗",
+			"price": 1000,
+			"attribute_details": {
+				"attack": 1000,
+				"defense": 1000,
+				"max_hp": 1000,
+				"accuracy": 1000
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000007": {
+			"name": "长剑",
+			"desc": "一把真正的士兵佩剑，这才有点像样。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 1000,
+			"attribute_details": {
+				"attack": 8
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000008": {
+			"name": "冲锋巨剑",
+			"desc": "适合冲锋陷阵的巨剑，势不可挡。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 2500,
+			"attribute_details": {
+				"attack": 12
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000009": {
+			"name": "精钢之刃",
+			"desc": "由精钢打造的利刃，锋利无比。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"attack": 20
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000010": {
+			"name": "破风长剑",
+			"desc": "挥舞时能带起风声的长剑。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 10000,
+			"attribute_details": {
+				"attack": 40
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000011": {
+			"name": "龙泉剑",
+			"desc": "传说中的名剑，削铁如泥。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 20000,
+			"attribute_details": {
+				"attack": 50
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_000017": {
+			"name": "精致长剑",
+			"desc": "因为剑身被精心打磨过，更加锋利。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 1000,
+			"attribute_details": {
+				"attack": 8
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_000018": {
+			"name": "雷德的巨剑",
+			"desc": "听说他曾经最喜欢使用巨剑...",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 2500,
+			"attribute_details": {
+				"attack": 12
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_000019": {
+			"name": "冰之牙",
+			"desc": "冰牙熊的牙齿，锋利无比。",
+			"require_level": 25,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"attack": 16
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_000020": {
+			"name": "无名之刃",
+			"desc": "剑身只留了下了一个人的名字，“莱德”",
+			"require_level": 30,
+			"quality": "稀有",
+			"price": 10000,
+			"attribute_details": {
+				"attack": 20
+			},
+			"max_upgrade_times": 7
+		},
+
+		"weapon_001001": {
+			"name": "短树枝",
+			"desc": "手感非常不错的树枝。",
+			"require_level": 1,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"magic": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001002": {
+			"name": "遗落的枯木杖",
+			"desc": "一根遗落的枯木杖，似乎蕴含着某种力量。",
+			"require_level": 5,
+			"quality": "优秀",
+			"price": 500,
+			"attribute_ability": {
+				"intelligence": 1
+			},
+			"attribute_details": {
+				"magic": 6
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001003": {
+			"name": "学徒法杖",
+			"desc": "初学者使用的法杖，能引导少量魔力。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 1000,
+			"attribute_details": {
+				"magic": 8
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001004": {
+			"name": "魔力引导杖",
+			"desc": "提高魔力引导效率的法杖，适合进阶法师使用。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 2500,
+			"attribute_details": {
+				"magic": 12
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001005": {
+			"name": "星光法杖",
+			"desc": "蕴含星辰之力的法杖，可以释放更强大的魔法。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"magic": 20
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001006": {
+			"name": "元素支配杖",
+			"desc": "能够支配自然元素的强力法杖，拥有惊人的魔力。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 10000,
+			"attribute_details": {
+				"magic": 30
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001007": {
+			"name": "混沌魔导杖",
+			"desc": "传说中的法杖，能够操控混沌魔力，威力无比。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 20000,
+			"attribute_details": {
+				"magic": 40
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_001008": {
+			"name": "游学者法杖",
+			"desc": "游历各地的学者使用的法杖，能引导大量魔力。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 1000,
+			"attribute_details": {
+				"magic": 8
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_001009": {
+			"name": "馆长记忆之骸",
+			"desc": "这形骸透露这诡异...但是这份魔力让人着迷",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 2500,
+			"attribute_details": {
+				"magic": 12
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_001010": {
+			"name": "冰霜法杖",
+			"desc": "冰谷镇的特产，蕴含着强大的魔法力量。",
+			"require_level": 25,
+			"quality": "优秀",
+			"price": 4000,
+			"attribute_details": {
+				"magic": 16
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_001011": {
+			"name": "巨人王权杖",
+			"desc": "这是历史。",
+			"require_level": 30,
+			"quality": "稀有",
+			"price": 5000,
+			"attribute_details": {
+				"magic": 20
+			},
+			"max_upgrade_times": 7
+		},
+
+		"weapon_002001": {
+			"name": "木刻小刀",
+			"desc": "这玩具小刀能干嘛？",
+			"require_level": 1,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"attack": 2,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_002002": {
+			"name": "精致短刀",
+			"desc": "非常锋利的匕首",
+			"require_level": 5,
+			"quality": "优秀",
+			"price": 200,
+			"attribute_details": {
+				"attack": 3,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_002003": {
+			"name": "潜行短刀",
+			"desc": "盗贼常用的短刀，见血封喉",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"attack": 4,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_002004": {
+			"name": "影袭双刃",
+			"desc": "",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"attack": 6,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_002005": {
+			"name": "暗影之刃",
+			"desc": "",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 200,
+			"attribute_details": {
+				"attack": 10,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 5
+		},
+		"weapon_002006": {
+			"name": "黑市短刀",
+			"desc": "黑市流通，品质不凡",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 200,
+			"attribute_details": {
+				"attack": 4,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_002007": {
+			"name": "不语者",
+			"desc": "我要让你永远的无法说话",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 200,
+			"attribute_details": {
+				"attack": 6,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_002008": {
+			"name": "冰之牙",
+			"desc": "这个牙齿用起来非常顺手...",
+			"require_level": 25,
+			"quality": "稀有",
+			"price": 200,
+			"attribute_details": {
+				"attack": 8,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 6
+		},
+		"weapon_002009": {
+			"name": "霜语诅咒之刃",
+			"desc": "看看我的命，能不能比诅咒硬。",
+			"require_level": 30,
+			"quality": "稀有",
+			"price": 200,
+			"attribute_details": {
+				"attack": 10,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 7
+		}
+	}
+}

@@ -1,0 +1,180 @@
+{
+	"description": "特效配置",
+	"effects": {
+		"effect_000001": {
+			"name": "魔力屏障",
+			"effect_type": "mana_defense",
+			"desc": "受到伤害的{d}转换为MP消耗",
+			"value_type": "percent",
+			"value": 0.1
+		},
+		"effect_000003": {
+			"name": "战士荣耀",
+			"effect_type": "monster_kill_add_hp",
+			"desc": "击杀怪物时，恢复{d}点生命值",
+			"value_type": "number",
+			"value": 5
+		},
+		"effect_000004": {
+			"name": "自损八千",
+			"effect_type": "attack_lost_hp_attach_damage",
+			"desc": "每次攻击承受5点伤害，增加{d}点伤害",
+			"value_type": "number",
+			"value": 7
+		},
+		"effect_000005": {
+			"name": "赤焰",
+			"effect_type": "attack_explode_damage",
+			"desc": "攻击时10%几率造成目标70范围内{d}爆炸伤害",
+			"value_type": "percent",
+			"value": 0.3
+		},
+		"effect_000006": {
+			"name": "文韬武略",
+			"effect_type": "recover_mp_when_hp_recover",
+			"desc": "血量得到恢复时，同时恢复该值{d}%的法力",
+			"value_type": "percent",
+			"value": 0.2
+		},
+		"effect_000007": {
+			"name": "泰坦之魂",
+			"effect_type": "hp_attach_scope_increase",
+			"desc": "每100点HP提升{d}点体型、力量、攻击范围",
+			"value_type": "number",
+			"value": 1
+		},
+		"effect_000008": {
+			"name": "飞弹精通",
+			"effect_type": "skill_enhance",
+			"skill_enhance": {
+				"skill_id": "skill_000100",
+				"cd": -0.2
+			}
+		},
+		"effect_000009": {
+			"name": "巨型爆裂",
+			"effect_type": "skill_enhance",
+			"skill_enhance": {
+				"skill_id": "skill_000101",
+				"radius": 20
+			}
+		},
+		"effect_000010": {
+			"name": "横扫千军",
+			"effect_type": "skill_enhance",
+			"skill_enhance": {
+				"skill_id": "skill_000002",
+				"radius": 50,
+				"count": 1
+			}
+		},
+		"effect_000011": {
+			"name": "巨人之力",
+			"effect_type": "max_hp_attach_damage",
+			"desc": "攻击时增加{d}最大生命值伤害",
+			"value_type": "percent",
+			"value": 0.02
+		},
+		"effect_000012": {
+			"name": "背水一战",
+			"effect_type": "lost_hp_attach_damage",
+			"desc": "攻击时增加{d}已损失生命值伤害",
+			"value_type": "percent",
+			"value": 0.03
+		},
+		"effect_000013": {
+			"name": "毁灭之力",
+			"effect_type": "skill_enhance",
+			"skill_enhance": {
+				"skill_id": "skill_000101",
+				"damage": 0.1
+			}
+		},
+		"effect_000014": {
+			"name": "双弹齐发",
+			"effect_type": "skill_enhance",
+			"skill_enhance": {
+				"skill_id": "skill_000100",
+				"add_count": 1,
+				"add_probability": 0.1
+			}
+		},
+		"effect_000015": {
+			"name": "法力涌动",
+			"effect_type": "mp_cost_enhance_skill",
+			"desc": "消耗1000点MP后，提升下一次攻击{d}伤害",
+			"value_type": "percent",
+			"value": 0.2
+		},
+		"effect_000016": {
+			"name": "血偿",
+			"effect_type": "hp_cost_replace_mp",
+			"desc": "消耗MP时{d}使用HP替代",
+			"value_type": "percent",
+			"value": 0.1
+		},
+		"effect_000017": {
+			"name": "血气爆发",
+			"effect_type": "hp_cost_enhance_skill",
+			"desc": "消耗1000点HP后，提升下一次攻击{d}伤害",
+			"value_type": "percent",
+			"value": 0.1
+		},
+		"effect_000018": {
+			"name": "魔力汲取",
+			"effect_type": "attack_recover_mp",
+			"desc": "恢复伤害值{d}的MP",
+			"value_type": "percent",
+			"value": 0.01
+		},
+		"effect_000019": {
+			"name": "涂毒",
+			"effect_type": "attack_attach_poison",
+			"desc": "攻击时10%概率造成中毒，中毒持续10秒，每秒造成{d}伤害",
+			"value_type": "percent",
+			"value": 0.01
+		},
+		"effect_000020": {
+			"name": "中毒",
+			"effect_type": "poison",
+			"desc": "中毒时，每秒造成{d}伤害",
+			"value_type": "percent",
+			"value": 0.01
+		},
+		"effect_000021": {
+			"name": "闪避追击",
+			"effect_type": "evasion_success_attack",
+			"desc": "闪避时，有{d}概率追击一次目标",
+			"value_type": "percent",
+			"value": 0.10
+		},
+		"effect_000022": {
+			"name": "伤口撕裂",
+			"effect_type": "attack_attach_deep_damage",
+			"desc": "攻击时{d}概率撕裂伤口，伤害永久+1",
+			"value_type": "percent",
+			"value": 0.05
+		},
+		"effect_000023": {
+			"name": "撕裂",
+			"effect_type": "deep_damage",
+			"desc": "撕裂状态，每次受到伤害加深",
+			"value_type": "number",
+			"value": 1
+		},
+		"effect_000024": {
+			"name": "运气至上",
+			"effect_type": "luck_increase_attack_max",
+			"desc": "每点运气值增加攻击力和魔法力波动上限{d}",
+			"value_type": "percent",
+			"value": 0.001
+		},
+		"effect_000025": {
+			"name": "护甲撕裂",
+			"effect_type": "armor_break",
+			"desc": "攻击时{d}概率降低目标双抗1点",
+			"value_type": "percent", 
+			"value": 0.10
+		}
+	}
+}

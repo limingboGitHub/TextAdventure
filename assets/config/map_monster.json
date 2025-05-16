@@ -1,0 +1,345 @@
+{
+	"map_000002": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000001",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000002",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000003": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000003",
+					"refresh_rate": 0.6
+				},
+				{
+					"id": "monster_000004",
+					"refresh_rate": 0.4
+				}
+			]
+		}
+	],
+	"map_000004": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000005",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000006",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000005": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000007",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000008",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000006": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000009",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000010",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000007": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000011",
+					"refresh_rate": 1,
+					"refresh_interval": 600,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
+	],
+	"map_000103": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000012",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000013",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000104": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000014",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000015",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000105": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000016",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000017",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000106": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000018",
+					"refresh_rate": 1,
+					"refresh_interval": 600,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
+	],
+	"map_000108": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000019",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000020",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000109": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000021",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000022",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+
+	"map_000110": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000023",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000024",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000111": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000025",
+					"refresh_rate": 1,
+					"refresh_interval": 600,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
+	],
+
+	"map_000113": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000033",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000034",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000114": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000035",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000036",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000115": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000037",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000038",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000116": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000039",
+					"refresh_rate": 1,
+					"refresh_interval": 600,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
+	],
+
+	"map_000117": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000026",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000027",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000118": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000028",
+					"refresh_rate": 0.4
+				},
+				{
+					"id": "monster_000029",
+					"refresh_rate": 0.6
+				}
+			]
+		}
+	],
+	"map_000120": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000030",
+					"refresh_rate": 0.4
+				},
+				{
+					"id": "monster_000031",
+					"refresh_rate": 0.4
+				}
+			]
+		}
+	],
+	"map_000121": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000032",
+					"refresh_rate": 1,
+					"refresh_interval": 600,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
+	]
+}

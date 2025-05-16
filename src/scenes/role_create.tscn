@@ -1,0 +1,155 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfx7va35thaei"]
+
+[ext_resource type="Script" uid="uid://bse8nb6fpbssn" path="res://src/scenes/role_create.gd" id="1_0esu0"]
+[ext_resource type="Theme" uid="uid://koxjcyb17wh2" path="res://theme/start.tres" id="2_djl42"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_ux6g7"]
+[ext_resource type="Theme" uid="uid://bmt5w6a64bbo8" path="res://theme/select_role_servers_font.tres" id="3_ovwvj"]
+[ext_resource type="PackedScene" uid="uid://ckgolexat0dxo" path="res://src/scenes/game/player.tscn" id="4_fsh4o"]
+
+[node name="RoleCreate" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0esu0")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 644.0
+offset_right = 639.0
+offset_bottom = 1094.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 653.0
+offset_right = 400.0
+offset_bottom = 695.0
+theme = ExtResource("2_ux6g7")
+text = "创建角色"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 741.0
+offset_right = 202.0
+offset_bottom = 783.0
+theme = ExtResource("2_ux6g7")
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+text = "初始属性值："
+
+[node name="AttributeRoot" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 738.0
+offset_right = 462.0
+offset_bottom = 944.0
+
+[node name="Attribute" type="VBoxContainer" parent="AttributeRoot"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 131.0
+offset_bottom = 194.0
+
+[node name="Power" type="HBoxContainer" parent="AttributeRoot/Attribute"]
+layout_mode = 2
+theme = ExtResource("2_ux6g7")
+
+[node name="Title" type="Label" parent="AttributeRoot/Attribute/Power"]
+layout_mode = 2
+text = "力量："
+
+[node name="Value" type="Label" parent="AttributeRoot/Attribute/Power"]
+layout_mode = 2
+text = "1"
+vertical_alignment = 1
+
+[node name="Agility" type="HBoxContainer" parent="AttributeRoot/Attribute"]
+layout_mode = 2
+theme = ExtResource("2_ux6g7")
+
+[node name="Title" type="Label" parent="AttributeRoot/Attribute/Agility"]
+layout_mode = 2
+text = "敏捷："
+
+[node name="Value" type="Label" parent="AttributeRoot/Attribute/Agility"]
+layout_mode = 2
+text = "1"
+vertical_alignment = 1
+
+[node name="Intell" type="HBoxContainer" parent="AttributeRoot/Attribute"]
+layout_mode = 2
+theme = ExtResource("2_ux6g7")
+
+[node name="Title" type="Label" parent="AttributeRoot/Attribute/Intell"]
+layout_mode = 2
+text = "智力："
+
+[node name="Value" type="Label" parent="AttributeRoot/Attribute/Intell"]
+layout_mode = 2
+text = "1"
+vertical_alignment = 1
+
+[node name="Luck" type="HBoxContainer" parent="AttributeRoot/Attribute"]
+layout_mode = 2
+theme = ExtResource("2_ux6g7")
+
+[node name="Title" type="Label" parent="AttributeRoot/Attribute/Luck"]
+layout_mode = 2
+text = "运气："
+
+[node name="Value" type="Label" parent="AttributeRoot/Attribute/Luck"]
+layout_mode = 2
+text = "1"
+vertical_alignment = 1
+
+[node name="RandomBt" type="Button" parent="AttributeRoot"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 145.0
+offset_right = 243.0
+offset_bottom = 195.0
+theme = ExtResource("2_ux6g7")
+text = "随机"
+
+[node name="RoleNameLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 967.0
+offset_right = 426.0
+offset_bottom = 1017.0
+theme = ExtResource("2_djl42")
+placeholder_text = "请输入角色名"
+max_length = 8
+
+[node name="OKCreateBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 1029.0
+offset_right = 428.0
+offset_bottom = 1079.0
+theme = ExtResource("3_ovwvj")
+text = "确认创建"
+
+[node name="BackBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 652.0
+offset_right = 632.0
+offset_bottom = 702.0
+theme = ExtResource("3_ovwvj")
+text = "返回"
+
+[node name="Player" parent="." instance=ExtResource("4_fsh4o")]
+visible = false
+offset_left = 277.0
+offset_top = 961.0
+offset_right = 277.0
+offset_bottom = 961.0
+
+[connection signal="pressed" from="AttributeRoot/RandomBt" to="." method="_on_random_bt_pressed"]
+[connection signal="pressed" from="OKCreateBt" to="." method="_on_ok_create_bt_pressed"]
+[connection signal="pressed" from="BackBt" to="." method="_on_back_bt_pressed"]

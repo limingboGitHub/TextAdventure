@@ -1,0 +1,15 @@
+{
+	"name": "黑狼王",
+    "type":"boss",
+	"attack": "60",
+    "defense": "20",
+    "magic": "0",
+    "magic_def": "20",
+    "level": "8",
+    "maxHP": "10000",
+    "maxMP": "0",
+    "acc": "100",
+    "eva": "110",
+    "exp": "500",
+    "undead": "0"
+}

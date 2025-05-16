@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy5fc1e7plwoy"]
+
+[ext_resource type="Script" uid="uid://cwayxuf6mss0x" path="res://src/scenes/game/skill_name.gd" id="1_6f5vk"]
+
+[node name="SkillInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6f5vk")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.733333, 0.733333, 0.737255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "普通攻击"

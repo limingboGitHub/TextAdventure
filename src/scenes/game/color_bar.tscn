@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx2d4keg6x7ho"]
+
+[ext_resource type="Script" uid="uid://c8lc1mpnj7vtw" path="res://src/scenes/game/color_bar.gd" id="1_b7nyx"]
+
+[node name="ColorBar" type="ColorRect"]
+offset_right = 191.0
+offset_bottom = 5.0
+color = Color(1, 0, 0, 1)
+script = ExtResource("1_b7nyx")

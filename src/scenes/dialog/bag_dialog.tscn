@@ -1,0 +1,679 @@
+[gd_scene load_steps=14 format=3 uid="uid://dyxpmgfjunylo"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_486bh"]
+[ext_resource type="Script" uid="uid://d3w88egdee6b4" path="res://src/scenes/dialog/bag_dialog.gd" id="1_a5pre"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_8h33t"]
+[ext_resource type="PackedScene" uid="uid://mbnmc3xs1636" path="res://src/scenes/dialog/bag_item.tscn" id="4_h1hbm"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="4_lffgt"]
+[ext_resource type="StyleBox" uid="uid://bq33b5goabg0s" path="res://src/scenes/dialog/bag_tag_back.tres" id="5_3c2jo"]
+[ext_resource type="Script" uid="uid://k6f0ld4sd00s" path="res://src/scenes/widget/my_scroll_container.gd" id="5_qr37t"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="8_h40eb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lr47f"]
+bg_color = Color(0.419608, 0.419608, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smv5d"]
+bg_color = Color(0.419608, 0.419608, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq5us"]
+bg_color = Color(0.419608, 0.419608, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e6tn"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_x7bub"]
+Label/styles/normal = SubResource("StyleBoxFlat_2e6tn")
+
+[node name="BagDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a5pre")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 644.0
+offset_bottom = 504.0
+theme_override_styles/panel = ExtResource("1_486bh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 71.0
+offset_bottom = 54.0
+theme = ExtResource("2_8h33t")
+text = "背包"
+
+[node name="DragControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 644.0
+offset_bottom = 55.0
+script = ExtResource("4_lffgt")
+
+[node name="Equip" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 77.0
+offset_right = 8.0
+offset_bottom = 77.0
+
+[node name="Label" type="Label" parent="Equip"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "装备"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Equip"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 200.0
+offset_bottom = 345.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lr47f")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("5_qr37t")
+
+[node name="GridContainer" type="GridContainer" parent="Equip/ScrollContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem2" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem3" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem4" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem5" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem6" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem7" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem8" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem9" parent="Equip/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="Consume" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 219.0
+offset_top = 77.0
+offset_right = 219.0
+offset_bottom = 77.0
+
+[node name="Label" type="Label" parent="Consume"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "消耗品"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Consume"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 200.0
+offset_bottom = 345.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_smv5d")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("5_qr37t")
+
+[node name="GridContainer" type="GridContainer" parent="Consume/ScrollContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem2" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem3" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem4" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem5" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem6" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem7" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem8" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem9" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem10" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem11" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem12" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem13" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem14" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem15" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem16" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem17" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem18" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem19" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem20" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem21" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem22" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem23" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem24" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem25" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem26" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem27" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem28" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem29" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem30" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem31" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="Setting" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 263.0
+offset_top = 77.0
+offset_right = 263.0
+offset_bottom = 77.0
+
+[node name="Label" type="Label" parent="Setting"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "设置"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Setting"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 345.0
+theme_override_styles/panel = ExtResource("5_3c2jo")
+
+[node name="GridContainer" type="GridContainer" parent="Setting/ScrollContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem2" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem3" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem4" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem5" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem6" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem7" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem8" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem9" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem10" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem11" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem12" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem13" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem14" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem15" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem16" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem17" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem18" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem19" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem20" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem21" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem22" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem23" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem24" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem25" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem26" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem27" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem28" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem29" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem30" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem31" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="Etc" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 430.0
+offset_top = 77.0
+offset_right = 430.0
+offset_bottom = 77.0
+
+[node name="Label" type="Label" parent="Etc"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "其他"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Etc"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 200.0
+offset_bottom = 345.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kq5us")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("5_qr37t")
+
+[node name="GridContainer" type="GridContainer" parent="Etc/ScrollContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem2" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem3" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem4" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem5" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem6" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem7" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem8" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem9" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem10" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem11" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem12" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem13" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem14" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem15" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem16" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem17" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem18" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem19" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem20" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem21" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem22" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem23" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem24" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem25" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem26" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem27" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem28" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem29" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem30" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem31" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="Special" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 516.0
+offset_top = 77.0
+offset_right = 516.0
+offset_bottom = 77.0
+
+[node name="Label" type="Label" parent="Special"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "特殊"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Special"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 345.0
+theme_override_styles/panel = ExtResource("5_3c2jo")
+
+[node name="GridContainer" type="GridContainer" parent="Special/ScrollContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem2" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem3" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem4" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem5" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem6" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem7" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem8" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem9" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem10" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem11" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem12" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem13" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem14" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem15" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem16" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem17" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem18" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem19" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem20" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem21" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem22" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem23" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem24" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem25" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem26" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem27" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem28" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem29" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem30" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="BagItem31" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
+layout_mode = 2
+
+[node name="Test" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 41.0
+offset_bottom = 59.0
+
+[node name="AddEquipBt" type="Button" parent="Test"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 440.0
+offset_right = 20.0
+offset_bottom = 448.0
+text = "添加物品"
+
+[node name="AddConsumeBt" type="Button" parent="Test"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 439.0
+offset_right = 183.0
+offset_bottom = 470.0
+text = "添加消耗品"
+
+[node name="DeleteControl" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 574.0
+offset_top = 423.0
+offset_right = 574.0
+offset_bottom = 423.0
+
+[node name="DeleteCheckBox" type="CheckButton" parent="DeleteControl"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = 4.0
+offset_right = 67.0
+offset_bottom = 35.0
+text = "删除模式"
+
+[node name="DeleteButton" type="Button" parent="DeleteControl"]
+visible = false
+layout_mode = 0
+offset_left = -120.0
+offset_top = 4.0
+offset_right = -48.0
+offset_bottom = 35.0
+text = "确认删除"
+
+[node name="Money" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 447.0
+offset_right = 13.0
+offset_bottom = 447.0
+
+[node name="Label" type="Label" parent="Money"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "金币："
+
+[node name="Value" type="Label" parent="Money"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 0
+offset_left = 90.0
+offset_right = 300.0
+offset_bottom = 46.0
+theme = SubResource("Theme_x7bub")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+
+[node name="CloseButton" parent="." instance=ExtResource("8_h40eb")]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 5.0
+offset_right = 638.0
+offset_bottom = 55.0
+
+[connection signal="pressed" from="Test/AddEquipBt" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Test/AddConsumeBt" to="." method="_on_add_consume_bt_pressed"]
+[connection signal="toggled" from="DeleteControl/DeleteCheckBox" to="." method="_on_delete_check_box_toggled"]
+[connection signal="pressed" from="DeleteControl/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

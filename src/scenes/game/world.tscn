@@ -1,0 +1,580 @@
+[gd_scene load_steps=29 format=3 uid="uid://cjhlw4uxh43lk"]
+
+[ext_resource type="Script" uid="uid://bgbay81accbeh" path="res://src/scenes/game/world.gd" id="1_wlcum"]
+[ext_resource type="Script" uid="uid://b7omic3ntn17t" path="res://src/scenes/game/map_graph.gd" id="2_g74vk"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_pgwtv"]
+[ext_resource type="Script" uid="uid://c8lc1mpnj7vtw" path="res://src/scenes/game/color_bar.gd" id="3_igcpe"]
+[ext_resource type="Script" uid="uid://ncw4cbq13qp8" path="res://src/scenes/widget/touch_button.gd" id="5_whnrt"]
+[ext_resource type="PackedScene" uid="uid://dyd4y7jhs3t5b" path="res://src/scenes/dialog/player_attri_dialog.tscn" id="6_58rbw"]
+[ext_resource type="PackedScene" uid="uid://dyxpmgfjunylo" path="res://src/scenes/dialog/bag_dialog.tscn" id="7_8gm2p"]
+[ext_resource type="PackedScene" uid="uid://c1e0n06mrg3cd" path="res://src/scenes/game/buff_show.tscn" id="7_hccix"]
+[ext_resource type="PackedScene" uid="uid://6jqmon4r3h48" path="res://src/scenes/dialog/role_equip_dialog.tscn" id="8_8v1w8"]
+[ext_resource type="PackedScene" uid="uid://b6762b2gkukoh" path="res://src/scenes/consume_status.tscn" id="8_df45s"]
+[ext_resource type="PackedScene" uid="uid://bm6u88cxlm1i3" path="res://src/scenes/skill_fast_key.tscn" id="8_fhtq7"]
+[ext_resource type="PackedScene" uid="uid://bhqkxctvac6x2" path="res://src/scenes/alchemy_status.tscn" id="9_0rvik"]
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="9_vuu7a"]
+[ext_resource type="PackedScene" uid="uid://dipytservgkt4" path="res://src/scenes/dialog/skill_dialog.tscn" id="10_v8v4k"]
+[ext_resource type="PackedScene" uid="uid://db2jh1lds0oyr" path="res://src/scenes/dialog/auto_setting_dialog.tscn" id="11_jl7su"]
+[ext_resource type="PackedScene" uid="uid://civrl08hy1cub" path="res://src/scenes/dialog/shop_dialog.tscn" id="12_dtqpc"]
+[ext_resource type="Script" uid="uid://dv11h1iikjk8d" path="res://src/scenes/widget/toast_control.gd" id="13_mpr1v"]
+[ext_resource type="PackedScene" uid="uid://d2rxr2vnkaejh" path="res://src/scenes/dialog/npc_talk_dialog.tscn" id="14_78prd"]
+[ext_resource type="PackedScene" uid="uid://wtj8kpxfr8oe" path="res://src/scenes/dialog/mission_dialog.tscn" id="15_4ona6"]
+[ext_resource type="PackedScene" uid="uid://blvgcs7tbayqe" path="res://src/scenes/dialog/debug_dialog.tscn" id="15_iligl"]
+[ext_resource type="PackedScene" uid="uid://805122ud3qpp" path="res://src/scenes/dialog/item_info_dialog.tscn" id="17_5c71j"]
+[ext_resource type="PackedScene" uid="uid://bemvxsbpxfvin" path="res://src/scenes/dialog/scroll_use_dialog.tscn" id="18_tgmgh"]
+[ext_resource type="PackedScene" uid="uid://bghvpjtuh5st0" path="res://src/scenes/dialog/other_function_dialog.tscn" id="19_03is1"]
+[ext_resource type="PackedScene" uid="uid://hepgxsvkhc8h" path="res://src/scenes/dialog/monster_info_dialog.tscn" id="20_6cx34"]
+[ext_resource type="PackedScene" uid="uid://cr7bsjpoytslp" path="res://src/scenes/dialog/map_select_dialog.tscn" id="21_rw0gw"]
+[ext_resource type="PackedScene" uid="uid://c067ug5y61ddh" path="res://src/scenes/dialog/alchemy_dialog.tscn" id="23_hpdnf"]
+[ext_resource type="PackedScene" uid="uid://gp18ukfvqqg0" path="res://src/scenes/msg_control.tscn" id="24_hpdnf"]
+[ext_resource type="PackedScene" uid="uid://dtn4sapjumnyd" path="res://src/scenes/stats_info_control.tscn" id="27_fhtq7"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_wlcum")
+
+[node name="Maps" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BigMapBt" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 103.0
+offset_bottom = 55.0
+theme = ExtResource("2_pgwtv")
+text = "大地图"
+
+[node name="ButtonControl" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+
+[node name="AttackBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1261.0
+offset_right = 74.0
+offset_bottom = 1311.0
+theme = ExtResource("2_pgwtv")
+text = "攻击"
+
+[node name="PickUpBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+visible = false
+layout_mode = 0
+offset_left = 77.0
+offset_top = 1261.0
+offset_right = 145.0
+offset_bottom = 1311.0
+theme = ExtResource("2_pgwtv")
+text = "拾取"
+
+[node name="RestBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 1261.0
+offset_right = 236.0
+offset_bottom = 1311.0
+theme = ExtResource("2_pgwtv")
+text = "休息"
+
+[node name="AutoBt" type="CheckButton" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 1262.0
+offset_right = 425.0
+offset_bottom = 1312.0
+theme = ExtResource("2_pgwtv")
+text = "挂机战斗"
+
+[node name="BagBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 1365.0
+offset_right = 508.0
+offset_bottom = 1415.0
+theme = ExtResource("2_pgwtv")
+text = "背包"
+
+[node name="RoleEquipBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 1313.0
+offset_right = 236.0
+offset_bottom = 1363.0
+theme = ExtResource("2_pgwtv")
+text = "装备"
+
+[node name="SkillBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 1365.0
+offset_right = 578.0
+offset_bottom = 1415.0
+theme = ExtResource("2_pgwtv")
+text = "技能"
+
+[node name="MissionBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 1365.0
+offset_right = 648.0
+offset_bottom = 1415.0
+theme = ExtResource("2_pgwtv")
+text = "任务"
+
+[node name="RoleBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+visible = false
+layout_mode = 0
+offset_left = 512.0
+offset_top = 1315.0
+offset_right = 580.0
+offset_bottom = 1365.0
+theme = ExtResource("2_pgwtv")
+text = "角色"
+
+[node name="OtherBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 1313.0
+offset_right = 578.0
+offset_bottom = 1363.0
+theme = ExtResource("2_pgwtv")
+text = "其他"
+
+[node name="SaveGameBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 1313.0
+offset_right = 508.0
+offset_bottom = 1363.0
+theme = ExtResource("2_pgwtv")
+text = "存档"
+
+[node name="AutoSettingBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 5.0
+offset_right = 568.0
+offset_bottom = 55.0
+theme = ExtResource("2_pgwtv")
+text = "挂机设置"
+
+[node name="ExitGameBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 5.0
+offset_right = 643.0
+offset_bottom = 55.0
+theme = ExtResource("2_pgwtv")
+text = "退出"
+
+[node name="DebugBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+visible = false
+layout_mode = 0
+offset_left = 580.0
+offset_top = 1261.0
+offset_right = 648.0
+offset_bottom = 1311.0
+theme = ExtResource("2_pgwtv")
+text = "调试"
+
+[node name="AlchemyBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 1313.0
+offset_right = 648.0
+offset_bottom = 1363.0
+theme = ExtResource("2_pgwtv")
+text = "炼金"
+
+[node name="RoleInfoBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 1365.0
+offset_right = 236.0
+offset_bottom = 1415.0
+theme = ExtResource("2_pgwtv")
+text = "属性"
+
+[node name="StatusBar" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar" type="Control" parent="CanvasLayer/UI/StatusBar"]
+anchors_preset = 0
+offset_left = 237.0
+offset_top = 1321.0
+offset_right = 237.0
+offset_bottom = 1321.0
+
+[node name="HpBar" type="Panel" parent="CanvasLayer/UI/StatusBar/Bar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -8.0
+offset_right = 201.0
+offset_bottom = 24.0
+
+[node name="ColorBar" type="ColorRect" parent="CanvasLayer/UI/StatusBar/Bar/HpBar"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 32.0
+color = Color(1, 0, 0, 1)
+script = ExtResource("3_igcpe")
+max_width = 200
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/StatusBar/Bar/HpBar/ColorBar"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 32.0
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="MpBar" type="Panel" parent="CanvasLayer/UI/StatusBar/Bar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 27.0
+offset_right = 201.0
+offset_bottom = 59.0
+
+[node name="ColorBar" type="ColorRect" parent="CanvasLayer/UI/StatusBar/Bar/MpBar"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 32.0
+color = Color(0, 0.447059, 1, 1)
+script = ExtResource("3_igcpe")
+max_width = 200
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/StatusBar/Bar/MpBar/ColorBar"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 32.0
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="ExpBar" type="Panel" parent="CanvasLayer/UI/StatusBar/Bar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 62.0
+offset_right = 201.0
+offset_bottom = 94.0
+
+[node name="ColorBar" type="ColorRect" parent="CanvasLayer/UI/StatusBar/Bar/ExpBar"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 32.0
+color = Color(1, 0.858824, 0, 1)
+script = ExtResource("3_igcpe")
+max_width = 200
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/StatusBar/Bar/ExpBar/ColorBar"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 15.0
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="PlayerInfo" type="Panel" parent="CanvasLayer/UI/StatusBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1313.0
+offset_right = 166.0
+offset_bottom = 1415.0
+script = ExtResource("5_whnrt")
+
+[node name="Job" type="Label" parent="CanvasLayer/UI/StatusBar/PlayerInfo"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 78.0
+offset_bottom = 56.0
+theme = ExtResource("2_pgwtv")
+text = "新手"
+
+[node name="Level" type="Label" parent="CanvasLayer/UI/StatusBar/PlayerInfo"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 51.0
+offset_right = 58.0
+offset_bottom = 93.0
+theme = ExtResource("2_pgwtv")
+text = "Lv."
+
+[node name="Value" type="Label" parent="CanvasLayer/UI/StatusBar/PlayerInfo/Level"]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 89.0
+offset_bottom = 42.0
+text = "1"
+
+[node name="BuffShow" parent="CanvasLayer/UI/StatusBar" instance=ExtResource("7_hccix")]
+offset_left = 7.0
+offset_top = 1197.0
+offset_right = 7.0
+offset_bottom = 1197.0
+
+[node name="MsgControl" parent="CanvasLayer/UI" instance=ExtResource("24_hpdnf")]
+offset_left = 11.0
+offset_top = 780.0
+offset_right = 11.0
+offset_bottom = 780.0
+
+[node name="ConsumeStatus" parent="CanvasLayer/UI" instance=ExtResource("8_df45s")]
+offset_left = 346.0
+offset_right = 346.0
+
+[node name="SkillFastKey" parent="CanvasLayer/UI" instance=ExtResource("8_fhtq7")]
+offset_left = 496.0
+offset_top = 780.0
+offset_right = 496.0
+offset_bottom = 780.0
+
+[node name="AlchemyStatus" parent="CanvasLayer/UI" instance=ExtResource("9_0rvik")]
+
+[node name="StatsInfoControl" parent="CanvasLayer/UI" instance=ExtResource("27_fhtq7")]
+
+[node name="MapGraph" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 167.0
+offset_right = 594.0
+offset_bottom = 957.0
+theme_override_styles/panel = ExtResource("9_vuu7a")
+script = ExtResource("2_g74vk")
+
+[node name="MapCloseBt" type="Button" parent="CanvasLayer/UI/MapGraph"]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 11.0
+offset_right = 544.0
+offset_bottom = 61.0
+text = "x"
+
+[node name="MapName" type="Label" parent="CanvasLayer/UI/MapGraph"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -263.0
+offset_top = 7.0
+offset_right = -173.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme = ExtResource("2_pgwtv")
+text = "大地图"
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/UI/MapGraph"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 74.0
+offset_right = 543.0
+offset_bottom = 776.0
+
+[node name="Dialog" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+
+[node name="PlayerAttriDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("6_58rbw")]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 820.0
+offset_right = 355.0
+offset_bottom = 1305.0
+
+[node name="BagDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("7_8gm2p")]
+visible = false
+offset_left = 6.0
+offset_top = 401.0
+offset_right = 6.0
+offset_bottom = 401.0
+
+[node name="RoleEquipDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("8_8v1w8")]
+visible = false
+offset_left = 5.0
+offset_top = 101.0
+offset_right = 5.0
+offset_bottom = 101.0
+
+[node name="DeadDialog" type="Control" parent="CanvasLayer/UI/Dialog"]
+visible = false
+anchors_preset = 0
+offset_left = 184.0
+offset_top = 1050.0
+offset_right = 184.0
+offset_bottom = 1050.0
+
+[node name="Back" type="Panel" parent="CanvasLayer/UI/Dialog/DeadDialog"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_styles/panel = ExtResource("9_vuu7a")
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Dialog/DeadDialog/Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -41.0
+offset_right = 75.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pgwtv")
+text = "您已死亡！"
+
+[node name="ReviveBt" type="Button" parent="CanvasLayer/UI/Dialog/DeadDialog/Back"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -74.0
+offset_right = 34.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_pgwtv")
+text = "复活"
+
+[node name="SkillDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("10_v8v4k")]
+visible = false
+
+[node name="AutoSettingDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("11_jl7su")]
+visible = false
+
+[node name="ShopDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("12_dtqpc")]
+visible = false
+offset_left = 97.0
+offset_top = 256.0
+offset_right = 97.0
+offset_bottom = 256.0
+
+[node name="NpcTalkDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("14_78prd")]
+visible = false
+offset_left = 94.0
+offset_top = 150.0
+offset_right = 94.0
+offset_bottom = 150.0
+
+[node name="MissionDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("15_4ona6")]
+visible = false
+offset_top = 567.0
+offset_bottom = 567.0
+
+[node name="DebugDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("15_iligl")]
+visible = false
+
+[node name="ScrollUseDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("18_tgmgh")]
+visible = false
+offset_left = 169.0
+offset_top = 680.0
+offset_right = 169.0
+offset_bottom = 680.0
+
+[node name="OtherFunctionDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("19_03is1")]
+visible = false
+offset_left = 335.0
+offset_top = 1051.0
+offset_right = 335.0
+offset_bottom = 1051.0
+
+[node name="MonsterInfoDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("20_6cx34")]
+visible = false
+offset_left = 57.0
+offset_top = 324.0
+offset_right = 57.0
+offset_bottom = 324.0
+
+[node name="ItemInfoDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("17_5c71j")]
+visible = false
+
+[node name="MapSelectDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("21_rw0gw")]
+visible = false
+offset_left = 193.0
+offset_top = 285.0
+offset_right = 193.0
+offset_bottom = 285.0
+
+[node name="AlchemyDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("23_hpdnf")]
+visible = false
+offset_left = 86.0
+offset_top = 763.0
+offset_right = 126.0
+offset_bottom = 803.0
+
+[node name="ToastControl" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_top = 450.0
+offset_right = 320.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_mpr1v")
+
+[node name="GameSaveTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[connection signal="pressed" from="CanvasLayer/UI/BigMapBt" to="." method="_on_big_map_bt_pressed"]
+[connection signal="button_down" from="CanvasLayer/UI/ButtonControl/AttackBt" to="." method="_on_attack_bt_button_down"]
+[connection signal="button_up" from="CanvasLayer/UI/ButtonControl/AttackBt" to="." method="_on_attack_bt_button_up"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/AttackBt" to="." method="_on_attack_bt_pressed"]
+[connection signal="button_down" from="CanvasLayer/UI/ButtonControl/PickUpBt" to="." method="_on_pick_up_bt_button_down"]
+[connection signal="button_up" from="CanvasLayer/UI/ButtonControl/PickUpBt" to="." method="_on_pick_up_bt_button_up"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/RestBt" to="." method="_on_rest_bt_pressed"]
+[connection signal="toggled" from="CanvasLayer/UI/ButtonControl/AutoBt" to="." method="_on_auto_bt_toggled"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/BagBt" to="." method="_on_bag_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/RoleEquipBt" to="." method="_on_role_equip_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/SkillBt" to="." method="_on_skill_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/MissionBt" to="." method="_on_mission_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/RoleBt" to="." method="_on_role_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/OtherBt" to="." method="_on_other_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/SaveGameBt" to="." method="_on_save_game_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/AutoSettingBt" to="." method="_on_auto_setting_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/ExitGameBt" to="." method="_on_exit_game_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/DebugBt" to="." method="_on_debug_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/AlchemyBt" to="." method="_on_alchemy_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/ButtonControl/RoleInfoBt" to="." method="_on_role_info_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/StatusBar/PlayerInfo" to="." method="_on_player_info_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/MapGraph/MapCloseBt" to="." method="_on_map_close_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Dialog/DeadDialog/Back/ReviveBt" to="." method="_on_revive_bt_pressed"]
+[connection signal="all_consume_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_all_consume_added"]
+[connection signal="all_job1_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_all_job_1_added"]
+[connection signal="all_job2_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_all_job_2_added"]
+[connection signal="all_job3_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_all_job_3_added"]
+[connection signal="debug_exp_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_exp_added"]
+[connection signal="debug_item_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_item_added"]
+[connection signal="debug_money_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_money_added"]
+[connection signal="timeout" from="GameSaveTimer" to="." method="_on_game_save_timer_timeout"]

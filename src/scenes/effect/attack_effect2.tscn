@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcggbcqt0aqsw"]
+
+[ext_resource type="Script" uid="uid://7ut8bj2y3b1w" path="res://src/scenes/effect/attack_effect_2.gd" id="1_5ueub"]
+
+[node name="AttackEffect2" type="Node2D"]
+script = ExtResource("1_5ueub")

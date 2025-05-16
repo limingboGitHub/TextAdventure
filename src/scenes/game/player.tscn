@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=3 uid="uid://ckgolexat0dxo"]
+
+[ext_resource type="Script" uid="uid://sdtpcokcuu21" path="res://src/scenes/game/player.gd" id="1_y2cg1"]
+[ext_resource type="PackedScene" uid="uid://bx2d4keg6x7ho" path="res://src/scenes/game/color_bar.tscn" id="2_agfvh"]
+[ext_resource type="Script" uid="uid://chsyljgrm8kf0" path="res://src/scenes/widget/button.gd" id="2_nb3wj"]
+[ext_resource type="Script" uid="uid://bpcfk56u3agxt" path="res://src/scenes/game/damage_group.gd" id="3_7mer1"]
+[ext_resource type="Script" uid="uid://ctsj20lbvsrfc" path="res://src/scenes/game/skill_name_group.gd" id="4_75e52"]
+[ext_resource type="StyleBox" uid="uid://ch8tsa4454dfj" path="res://theme/quality/quality_epic.tres" id="5_syj1c"]
+[ext_resource type="Script" uid="uid://cgg153p8wa2cr" path="res://src/scenes/game/poison_damage_group.gd" id="6_53qtt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi0aj"]
+bg_color = Color(0.329412, 0.317647, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42uq7"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Player" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 131.0
+offset_right = 97.0
+offset_bottom = 131.0
+script = ExtResource("1_y2cg1")
+
+[node name="Back" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mi0aj")
+script = ExtResource("2_nb3wj")
+
+[node name="HpBar" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 7.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_42uq7")
+
+[node name="ColorBar" parent="Back/HpBar" instance=ExtResource("2_agfvh")]
+layout_mode = 0
+offset_right = 25.0
+max_width = 46
+
+[node name="WeaponPanel" type="PanelContainer" parent="Back"]
+visible = false
+layout_mode = 0
+offset_left = 35.0
+offset_top = 14.0
+offset_right = 47.0
+offset_bottom = 28.0
+theme_override_styles/panel = ExtResource("5_syj1c")
+
+[node name="Label" type="Label" parent="Back/WeaponPanel"]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 10
+text = "剑"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 43.0
+grow_horizontal = 2
+text = "玩家最爱长名字"
+horizontal_alignment = 1
+
+[node name="DamageGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 2.0
+offset_bottom = -27.0
+script = ExtResource("3_7mer1")
+
+[node name="PoisonDamageGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 2.0
+offset_bottom = -27.0
+script = ExtResource("6_53qtt")
+
+[node name="SkillNameGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("4_75e52")
+
+[node name="MpCostEnhanceLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -21.0
+offset_top = -6.0
+offset_right = -9.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "法"
+
+[node name="HpCostEnhanceLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "血"
+
+[connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]

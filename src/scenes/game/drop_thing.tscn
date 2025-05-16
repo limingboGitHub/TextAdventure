@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdj6n7wld32j4"]
+
+[ext_resource type="StyleBox" uid="uid://dmybcs1ubxab1" path="res://theme/item/common_style.tres" id="1_qh3hm"]
+[ext_resource type="Script" uid="uid://fbl1dbm4i4d2" path="res://src/scenes/game/drop_thing.gd" id="1_qmxcn"]
+
+[sub_resource type="Gradient" id="Gradient_auqx8"]
+colors = PackedColorArray(0.988235, 0.745098, 0.317647, 1, 0.988235, 0.745098, 0.317647, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mblo2"]
+gradient = SubResource("Gradient_auqx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fj4p6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(25, 10, 1)
+angle_min = 1.07288e-05
+angle_max = 90.0
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 8.0
+color = Color(0.988235, 0.745098, 0.317647, 0.619608)
+color_ramp = SubResource("GradientTexture1D_mblo2")
+
+[node name="DropThing" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 177.0
+offset_top = 212.0
+offset_right = 177.0
+offset_bottom = 212.0
+script = ExtResource("1_qmxcn")
+
+[node name="Back" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -25.0
+offset_right = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("1_qh3hm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Back"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Back/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Back/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "装备"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Back/HBoxContainer"]
+layout_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1, -22)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fj4p6")
+lifetime = 2.0
+local_coords = true

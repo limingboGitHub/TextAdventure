@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://c067ug5y61ddh"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_fh1lq"]
+[ext_resource type="Script" uid="uid://duixoao7mbpsm" path="res://src/scenes/dialog/alchemy_dialog.gd" id="1_rd1nl"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="2_rd1nl"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="2_uku23"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="5_lx3a0"]
+
+[node name="AlchemyDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rd1nl")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 490.0
+offset_bottom = 455.0
+theme_override_styles/panel = ExtResource("1_fh1lq")
+
+[node name="Title" type="Label" parent="Back"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 430.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 25
+text = "炼金"
+
+[node name="Title2" type="Label" parent="Back"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 79.0
+offset_right = 199.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_font_sizes/font_size = 22
+text = "配方："
+
+[node name="ItemList" type="ItemList" parent="Back"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 115.0
+offset_right = 201.0
+offset_bottom = 395.0
+item_count = 4
+item_0/text = "力量药剂"
+item_1/text = "敏捷药剂"
+item_2/text = "神力药剂"
+
+[node name="Title3" type="Label" parent="Back"]
+layout_mode = 2
+offset_left = 218.0
+offset_top = 79.0
+offset_right = 407.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_font_sizes/font_size = 22
+text = "材料："
+
+[node name="RequireBackPanel" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 116.0
+offset_right = 480.0
+offset_bottom = 395.0
+
+[node name="RequireLabel" type="Label" parent="Back/RequireBackPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 258.0
+offset_bottom = 272.0
+text = "狼牙 3/3
+白兔毛 3/3"
+
+[node name="DragControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 429.0
+offset_bottom = 55.0
+script = ExtResource("2_rd1nl")
+
+[node name="CloseButton" parent="." instance=ExtResource("2_uku23")]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 5.0
+offset_right = 484.0
+offset_bottom = 55.0
+
+[node name="TestButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 13.0
+offset_right = 264.0
+offset_bottom = 44.0
+text = "测试添加"
+
+[node name="MakeBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 401.0
+offset_right = 480.0
+offset_bottom = 448.0
+theme = ExtResource("5_lx3a0")
+text = "制作"
+
+[node name="MakeCount" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 400.0
+offset_right = 402.0
+offset_bottom = 450.0
+theme = ExtResource("5_lx3a0")
+text = "0"
+placeholder_text = "制作数量"
+
+[connection signal="item_selected" from="Back/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="pressed" from="MakeBt" to="." method="_on_make_bt_pressed"]

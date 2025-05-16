@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2rxr2vnkaejh"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_54nqg"]
+[ext_resource type="Script" uid="uid://bpkp6360hsoif" path="res://src/scenes/dialog/npc_talk_dialog.gd" id="1_x1o30"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_4hg51"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="3_17pvb"]
+[ext_resource type="Theme" uid="uid://dek14w0nin0fh" path="res://src/scenes/dialog/dialog_message_theme.tres" id="4_0qynp"]
+[ext_resource type="PackedScene" uid="uid://dxd3eye6er2ha" path="res://src/scenes/dialog/require_or_reward.tscn" id="4_py38u"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="7_m48vh"]
+
+[node name="NpcTalkDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_x1o30")
+
+[node name="BackContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 452.0
+offset_bottom = 400.0
+theme_override_styles/panel = ExtResource("1_54nqg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="BackContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Message" type="RichTextLabel" parent="BackContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(430, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("4_0qynp")
+bbcode_enabled = true
+text = "这是一段比较长的文本，用于测试聊天动画。这是一段比较长的文本，用于测试聊天动画这是一段比较长的文本，用于测试聊天动画这是一段比较长的文本，用于测试聊天动画"
+autowrap_mode = 1
+shortcut_keys_enabled = false
+
+[node name="Spacer2" type="Control" parent="BackContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RequireOrReward" parent="BackContainer/VBoxContainer" instance=ExtResource("4_py38u")]
+layout_mode = 2
+
+[node name="SelectionContainer" type="VBoxContainer" parent="BackContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Mission1" type="Button" parent="BackContainer/VBoxContainer/SelectionContainer"]
+custom_minimum_size = Vector2(430, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "弟弟的糖果"
+
+[node name="Mission2" type="Button" parent="BackContainer/VBoxContainer/SelectionContainer"]
+custom_minimum_size = Vector2(430, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "弟弟的糖果"
+
+[node name="Spacer3" type="Control" parent="BackContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="OKBt" type="Button" parent="BackContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_4hg51")
+text = "接受"
+
+[node name="Control" type="Control" parent="BackContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="BackContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 71.0
+offset_bottom = 54.0
+theme = ExtResource("2_4hg51")
+text = "约瑟夫"
+
+[node name="DragControl" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 452.0
+offset_bottom = 70.0
+size_flags_vertical = 0
+script = ExtResource("3_17pvb")
+
+[node name="CloseButton" parent="." instance=ExtResource("7_m48vh")]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 5.0
+offset_right = 446.0
+offset_bottom = 55.0
+
+[connection signal="pressed" from="BackContainer/VBoxContainer/HBoxContainer/OKBt" to="." method="_on_ok_bt_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

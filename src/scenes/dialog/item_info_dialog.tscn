@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://805122ud3qpp"]
+
+[ext_resource type="Script" uid="uid://cw6633w84hyby" path="res://src/scenes/dialog/item_info_dialog.gd" id="1_431hy"]
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_ofv7c"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_mv2v6"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="4_o4ux3"]
+
+[node name="ItemInfoDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_431hy")
+
+[node name="Back" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 370.0
+theme_override_styles/panel = ExtResource("1_ofv7c")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Back"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="Back/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="InfoContainer" type="VBoxContainer" parent="Back/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="Back/HBoxContainer/InfoContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Back/HBoxContainer/InfoContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_mv2v6")
+text = "物品名称"
+
+[node name="AttributeLabel" type="RichTextLabel" parent="Back/HBoxContainer/InfoContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "属性"
+fit_content = true
+
+[node name="Description" type="Label" parent="Back/HBoxContainer/InfoContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_font_sizes/font_size = 20
+text = "这是一段物品描述"
+autowrap_mode = 3
+
+[node name="Spacer2" type="Control" parent="Back/HBoxContainer/InfoContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="CloseButton" parent="." instance=ExtResource("4_o4ux3")]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 5.0
+offset_right = 395.0
+offset_bottom = 55.0
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

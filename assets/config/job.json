@@ -1,0 +1,31 @@
+{
+	"desc":"职业配置",
+	"jobs":{
+		"job_000000":{
+			"job_name":"新手"
+		},
+		"job_000001":{
+			"job_name":"战士",
+			"skill_list":[
+				"skill_000001",
+				"skill_000002"
+			]
+		},
+
+		"job_000101":{
+			"job_name":"法师",
+			"skill_list":[
+				"skill_000101",
+				"skill_000102"
+			]
+		},
+
+		"job_000201":{
+			"job_name":"盗贼",
+			"skill_list":[
+				"skill_000201",
+				"skill_000202"
+			]
+		}
+	}
+}

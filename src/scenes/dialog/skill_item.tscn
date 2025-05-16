@@ -1,0 +1,128 @@
+[gd_scene load_steps=6 format=3 uid="uid://g02gk8mtpqh"]
+
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="1_0hqn5"]
+[ext_resource type="Script" uid="uid://b4s0i0vaolakg" path="res://src/scenes/dialog/skill_item.gd" id="1_ix8gr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoncr"]
+bg_color = Color(0.988235, 0.458824, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6h6d"]
+bg_color = Color(0.988235, 0.25098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8dfc"]
+bg_color = Color(0.988235, 0.458824, 0, 1)
+
+[node name="SkillItem" type="Control"]
+custom_minimum_size = Vector2(460, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ix8gr")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 455.0
+offset_bottom = 95.0
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 110.0
+offset_bottom = 40.0
+theme = ExtResource("1_0hqn5")
+theme_override_font_sizes/font_size = 25
+text = "强力攻击"
+vertical_alignment = 1
+
+[node name="MaxLevel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 122.0
+offset_top = 5.0
+offset_right = 193.0
+offset_bottom = 37.0
+theme = ExtResource("1_0hqn5")
+theme_override_colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_font_sizes/font_size = 23
+text = "max："
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MaxLevel"]
+layout_mode = 0
+offset_left = 62.0
+offset_right = 133.0
+offset_bottom = 32.0
+theme = ExtResource("1_0hqn5")
+theme_override_colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_font_sizes/font_size = 23
+text = "20"
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 1
+offset_left = 232.0
+offset_top = 5.0
+offset_right = 303.0
+offset_bottom = 37.0
+theme = ExtResource("1_0hqn5")
+theme_override_colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_font_sizes/font_size = 23
+text = "当前："
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Level"]
+layout_mode = 0
+offset_left = 62.0
+offset_right = 133.0
+offset_bottom = 32.0
+theme = ExtResource("1_0hqn5")
+theme_override_colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_font_sizes/font_size = 23
+text = "20"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 408.0
+offset_bottom = 99.0
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "使用强力一击攻击敌人，伤害系数110%1231212121231231"
+
+[node name="AddBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 14.0
+offset_right = 443.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_eoncr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a6h6d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8dfc")
+text = "↑"
+
+[node name="UseBt" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 406.0
+offset_top = 59.0
+offset_right = 446.0
+offset_bottom = 90.0
+text = "使用"
+
+[node name="ActiveButton" type="CheckButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 369.0
+offset_top = 58.0
+offset_right = 449.0
+offset_bottom = 89.0
+button_pressed = true
+text = "激活"
+
+[connection signal="pressed" from="AddBt" to="." method="_on_add_bt_pressed"]
+[connection signal="pressed" from="UseBt" to="." method="_on_use_bt_pressed"]
+[connection signal="toggled" from="ActiveButton" to="." method="_on_active_button_toggled"]

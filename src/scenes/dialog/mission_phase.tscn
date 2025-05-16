@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://basbhh486p56t"]
+
+[node name="MissionPhase" type="Button"]
+offset_right = 138.0
+offset_bottom = 44.0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "弟弟的糖果"
+alignment = 0

@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3vdl8qhgqhpv"]
+
+[ext_resource type="Script" uid="uid://s10j0pm4j6m7" path="res://src/scenes/game/monster.gd" id="1_8k3o6"]
+[ext_resource type="Script" uid="uid://chsyljgrm8kf0" path="res://src/scenes/widget/button.gd" id="2_mxduu"]
+[ext_resource type="PackedScene" uid="uid://bx2d4keg6x7ho" path="res://src/scenes/game/color_bar.tscn" id="3_oibfp"]
+[ext_resource type="Script" uid="uid://bpcfk56u3agxt" path="res://src/scenes/game/damage_group.gd" id="4_ofkwm"]
+[ext_resource type="Script" uid="uid://ctsj20lbvsrfc" path="res://src/scenes/game/skill_name_group.gd" id="5_3klio"]
+[ext_resource type="Script" uid="uid://cgg153p8wa2cr" path="res://src/scenes/game/poison_damage_group.gd" id="5_kv8ei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6afn"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Monster" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8k3o6")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_mxduu")
+
+[node name="HpBar" type="Panel" parent="Back"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p6afn")
+
+[node name="ColorBar" parent="Back/HpBar" instance=ExtResource("3_oibfp")]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 20.0
+mouse_filter = 2
+max_width = 200
+
+[node name="HP" type="Label" parent="Back/HpBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = -3.0
+offset_right = 31.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 1
+text = "100/100"
+
+[node name="Name" type="Label" parent="Back"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 160.0
+offset_right = 100.0
+offset_bottom = 202.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.901961, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "绿蜗牛"
+horizontal_alignment = 1
+
+[node name="DamageGroup" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -91.0
+offset_right = 2.0
+offset_bottom = -87.0
+script = ExtResource("4_ofkwm")
+
+[node name="PoisonDamageGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 2.0
+offset_bottom = -27.0
+script = ExtResource("5_kv8ei")
+
+[node name="SkillNameGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2.0
+offset_bottom = 2.0
+script = ExtResource("5_3klio")
+
+[node name="DeepDamageLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = -56.0
+offset_right = 60.0
+offset_bottom = -28.0
+theme_override_colors/font_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "裂"
+
+[connection signal="my_released" from="Back" to="." method="_on_panel_my_released"]

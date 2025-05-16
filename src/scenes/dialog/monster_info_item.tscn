@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c07inpvckugyf"]
+
+[node name="MonsterInfoItem" type="Button"]
+custom_minimum_size = Vector2(195, 0)
+text = "的的"
+text_overrun_behavior = 3
+clip_text = true

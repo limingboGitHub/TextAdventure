@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://4a0ddh87ctdb"]
+
+[ext_resource type="Script" uid="uid://u3unh1bsesgt" path="res://src/scenes/widget/toast.gd" id="1_3rm4i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oamrw"]
+bg_color = Color(0.6, 0.6, 0.6, 0.466667)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="Theme" id="Theme_p2aca"]
+Label/font_sizes/font_size = 25
+Label/styles/normal = SubResource("StyleBoxFlat_oamrw")
+
+[node name="Toast" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -13.5
+offset_right = 43.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p2aca")
+text = "12312312"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_3rm4i")

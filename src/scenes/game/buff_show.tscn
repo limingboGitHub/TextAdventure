@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1e0n06mrg3cd"]
+
+[ext_resource type="Script" uid="uid://c1hdojaq4nt42" path="res://src/scenes/game/buff_show.gd" id="1_xiytw"]
+[ext_resource type="PackedScene" uid="uid://ftgvuqdaywga" path="res://src/scenes/game/buff_item.tscn" id="2_nua73"]
+
+[node name="BuffShow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xiytw")
+
+[node name="BuffContainer" type="HBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 199.0
+offset_bottom = 40.0
+
+[node name="BuffLabel" parent="BuffContainer" instance=ExtResource("2_nua73")]
+layout_mode = 2

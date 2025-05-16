@@ -1,0 +1,255 @@
+{
+	"desc": "下装",
+	"lower_body": {
+		"lower_body_000001": {
+			"name": "短裤",
+			"desc": "穿了不知道多久的破旧裤子。",
+			"require_level": 1,
+			"price": 500,
+			"attribute_details": {
+				"defense": 1
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000002": {
+			"name": "牛仔裤",
+			"desc": "一条崭新的牛仔裤！开心！",
+			"require_level": 5,
+			"price": 1000,
+			"attribute_details": {
+				"defense": 1
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000003": {
+			"name": "见习者下装",
+			"desc": "见习士兵的标准下装，至少能遮羞。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"max_hp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000004": {
+			"name": "铁甲下装",
+			"desc": "厚重的铁甲保护着双腿。它曾保护一位士兵免于致命一击。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"max_hp": 15,
+				"defense": 10
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000005": {
+			"name": "精钢腿甲",
+			"desc": "精钢打造的腿甲，活动更自如。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 9000,
+			"attribute_details": {
+				"max_hp": 25,
+				"defense": 17
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000006": {
+			"name": "破风腿甲",
+			"desc": "与破风战甲配套的腿甲，追求极致的速度。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 16000,
+			"attribute_details": {
+				"max_hp": 40,
+				"defense": 25
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000007": {
+			"name": "守护腿甲",
+			"desc": "守护者战甲的一部分，提供坚实的下盘防护。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 28000,
+			"attribute_details": {
+				"max_hp": 60,
+				"defense": 35
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_000008": {
+			"name": "青铜下装",
+			"desc": "青铜打造的下装，更为坚固。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"max_hp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_000009": {
+			"name": "玄铁下装",
+			"desc": "用更坚固的玄铁打造。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"max_hp": 15,
+				"defense": 10
+			},
+			"max_upgrade_times": 6
+		},
+
+		"lower_body_001001": {
+			"name": "学徒长裤",
+			"desc": "魔法学徒的制式长裤，轻便舒适。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"max_mp": 5,
+				"defense": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_001002": {
+			"name": "魔力长裤",
+			"desc": "附魔的长裤，能够增强魔力流动。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"max_mp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_001003": {
+			"name": "智慧长裤",
+			"desc": "导魔纤维编织的长裤，可以辅助魔法的引导。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 9000,
+			"attribute_details": {
+				"max_mp": 20,
+				"defense": 8
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_001004": {
+			"name": "星辰长裤",
+			"desc": "嵌入星辰碎片的长裤，行走时微微发光。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 16000,
+			"attribute_details": {
+				"max_mp": 35,
+				"defense": 15
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_001005": {
+			"name": "奥术长裤",
+			"desc": "奥术大师设计的长裤，能将魔力完美引导至全身。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 28000,
+			"attribute_details": {
+				"max_mp": 55,
+				"defense": 20
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_001006": {
+			"name": "黑色学徒长裤",
+			"desc": "这颜色我喜欢，感觉施法更顺手了。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"max_mp": 5,
+				"defense": 2
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_001007": {
+			"name": "冰霜长裤",
+			"desc": "蕴含冰霜力量的长裤，能大幅增强魔法威力。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"max_mp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 6
+		},
+
+		"lower_body_002001": {
+			"name": "潜行裤",
+			"desc": "轻便的皮革长裤，方便快速移动。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"defense": 3,
+				"evasion": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_002002": {
+			"name": "影袭护腿",
+			"desc": "“影袭”组织特制的护腿，能有效降低移动时的声响。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 6,
+				"evasion": 3
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_002003": {
+			"name": "暗影护腿",
+			"desc": "融入暗影能量的护腿，穿着时若隐若现。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 9000,
+			"attribute_details": {
+				"defense": 10,
+				"evasion": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"lower_body_002004": {
+			"name": "暮色护腿",
+			"desc": "港口盗贼们的最爱，轻便耐用。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"defense": 3,
+				"evasion": 3
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_002005": {
+			"name": "夜行护腿",
+			"desc": "特制的夜行护腿，让移动更加隐秘。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 6,
+				"evasion": 4
+			},
+			"max_upgrade_times": 6
+		}
+	}
+}

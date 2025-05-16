@@ -1,0 +1,17 @@
+{
+	"weapon":{
+		"name":"武器"
+	},
+	"upper_body":{
+		"name":"上衣"
+	},
+	"lower_body":{
+		"name":"下衣"
+	},
+	"shoes":{
+		"name":"鞋子"
+	},
+	"cap":{
+		"name":"帽子"
+	}
+}

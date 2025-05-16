@@ -1,0 +1,14 @@
+{
+	"name": "细尾鼠",
+	"attack": "25",
+    "defense": "10",
+    "magic": "0",
+    "magic_def": "8",
+    "level": "11",
+    "maxHP": "170",
+    "maxMP": "0",
+    "acc": "100",
+    "eva": "100",
+    "exp": "30",
+    "undead": "0"
+}

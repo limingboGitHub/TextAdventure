@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl5w7fvvuvyek"]
+
+[ext_resource type="Script" uid="uid://8248oi2q68o5" path="res://src/scenes/game/monster_loader.gd" id="1_syg0y"]
+
+[node name="MonsterLoader" type="Node2D"]
+script = ExtResource("1_syg0y")

@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://civrl08hy1cub"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_c24hx"]
+[ext_resource type="Script" uid="uid://bmkyrkryw1mdh" path="res://src/scenes/dialog/shop_dialog.gd" id="1_gf06k"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_hadxm"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="4_44un4"]
+[ext_resource type="PackedScene" uid="uid://cb2dtoajjf0qn" path="res://src/scenes/dialog/bag_tab.tscn" id="5_w0mse"]
+[ext_resource type="PackedScene" uid="uid://c7b67qode8lhl" path="res://src/scenes/dialog/num_input_dialog.tscn" id="6_7s78r"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="7_25p47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5wb1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.262745)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ShopDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gf06k")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 470.0
+offset_bottom = 483.0
+theme_override_styles/panel = ExtResource("1_c24hx")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 71.0
+offset_bottom = 54.0
+theme = ExtResource("2_hadxm")
+text = "商店"
+
+[node name="DragControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 452.0
+offset_bottom = 55.0
+script = ExtResource("4_44un4")
+
+[node name="ShopBag" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 77.0
+offset_right = 213.0
+offset_bottom = 427.0
+current_tab = 0
+
+[node name="装备" parent="ShopBag" instance=ExtResource("5_w0mse")]
+layout_mode = 2
+
+[node name="装备2" parent="ShopBag" instance=ExtResource("5_w0mse")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="装备3" parent="ShopBag" instance=ExtResource("5_w0mse")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="PlayerBag" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 77.0
+offset_right = 440.0
+offset_bottom = 427.0
+current_tab = 0
+
+[node name="装备" parent="PlayerBag" instance=ExtResource("5_w0mse")]
+layout_mode = 2
+
+[node name="装备2" parent="PlayerBag" instance=ExtResource("5_w0mse")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="装备3" parent="PlayerBag" instance=ExtResource("5_w0mse")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Money" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 210.0
+offset_top = 433.0
+offset_right = 210.0
+offset_bottom = 433.0
+
+[node name="Title" type="Label" parent="Money"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 42.0
+theme = ExtResource("2_hadxm")
+text = "金钱："
+
+[node name="Value" type="Label" parent="Money"]
+layout_mode = 0
+offset_left = 81.0
+offset_right = 232.0
+offset_bottom = 46.0
+theme = ExtResource("2_hadxm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k5wb1")
+text = "0"
+horizontal_alignment = 2
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Test" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 213.0
+offset_top = 496.0
+offset_right = 213.0
+offset_bottom = 496.0
+
+[node name="AddMoneyBt" type="Button" parent="Test"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("2_hadxm")
+text = "增加金钱"
+
+[node name="NumInputDialog" parent="." instance=ExtResource("6_7s78r")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 210.0
+offset_right = 400.0
+offset_bottom = 291.0
+
+[node name="CloseButton" parent="." instance=ExtResource("7_25p47")]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 6.0
+offset_right = 465.0
+offset_bottom = 56.0
+
+[connection signal="pressed" from="Test/AddMoneyBt" to="." method="_on_add_money_bt_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

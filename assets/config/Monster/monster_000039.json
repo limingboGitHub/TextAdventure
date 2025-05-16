@@ -1,0 +1,15 @@
+{
+	"name": "巨大老鼠",
+    "type":"boss",
+	"attack": "100",
+    "defense": "30",
+    "magic": "0",
+    "magic_def": "30",
+    "level": "20",
+    "maxHP": "40000",
+    "maxMP": "0",
+    "acc": "170",
+    "eva": "200",
+    "exp": "1000",
+    "undead": "0"
+}

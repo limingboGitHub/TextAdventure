@@ -1,0 +1,768 @@
+{
+	"map_000001":{
+		"name":"日落村",
+		"description":"日落村是一个与世无争的宁静村庄，是新手们诞生的地方，冒险从这里开始。",
+		"region": "日落小镇",
+		"main_town":true,
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000002",
+				"position":{
+					"x": 0,
+					"y": 260
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000004",
+				"position":{
+					"x": 545,
+					"y": 260
+				}
+			}
+		}
+	},
+	"map_000002":{
+		"name":"咕咕小丘",
+		"description":"",
+		"region": "日落小镇",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000001",
+				"position":{
+					"x": 545,
+					"y": 260
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000003",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000003":{
+		"name":"咕咕大丘",
+		"description":"",
+		"region": "日落小镇",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000002",
+				"position":{
+					"x": 270,
+					"y": 545
+				}
+			}
+		}
+	},
+	"map_000004":{
+		"name":"萤火森林入口",
+		"description":"",
+		"region": "日落小镇",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000001",
+				"position":{
+					"x": 0,
+					"y": 260
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000005",
+				"position":{
+					"x": 270,
+					"y": 545
+				}
+			}
+		}
+	},
+	"map_000005":{
+		"name":"萤火森林中部",
+		"description":"",
+		"region": "日落小镇",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000004",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000006",
+				"position":{
+					"x": 270,
+					"y": 545
+				}
+			}
+		}
+	},
+	"map_000006":{
+		"name":"萤火森林深处",
+		"description":"",
+		"region": "日落小镇",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000005",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000007",
+				"position":{
+					"x": 270,
+					"y": 545
+				}
+			}
+		}
+	},
+	"map_000007":{
+		"name":"黑狼王巢穴",
+		"description":"",
+		"region": "日落小镇",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000006",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+
+	"map_000101":{
+		"name":"银盾城",
+		"description":"",
+		"region": "星丘大陆",
+		"main_town":true,
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000102",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000107",
+				"position":{
+					"x": 0,
+					"y": 270
+				}
+			},
+			"portal_000003":{
+				"target_map_id":"map_000112",
+				"position":{
+					"x": 550,
+					"y": 270
+				}
+			},
+			"portal_000004":{
+				"target_map_id":"map_000117",
+				"position":{
+					"x": 400,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000102":{
+		"name":"城外平原",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000103",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}		
+		}
+	},
+	"map_000103":{
+		"name":"犬犬山丘",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000102",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000104",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000104":{
+		"name":"蛇蛇谷",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000103",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000105",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000105":{
+		"name":"虎虎山",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000104",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000106",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000106":{
+		"name":"虎虎山顶",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000105",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+
+	"map_000107":{
+		"name":"白塔学院",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 550,
+					"y": 270
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000108",
+				"position":{
+					"x": 220,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000108":{
+		"name":"狭窄的地道",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000107",
+				"position":{
+					"x": 220,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000109",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000109":{
+		"name":"古代遗迹",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000108",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000110",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000110":{
+		"name":"遗忘的图书馆",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000109",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000111",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000111":{
+		"name":"馆长的房间",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000110",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+
+	"map_000112":{
+		"name":"暮色港口",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 0,
+					"y": 270
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000113",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000113":{
+		"name":"鼠巷",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000112",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000114",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000114":{
+		"name":"下水道入口",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000113",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000115",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000115":{
+		"name":"下水道深处",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000114",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000116",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+	"map_000116":{
+		"name":"肮脏的角落",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000115",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+
+	"map_000117":{
+		"name":"霜之径",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000118",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000118":{
+		"name":"冰封峡谷",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000117",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000119",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000119":{
+		"name":"冰谷镇",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000118",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000120",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000120":{
+		"name":"雪怪巢穴",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000119",
+				"position":{	
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000121",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000121":{
+		"name":"极地祭坛",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000120",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+
+	"map_000122":{
+		"name":"星光浅滩",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000123"
+			}
+		}
+	},
+	"map_000123":{
+		"name":"沉溺回廊",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000122"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000124"
+			}
+		}
+	},
+	"map_000124":{
+		"name":"空泡之地",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000123"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000125"
+			}
+		}
+	},
+	"map_000125":{
+		"name":"湖中之地",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000124"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000126"
+			}
+		}
+	},
+	"map_000126":{
+		"name":"水晶洞窟",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000125"
+			}
+		}
+	},
+
+	
+	"map_000127":{
+		"name":"矿坑入口",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000128"
+			}
+		}
+	},
+	"map_000128":{
+		"name":"矿坑站点",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000127"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000129"
+			}
+		}
+	},
+	"map_000129":{
+		"name":"回声竖井",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000128"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000130"
+			}
+		}
+	},
+	"map_000130":{
+		"name":"矿坑深处",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000129"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000131"
+			}
+		}
+	},
+	"map_000131":{
+		"name":"废弃矿洞",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000130"
+			}
+		}
+	},
+
+	
+	"map_000132":{
+		"name":"流金沙海",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000101"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000133"
+			}
+		}
+	},
+	"map_000133":{
+		"name":"流沙城",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000132"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000134"
+			}
+		}
+	},
+	"map_000134":{
+		"name":"蜃气绿洲",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000133"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000135"
+			}
+		}
+	},
+	"map_000135":{
+		"name":"神殿外围",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000134"
+			},
+			"portal_000002":{
+				"target_map_id":"map_000136"
+			}
+		}
+	},
+	"map_000136":{
+		"name":"沙漠神殿",
+		"description":"",
+		"region": "星丘大陆",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000135"
+			}
+		}
+	},
+	"map_000199":{
+		"name":"试炼之塔",
+		"description":"玩家满级后可进入，无尽的试炼。",
+		"region": "星丘大陆",
+		"endless":{
+			"monster_upgrade":10,
+			"monster_count":50
+		}
+	}
+}

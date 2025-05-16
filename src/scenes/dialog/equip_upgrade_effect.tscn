@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnyd3mjx5i43y"]
+
+[ext_resource type="Script" uid="uid://smda8nkdws56" path="res://src/scenes/dialog/equip_upgrade_effect.gd" id="1_qp1dg"]
+[ext_resource type="Material" uid="uid://2qx3hh8dxxio" path="res://theme/process_material/equip_upgrade_effect1.tres" id="2_qp1dg"]
+
+[sub_resource type="Curve2D" id="Curve2D_ft6pb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 198, 2, 0, 0, 0, 0, 198, 43, 0, 0, 0, 0, 2, 43, 0, 0, 0, 0, 2, 2)
+}
+point_count = 5
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_ft6pb")
+script = ExtResource("1_qp1dg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(2.68896, 43.1274)
+progress = 432.131
+rotates = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PathFollow2D"]
+amount = 100
+preprocess = 1.0
+process_material = ExtResource("2_qp1dg")

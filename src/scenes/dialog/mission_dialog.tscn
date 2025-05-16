@@ -1,0 +1,229 @@
+[gd_scene load_steps=11 format=3 uid="uid://wtj8kpxfr8oe"]
+
+[ext_resource type="Script" uid="uid://cwkrnryxfyc47" path="res://src/scenes/dialog/mission_dialog.gd" id="1_cnjn5"]
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_g1t00"]
+[ext_resource type="Script" uid="uid://k6f0ld4sd00s" path="res://src/scenes/widget/my_scroll_container.gd" id="2_3hahs"]
+[ext_resource type="PackedScene" uid="uid://7glfvwlvbq0j" path="res://src/scenes/dialog/mission_item.tscn" id="3_lghc3"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="3_vwnpj"]
+[ext_resource type="Theme" uid="uid://dek14w0nin0fh" path="res://src/scenes/dialog/dialog_message_theme.tres" id="5_dnc25"]
+[ext_resource type="PackedScene" uid="uid://dxd3eye6er2ha" path="res://src/scenes/dialog/require_or_reward.tscn" id="6_2ust1"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="8_mkr4g"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="9_aoey2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhini"]
+
+[node name="MissionDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cnjn5")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 650.0
+theme_override_styles/panel = ExtResource("1_g1t00")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 101.0
+offset_bottom = 54.0
+theme = ExtResource("3_vwnpj")
+text = "任务"
+
+[node name="DragControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 55.0
+script = ExtResource("8_mkr4g")
+
+[node name="CloseButton" parent="." instance=ExtResource("9_aoey2")]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 5.0
+offset_right = 635.0
+offset_bottom = 55.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 638.0
+offset_bottom = 649.0
+current_tab = 0
+
+[node name="未完成" type="Control" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollBack" type="Panel" parent="TabContainer/未完成"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 260.0
+offset_bottom = 551.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhini")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/未完成/ScrollBack"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 245.0
+offset_bottom = 539.0
+script = ExtResource("2_3hahs")
+
+[node name="MissionListContainer" type="VBoxContainer" parent="TabContainer/未完成/ScrollBack/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem" parent="TabContainer/未完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem2" parent="TabContainer/未完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem3" parent="TabContainer/未完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem4" parent="TabContainer/未完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem5" parent="TabContainer/未完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem6" parent="TabContainer/未完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Content" type="Control" parent="TabContainer/未完成"]
+anchors_preset = 0
+offset_left = 270.0
+offset_top = 12.0
+offset_right = 270.0
+offset_bottom = 12.0
+
+[node name="Message" type="RichTextLabel" parent="TabContainer/未完成/Content"]
+clip_contents = false
+custom_minimum_size = Vector2(360, 300)
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 352.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("5_dnc25")
+bbcode_enabled = true
+text = "这是一段比较长的文本，用于测试聊天动画。这是一段比较长的文本，用于测试聊天动画这是一段比较长的文本，用于测试聊天动画这是一段比较长的文本，用于测试聊天动画"
+autowrap_mode = 1
+shortcut_keys_enabled = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/未完成/Content"]
+custom_minimum_size = Vector2(360, 170)
+layout_mode = 0
+offset_top = 367.0
+offset_right = 360.0
+offset_bottom = 537.0
+
+[node name="RequireOrReward" parent="TabContainer/未完成/Content/ScrollContainer" instance=ExtResource("6_2ust1")]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="已完成" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollBack" type="Panel" parent="TabContainer/已完成"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 260.0
+offset_bottom = 551.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhini")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/已完成/ScrollBack"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 245.0
+offset_bottom = 539.0
+script = ExtResource("2_3hahs")
+
+[node name="MissionListContainer" type="VBoxContainer" parent="TabContainer/已完成/ScrollBack/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem" parent="TabContainer/已完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem2" parent="TabContainer/已完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem3" parent="TabContainer/已完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem4" parent="TabContainer/已完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem5" parent="TabContainer/已完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MissionItem6" parent="TabContainer/已完成/ScrollBack/ScrollContainer/MissionListContainer" instance=ExtResource("3_lghc3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Content" type="Control" parent="TabContainer/已完成"]
+anchors_preset = 0
+offset_left = 270.0
+offset_top = 12.0
+offset_right = 270.0
+offset_bottom = 12.0
+
+[node name="Message" type="RichTextLabel" parent="TabContainer/已完成/Content"]
+clip_contents = false
+custom_minimum_size = Vector2(360, 300)
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 352.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("5_dnc25")
+bbcode_enabled = true
+text = "这是一段比较长的文本，用于测试聊天动画。这是一段比较长的文本，用于测试聊天动画这是一段比较长的文本，用于测试聊天动画这是一段比较长的文本，用于测试聊天动画"
+autowrap_mode = 1
+shortcut_keys_enabled = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/已完成/Content"]
+custom_minimum_size = Vector2(360, 170)
+layout_mode = 0
+offset_top = 367.0
+offset_right = 360.0
+offset_bottom = 537.0
+
+[node name="RequireOrReward" parent="TabContainer/已完成/Content/ScrollContainer" instance=ExtResource("6_2ust1")]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

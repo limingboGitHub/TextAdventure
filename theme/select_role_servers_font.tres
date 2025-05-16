@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bmt5w6a64bbo8"]
+
+[resource]
+Button/font_sizes/font_size = 25
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 0
+Label/font_sizes/font_size = 25

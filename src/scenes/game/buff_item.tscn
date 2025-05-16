@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://ftgvuqdaywga"]
+
+[ext_resource type="StyleBox" uid="uid://ciyj5g85d38vt" path="res://theme/item/buff_label_back_increase.tres" id="1_gid5q"]
+[ext_resource type="Script" uid="uid://bsujtaolke2h2" path="res://src/scenes/game/buff_item.gd" id="2_eeuea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hxi3"]
+bg_color = Color(0, 0, 0, 0.435294)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Buff" type="Label"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = ExtResource("1_gid5q")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+script = ExtResource("2_eeuea")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 47.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 17
+text = "力量药剂"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Progress" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_top = 50.0
+offset_right = 50.0
+offset_bottom = 100.0
+scale = Vector2(1, -1)
+
+[node name="Panel" type="Panel" parent="Progress"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8hxi3")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://457sfgrsfixf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu067"]
+bg_color = Color(0.356863, 0.729412, 1, 0.74902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.796078, 0.8, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34gjn"]
+bg_color = Color(0.14902, 0.729412, 1, 0.74902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.705882, 0.705882, 0.705882, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+anti_aliasing = false
+
+[node name="Button" type="Button"]
+offset_left = 8.0
+offset_top = 278.0
+offset_right = 78.0
+offset_bottom = 348.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_uu067")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_34gjn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uu067")
+text = "传送点"
+text_overrun_behavior = 2

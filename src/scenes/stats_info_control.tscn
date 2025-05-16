@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtn4sapjumnyd"]
+
+[ext_resource type="Script" uid="uid://dx74vf1cj4iib" path="res://src/scenes/stats_info_control.gd" id="1_qi0w5"]
+
+[node name="StatsInfoControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 985.0
+offset_right = 11.0
+offset_bottom = 985.0
+script = ExtResource("1_qi0w5")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 180.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 115.0
+offset_bottom = 175.0
+theme_override_constants/separation = 0
+
+[node name="AllDamage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "总    伤："
+
+[node name="DamageMaxRecord" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "伤害/秒(最高记录)："
+
+[node name="Damage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "伤害/秒："
+
+[node name="HP" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "血耗/秒："
+
+[node name="MP" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "蓝耗/秒："
+
+[node name="StatsTimer" type="Timer" parent="."]
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "测试"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

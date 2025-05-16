@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dblhaonaa4kgp"]
+
+[node name="GameSaveItem" type="CheckButton"]
+custom_minimum_size = Vector2(200, 80)
+theme_override_font_sizes/font_size = 25
+text = "123的"

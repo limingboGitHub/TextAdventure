@@ -1,0 +1,14 @@
+{
+	"name": "猴子",
+	"attack": "20",
+    "defense": "6",
+    "magic": "0",
+    "magic_def": "10",
+    "level": "6",
+    "maxHP": "60",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "9",
+    "undead": "0"
+}

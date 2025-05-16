@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://bemvxsbpxfvin"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_3naod"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="1_i4ic4"]
+[ext_resource type="Script" uid="uid://cucywgqsm7by7" path="res://src/scenes/dialog/scroll_use_dialog.gd" id="1_x8h6b"]
+[ext_resource type="Script" uid="uid://k6f0ld4sd00s" path="res://src/scenes/widget/my_scroll_container.gd" id="3_owxjn"]
+[ext_resource type="PackedScene" uid="uid://mbnmc3xs1636" path="res://src/scenes/dialog/bag_item.tscn" id="4_m47qg"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="6_kmud4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txig5"]
+bg_color = Color(0.419608, 0.419608, 0.407843, 1)
+
+[node name="ScrollUseDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_x8h6b")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 284.0
+offset_bottom = 337.0
+theme_override_styles/panel = ExtResource("1_3naod")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 223.0
+offset_bottom = 50.0
+theme = ExtResource("1_i4ic4")
+text = "请选择强化装备"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 55.0
+offset_right = 215.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_txig5")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("3_owxjn")
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem2" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem3" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem4" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem5" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem6" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem7" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem8" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="BagItem9" parent="ScrollContainer/GridContainer" instance=ExtResource("4_m47qg")]
+layout_mode = 2
+
+[node name="CloseButton" parent="." instance=ExtResource("6_kmud4")]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 54.0
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

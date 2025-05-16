@@ -1,0 +1,15 @@
+{
+	"name": "青青蛇",
+    "type":"normal",
+	"attack": "25",
+    "defense": "20",
+    "magic": "0",
+    "magic_def": "22",
+    "level": "15",
+    "maxHP": "280",
+    "maxMP": "0",
+    "acc": "120",
+    "eva": "130",
+    "exp": "50",
+    "undead": "0"
+} 

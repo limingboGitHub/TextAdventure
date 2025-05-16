@@ -1,0 +1,264 @@
+{
+	"skill_000001": {
+		"name": "奋力一击",
+		"desc": "奋力一击，造成{d}伤害,消耗{m}MP",
+		"type": "attack",
+		"max_level": 20,
+		"cd": 1,
+		"attack": {
+			"desc": {
+				"calculate_type": "技能不同等级伤害的计算方式 formula 公式计算 enum 枚举",
+				"value_type": "percent 攻击力百分比伤害 或 number 固定值伤害",
+				"start_damage": "初始伤害，数组表示多段伤害",
+				"step_damage": "每级增加伤害",
+				"damage_interval": "伤害间隔",
+				"start_mp": "初始MP",
+				"step_mp": "每级增加MP",
+				"damage_source_type": "该伤害受到哪种类型加成影响 0 攻击力 1 魔法力",
+				"damage_type": "最终造成的伤害类型 0物理 1魔法"
+			},
+			"count": 1,
+			"damage_source_type": 0,
+			"damage_type": 0,
+			"calculate_type": "enum",
+			"value_type": "percent",
+			"damage": [
+				[
+					1.23
+				],
+				[
+					1.26
+				],
+				[
+					1.29
+				],
+				[
+					1.32
+				],
+				[
+					1.35
+				],
+				[
+					1.38
+				],
+				[
+					1.41
+				],
+				[
+					1.44
+				],
+				[
+					1.47
+				],
+				[
+					1.50
+				],
+				[
+					1.53
+				],
+				[
+					1.56
+				],
+				[
+					1.59
+				],
+				[
+					1.62
+				],
+				[
+					1.65
+				],
+				[
+					1.68
+				],
+				[
+					1.71
+				],
+				[
+					1.74
+				],
+				[
+					1.77
+				],
+				[
+					1.8
+				]
+			],
+			"mp": [
+				5.5,
+				6,
+				6.5,
+				7,
+				7.5,
+				8,
+				8.5,
+				9,
+				9.5,
+				10,
+				10.5,
+				11,
+				11.5,
+				12,
+				12.5,
+				13,
+				13.5,
+				14,
+				14.5,
+				15
+			]
+		}
+	},
+	"skill_000002": {
+		"name": "横扫攻击",
+		"desc": "对3个敌人造成{d}伤害,消耗{m}MP",
+		"type": "attack",
+		"max_level": 20,
+		"radius": 100,
+		"cd": 1,
+		"attack": {
+			"count": 3,
+			"damage_source_type": 0,
+			"damage_type": 0,
+			"calculate_type": "formula",
+			"value_type": "percent",
+			"start_damage": [
+				0.62
+			],
+			"step_damage": [
+				0.02
+			],
+			"start_mp": 5.5,
+			"step_mp": 0.5
+		}
+	},
+
+	"skill_000100": {
+		"name": "魔力飞弹",
+		"desc": "运用最低级的法术技巧，操控一颗飞弹攻击敌人，造成{d}魔法伤害,消耗{m}MP",
+		"type": "attack",
+		"weapon_type": [],
+		"max_level": 1,
+		"distance": 200,
+		"center_type": 1,
+		"cd": 1.5,
+		"attack": {
+			"count": 1,
+			"damage_source_type": 1,
+			"damage_type": 1,
+			"calculate_type": "formula",
+			"value_type": "percent",
+			"start_damage": [
+				1
+			],
+			"step_damage": [
+				0
+			],
+			"start_mp": 2,
+			"step_mp": 0,
+			"skill_move_speed": 300
+		}
+	},
+	"skill_000101": {
+		"name": "法力爆裂",
+		"desc": "释放强大的能量，对范围内的所有目标造成{d}的魔法伤害。该技能需要消耗{m}MP",
+		"type": "attack",
+		"max_level": 20,
+		"cd": 2,
+		"distance": 200,
+		"center_type": 1,
+		"radius": 100,
+		"attack": {
+			"count": 999,
+			"damage_source_type": 1,
+			"damage_type": 1,
+			"calculate_type": "formula",
+			"value_type": "percent",
+			"start_damage": [
+				1.0
+			],
+			"step_damage": [
+				0.02
+			],
+			"start_mp": 5,
+			"step_mp": 1,
+			"skill_move_speed": -1
+		}
+	},
+	"skill_000102": {
+		"name": "双弹齐发",
+		"desc": "更高级的法术操控技巧，有{add_probability}%概率额外增加{add_count}颗飞弹攻击敌人，额外消耗{mp_cost}MP",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000014",
+					"calculate_type": "formula",
+					"start_add_count": 1,
+					"step_add_count": 0,
+					"start_add_probability": 0.01,
+					"step_add_probability": 0.01,
+					"start_mp_cost": 1,
+					"step_mp_cost": 1
+				}
+			]
+		}
+	},
+
+	"skill_000201": {
+		"name": "致命连击",
+		"desc": "打出一套连击，造成{d}伤害,消耗{m}MP",
+		"type": "attack",
+		"weapon_type": [],
+		"max_level": 20,
+		"cd": 1,
+		"attack": {
+			"count": 1,
+			"calculate_type": "formula",
+			"value_type": "percent",
+			"start_damage": [
+				0.415,0.415,0.415
+			],
+			"step_damage": [
+				0.015,0.015,0.015
+			],
+			"damage_interval": 0.2,
+			"start_mp": 5,
+			"step_mp": 1
+		}
+	},
+	"skill_000202": {
+		"name": "涂毒",
+		"desc": "每次伤害有10%概率造成中毒，中毒持续5秒，每秒造成{d}伤害",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000019",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.0105,
+					"step_value": 0.0005
+				}
+			]
+		}
+	},
+	"skill_000203": {
+		"name": "手技精通",
+		"desc": "永久提升手部技巧，使得伤害更加稳定",
+		"type": "attribute_buff",
+		"max_level": 20,
+		"buff": {
+			"attribute_list": [
+				{
+					"attribute_details": "hand_technology",
+					"value_type": "number",
+					"calculate_type": "formula",
+					"start_value": 1,
+					"step_value": 1
+				}
+			]
+		}
+	}
+}

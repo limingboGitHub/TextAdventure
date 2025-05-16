@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2dtoajjf0qn"]
+
+[ext_resource type="Script" uid="uid://blgo2d8awsheg" path="res://src/scenes/dialog/bag_tab.gd" id="1_52p3t"]
+[ext_resource type="Script" uid="uid://k6f0ld4sd00s" path="res://src/scenes/widget/my_scroll_container.gd" id="1_eim1k"]
+[ext_resource type="PackedScene" uid="uid://mbnmc3xs1636" path="res://src/scenes/dialog/bag_item.tscn" id="2_vt32f"]
+
+[node name="BagTab" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_52p3t")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 320.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+script = ExtResource("1_eim1k")
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="BagItem" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem2" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem3" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem4" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem5" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem6" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem7" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem8" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2
+
+[node name="BagItem9" parent="ScrollContainer/GridContainer" instance=ExtResource("2_vt32f")]
+layout_mode = 2

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://gp18ukfvqqg0"]
+
+[ext_resource type="Script" uid="uid://di67qt7v43oq1" path="res://src/scenes/msg_control.gd" id="1_mxin8"]
+[ext_resource type="Script" uid="uid://teq67aglv3gk" path="res://src/scenes/my_item_list.gd" id="2_vkcx5"]
+
+[node name="MsgControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mxin8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 200.0
+
+[node name="ItemList" type="ItemList" parent="PanelContainer"]
+custom_minimum_size = Vector2(330, 200)
+layout_mode = 2
+item_count = 4
+item_0/text = "1"
+item_1/text = "2"
+item_2/text = "3"
+item_3/text = "4"
+script = ExtResource("2_vkcx5")
+
+[node name="AddMsgButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 123.0
+offset_right = 105.0
+offset_bottom = 154.0
+text = "测试添加消息"
+
+[connection signal="resized" from="PanelContainer/ItemList" to="." method="_on_item_list_resized"]
+[connection signal="pressed" from="AddMsgButton" to="." method="_on_add_msg_button_pressed"]

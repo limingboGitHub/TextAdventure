@@ -1,0 +1,11 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>290</x><y>330</y><w>120</w><h>40</h></coordinates><panel_attributes>AttributeAbility
+能力值</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>330</y><w>120</w><h>40</h></coordinates><panel_attributes>AttributeDetails
+详细属性</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>130</y><w>200</w><h>140</h></coordinates><panel_attributes>DataPlayer
+--
+base_ability: AttributeAbility
+other_ability: List&lt;AttributeAbility&gt;
+final_ability: AttributeAbility
+
+base_attri:  AttributeDetails
+other_attri: List&lt;AttributeAbility&gt;
+final_attri: AttributeDetails</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>260</y><w>120</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;70;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>260</y><w>120</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>100;70;10;10</additional_attributes></element></diagram>

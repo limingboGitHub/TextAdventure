@@ -1,0 +1,15 @@
+{
+	"name": "冰霜巨人",
+    "type":"boss",
+	"attack": "120",
+    "defense": "45",
+    "magic": "60",
+    "magic_def": "50",
+    "level": "30",
+    "maxHP": "80000",
+    "maxMP": "2000",
+    "acc": "220",
+    "eva": "270",
+    "exp": "1500",
+    "undead": "0"
+} 

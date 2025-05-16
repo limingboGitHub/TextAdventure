@@ -1,0 +1,14 @@
+{
+	"name": "萤火虫",
+	"attack": "13",
+    "defense": "0",
+    "magic": "0",
+    "magic_def": "2",
+    "level": "4",
+    "maxHP": "42",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "6",
+    "undead": "0"
+}

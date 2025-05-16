@@ -1,0 +1,70 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>549</x><y>0</y><w>261</w><h>126</h></coordinates><panel_attributes>MissionManager
+--
+player_missions:Map&lt;String,DataMission&gt;
+missions:Map&lt;String,DataMission&gt;
+--
+init_mission()
+accept_mission(DataPlayer,DataMainMission)
+cancel_mission(DataPlayer,DataMainMission)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>558</x><y>225</y><w>252</w><h>261</h></coordinates><panel_attributes>DataMission
+--
+id: String
+main_id: String
+visible_require:MissionRequire
+before_accept: DataMissionPhase
+after_accept_not_finish: DataMissionPhase
+after_accept_finish: DataMissionPhase
+after_finish: DataMissionPhase
+STATUS_NOT_START = 0
+STATUS_IN_PROGRESS = 1
+STATUS_FINISH = 2
+status: int
+data_finish_condition: DataFinishCondition
+--
+change_status(int): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>306</x><y>0</y><w>216</w><h>126</h></coordinates><panel_attributes>DataNpc
+--
+default_messages: Array[String]
+shop_bag:DataBag
+mission_ids: Array[String]
+mission_status:int
+data_finish_talk:Array[DataMission]
+--
+add_finish_talk(DataMission)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>117</y><w>27</w><h>126</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>405</x><y>117</y><w>216</w><h>126</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>220;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>990</y><w>171</w><h>90</h></coordinates><panel_attributes>MissionRequire
+--
+job:String
+level:int
+money:int
+items:Array[MissionItem]
+missions:Array[String]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>585</x><y>990</y><w>171</w><h>81</h></coordinates><panel_attributes>MissionReward
+--
+money:int
+exp:int
+items:Array[MissionItem]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>918</y><w>27</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>477</y><w>243</w><h>531</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;570;250;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>747</x><y>702</y><w>171</w><h>81</h></coordinates><panel_attributes>DataFinishTalk
+--
+npc_id: String
+phase: DataMissionPhase
+is_talked: bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>828</x><y>630</y><w>189</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;80;190;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>927</x><y>702</y><w>171</w><h>81</h></coordinates><panel_attributes>DataFinishKill
+--
+monster_id: String
+count: int
+finish_count: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>630</y><w>27</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1107</x><y>702</y><w>171</w><h>81</h></coordinates><panel_attributes>DataFinishCollect
+--
+item_id: String
+count: int
+finish_count: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>630</y><w>216</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>220;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>585</x><y>1197</y><w>171</w><h>63</h></coordinates><panel_attributes>MissionItem
+--
+id: String
+count: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>1071</y><w>243</w><h>144</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>250;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>1062</y><w>27</w><h>153</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>549</x><y>837</y><w>252</w><h>90</h></coordinates><panel_attributes>DataMissionPhase
+--
+messages: Array[String]
+require: MissionRequire
+reward: MissionReward
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>477</y><w>27</w><h>378</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;400;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>873</x><y>549</y><w>252</w><h>90</h></coordinates><panel_attributes>DataFinishCondition
+--
+talk: Array[DataFinishTalk]
+kill: Array[DataFinishKill]
+collect: Array[DataFinishCollect]
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>693</x><y>477</y><w>315</w><h>90</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>330;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>774</y><w>180</w><h>81</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;70;180;10</additional_attributes></element></diagram>

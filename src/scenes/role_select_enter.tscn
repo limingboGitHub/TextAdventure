@@ -1,0 +1,281 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7uwowu07bhl3"]
+
+[ext_resource type="Script" uid="uid://moqrbevhuo2u" path="res://src/scenes/role_select_enter.gd" id="1_1h160"]
+[ext_resource type="Theme" uid="uid://bmt5w6a64bbo8" path="res://theme/select_role_servers_font.tres" id="1_bg5c2"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_01tdq"]
+[ext_resource type="PackedScene" uid="uid://dfx7va35thaei" path="res://src/scenes/role_create.tscn" id="4_5dbrs"]
+
+[node name="RoleSelectEnter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1h160")
+
+[node name="RoleSelect" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="SelectBack" type="Panel" parent="RoleSelect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 644.0
+offset_right = 639.0
+offset_bottom = 1054.0
+
+[node name="TitleLabel" type="Label" parent="RoleSelect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = 655.0
+offset_right = 384.0
+offset_bottom = 697.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_01tdq")
+text = "角色选择"
+
+[node name="RoleBack" type="Control" parent="RoleSelect"]
+anchors_preset = 0
+offset_left = 43.0
+offset_top = 723.0
+offset_right = 613.0
+offset_bottom = 853.0
+
+[node name="RoleBack" type="Panel" parent="RoleSelect/RoleBack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -65.0
+offset_right = -165.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoleBack2" type="Panel" parent="RoleSelect/RoleBack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -65.0
+offset_right = 60.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoleBack3" type="Panel" parent="RoleSelect/RoleBack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 160.0
+offset_top = -65.0
+offset_right = 280.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RolePlaceHold1" type="Control" parent="RoleSelect/RoleBack"]
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="RolePlaceHold2" type="Control" parent="RoleSelect/RoleBack"]
+anchors_preset = 0
+offset_left = 285.0
+offset_top = 60.0
+offset_right = 285.0
+offset_bottom = 60.0
+
+[node name="RolePlaceHold3" type="Control" parent="RoleSelect/RoleBack"]
+anchors_preset = 0
+offset_left = 505.0
+offset_top = 60.0
+offset_right = 505.0
+offset_bottom = 60.0
+
+[node name="CreateRoleBt" type="Button" parent="RoleSelect"]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 925.0
+offset_right = 629.0
+offset_bottom = 975.0
+theme = ExtResource("1_bg5c2")
+text = "创建角色"
+
+[node name="DeleteRoleBt" type="Button" parent="RoleSelect"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 652.0
+offset_right = 158.0
+offset_bottom = 702.0
+theme = ExtResource("1_bg5c2")
+text = "删除角色"
+
+[node name="StartGameBt" type="Button" parent="RoleSelect"]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 983.0
+offset_right = 629.0
+offset_bottom = 1033.0
+theme = ExtResource("1_bg5c2")
+disabled = true
+text = "开始游戏"
+
+[node name="BackBt" type="Button" parent="RoleSelect"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 653.0
+offset_right = 631.0
+offset_bottom = 703.0
+theme = ExtResource("1_bg5c2")
+text = "返回"
+
+[node name="RoleInfo" type="Panel" parent="RoleSelect"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 882.0
+offset_right = 348.0
+offset_bottom = 1038.0
+
+[node name="NameLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 83.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 25
+text = "名字："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/NameLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "空"
+
+[node name="LevelLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 45.0
+offset_right = 83.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 25
+text = "等级："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/LevelLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "1"
+
+[node name="JobLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 152.0
+offset_top = 45.0
+offset_right = 227.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 25
+text = "职业："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/JobLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "新手"
+
+[node name="PowerLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 83.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 25
+text = "力量："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/PowerLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "10"
+
+[node name="AgilityLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 152.0
+offset_top = 78.0
+offset_right = 227.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 25
+text = "敏捷："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/AgilityLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "10"
+
+[node name="LuckLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 152.0
+offset_top = 113.0
+offset_right = 227.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 25
+text = "幸运："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/LuckLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "10"
+
+[node name="IntellLabel" type="Label" parent="RoleSelect/RoleInfo"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 115.0
+offset_right = 83.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 25
+text = "智力："
+
+[node name="Label" type="Label" parent="RoleSelect/RoleInfo/IntellLabel"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 96.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "10"
+
+[node name="RoleCreate" parent="." instance=ExtResource("4_5dbrs")]
+visible = false
+
+[connection signal="pressed" from="RoleSelect/CreateRoleBt" to="." method="_on_create_role_bt_pressed"]
+[connection signal="pressed" from="RoleSelect/DeleteRoleBt" to="." method="_on_delete_role_bt_pressed"]
+[connection signal="pressed" from="RoleSelect/StartGameBt" to="." method="_on_start_game_bt_pressed"]
+[connection signal="pressed" from="RoleSelect/BackBt" to="." method="_on_back_bt_pressed"]
+[connection signal="create_role_info_success" from="RoleCreate" to="." method="_on_role_create_create_role_info_success"]
+[connection signal="go_back" from="RoleCreate" to="." method="_on_role_create_go_back"]

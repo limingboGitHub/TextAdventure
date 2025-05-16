@@ -1,0 +1,15 @@
+{
+	"name": "白雪怪",
+    "type":"normal",
+	"attack": "50",
+    "defense": "30",
+    "magic": "35",
+    "magic_def": "45",
+    "level": "29",
+    "maxHP": "700",
+    "maxMP": "500",
+    "acc": "170",
+    "eva": "255",
+    "exp": "160",
+    "undead": "0"
+} 

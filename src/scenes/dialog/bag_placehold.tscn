@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c43x3ejb38afe"]
+
+[node name="BagPlacehold" type="ColorRect"]
+custom_minimum_size = Vector2(180, 45)
+color = Color(0.52549, 0.533333, 0.529412, 1)

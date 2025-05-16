@@ -1,0 +1,14 @@
+{
+	"name": "黑狼",
+	"attack": "22",
+    "defense": "10",
+    "magic": "0",
+    "magic_def": "14",
+    "level": "8",
+    "maxHP": "100",
+    "maxMP": "0",
+    "acc": "50",
+    "eva": "80",
+    "exp": "15",
+    "undead": "0"
+}

@@ -1,0 +1,14 @@
+{
+	"name": "瓢虫",
+	"attack": "12",
+    "defense": "0",
+    "magic": "0",
+    "magic_def": "0",
+    "level": "3",
+    "maxHP": "35",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "5",
+    "undead": "0"
+}

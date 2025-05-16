@@ -1,0 +1,14 @@
+{
+	"name": "兔子",
+	"attack": "5",
+    "defense": "0",
+    "magic": "0",
+    "magic_def": "0",
+    "level": "1",
+    "maxHP": "20",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "3",
+    "undead": "0"
+}

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://djkrheb80iny2"]
+
+[ext_resource type="Theme" uid="uid://bmt5w6a64bbo8" path="res://theme/select_role_servers_font.tres" id="1_hv30j"]
+
+[node name="ServerNameBack" type="Button"]
+custom_minimum_size = Vector2(50, 100)
+offset_right = 50.0
+offset_bottom = 110.0
+pivot_offset = Vector2(25, 0)
+theme = ExtResource("1_hv30j")
+disabled = true
+toggle_mode = true
+autowrap_mode = 3

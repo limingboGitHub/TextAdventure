@@ -1,0 +1,255 @@
+{
+	"desc": "上衣",
+	"upper_body": {
+		"upper_body_000001": {
+			"name": "短衬衫",
+			"desc": "穿了不知道多久的破旧衬衫。",
+			"require_level": 1,
+			"price": 500,
+			"attribute_details": {
+				"defense": 1
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000002": {
+			"name": "黑衬衫",
+			"desc": "非常的精致，穿出去一定很漂亮吧~",
+			"require_level": 5,
+			"price": 1000,
+			"attribute_details": {
+				"defense": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000003": {
+			"name": "见习者上衣",
+			"desc": "见习士兵的标准上衣，聊胜于无。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"max_hp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000004": {
+			"name": "铁甲上衣",
+			"desc": "覆盖着铁片的上衣，能提供不错的防御。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"max_hp": 15,
+				"defense": 10
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000005": {
+			"name": "精钢胸甲",
+			"desc": "保护核心部位的精钢胸甲，非常可靠。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 9000,
+			"attribute_details": {
+				"max_hp": 25,
+				"defense": 17
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000006": {
+			"name": "破风战甲",
+			"desc": "轻盈而坚固的战甲，适合快速作战。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 16000,
+			"attribute_details": {
+				"max_hp": 40,
+				"defense": 25
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000007": {
+			"name": "守护战甲",
+			"desc": "传说中守护者的战甲，拥有强大的防护力。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 28000,
+			"attribute_details": {
+				"max_hp": 60,
+				"defense": 35
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_000008": {
+			"name": "青铜战甲",
+			"desc": "青铜打造的战甲，更为坚固。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"max_hp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 6
+		},
+		"upper_body_000009": {
+			"name": "玄铁战甲",
+			"desc": "用更坚固的玄铁打造。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"max_hp": 15,
+				"defense": 10
+			},
+			"max_upgrade_times": 6
+		},
+		
+		"upper_body_001001": {
+			"name": "学徒法袍",
+			"desc": "魔法学徒的基础法袍，提供最基本的魔力增幅。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"max_mp": 10,
+				"defense": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_001002": {
+			"name": "魔力法袍",
+			"desc": "蕴含魔力的精致法袍，能提升施法效果。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"max_mp": 15,
+				"defense": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_001003": {
+			"name": "智慧法袍",
+			"desc": "由稀有材料编织而成的法袍，能增强魔法师的智慧。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 9000,
+			"attribute_details": {
+				"max_mp": 20,
+				"defense": 8
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_001004": {
+			"name": "星辰法袍",
+			"desc": "注入星辰之力的法袍，闪烁着微弱的光芒。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 16000,
+			"attribute_details": {
+				"max_mp": 35,
+				"defense": 15
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_001005": {
+			"name": "奥术大师袍",
+			"desc": "传说中奥术大师穿着的法袍，散发着强大的魔力波动。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 28000,
+			"attribute_details": {
+				"max_mp": 55,
+				"defense": 20
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_001006": {
+			"name": "黑色学徒法袍",
+			"desc": "这颜色我喜欢，感觉施法更顺手了。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"max_mp": 10,
+				"defense": 2
+			},
+			"max_upgrade_times": 6
+		},
+		"upper_body_001007": {
+			"name": "冰霜法袍",
+			"desc": "蕴含冰霜力量的法袍，能大幅增强魔法威力。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"max_mp": 15,
+				"defense": 4
+			},
+			"max_upgrade_times": 6
+		},
+		
+		"upper_body_002001": {
+			"name": "潜行皮衣",
+			"desc": "柔软的皮革制成的上衣，方便隐秘行动。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"defense": 3,
+				"evasion": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_002002": {
+			"name": "影袭护甲",
+			"desc": "“影袭”组织标配的轻甲，暗色调的设计更适合夜间行动。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 6,
+				"evasion": 3
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_002003": {
+			"name": "暗影之衣",
+			"desc": "特殊材质制成的上衣，能够轻微扭曲光线。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 9000,
+			"attribute_details": {
+				"defense": 10,
+				"evasion": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"upper_body_002004": {
+			"name": "暮色软甲",
+			"desc": "港口盗贼们偏爱的软甲，活动自如且防护适中。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"defense": 3,
+				"evasion": 3
+			},
+			"max_upgrade_times": 6
+		},
+		"upper_body_002005": {
+			"name": "夜行衣",
+			"desc": "采用特殊工艺制作的夜行衣，能够有效隐藏行踪。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 6,
+				"evasion": 4
+			},
+			"max_upgrade_times": 6
+		}
+	}
+}

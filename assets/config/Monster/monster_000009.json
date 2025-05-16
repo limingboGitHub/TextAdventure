@@ -1,0 +1,14 @@
+{
+	"name": "灰狼",
+	"attack": "20",
+    "defense": "8",
+    "magic": "0",
+    "magic_def": "6",
+    "level": "7",
+    "maxHP": "80",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "70",
+    "exp": "14",
+    "undead": "0"
+}

@@ -1,0 +1,15 @@
+{
+	"name": "灰雪怪",
+    "type":"normal",
+	"attack": "48",
+    "defense": "30",
+    "magic": "35",
+    "magic_def": "45",
+    "level": "28",
+    "maxHP": "700",
+    "maxMP": "500",
+    "acc": "170",
+    "eva": "250",
+    "exp": "160",
+    "undead": "0"
+} 

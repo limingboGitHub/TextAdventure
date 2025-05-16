@@ -1,0 +1,257 @@
+{
+	"desc": "鞋子",
+	"shoes": {
+		"shoes_000001": {
+			"name": "布鞋",
+			"desc": "你知道的，仅有的一双布鞋。",
+			"require_level": 1,
+			"price": 500,
+			"attribute_details": {
+				"defense": 1
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000002": {
+			"name": "马靴",
+			"desc": "谁不穿上喜欢一双结实马靴去冒险呢。",
+			"require_level": 5,
+			"price": 1000,
+			"attribute_details": {
+				"evasion": 1,
+				"defense": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000003": {
+			"name": "见习者靴",
+			"desc": "母亲拿着长官送回来的一双靴子，问道：“我的儿子在战场上表现的英勇吗？”。",
+			"require_level": 10,
+			"price": 2000,
+			"attribute_details": {
+				"max_hp": 5,
+				"defense": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000004": {
+			"name": "铁甲靴",
+			"desc": "沉重的铁甲靴，走起路来哐当作响，但防护性很好。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 4000,
+			"attribute_details": {
+				"max_hp": 10,
+				"defense": 7
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000005": {
+			"name": "精钢战靴",
+			"desc": "精钢打造的战靴，既坚固又相对轻便。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 7000,
+			"attribute_details": {
+				"max_hp": 20,
+				"defense": 12
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000006": {
+			"name": "破风战靴",
+			"desc": "特殊的流线型设计，让穿着者行动更迅捷。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 13000,
+			"attribute_details": {
+				"max_hp": 35,
+				"defense": 20
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000007": {
+			"name": "守护战靴",
+			"desc": "传说中守护者踏遍大陆所穿的战靴，附有守护的祝福。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 22000,
+			"attribute_details": {
+				"max_hp": 55,
+				"defense": 30
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_000008": {
+			"name": "青铜战靴",
+			"desc": "青铜打造的战靴，更为坚固。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"max_hp": 5,
+				"defense": 4
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_000009": {
+			"name": "玄铁战靴",
+			"desc": "用更坚固的玄铁打造。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 4000,
+			"attribute_details": {
+				"max_hp": 10,
+				"defense": 7
+			},
+			"max_upgrade_times": 6
+		},
+
+		"shoes_001001": {
+			"name": "学徒便鞋",
+			"desc": "轻便的织物鞋，让法师可以长时间站立研习魔法。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 2000,
+			"attribute_details": {
+				"max_mp": 5,
+				"defense": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_001002": {
+			"name": "魔力便鞋",
+			"desc": "附有魔力的便鞋，能增强魔法师的脚步轻盈度。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 4000,
+			"attribute_details": {
+				"max_mp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_001003": {
+			"name": "星光便鞋",
+			"desc": "与星光相连的便鞋，走过之处留下微光。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 7000,
+			"attribute_details": {
+				"max_mp": 15,
+				"defense": 6
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_001004": {
+			"name": "元素便鞋",
+			"desc": "能够接触元素力量的便鞋，让法师更容易引导元素魔法。",
+			"require_level": 40,
+			"quality": "普通",
+			"price": 13000,
+			"attribute_details": {
+				"max_mp": 20,
+				"defense": 10
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_001005": {
+			"name": "奥术便鞋",
+			"desc": "奥术大师的标志性便鞋，踏足之处魔力涌动。",
+			"require_level": 50,
+			"quality": "普通",
+			"price": 22000,
+			"attribute_details": {
+				"max_mp": 55,
+				"defense": 20
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_001006": {
+			"name": "黑色学徒便鞋",
+			"desc": "这颜色我喜欢，感觉施法更顺手了。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 2000,
+			"attribute_details": {
+				"max_mp": 5,
+				"defense": 2
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_001007": {
+			"name": "冰霜战靴",
+			"desc": "蕴含冰霜力量的战靴，能大幅增强魔法威力。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 4000,
+			"attribute_details": {
+				"max_mp": 10,
+				"defense": 4
+			},
+			"max_upgrade_times": 6
+		},
+
+		"shoes_002001": {
+			"name": "潜行便鞋",
+			"desc": "轻巧的布鞋，适合无声行动。",
+			"require_level": 10,
+			"quality": "普通",
+			"price": 3000,
+			"attribute_details": {
+				"defense": 2,
+				"evasion": 2
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_002002": {
+			"name": "影袭靴",
+			"desc": "“影袭”组织标配的轻便战靴，方便快速移动。",
+			"require_level": 20,
+			"quality": "普通",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 4,
+				"evasion": 3
+			},
+			"max_upgrade_times": 5
+		},
+		"shoes_002003": {
+			"name": "暗影之靴",
+			"desc": "踏着无声的步伐，潜行于黑暗之中。",
+			"require_level": 30,
+			"quality": "普通",
+			"price": 8000,
+			"attribute_details": {
+				"defense": 8,
+				"evasion": 4
+			},
+			"max_upgrade_times": 5
+		},
+		
+		"shoes_002004": {
+			"name": "暮色轻靴",
+			"desc": "港口盗贼们最爱的款式，柔软且耐用。",
+			"require_level": 10,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 2,
+				"evasion": 3
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_002005": {
+			"name": "夜行靴",
+			"desc": "特制的黑色皮革，让你的行动更加隐秘。",
+			"require_level": 20,
+			"quality": "优秀",
+			"price": 5000,
+			"attribute_details": {
+				"defense": 4,
+				"evasion": 4
+			},
+			"max_upgrade_times": 6
+		}
+
+	}
+}

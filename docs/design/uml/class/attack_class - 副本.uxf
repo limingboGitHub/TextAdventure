@@ -1,0 +1,33 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>200</x><y>270</y><w>170</w><h>110</h></coordinates><panel_attributes>DataAttackSkill
+攻击类技能
+--
+damage_rate_list: List&lt;int&gt;
+damage_value_list: List&lt;int&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>440</y><w>190</w><h>80</h></coordinates><panel_attributes>DataAttriBuffSkill
+属性类Buff
+--
+attribute_list : List&lt;Attribute&gt;
+value_list : List&lt;int&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>440</y><w>140</w><h>80</h></coordinates><panel_attributes>DataEffectBuffSkill
+机制类Buff
+--
+effect_list: List&lt;SkillEffect&gt;
+value_list: List&lt;int&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>440</y><w>170</w><h>80</h></coordinates><panel_attributes>DataElementAttackSkill
+元素攻击
+--
+element_list : List&lt;Element&gt;
+value_list: List&lt;int&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>440</y><w>170</w><h>80</h></coordinates><panel_attributes>DataSpecialAttackSkill
+特殊攻击
+--
+effect_list: List&lt;SkillEffect&gt;
+value_list: List&lt;int&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>290</y><w>170</w><h>90</h></coordinates><panel_attributes>DataBuffSkill
+有持续时间的Buff技能
+--
+time: int = -1
+持续时间为-1表示永久生效的
+增益技能</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>370</y><w>90</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>370</y><w>130</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;110;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>50</y><w>190</w><h>120</h></coordinates><panel_attributes>DataBaseSkill
+--
+target_type: int 
+作用目标类型 玩家，敌人，分别
+
+count: int
+cd: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>160</y><w>230</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;210;130</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>160</y><w>190</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>370</y><w>120</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;70</additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>370</y><w>130</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;70</additional_attributes></element></diagram>

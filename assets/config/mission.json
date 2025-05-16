@@ -1,0 +1,1771 @@
+{
+	"mission_000003": {
+		"name": "村长的指示",
+		"enable": true,
+		"visible_limit": {
+			"level": 1
+		},
+		"mission_phase_list": [
+			{
+				"name": "村长冈瑟",
+				"desc": "我已经成年，村长准备给我一些新的指示。",
+				"attach_npc_id": "npc_000006",
+				"messages": [
+					"你已经成年，该去历练历练了，去找村口的哨兵罗伊吧！"
+				]
+			},
+			{
+				"name": "哨兵罗伊",
+				"desc": "哨兵罗伊会给你一些历练任务。",
+				"attach_npc_id": "npc_000004",
+				"messages": [
+					"是村长派你来的吗？很精神，不错，一起加油吧！"
+				]
+			},
+			{
+				"name": "兔子猎人",
+				"desc": "村子附近的兔子越来越多，已经开始吃掉大家辛辛苦苦种的作物了，需要消灭一些。",
+				"attach_npc_id": "npc_000004",
+				"messages": [
+					"最近村口的兔子越来越多了，作物都被破坏了，我来守卫村子，你去他们的老巢咕咕小丘控制一下他们的数量吧。",
+					"小心点，我可不想看到你受着伤回来！"
+				],
+				"messages_matched": [
+					"干的很好，这是给你的奖励。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000001",
+						"count": 10
+					},
+					{
+						"type": "kill",
+						"id": "monster_000002",
+						"count": 10
+					},
+					{
+						"type": "item",
+						"id": "etc_000001",
+						"count": 5
+					},
+					{
+						"type": "item",
+						"id": "etc_000002",
+						"count": 5
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1000
+					},
+					{
+						"type": "exp",
+						"count": 100
+					}
+				]
+			},
+			{
+				"name": "逐渐成长",
+				"desc": "在哨兵罗伊的指导下已经有一些进步了，继续加油吧。",
+				"attach_npc_id": "npc_000004",
+				"messages": [
+					"我可以放心将艰巨的任务交给你了。去更危险的咕咕大丘消灭一些土拨鼠和鼹鼠吧。"
+				],
+				"messages_matched": [
+					"恭喜你，通过了我的历练，我已经没什么可教你的了，回去找村长吧。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000003",
+						"count": 10
+					},
+					{
+						"type": "kill",
+						"id": "monster_000004",
+						"count": 5
+					},
+					{
+						"type": "item",
+						"id": "etc_000003",
+						"count": 5
+					},
+					{
+						"type": "item",
+						"id": "etc_000004",
+						"count": 3
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1000
+					},
+					{
+						"type": "exp",
+						"count": 150
+					}
+				]
+			},
+			{
+				"name": "报告村长",
+				"desc": "完成所有历练任务后，回到村长那里交付任务",
+				"attach_npc_id": "npc_000006",
+				"messages": [
+					"好样的，你让大家刮目相看了，这是给你的奖励。"
+				],
+				"rewards": [
+					{
+						"type": "item",
+						"id": "cap_000001",
+						"count": 1
+					},
+					{
+						"type": "item",
+						"id": "consume_002101",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000004": {
+		"name": "危险的森林",
+		"enable": true,
+		"visible_limit": {
+			"level": 6
+		},
+		"mission_phase_list": [
+			{
+				"name": "忧伤的艾琳",
+				"desc": "艾琳的哥哥艾伦不小心进入了森林深处，她希望你能够帮助她寻找哥哥的线索。",
+				"attach_npc_id": "npc_000003",
+				"messages": [
+					"哥哥~你怎么还没回来~~",
+					"两天前，我和哥哥在萤火森林外围采药，他让我先回来，可今天还没有他的消息，我好担心他！勇敢的冒险家，能不能帮忙找找我的哥哥？"
+				]
+			},
+			{
+				"name": "森林深处",
+				"desc": "去深林的深处寻找艾伦",
+				"attach_npc_id": "npc_000009",
+				"messages": [
+					"小心！森林深处藏着一只狼王，我们不是他的对手！",
+					"是艾琳让你来找我的吗？",
+					"谢谢你，冒险家，我们先回村子里吧。"
+				],
+				"finish_hide_npc": [
+					"npc_000009"
+				],
+				"finish_show_npc": [
+					"npc_000008"
+				]
+			},
+			{
+				"name": "安然无恙",
+				"desc": "艾伦安然无恙，艾琳很高兴。",
+				"attach_npc_id": "npc_000003",
+				"messages": [
+					"太好了，哥哥真的没事。感谢你，冒险家，这是我的一点心意。"
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1000
+					},
+					{
+						"type": "exp",
+						"count": 100
+					}
+				]
+			}
+		]
+	},
+	"mission_000005": {
+		"name": "炼金术士",
+		"enable": true,
+		"visible_limit": {
+			"missions": [
+				"mission_000004"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "初级炼金",
+				"desc": "艾伦是一个炼金术士，他需要一些黑狼爪子来制作药剂。",
+				"attach_npc_id": "npc_000008",
+				"messages": [
+					"你知道'炼金'技术吗？这是一种神奇的技术，能制造各种药剂强化自身。"
+				]
+			},
+			{
+				"name": "初级炼金",
+				"desc": "艾伦是一个炼金术士，他需要一些黑狼爪子来制作药剂。",
+				"attach_npc_id": "npc_000008",
+				"messages": [
+					"请帮我收集一些黑狼爪子吧。"
+				],
+				"messages_matched": [
+					"试试看，'炼金'的魔力！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000010",
+						"count": 5
+					}
+				],
+				"rewards": [
+					{
+						"type": "item",
+						"id": "consume_001001",
+						"count": 1
+					},
+					{
+						"type": "item",
+						"id": "consume_001005",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000001"
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000005"
+					}
+				]
+			}
+		]
+	},
+	"mission_000006": {
+		"name": "久别的亲人",
+		"enable": true,
+		"visible_limit": {
+			"level": 3
+		},
+		"mission_phase_list": [
+			{
+				"name": "孤独的老者",
+				"desc": "老者阿隆需要一些萤火灯来制作药剂。",
+				"attach_npc_id": "npc_000007",
+				"messages": [
+					"呵呵~孩子，你真的和我的孙子很像，一样那么精神，勇敢。谢谢你愿意来看看我这个糟老头子。",
+					"我真的十分想念我的孙子，他小时候很喜欢去萤火森林里抓萤火虫，然后做成萤火灯送给我。",
+					"你愿意帮我搜集一些荧光粉吗？"
+				]
+			},
+			{
+				"name": "萤火灯",
+				"desc": "老者阿隆需要一些萤火灯来制作萤火灯。",
+				"attach_npc_id": "npc_000007",
+				"messages": [
+					"在萤火森林的入口处就有很多萤火虫，千万别走太远了，小心！孩子。"
+				],
+				"messages_matched": [
+					"就是这些，你真的让我想起了我的孙子。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000006",
+						"count": 10
+					}
+				],
+				"rewards": [
+					{
+						"type": "exp",
+						"count": 150
+					},
+					{
+						"type": "item",
+						"id": "shoes_000002",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000007": {
+		"name": "更精彩的冒险",
+		"enable": true,
+		"visible_limit": {
+			"level": 9
+		},
+		"mission_phase_list": [
+			{
+				"name": "远方",
+				"desc": "车夫会告诉你更广阔、更精彩的世界。",
+				"attach_npc_id": "npc_000010",
+				"messages": [
+					"在落日村之外还有更广阔、更精彩的世界，准备好了再来找我吧。"
+				]
+			}
+		]
+	},
+	"mission_000009": {
+		"name": "危险的狼王",
+		"enable": true,
+		"visible_limit": {
+			"level": 8
+		},
+		"mission_phase_list": [
+			{
+				"name": "森林深处",
+				"desc": "在萤火森林的深处，有一只狂暴的黑狼王",
+				"attach_npc_id": "npc_000006",
+				"messages": [
+					"在萤火森林的深处，有一只狂暴的黑狼王，它已经威胁到了村子的安全。"
+				]
+			},
+			{
+				"name": "黑狼王",
+				"desc": "黑狼王是森林中的霸主，它拥有强大的力量和防御力，是冒险家们的一大挑战。",
+				"attach_npc_id": "npc_000006",
+				"messages": [
+					"请制服黑狼王，保护村子！"
+				],
+				"messages_matched": [
+					"太好了，大家晚上睡觉终于能安心一些了。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000011",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1500
+					},
+					{
+						"type": "exp",
+						"count": 200
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000004"
+					}
+				]
+			}
+		]
+	},
+	"mission_000010": {
+		"name": "裁缝玛莎",
+		"enable": true,
+		"visible_limit": {
+			"level": 5
+		},
+		"mission_phase_list": [
+			{
+				"name": "玛莎的烦恼",
+				"desc": "裁缝玛莎需要一些布料来制作衣服。",
+				"attach_npc_id": "npc_000002",
+				"messages": [
+					"这可如何是好啊？",
+					"最近制作衣服的材料有些不够了，你能帮帮我吗？"
+				]
+			},
+			{
+				"name": "制作衣服的材料",
+				"desc": "裁缝玛莎需要一些布料来制作衣服。",
+				"attach_npc_id": "npc_000002",
+				"messages": [
+					"请帮我去萤火森林中部收集一些皮毛吧，请一定注意安全。"
+				],
+				"messages_matched": [
+					"这下终于可以安心制作衣服了，这是你的报酬。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000007",
+						"count": 20
+					},
+					{
+						"type": "item",
+						"id": "etc_000008",
+						"count": 20
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1000
+					},
+					{
+						"type": "item",
+						"id": "upper_body_000002",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000011": {
+		"name": "初尝魔法",
+		"enable": true,
+		"visible_limit": {
+			"level": 2
+		},
+		"mission_phase_list": [
+			{
+				"name": "游学者费尔",
+				"desc": "",
+				"attach_npc_id": "npc_000012",
+				"messages": [
+					"你..也想学习魔法吗？"
+				]
+			},
+			{
+				"name": "魔力飞弹",
+				"desc": "",
+				"attach_npc_id": "npc_000012",
+				"messages": [
+					"我确实有些渴了..能帮我找些水来吗？"
+				],
+				"messages_matched": [
+					"哈哈，那我就教你一招。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "consume_000004",
+						"count": 5
+					}
+				],
+				"rewards": [
+					{
+						"type": "skill",
+						"id": "skill_000100",
+						"skill_phase": "新手"
+					}
+				]
+			}
+		]
+	},
+	"mission_000101": {
+		"name": "士兵转职",
+		"enable": true,
+		"visible_limit": {
+			"level": 10,
+			"jobs": [
+				"job_000000"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "士兵导师雷德",
+				"desc": "士兵导师雷德会告诉你士兵转职的条件。",
+				"attach_npc_id": "npc_000105",
+				"messages": [
+					"你想成为一名光荣的士兵吗？",
+					"准备好拿起你的武器，为了自由而战吧！"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000001"
+					}
+				]
+			}
+		]
+	},
+	"mission_000102": {
+		"name": "狂犬危机",
+		"enable": true,
+		"visible_limit": {
+			"level": 10
+		},
+		"mission_phase_list": [
+			{
+				"name": "异常的犬群",
+				"desc": "艾玛需要调查犬犬山丘的异常情况",
+				"attach_npc_id": "npc_000103",
+				"messages": [
+					"冒险家，你注意到犬犬山丘发狂的狗狗了么？",
+					"那些狗狗平时很温顺的，一定是有人动了手脚。"
+				]
+			},
+			{
+				"name": "收集证据",
+				"desc": "",
+				"attach_npc_id": "npc_000103",
+				"messages": [
+					"请制服一些发狂的狗狗，收集一些他们的毛发看看吧。"
+				],
+				"messages_matched": [
+					"这些毛发看起来很奇怪，有一些魔法的气息。去找找大学者奥兰多吧。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000012",
+						"count": 10
+					},
+					{
+						"type": "item",
+						"id": "etc_000013",
+						"count": 10
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1000
+					},
+					{
+						"type": "exp",
+						"count": 500
+					}
+				]
+			}
+		]
+	},
+	"mission_000103": {
+		"name": "狂犬危机2",
+		"enable": true,
+		"visible_limit": {
+			"missions": [
+				"mission_000102"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "奇怪的气息",
+				"desc": "追踪魔法来源",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"嗯~ 从未见过这样奇怪的魔法气息。",
+					"冒险家，请帮我收集更多的毛发吧，我需要提取出更多的气息。"
+				]
+			},
+			{
+				"name": "魔法来源",
+				"desc": "追踪魔法来源",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"小心，这气息会让狗狗们变得狂暴起来。"
+				],
+				"messages_matched": [
+					"感谢你的帮助，我需要一些时间来研究这些毛发。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000012",
+						"count": 50
+					},
+					{
+						"type": "item",
+						"id": "etc_000013",
+						"count": 50
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 1000
+					},
+					{
+						"type": "exp",
+						"count": 500
+					},
+					{
+						"type": "item",
+						"id": "consume_002051",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000104": {
+		"name": "练级狂人",
+		"enable": true,
+		"visible_limit": {
+			"level": 12
+		},
+		"mission_phase_list": [
+			{
+				"name": "狂人达伦",
+				"desc": "奇怪的人",
+				"attach_npc_id": "npc_000111",
+				"messages": [
+					"可恶，最近的升级速度越来越慢了。",
+					"喂，小子，做些交易吧，能够提升我的能力的东西！"
+				]
+			},
+			{
+				"name": "战士荣耀",
+				"desc": "",
+				"attach_npc_id": "npc_000111",
+				"messages": [
+					"如果能找到这个卷轴，我就教你一些我高超的练级技术！"
+				],
+				"messages_matched": [
+					"升级！升级！升级！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "consume_002101",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "item",
+						"id": "consume_002107",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000105": {
+		"name": "丢失的礼物",
+		"enable": true,
+		"visible_limit": {
+			"level": 15
+		},
+		"mission_phase_list": [
+			{
+				"name": "麦克的忧虑",
+				"desc": "",
+				"attach_npc_id": "npc_000107",
+				"messages": [
+					"诶，这可怎么办呐，妹妹的生日快到了。",
+					"几天前在蛇蛇谷巡逻的时候，我准备送给妹妹的水晶项链遗失了。",
+					"冒险家，你能帮帮我吗？"
+				]
+			},
+			{
+				"name": "寻找礼物",
+				"desc": "",
+				"attach_npc_id": "npc_000107",
+				"messages": [
+					"往北走穿过犬犬山丘就能看到蛇蛇谷了，谢谢！"
+				],
+				"messages_matched": [
+					"是的，就是这条项链，真的十分感谢！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_001001",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "alchemy",
+						"id": "alchemy_000003",
+						"count": 1
+					}
+				]
+			},
+			{
+				"name": "送给莉娜",
+				"desc": "",
+				"attach_npc_id": "npc_000107",
+				"messages": [
+					"冒险家，我还有一个请求，请帮我把这个礼物送给莉娜吧。"
+				]
+			},
+			{
+				"name": "妹妹",
+				"desc": "",
+				"attach_npc_id": "npc_000109",
+				"messages": [
+					"这，是哥哥送给我吗？呜呜，我好想他。",
+					"谢谢你，冒险家。"
+				],
+				"rewards": [
+					{
+						"type": "exp",
+						"count": 800
+					},
+					{
+						"type": "money",
+						"count": 2000
+					}
+				]
+			}
+		]
+	},
+	"mission_000106": {
+		"name": "杂货商的请求",
+		"enable": true,
+		"visible_limit": {
+			"level": 18
+		},
+		"mission_phase_list": [
+			{
+				"name": "汤姆的烦恼",
+				"desc": "杂货店老板因为虎虎山的老虎而无法安全进货，请求你的帮助。",
+				"attach_npc_id": "npc_000104",
+				"messages": [
+					"冒险家，最近虎虎山的老虎越来越多了，搞得我都不敢去进货了。",
+					"这样下去，店里的东西都要卖光了。你能帮我去清理一下那些老虎吗？"
+				]
+			},
+			{
+				"name": "清理虎患",
+				"desc": "击败一定数量的老虎，帮助商人解决进货难题。",
+				"attach_npc_id": "npc_000104",
+				"messages": [
+					"虎虎山就在银盾城的北边，请务必小心！"
+				],
+				"messages_matched": [
+					"太感谢你了！这下我可以安心去进货了。这是给你的报酬。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000016",
+						"count": 50
+					},
+					{
+						"type": "kill",
+						"id": "monster_000017",
+						"count": 50
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 3000
+					},
+					{
+						"type": "exp",
+						"count": 800
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000006",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000107": {
+		"name": "狩猎白虎王",
+		"enable": true,
+		"visible_limit": {
+			"level": 19
+		},
+		"mission_phase_list": [
+			{
+				"name": "接受任务",
+				"desc": "士兵导师雷德发布狩猎白虎王的任务",
+				"attach_npc_id": "npc_000105",
+				"messages": [
+					"士兵，银盾城附近出现了一只强大的白虎王，它威胁着过往商旅和居民的安全。",
+					"你的实力已经足够强大，是时候接受真正的挑战了。"
+				]
+			},
+			{
+				"name": "完成狩猎",
+				"desc": "击败白虎王，向雷德报告",
+				"attach_npc_id": "npc_000105",
+				"messages": [
+					"去狩猎白虎王，证明你的勇气！"
+				],
+				"messages_matched": [
+					"干得漂亮！你为银盾城立下了大功，这是你的奖励！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000018",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 5000
+					},
+					{
+						"type": "exp",
+						"count": 1000
+					}
+				]
+			}
+		]
+	},
+	"mission_000108": {
+		"name": "学者转职",
+		"enable": true,
+		"visible_limit": {
+			"level": 10,
+			"jobs": [
+				"job_000000"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "成为学者",
+				"desc": "学者导师会告诉你学者转职的条件。",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"学者之路充满挑战，但每一次思考都是对智慧的探索。",
+					"你准备好用笔与魔法，为世界书写新的篇章了吗？"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000101"
+					}
+				]
+			}
+		]
+	},
+	"mission_000109": {
+		"name": "狭窄的地道",
+		"enable": true,
+		"visible_limit": {
+			"level": 11
+		},
+		"mission_phase_list": [
+			{
+				"name": "调查异常",
+				"desc": "学院导师奥兰多发布调查地道异常的任务",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"最近，学院地下的狭窄地道中出现了异常的怪物活动，甚至有学生失踪。",
+					"你的实力足以应对这些威胁，请前往调查并清除怪物。"
+				]
+			},
+			{
+				"name": "完成狩猎",
+				"desc": "击败地道中的书虫和小石精，向艾琳报告",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"小心那些书虫和小石精，它们似乎受到了某种力量的驱使。"
+				],
+				"messages_matched": [
+					"你做得很好！地道的威胁暂时解除了，但我们需要进一步调查这些怪物的来源。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000019",
+						"count": 50
+					},
+					{
+						"type": "kill",
+						"id": "monster_000020",
+						"count": 50
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 3000
+					},
+					{
+						"type": "exp",
+						"count": 800
+					},
+					{
+						"type": "item",
+						"id": "consume_002109",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000110": {
+		"name": "古代遗迹的苏醒",
+		"enable": true,
+		"visible_limit": {
+			"level": 15
+		},
+		"mission_phase_list": [
+			{
+				"name": "遗迹探索",
+				"desc": "探索刚发现的古代遗迹入口",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"通过地道，我们发现了一个古代遗迹的入口。根据墙壁上的符文，那里似乎封印着某种强大的力量。",
+					"作为学院最有潜力的学生，我希望你能继续探索这个遗迹，查明真相。"
+				]
+			},
+			{
+				"name": "石像守卫",
+				"desc": "击败守卫遗迹的石像和黑石像",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"遗迹中的石像似乎已经苏醒，它们在保护着更深处的区域。我们必须清除这些障碍。"
+				],
+				"messages_matched": [
+					"你做得很好！这些石像的苏醒绝非偶然，一定是有人或某种力量在操控它们。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000021",
+						"count": 30
+					},
+					{
+						"type": "kill",
+						"id": "monster_000022",
+						"count": 30
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 4500
+					},
+					{
+						"type": "exp",
+						"count": 1200
+					},
+					{
+						"type": "item",
+						"id": "weapon_001003",
+						"count": 1
+					}
+				]
+			},
+			{
+				"name": "解开机关",
+				"desc": "在遗迹中寻找并解开通往遗忘图书馆的机关",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"石像后面的通道被一道古老的机关锁住了。根据我对古代文明的研究，你需要收集三块'守护者碎片'才能激活机关。",
+					"这些碎片可能散落在遗迹的各个角落，或者被一些强大的石像守护着。"
+				],
+				"messages_matched": [
+					"太棒了！你找到了所有碎片并成功激活了机关。现在，遗忘图书馆的大门已经打开，但请小心，里面潜藏着更加危险的存在。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_001002",
+						"count": 3
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 5000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					},
+					{
+						"type": "item",
+						"id": "consume_002111",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000111": {
+		"name": "遗忘的图书馆",
+		"enable": true,
+		"visible_limit": {
+			"level": 17,
+			"missions": [
+				"mission_000110"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "古老的禁书",
+				"desc": "进入遗忘图书馆，寻找被封印的禁书",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"遗忘图书馆是一个充满古老智慧的地方，但也隐藏着危险。我们需要找到关于黑暗力量源头的线索。",
+					"据传说，那里有一本禁书记载着馆长的记忆，可能与学院遭受的诅咒有关。请小心那些守护禁书的书灵。"
+				]
+			},
+			{
+				"name": "清理书灵",
+				"desc": "击败书灵",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"图书馆深处的书籍已经被某种力量侵蚀，变成了有意识的书灵。它们正在阻止任何人接近禁书区域。"
+				],
+				"messages_matched": [
+					"你成功击退了书灵！它们的存在证明了这座图书馆已经被黑暗力量严重污染。继续前进，找到那本禁书。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000023",
+						"count": 30
+					},
+					{
+						"type": "kill",
+						"id": "monster_000024",
+						"count": 30
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 3000
+					},
+					{
+						"type": "exp",
+						"count": 1000
+					}
+				]
+			},
+			{
+				"name": "禁书解读",
+				"desc": "找到并解读记载馆长记忆的禁书",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"书灵被击退后，你可以进入禁书区域了。要找的禁书应该被隐藏在最深处的书架上，它会散发出微弱的蓝光。",
+					"这本书上有特殊的封印，你需要收集'知识碎片'来破解它。这些碎片散落在图书馆的各个角落。"
+				],
+				"messages_matched": [
+					"太好了！你成功解读了禁书的内容。现在我们知道了，馆长曾是学院的守护者，但他被黑暗力量侵蚀，成为了诅咒的源头。",
+					"这些信息对我们接下来对抗黑暗至关重要。我们必须找到净化馆长的方法。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_001003",
+						"count": 2
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 5000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000007",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000112": {
+		"name": "馆长的房间",
+		"enable": true,
+		"visible_limit": {
+			"level": 19,
+			"missions": [
+				"mission_000111"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "净化馆长",
+				"desc": "净化被黑暗力量侵蚀的馆长",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"馆长被黑暗力量侵蚀，成为了诅咒的源头。我们需要击败他的记忆。"
+				]
+			},
+			{
+				"name": "击败馆长",
+				"desc": "击败馆长",
+				"attach_npc_id": "npc_000108",
+				"messages": [
+					"请务必小心。"
+				],
+				"messages_matched": [
+					"馆长的记忆被净化了，学院的诅咒也得到了解除，你是学院的英雄！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000025",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 3000
+					},
+					{
+						"type": "exp",
+						"count": 1000
+					}
+				]
+			}
+		]
+	},
+	"mission_000113": {
+		"name": "霜之径",
+		"enable": true,
+		"visible_limit": {
+			"level": 20
+		},
+		"mission_phase_list": [
+			{
+				"name": "护送物资",
+				"desc": "护送物资前往冰谷镇",
+				"attach_npc_id": "npc_000104",
+				"messages": [
+					"你好啊，冒险家，最近有一批物资需要运往冰谷镇，你能帮个忙吗？",
+					"跟着商队，从那儿的霜之径过去就到了。"
+				],
+				"finish_show_npc": [
+					"npc_000113"
+				]
+			},
+			{
+				"name": "发疯的雪兽",
+				"desc": "击败发疯的雪兽",
+				"attach_npc_id": "npc_000113",
+				"messages": [
+					"这些兔子和狐狸怎么像疯了一样，我们快坚持不住了。"
+				],
+				"messages_matched": [
+					"呼，总算得救了。不过这到底是怎么回事？"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000026",
+						"count": 30
+					},
+					{
+						"type": "kill",
+						"id": "monster_000027",
+						"count": 30
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 4000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					}
+				]
+			},
+			{
+				"name": "继续前进",
+				"desc": "选择继续前进",
+				"attach_npc_id": "npc_000113",
+				"messages": [
+					"虽然有些奇怪，但是有你这样强大的冒险家在，咱们小心一些，继续前进。"
+				],
+				"finish_hide_npc": [
+					"npc_000113"
+				],
+				"finish_show_npc": [
+					"npc_000114"
+				]
+			}
+		]
+	},
+	"mission_000114": {
+		"name": "霜语诅咒",
+		"enable": true,
+		"visible_limit": {
+			"missions": [
+				"mission_000113"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "更加凶险",
+				"desc": "",
+				"attach_npc_id": "npc_000114",
+				"messages": [
+					"这些雪原狼和冰牙熊和平常很不一样，再帮忙清除一些吧"
+				]
+			},
+			{
+				"name": "清理雪兽",
+				"desc": "击败雪兽",
+				"attach_npc_id": "npc_000114",
+				"messages": [
+					"注意身后！"
+				],
+				"messages_matched": [
+					"这冰晶上散发的气息感觉不妙！冰谷镇已经近在眼前了，快去看看。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_001004",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 4000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					}
+				],
+				"finish_hide_npc": [
+					"npc_000114"
+				]
+			}
+		]
+	},
+	"mission_000115": {
+		"name": "调查真相",
+		"enable": true,
+		"visible_limit": {
+			"missions": [
+				"mission_000114"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "霍克长老",
+				"desc": "",
+				"attach_npc_id": "npc_000115",
+				"messages": [
+					"勇敢的冒险家，感谢你们及时送来的物资！",
+					"想必你也看到了路上的情形，这水晶上散发着的，是传说中的霜语诅咒。",
+					"很早以前这诅咒就被封印在了祭坛中，我们需要一些勇敢的人去调查一下。"
+				]
+			},
+			{
+				"name": "前往祭坛",
+				"desc": "前往祭坛",
+				"attach_npc_id": "npc_000115",
+				"messages": [
+					"太感谢了，我会让镇上最英勇的战士一起，请务必小心。"
+				],
+				"finish_hide_npc": [
+					"npc_000117"
+				],
+				"finish_show_npc": [
+					"npc_000118"
+				]
+			}
+		]
+	},
+	"mission_000116": {
+		"name": "前往祭坛",
+		"enable": true,
+		"visible_limit": {
+			"missions": [
+				"mission_000115"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "勇武者洛克",
+				"desc": "",
+				"attach_npc_id": "npc_000118",
+				"messages": [
+					"这些雪怪平时并不活跃，现在却如此暴躁。",
+					"要到达祭坛，还需要清理一些。"
+				]
+			},
+			{
+				"name": "清理雪怪",
+				"desc": "清理雪怪",
+				"attach_npc_id": "npc_000118",
+				"messages": [
+					"我负责这边，你去清理那边吧。"
+				],
+				"messages_matched": [
+					"嗯，还是太多了..."
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000030",
+						"count": 50
+					},
+					{
+						"type": "kill",
+						"id": "monster_000031",
+						"count": 50
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 4000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					}
+				]
+			},
+			{
+				"name": "再次清理",
+				"desc": "再次清理",
+				"attach_npc_id": "npc_000118",
+				"messages": [
+					"小心！"
+				],
+				"messages_matched": [
+					"终于看到路了。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000030",
+						"count": 200
+					},
+					{
+						"type": "kill",
+						"id": "monster_000031",
+						"count": 200
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 5000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					}
+				],
+				"finish_hide_npc": [
+					"npc_000118"
+				],
+				"finish_show_npc": [
+					"npc_000119"
+				]
+			}
+		]
+	},
+	"mission_000117": {
+		"name": "沉睡的巨人",
+		"enable": true,
+		"visible_limit": {
+			"missions": [
+				"mission_000116"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "冰霜巨人",
+				"desc": "",
+				"attach_npc_id": "npc_000119",
+				"messages": [
+					"这是远古的冰霜巨人，祭坛的封印已经松动，怎么办。"
+				]
+			},
+			{
+				"name": "击杀巨人",
+				"desc": "击杀巨人",
+				"attach_npc_id": "npc_000119",
+				"messages": [
+					"你要和他战斗吗？"
+				],
+				"messages_matched": [
+					"你战胜了冰霜巨人！！赶紧回镇子里告诉霍克长老吧。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000032",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "exp",
+						"count": 1000
+					}
+				],
+				"finish_hide_npc": [
+					"npc_000119"
+				],
+				"finish_show_npc": [
+					"npc_000117"
+				]
+			},
+			{
+				"name": "解除诅咒",
+				"desc": "解除诅咒",
+				"attach_npc_id": "npc_000115",
+				"messages": [
+					"这...是冰霜巨人"
+				],
+				"messages_matched": [
+					"冒险家，你拯救了我们，霜语诅咒已经解除了。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000032",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 10000
+					},
+					{
+						"type": "exp",
+						"count": 2000
+					}
+				]
+			}
+		]
+	},
+	"mission_000118": {
+		"name": "盗贼转职",
+		"enable": true,
+		"visible_limit": {
+			"level": 10,
+			"jobs": [
+				"job_000000"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "盗贼导师克罗",
+				"desc": "盗贼导师克罗会告诉你盗贼转职的条件。",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"从此行走在阴影之下，你想好了么？"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000201"
+					}
+				]
+			}
+		]
+	},
+	"mission_000119": {
+		"name": "瘟疫疑云",
+		"enable": true,
+		"visible_limit": {
+			"level": 10
+		},
+		"mission_phase_list": [
+			{
+				"name": "鼠巷异常",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"最近鼠巷的老鼠越来越多了，这很不正常。",
+					"哦？你愿意帮忙调查一下吗？"
+				]
+			},
+			{
+				"name": "鼠巷初探",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"这些老鼠虽然不是很强，但是小心谨慎些，注意防护。"
+				],
+				"messages_matched": [
+					"有两下子。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000033",
+						"count": 20
+					},
+					{
+						"type": "item",
+						"id": "etc_000034",
+						"count": 20
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 2000
+					},
+					{
+						"type": "exp",
+						"count": 800
+					}
+				]
+			},
+			{
+				"name": "再次清理",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"嗯，这样本散发着瘟疫的气息。",
+					"你去再帮忙清理一些吧，否则都快跑到港口来了。"
+				],
+				"messages_matched": [
+					"还不赖嘛。"
+				],
+				"requires": [
+					
+					{
+						"type": "kill",
+						"id": "monster_000033",
+						"count": 50
+					},
+					{
+						"type": "kill",
+						"id": "monster_000034",
+						"count": 50
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 3000
+					},
+					{
+						"type": "exp",
+						"count": 1000
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000008",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+	"mission_000120": {
+		"name": "瘟疫疑云2",
+		"enable": true,
+		"visible_limit": {
+			"level": 13,
+			"missions": [
+				"mission_000119"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "学者索尔",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"上次的样本我请教了索尔，他说是人工培育的瘟疫病毒，到底是谁会这么做？",
+					"我需要你的帮助，去更深处调查下。"
+				]
+			},
+			{
+				"name": "下水道",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"完整回来，小子。"
+				],
+				"messages_matched": [
+					"这是...黑爪组织的标记。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_001005",
+						"count": 3
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 3000
+					},
+					{
+						"type": "exp",
+						"count": 1000
+					}
+				]
+			},
+			{
+				"name": "黑爪组织",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"黑爪组织是一个纯粹的资源掠夺组织，他们为了资源不择手段。",
+					"事不宜迟，我们需要继续深入，找到他们的据点。"
+				],
+				"messages_matched": [
+					"谢谢，我们先修整一下吧。"
+				],
+				"requires": [
+					
+					{
+						"type": "kill",
+						"id": "monster_000035",
+						"count": 50
+					},
+					{
+						"type": "kill",
+						"id": "monster_000036",
+						"count": 50
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 4000
+					},
+					{
+						"type": "exp",
+						"count": 1200
+					}
+				]
+			}
+		]
+	},
+	"mission_000121": {
+		"name": "变异老鼠",
+		"enable": true,
+		"visible_limit": {
+			"level": 15,
+			"missions": [
+				"mission_000120"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "大老鼠",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"听说下水道深处出现了一些非常大的老鼠？",
+					"这些变异的老鼠非常危险。"
+				]
+			},
+			{
+				"name": "清理变异老鼠",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"这些老鼠凶横异常，看它们的数量，黑爪组织的人应该就在附近。"
+				],
+				"messages_matched": [
+					"辛苦了，继续追击。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000037",
+						"count": 20
+					},
+					{
+						"type": "item",
+						"id": "etc_000038",
+						"count": 20
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 5000
+					},
+					{
+						"type": "exp",
+						"count": 1500
+					}
+				],
+				"finish_show_npc": [
+					"npc_000123"
+				]
+			},
+			{
+				"name": "银爪泰克",
+				"desc": "",
+				"attach_npc_id": "npc_000123",
+				"messages": [
+					"哼，被你们发现了，那又如何，先看看你们眼前的麻烦吧。"
+				],
+				"messages_matched": [
+					"什么！这不可能，我们辛苦培育的实验体...走着瞧。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_000039",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "exp",
+						"count": 1000
+					}
+				],
+				"finish_hide_npc": [
+					"npc_000123"
+				]
+			},
+			{
+				"name": "战胜巨鼠",
+				"desc": "",
+				"attach_npc_id": "npc_000120",
+				"messages": [
+					"情况怎么样？"
+				],
+				"messages_matched": [
+					"你是港口的英雄！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000039",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "money",
+						"count": 10000
+					},
+					{
+						"type": "exp",
+						"count": 1000
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000009",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+
+	"mission_000199": {
+		"name": "无尽之塔",
+		"enable": true,
+		"visible_limit": {
+			"level": 30
+		},
+		"mission_phase_list": [
+			{
+				"name": "接受试炼",
+				"desc": "无尽之塔发布试炼任务",
+				"attach_npc_id": "npc_000199",
+				"messages": [
+					"伟大的冒险家，你有勇气踏入这无尽的考验吗，准备好了再来找我吧？"
+				]
+			}
+		]
+	}
+}

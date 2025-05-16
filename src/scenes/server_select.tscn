@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw6dv2jhv20ah"]
+
+[ext_resource type="Script" uid="uid://b40m4arrkv8m" path="res://src/scenes/server_select.gd" id="1_j8a1s"]
+[ext_resource type="PackedScene" uid="uid://djkrheb80iny2" path="res://src/scenes/server_name_board.tscn" id="1_x5pxe"]
+
+[node name="ServerSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j8a1s")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 242.0
+offset_top = 476.0
+offset_right = 367.0
+offset_bottom = 511.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "选择服务器"
+
+[node name="ServersNameHBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 525.0
+offset_right = 630.0
+offset_bottom = 632.0
+
+[node name="ServerNameBack1" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack2" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack3" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack4" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack5" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack6" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack7" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack8" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack9" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack10" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+
+[node name="ServerNameBack11" parent="ServersNameHBox" instance=ExtResource("1_x5pxe")]
+layout_mode = 2
+disabled = false
+text = "绿水灵"
+
+[node name="ServerLine" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ServerLineHBox" type="HBoxContainer" parent="ServerLine"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 659.0
+offset_right = 636.0
+offset_bottom = 699.0
+
+[node name="ServerLine1" type="Button" parent="ServerLine/ServerLineHBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "1线"
+
+[node name="OKButton" type="Button" parent="ServerLine"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 777.0
+offset_right = 378.0
+offset_bottom = 827.0
+text = "确定"
+
+[connection signal="pressed" from="ServersNameHBox/ServerNameBack11" to="." method="_on_server_name_back_11_pressed"]
+[connection signal="pressed" from="ServerLine/ServerLineHBox/ServerLine1" to="." method="_on_server_line_1_pressed"]
+[connection signal="pressed" from="ServerLine/OKButton" to="." method="_on_ok_button_pressed"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxd3eye6er2ha"]
+
+[ext_resource type="Script" uid="uid://dsje5rw1di35f" path="res://src/scenes/dialog/require_or_reward.gd" id="1_en61q"]
+
+[node name="RequireOrReward" type="VBoxContainer"]
+custom_minimum_size = Vector2(430, 0)
+size_flags_horizontal = 4
+script = ExtResource("1_en61q")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "任务要求："
+
+[node name="Items" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Item" type="Label" parent="Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "兔毛：10/10"
+
+[node name="Item2" type="Label" parent="Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "击杀兔子：10/10"
+
+[node name="Item3" type="Label" parent="Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "击杀兔子：10/10"
+
+[node name="Item4" type="Label" parent="Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "击杀兔子：10/10"
+
+[node name="Item5" type="Label" parent="Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "击杀兔子：10/10"
+
+[node name="Item6" type="Label" parent="Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "击杀兔子：10/10"
+
+[node name="Spacer" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0

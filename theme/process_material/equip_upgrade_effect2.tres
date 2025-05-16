@@ -1,0 +1,11 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=2 format=3 uid="uid://bm2mh3b55avy4"]
+
+[ext_resource type="Texture2D" uid="uid://didcbbbmsh7xn" path="res://theme/gradient/equip_upgrade_color2.tres" id="1_f6fkg"]
+
+[resource]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 6.0
+scale_max = 6.0
+color_ramp = ExtResource("1_f6fkg")

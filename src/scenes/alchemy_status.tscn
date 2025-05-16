@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhqkxctvac6x2"]
+
+[ext_resource type="Script" uid="uid://cd731v1il7kra" path="res://src/scenes/alchemy_status.gd" id="1_v0d0l"]
+
+[node name="AlchemyStatus" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 346.0
+offset_top = 985.0
+offset_right = 346.0
+offset_bottom = 985.0
+script = ExtResource("1_v0d0l")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 294.0
+offset_bottom = 180.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 85.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+text = "炼金药剂："
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 290.0
+offset_bottom = 155.0
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button2" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button3" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button4" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button5" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button6" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button7" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button8" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0
+
+[node name="Button9" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "力量药剂 999"
+alignment = 0

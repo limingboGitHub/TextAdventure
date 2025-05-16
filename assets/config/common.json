@@ -1,0 +1,6 @@
+{
+	"desc":"通用配置 exp_multiplier 经验倍率 drop_rate_multiplier 掉落率倍率 speed 游戏速度",
+	"exp_multiplier":1,
+	"drop_rate_multiplier":1,
+	"speed":1
+}

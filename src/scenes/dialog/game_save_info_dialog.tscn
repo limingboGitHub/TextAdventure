@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://qba185dl8dvj"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_dxkhq"]
+[ext_resource type="Script" uid="uid://dpfp20ly4g7gn" path="res://src/scenes/dialog/game_save_info_dialog.gd" id="1_wyy77"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_gwj5t"]
+[ext_resource type="PackedScene" uid="uid://dblhaonaa4kgp" path="res://src/scenes/dialog/game_save_item.tscn" id="4_2e3r3"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="5_nhtmg"]
+
+[node name="GameSaveInfoDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wyy77")
+
+[node name="Back" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 492.0
+offset_bottom = 588.0
+theme_override_styles/panel = ExtResource("1_dxkhq")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 52.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_gwj5t")
+text = "存档选择"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 81.0
+offset_right = 456.0
+offset_bottom = 473.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameSaveItem" parent="ScrollContainer/VBoxContainer" instance=ExtResource("4_2e3r3")]
+layout_mode = 2
+
+[node name="SelectGameSaveBt" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 89.0
+offset_top = 527.0
+offset_right = 217.0
+offset_bottom = 577.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gwj5t")
+text = "进入"
+
+[node name="DeleteGameSaveBt" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 280.0
+offset_top = 527.0
+offset_right = 408.0
+offset_bottom = 577.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gwj5t")
+text = "删除"
+
+[node name="CloseButton" parent="." instance=ExtResource("5_nhtmg")]
+layout_mode = 0
+offset_left = 433.0
+offset_right = 483.0
+
+[connection signal="pressed" from="SelectGameSaveBt" to="." method="_on_select_game_save_bt_pressed"]
+[connection signal="pressed" from="DeleteGameSaveBt" to="." method="_on_delete_game_save_bt_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

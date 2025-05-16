@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfqs351mrsnbk"]
+
+[ext_resource type="Script" uid="uid://bjsbf2iksp25v" path="res://src/scenes/game/endless_control.gd" id="1_g52jq"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="1_nvk2w"]
+
+[node name="EndlessControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 155.0
+offset_right = 20.0
+offset_bottom = 155.0
+script = ExtResource("1_g52jq")
+
+[node name="Panel1" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 250.0
+
+[node name="TitleBt" type="Button" parent="Panel1"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 47.0
+theme = ExtResource("1_nvk2w")
+text = "无尽试炼"
+
+[node name="Layer" type="Label" parent="Panel1"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 95.0
+offset_bottom = 89.0
+theme = ExtResource("1_nvk2w")
+text = "层数："
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel1/Layer"]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 180.0
+offset_bottom = 42.0
+theme = ExtResource("1_nvk2w")
+text = "1"
+
+[node name="Damage" type="Label" parent="Panel1"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 89.0
+offset_right = 95.0
+offset_bottom = 131.0
+theme = ExtResource("1_nvk2w")
+text = "伤害："
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel1/Damage"]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 180.0
+offset_bottom = 42.0
+theme = ExtResource("1_nvk2w")
+text = "0"
+
+[node name="Time" type="Label" parent="Panel1"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 131.0
+offset_right = 95.0
+offset_bottom = 173.0
+theme = ExtResource("1_nvk2w")
+text = "用时：0秒"
+horizontal_alignment = 1
+
+[node name="ExitBt" type="Button" parent="Panel1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 190.0
+offset_right = 80.0
+offset_bottom = 240.0
+theme = ExtResource("1_nvk2w")
+text = "退出"
+
+[node name="StartBt" type="Button" parent="Panel1"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 190.0
+offset_right = 240.0
+offset_bottom = 240.0
+theme = ExtResource("1_nvk2w")
+text = "开始"
+
+[node name="Panel2" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 47.0
+theme = ExtResource("1_nvk2w")
+text = "用时：0秒"
+alignment = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Panel1/TitleBt" to="." method="_on_title_bt_pressed"]
+[connection signal="pressed" from="Panel1/ExitBt" to="." method="_on_exit_bt_pressed"]
+[connection signal="pressed" from="Panel1/StartBt" to="." method="_on_start_bt_pressed"]
+[connection signal="pressed" from="Panel2" to="." method="_on_panel_2_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

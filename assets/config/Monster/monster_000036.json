@@ -1,0 +1,14 @@
+{
+	"name": "小强强",
+	"attack": "28",
+    "defense": "22",
+    "magic": "0",
+    "magic_def": "30",
+    "level": "16",
+    "maxHP": "300",
+    "maxMP": "0",
+    "acc": "120",
+    "eva": "130",
+    "exp": "60",
+    "undead": "0"
+}

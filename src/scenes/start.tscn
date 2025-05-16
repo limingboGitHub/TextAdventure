@@ -1,0 +1,228 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6cxr68ckbsu3"]
+
+[ext_resource type="Script" uid="uid://bg5vgj6bis5md" path="res://src/scenes/start.gd" id="1_rcs3e"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_7h2dq"]
+[ext_resource type="PackedScene" uid="uid://c7uwowu07bhl3" path="res://src/scenes/role_select_enter.tscn" id="3_aid7j"]
+[ext_resource type="Script" uid="uid://dv11h1iikjk8d" path="res://src/scenes/widget/toast_control.gd" id="4_pqf2g"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rcs3e")
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -112.5
+offset_right = 180.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 80
+text = "文字冒险"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 287.5
+offset_right = 150.0
+offset_bottom = 517.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="StartGameBt" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("2_7h2dq")
+text = "开始游戏"
+
+[node name="CustomBt" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("2_7h2dq")
+text = "自定义"
+
+[node name="Space2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ExitBt" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme = ExtResource("2_7h2dq")
+text = "退出"
+
+[node name="RoleSelectEnter" parent="." instance=ExtResource("3_aid7j")]
+visible = false
+
+[node name="LoadingUI" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LoadingUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -21.0
+offset_right = 57.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7h2dq")
+text = "加载中..."
+
+[node name="CustomControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Descrition" type="RichTextLabel" parent="CustomControl"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 780.0
+grow_horizontal = 2
+focus_mode = 2
+theme = ExtResource("2_7h2dq")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "什么是自定义？
+
+就是该游戏将大部分的游戏内容都以文件配置的形式存储，动态载入。作者功力欠缺，不完美的地方还有很多。玩家如果不满意当前的游戏节奏，不满足于当前的游戏内容，完全可以仅通过配置文件的修改，创造全新的游戏世界，包括且不限于游戏速率、经验倍率、剧情、装备、掉落、地图、NPC、炼金药剂、配方、各种卷轴等。
+
+当然，配置文件不是万能的，部分特殊效果还是需要从代码层实现。本游戏代码完全开源，你可以通过访问代码的开源地址[url]www.xxx.com[/url]，结合AI代码编程工具，实现自己想要的改动！"
+selection_enabled = true
+
+[node name="TipLabel" type="Label" parent="CustomControl"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 820.0
+offset_bottom = 904.0
+grow_horizontal = 2
+theme = ExtResource("2_7h2dq")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ImportFileBt" type="Button" parent="CustomControl"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 930.0
+offset_right = 474.0
+offset_bottom = 990.0
+theme = ExtResource("2_7h2dq")
+text = "导入自定义配置文件"
+
+[node name="ImportFileDialog" type="FileDialog" parent="CustomControl/ImportFileBt"]
+title = "Open a File or Directory"
+position = Vector2i(70, 200)
+size = Vector2i(500, 400)
+ok_button_text = "Open"
+file_mode = 3
+access = 2
+
+[node name="ExportFileBt" type="Button" parent="CustomControl"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 1000.0
+offset_right = 474.0
+offset_bottom = 1060.0
+theme = ExtResource("2_7h2dq")
+text = "导出系统配置文件"
+
+[node name="SelectExportFileDialog" type="FileDialog" parent="CustomControl/ExportFileBt"]
+auto_translate_mode = 1
+title = "Open a File or Directory"
+position = Vector2i(70, 200)
+size = Vector2i(500, 400)
+ok_button_text = "Open"
+file_mode = 3
+access = 1
+
+[node name="ResetConfigBt" type="Button" parent="CustomControl"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 1070.0
+offset_right = 474.0
+offset_bottom = 1130.0
+theme = ExtResource("2_7h2dq")
+text = "重置配置"
+
+[node name="BackBt" type="Button" parent="CustomControl"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 1170.0
+offset_right = 474.0
+offset_bottom = 1230.0
+theme = ExtResource("2_7h2dq")
+text = "返回"
+
+[node name="ToastControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_pqf2g")
+
+[node name="StartGameTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="VBoxContainer/StartGameBt" to="." method="_on_start_game_bt_pressed"]
+[connection signal="pressed" from="VBoxContainer/CustomBt" to="." method="_on_custom_bt_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitBt" to="." method="_on_exit_bt_pressed"]
+[connection signal="pressed" from="CustomControl/ImportFileBt" to="." method="_on_import_file_bt_pressed"]
+[connection signal="dir_selected" from="CustomControl/ImportFileBt/ImportFileDialog" to="." method="_on_import_file_dialog_dir_selected"]
+[connection signal="file_selected" from="CustomControl/ImportFileBt/ImportFileDialog" to="." method="_on_import_file_dialog_file_selected"]
+[connection signal="files_selected" from="CustomControl/ImportFileBt/ImportFileDialog" to="." method="_on_import_file_dialog_files_selected"]
+[connection signal="pressed" from="CustomControl/ExportFileBt" to="." method="_on_export_file_bt_pressed"]
+[connection signal="dir_selected" from="CustomControl/ExportFileBt/SelectExportFileDialog" to="." method="_on_select_export_file_dialog_dir_selected"]
+[connection signal="file_selected" from="CustomControl/ExportFileBt/SelectExportFileDialog" to="." method="_on_select_export_file_dialog_file_selected"]
+[connection signal="files_selected" from="CustomControl/ExportFileBt/SelectExportFileDialog" to="." method="_on_select_export_file_dialog_files_selected"]
+[connection signal="pressed" from="CustomControl/ResetConfigBt" to="." method="_on_reset_config_bt_pressed"]
+[connection signal="pressed" from="CustomControl/BackBt" to="." method="_on_back_bt_pressed"]
+[connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timeout"]

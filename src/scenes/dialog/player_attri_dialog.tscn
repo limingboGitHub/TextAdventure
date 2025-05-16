@@ -1,0 +1,586 @@
+[gd_scene load_steps=11 format=3 uid="uid://dyd4y7jhs3t5b"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_2paxl"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="1_fgju1"]
+[ext_resource type="Script" uid="uid://cd24vg58hcuku" path="res://src/scenes/dialog/player_attri_dialog.gd" id="1_rwbjo"]
+[ext_resource type="Theme" uid="uid://cxjwlexr5g51i" path="res://theme/player_attri_dialog_details.tres" id="4_d51le"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="4_jcbrs"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="5_78p0c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qmf2"]
+bg_color = Color(0.988235, 0.458824, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqxu2"]
+bg_color = Color(0.988235, 0.25098, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40mwk"]
+bg_color = Color(0.988235, 0.458824, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isblt"]
+bg_color = Color(0.356863, 0.356863, 0.356863, 0.588235)
+
+[node name="PlayerAttriDialog" type="Panel"]
+custom_minimum_size = Vector2(0, 485)
+offset_left = 10.0
+offset_top = 799.0
+offset_right = 353.0
+offset_bottom = 1284.0
+theme_override_styles/panel = ExtResource("1_2paxl")
+script = ExtResource("1_rwbjo")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 69.0
+offset_bottom = 28.0
+theme = ExtResource("1_fgju1")
+text = "角色能力"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 55.0
+offset_right = 125.0
+offset_bottom = 97.0
+theme = ExtResource("1_fgju1")
+text = "名字："
+
+[node name="Label" type="Label" parent="Name"]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 207.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "测试测试测试测试"
+
+[node name="Job" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 93.0
+offset_right = 125.0
+offset_bottom = 135.0
+theme = ExtResource("1_fgju1")
+text = "职业："
+
+[node name="Label" type="Label" parent="Job"]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 207.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "测试"
+
+[node name="Hp" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 134.0
+offset_right = 125.0
+offset_bottom = 176.0
+theme = ExtResource("1_fgju1")
+text = "HP："
+
+[node name="Label" type="Label" parent="Hp"]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 207.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "9999/9999"
+
+[node name="Button" type="Button" parent="Hp"]
+layout_mode = 0
+offset_left = 285.0
+offset_right = 330.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "+"
+
+[node name="IntelAllBt" type="Button" parent="Hp"]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 280.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "++"
+
+[node name="Mp" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 184.0
+offset_right = 125.0
+offset_bottom = 226.0
+theme = ExtResource("1_fgju1")
+text = "MP："
+
+[node name="Label" type="Label" parent="Mp"]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 207.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "9999/9999"
+
+[node name="Button" type="Button" parent="Mp"]
+layout_mode = 0
+offset_left = 285.0
+offset_right = 330.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "+"
+
+[node name="IntelAllBt" type="Button" parent="Mp"]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 280.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "++"
+
+[node name="AllocPoint" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 235.0
+offset_right = 125.0
+offset_bottom = 277.0
+theme = ExtResource("1_fgju1")
+text = "能力值："
+
+[node name="Label" type="Label" parent="AllocPoint"]
+layout_mode = 0
+offset_left = 110.0
+offset_right = 230.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "0"
+
+[node name="Button" type="Button" parent="AllocPoint"]
+layout_mode = 1
+offset_left = 230.0
+offset_right = 330.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "自动分配"
+
+[node name="ResetBt" type="Button" parent="AllocPoint"]
+layout_mode = 1
+offset_left = 177.0
+offset_right = 227.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "重置"
+
+[node name="Power" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 280.0
+offset_right = 125.0
+offset_bottom = 322.0
+theme = ExtResource("1_fgju1")
+text = "力量："
+
+[node name="Label" type="Label" parent="Power"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 209.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "0"
+
+[node name="Button" type="Button" parent="Power"]
+layout_mode = 0
+offset_left = 285.0
+offset_right = 330.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "+"
+
+[node name="PowerAllBt" type="Button" parent="Power"]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 280.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "++"
+
+[node name="Agility" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 330.0
+offset_right = 125.0
+offset_bottom = 372.0
+theme = ExtResource("1_fgju1")
+text = "敏捷："
+
+[node name="Label" type="Label" parent="Agility"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 209.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "0"
+
+[node name="Button" type="Button" parent="Agility"]
+layout_mode = 0
+offset_left = 285.0
+offset_right = 330.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "+"
+
+[node name="AgilityAllBt" type="Button" parent="Agility"]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 280.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "++"
+
+[node name="Intelligence" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 380.0
+offset_right = 125.0
+offset_bottom = 422.0
+theme = ExtResource("1_fgju1")
+text = "智力："
+
+[node name="Label" type="Label" parent="Intelligence"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 209.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "0"
+
+[node name="Button" type="Button" parent="Intelligence"]
+layout_mode = 0
+offset_left = 285.0
+offset_right = 330.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "+"
+
+[node name="IntelAllBt" type="Button" parent="Intelligence"]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 280.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "++"
+
+[node name="Luck" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 430.0
+offset_right = 125.0
+offset_bottom = 472.0
+theme = ExtResource("1_fgju1")
+text = "运气："
+
+[node name="Label" type="Label" parent="Luck"]
+layout_mode = 0
+offset_left = 89.0
+offset_right = 209.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = "0"
+
+[node name="Button" type="Button" parent="Luck"]
+layout_mode = 0
+offset_left = 285.0
+offset_right = 330.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "+"
+
+[node name="LuckAllBt" type="Button" parent="Luck"]
+layout_mode = 0
+offset_left = 235.0
+offset_right = 280.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "++"
+
+[node name="Details" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 96.0
+offset_right = 627.0
+offset_bottom = 489.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_isblt")
+
+[node name="Attack" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 126.0
+offset_bottom = 46.0
+theme = ExtResource("4_d51le")
+text = "攻击力："
+
+[node name="Label" type="Label" parent="Details/Attack"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 251.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "10000-99999"
+
+[node name="Magic" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 40.0
+offset_right = 126.0
+offset_bottom = 82.0
+theme = ExtResource("4_d51le")
+text = "魔法力："
+
+[node name="Label" type="Label" parent="Details/Magic"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="Defense" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 75.0
+offset_right = 126.0
+offset_bottom = 117.0
+theme = ExtResource("4_d51le")
+text = "防御力："
+
+[node name="Label" type="Label" parent="Details/Defense"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="MagicDef" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 110.0
+offset_right = 186.0
+offset_bottom = 152.0
+theme = ExtResource("4_d51le")
+text = "魔法防御力："
+
+[node name="Label" type="Label" parent="Details/MagicDef"]
+layout_mode = 0
+offset_left = 162.0
+offset_right = 282.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="Accuracy" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 145.0
+offset_right = 186.0
+offset_bottom = 187.0
+theme = ExtResource("4_d51le")
+text = "命   中："
+
+[node name="Label" type="Label" parent="Details/Accuracy"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="Evasion" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 180.0
+offset_right = 186.0
+offset_bottom = 222.0
+theme = ExtResource("4_d51le")
+text = "闪   避："
+
+[node name="Label" type="Label" parent="Details/Evasion"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="HandTechnology" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 215.0
+offset_right = 186.0
+offset_bottom = 257.0
+theme = ExtResource("4_d51le")
+text = "手   技："
+
+[node name="Label" type="Label" parent="Details/HandTechnology"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="MoveSpeed" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 250.0
+offset_right = 186.0
+offset_bottom = 292.0
+theme = ExtResource("4_d51le")
+text = "移   速："
+
+[node name="Label" type="Label" parent="Details/MoveSpeed"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 220.0
+offset_bottom = 42.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="RecoverHP" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 285.0
+offset_right = 186.0
+offset_bottom = 327.0
+theme = ExtResource("4_d51le")
+text = "生命恢复："
+
+[node name="Label" type="Label" parent="Details/RecoverHP"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 1.0
+offset_right = 250.0
+offset_bottom = 43.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="RecoverMP" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 320.0
+offset_right = 186.0
+offset_bottom = 362.0
+theme = ExtResource("4_d51le")
+text = "魔法恢复："
+
+[node name="Label" type="Label" parent="Details/RecoverMP"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 1.0
+offset_right = 250.0
+offset_bottom = 43.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="ExpGain" type="Label" parent="Details"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 355.0
+offset_right = 186.0
+offset_bottom = 397.0
+theme = ExtResource("4_d51le")
+text = "经验加成："
+
+[node name="Label" type="Label" parent="Details/ExpGain"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 1.0
+offset_right = 250.0
+offset_bottom = 43.0
+theme = ExtResource("4_d51le")
+text = "0"
+
+[node name="DragControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 312.0
+offset_bottom = 50.0
+script = ExtResource("4_jcbrs")
+
+[node name="CloseButton" parent="." instance=ExtResource("5_78p0c")]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 6.0
+offset_right = 335.0
+offset_bottom = 56.0
+
+[connection signal="pressed" from="Hp/Button" to="." method="_on_hp_button_pressed"]
+[connection signal="pressed" from="Hp/IntelAllBt" to="." method="_on_intel_all_bt_pressed"]
+[connection signal="pressed" from="Mp/Button" to="." method="_on_mp_button_pressed"]
+[connection signal="pressed" from="Mp/IntelAllBt" to="." method="_on_intel_all_bt_pressed"]
+[connection signal="pressed" from="AllocPoint/Button" to="." method="_on_auto_alloc_button_pressed"]
+[connection signal="pressed" from="AllocPoint/ResetBt" to="." method="_on_reset_bt_pressed"]
+[connection signal="pressed" from="Power/Button" to="." method="_on_power_button_pressed"]
+[connection signal="pressed" from="Power/PowerAllBt" to="." method="_on_power_all_bt_pressed"]
+[connection signal="pressed" from="Agility/Button" to="." method="_on_agility_button_pressed"]
+[connection signal="pressed" from="Agility/AgilityAllBt" to="." method="_on_agility_all_bt_pressed"]
+[connection signal="pressed" from="Intelligence/Button" to="." method="_on_intelligence_button_pressed"]
+[connection signal="pressed" from="Intelligence/IntelAllBt" to="." method="_on_intel_all_bt_pressed"]
+[connection signal="pressed" from="Luck/Button" to="." method="_on_luck_button_pressed"]
+[connection signal="pressed" from="Luck/LuckAllBt" to="." method="_on_luck_all_bt_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -1,0 +1,217 @@
+[gd_scene load_steps=8 format=3 uid="uid://hepgxsvkhc8h"]
+
+[ext_resource type="Script" uid="uid://dh47ywno7vopx" path="res://src/scenes/dialog/monster_info_dialog.gd" id="1_5xp3q"]
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_sv0nx"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_1vvwu"]
+[ext_resource type="PackedScene" uid="uid://luxudsvyvecw" path="res://src/scenes/dialog/monster_info_drop_thing_item.tscn" id="4_66lkr"]
+[ext_resource type="Script" uid="uid://k6f0ld4sd00s" path="res://src/scenes/widget/my_scroll_container.gd" id="4_wff8o"]
+[ext_resource type="PackedScene" uid="uid://c07inpvckugyf" path="res://src/scenes/dialog/monster_info_item.tscn" id="4_xafcw"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="6_wtk4c"]
+
+[node name="MonsterInfoDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5xp3q")
+
+[node name="Back" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 588.0
+theme_override_styles/panel = ExtResource("1_sv0nx")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 52.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_1vvwu")
+text = "怪物手册"
+
+[node name="MapInput" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 59.0
+offset_right = 17.0
+offset_bottom = 59.0
+
+[node name="MapEdit" type="LineEdit" parent="MapInput"]
+layout_mode = 0
+offset_right = 195.0
+offset_bottom = 50.0
+theme = ExtResource("2_1vvwu")
+placeholder_text = "输入地图名称"
+
+[node name="MapInputOKBt" type="Button" parent="MapInput"]
+visible = false
+layout_mode = 0
+offset_left = 211.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme = ExtResource("2_1vvwu")
+text = "确定"
+
+[node name="ClearMapInputBt" type="Button" parent="MapInput"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 1.0
+offset_right = 233.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 22
+text = "×"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MapInput"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 1.0
+offset_right = 471.0
+offset_bottom = 106.0
+script = ExtResource("4_wff8o")
+
+[node name="MapContainer" type="VBoxContainer" parent="MapInput/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="MapInput/ScrollContainer/MapContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "123"
+
+[node name="Button2" type="Button" parent="MapInput/ScrollContainer/MapContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "123"
+
+[node name="Button3" type="Button" parent="MapInput/ScrollContainer/MapContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "123"
+
+[node name="Button4" type="Button" parent="MapInput/ScrollContainer/MapContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "123"
+
+[node name="MonsterInfo" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 171.0
+offset_right = 16.0
+offset_bottom = 171.0
+
+[node name="MonsterEdit" type="LineEdit" parent="MonsterInfo"]
+layout_mode = 0
+offset_right = 195.0
+offset_bottom = 50.0
+theme = ExtResource("2_1vvwu")
+placeholder_text = "输入怪物名称"
+
+[node name="MonsterInputOKBt" type="Button" parent="MonsterInfo"]
+visible = false
+layout_mode = 0
+offset_left = 211.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme = ExtResource("2_1vvwu")
+text = "确定"
+
+[node name="ClearMonsterInputBt" type="Button" parent="MonsterInfo"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 1.0
+offset_right = 233.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 22
+text = "×"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MonsterInfo"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 203.0
+offset_bottom = 389.0
+horizontal_scroll_mode = 0
+
+[node name="MonsterContainer" type="GridContainer" parent="MonsterInfo/ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MonsterInfoItem" parent="MonsterInfo/ScrollContainer/MonsterContainer" instance=ExtResource("4_xafcw")]
+layout_mode = 2
+
+[node name="MonsterInfoItem2" parent="MonsterInfo/ScrollContainer/MonsterContainer" instance=ExtResource("4_xafcw")]
+layout_mode = 2
+
+[node name="MonsterInfoItem3" parent="MonsterInfo/ScrollContainer/MonsterContainer" instance=ExtResource("4_xafcw")]
+layout_mode = 2
+
+[node name="MonsterInfoItem4" parent="MonsterInfo/ScrollContainer/MonsterContainer" instance=ExtResource("4_xafcw")]
+layout_mode = 2
+
+[node name="KillCountTitle" type="Label" parent="MonsterInfo"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 8.0
+offset_right = 362.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 25
+text = "击杀数量："
+
+[node name="Label" type="Label" parent="MonsterInfo/KillCountTitle"]
+layout_mode = 0
+offset_left = 117.0
+offset_right = 217.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "9999999"
+
+[node name="DropTitle" type="Label" parent="MonsterInfo"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 69.0
+offset_right = 353.0
+offset_bottom = 111.0
+theme = ExtResource("2_1vvwu")
+text = "物品掉落："
+
+[node name="DropThingScroll" type="ScrollContainer" parent="MonsterInfo"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 117.0
+offset_right = 480.0
+offset_bottom = 401.0
+
+[node name="Container" type="GridContainer" parent="MonsterInfo/DropThingScroll"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+
+[node name="MonsterInfoDropThingItem" parent="MonsterInfo/DropThingScroll/Container" instance=ExtResource("4_66lkr")]
+layout_mode = 2
+
+[node name="SearchMapTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="SearchMonsterTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="CloseButton" parent="." instance=ExtResource("6_wtk4c")]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 5.0
+offset_right = 493.0
+offset_bottom = 55.0
+
+[connection signal="text_changed" from="MapInput/MapEdit" to="." method="_on_map_edit_text_changed"]
+[connection signal="pressed" from="MapInput/MapInputOKBt" to="." method="_on_map_input_ok_bt_pressed"]
+[connection signal="pressed" from="MapInput/ClearMapInputBt" to="." method="_on_clear_map_input_bt_pressed"]
+[connection signal="text_changed" from="MonsterInfo/MonsterEdit" to="." method="_on_monster_edit_text_changed"]
+[connection signal="pressed" from="MonsterInfo/MonsterInputOKBt" to="." method="_on_monster_input_ok_bt_pressed"]
+[connection signal="pressed" from="MonsterInfo/ClearMonsterInputBt" to="." method="_on_clear_monster_input_bt_pressed"]
+[connection signal="timeout" from="SearchMapTimer" to="." method="_on_search_map_timer_timeout"]
+[connection signal="timeout" from="SearchMonsterTimer" to="." method="_on_search_monster_timer_timeout"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

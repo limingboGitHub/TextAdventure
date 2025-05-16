@@ -1,0 +1,15 @@
+{
+	"name": "冰牙熊",
+    "type":"normal",
+	"attack": "46",
+    "defense": "32",
+    "magic": "0",
+    "magic_def": "30",
+    "level": "25",
+    "maxHP": "650",
+    "maxMP": "0",
+    "acc": "150",
+    "eva": "230",
+    "exp": "140",
+    "undead": "0"
+}

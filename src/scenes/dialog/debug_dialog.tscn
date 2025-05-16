@@ -1,0 +1,154 @@
+[gd_scene load_steps=6 format=3 uid="uid://blvgcs7tbayqe"]
+
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_uw8g6"]
+[ext_resource type="Script" uid="uid://bkg8nwvklx0c2" path="res://src/scenes/dialog/debug_dialog.gd" id="1_y30hp"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_2tysi"]
+[ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="3_2gbrv"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="4_tci6e"]
+
+[node name="DebugDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 71.0
+offset_top = 495.0
+offset_right = 71.0
+offset_bottom = 495.0
+script = ExtResource("1_y30hp")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 476.0
+theme_override_styles/panel = ExtResource("1_uw8g6")
+
+[node name="DragControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 421.0
+offset_bottom = 55.0
+script = ExtResource("3_2gbrv")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 76.0
+offset_right = 308.0
+offset_bottom = 126.0
+theme = ExtResource("2_2tysi")
+text = "5700"
+placeholder_text = "经验"
+
+[node name="GetExpBt" type="Button" parent="LineEdit"]
+layout_mode = 0
+offset_left = 315.0
+offset_right = 443.0
+offset_bottom = 50.0
+theme = ExtResource("2_2tysi")
+text = "获得经验"
+
+[node name="ItemEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 141.0
+offset_right = 310.0
+offset_bottom = 191.0
+theme = ExtResource("2_2tysi")
+text = "weapon_000006"
+placeholder_text = "经验"
+
+[node name="GetItemBt" type="Button" parent="ItemEdit"]
+layout_mode = 0
+offset_left = 319.0
+offset_right = 447.0
+offset_bottom = 50.0
+theme = ExtResource("2_2tysi")
+text = "获得物品"
+
+[node name="MoneyEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 202.0
+offset_right = 310.0
+offset_bottom = 252.0
+theme = ExtResource("2_2tysi")
+text = "1000000"
+placeholder_text = "经验"
+
+[node name="GetMoneyBt" type="Button" parent="MoneyEdit"]
+layout_mode = 0
+offset_left = 319.0
+offset_right = 447.0
+offset_bottom = 50.0
+theme = ExtResource("2_2tysi")
+text = "获得金钱"
+
+[node name="SpeedEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 263.0
+offset_right = 310.0
+offset_bottom = 313.0
+theme = ExtResource("2_2tysi")
+text = "1"
+placeholder_text = "经验"
+
+[node name="SpeedOkBt" type="Button" parent="SpeedEdit"]
+layout_mode = 0
+offset_left = 319.0
+offset_right = 447.0
+offset_bottom = 50.0
+theme = ExtResource("2_2tysi")
+text = "设置速率"
+
+[node name="ScrollBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 321.0
+offset_right = 151.0
+offset_bottom = 371.0
+theme = ExtResource("2_2tysi")
+text = "全套卷轴"
+
+[node name="Job1Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 321.0
+offset_right = 288.0
+offset_bottom = 371.0
+theme = ExtResource("2_2tysi")
+text = "士兵装备"
+
+[node name="Job2Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 321.0
+offset_right = 425.0
+offset_bottom = 371.0
+theme = ExtResource("2_2tysi")
+text = "学者装备"
+
+[node name="Job3Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 378.0
+offset_right = 287.0
+offset_bottom = 428.0
+theme = ExtResource("2_2tysi")
+text = "盗贼装备"
+
+[node name="CloseButton" parent="." instance=ExtResource("4_tci6e")]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 5.0
+offset_right = 472.0
+offset_bottom = 55.0
+
+[connection signal="pressed" from="LineEdit/GetExpBt" to="." method="_on_get_exp_bt_pressed"]
+[connection signal="pressed" from="ItemEdit/GetItemBt" to="." method="_on_get_item_bt_pressed"]
+[connection signal="pressed" from="MoneyEdit/GetMoneyBt" to="." method="_on_get_money_bt_pressed"]
+[connection signal="pressed" from="SpeedEdit/SpeedOkBt" to="." method="_on_speed_ok_bt_pressed"]
+[connection signal="pressed" from="ScrollBt" to="." method="_on_scroll_bt_pressed"]
+[connection signal="pressed" from="Job1Bt" to="." method="_on_job_1_bt_pressed"]
+[connection signal="pressed" from="Job2Bt" to="." method="_on_job_2_bt_pressed"]
+[connection signal="pressed" from="Job3Bt" to="." method="_on_job_3_bt_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_bt_pressed"]

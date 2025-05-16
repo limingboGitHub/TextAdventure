@@ -1,0 +1,14 @@
+{
+	"name": "灰兔",
+	"attack": "7",
+    "defense": "0",
+    "magic": "0",
+    "magic_def": "0",
+    "level": "2",
+    "maxHP": "25",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "4",
+    "undead": "0"
+}

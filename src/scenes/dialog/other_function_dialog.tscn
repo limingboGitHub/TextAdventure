@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bghvpjtuh5st0"]
+
+[ext_resource type="Script" uid="uid://l57xervbc1nx" path="res://src/scenes/dialog/other_function_dialog.gd" id="1_756wi"]
+[ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_y7yy8"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_fmxec"]
+[ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="4_84rfn"]
+
+[node name="OtherFunctionDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_756wi")
+
+[node name="Back" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 250.0
+theme_override_styles/panel = ExtResource("1_y7yy8")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 52.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_fmxec")
+text = "其他功能"
+
+[node name="MonsterInfoBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 69.0
+offset_right = 83.0
+offset_bottom = 100.0
+theme = ExtResource("2_fmxec")
+text = "怪物手册"
+
+[node name="CloseButton" parent="." instance=ExtResource("4_84rfn")]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 4.0
+offset_right = 295.0
+offset_bottom = 54.0
+
+[connection signal="pressed" from="MonsterInfoBt" to="." method="_on_monster_info_bt_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

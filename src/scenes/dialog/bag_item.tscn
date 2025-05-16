@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://mbnmc3xs1636"]
+
+[ext_resource type="Script" uid="uid://c10q8m4e2t5k1" path="res://src/scenes/dialog/bag_item.gd" id="1_onjdk"]
+[ext_resource type="StyleBox" uid="uid://ch8tsa4454dfj" path="res://theme/quality/quality_epic.tres" id="2_3wfvn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vftwk"]
+bg_color = Color(1, 1, 1, 0.721569)
+
+[node name="BagItem" type="Control"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 42.0
+offset_top = 69.0
+offset_right = 242.0
+offset_bottom = 114.0
+mouse_filter = 2
+script = ExtResource("1_onjdk")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 45.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_3wfvn")
+
+[node name="ItemShowBt" type="Button" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 45.0
+
+[node name="ItemUseBt" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 170.0
+offset_right = 200.0
+offset_bottom = 45.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vftwk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 5.0
+offset_right = 195.0
+offset_bottom = 32.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 23
+text = "寒冰破魔枪"
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "9"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -20.0
+offset_right = 195.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[color=#ff8888]HP:3000[/color] [color=#7777ff]HP:3000[/color]"
+scroll_active = false
+
+[node name="EffectControl" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="DeleteBt" type="CheckBox" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -22.5
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="ShopBt" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 157.0
+offset_top = 2.0
+offset_right = 197.0
+offset_bottom = 33.0
+text = "出售"
+alignment = 2
+
+[node name="PriceLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 135.0
+offset_top = 29.0
+offset_right = 195.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "999"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="ItemShowBt" to="." method="_on_item_show_bt_pressed"]
+[connection signal="pressed" from="ItemUseBt" to="." method="_on_item_use_bt_pressed"]
+[connection signal="toggled" from="DeleteBt" to="." method="_on_delete_bt_toggled"]
+[connection signal="pressed" from="ShopBt" to="." method="_on_shop_bt_pressed"]

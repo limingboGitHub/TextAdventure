@@ -1,0 +1,58 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>553</x><y>210</y><w>231</w><h>259</h></coordinates><panel_attributes>DataPlayer
+--
++player_id: String
++name: String
++job: String
++level: Int = 1
++ability: AttributeAbility
++equip_ability:AttributeAbility
++final_ability: AttributeAbility
++allot_point: Int = 0
++base_attr: AttributeDetails
++equiq_attr:AttributeDetails
++final_attr: AttributeDetails
++attack_speed: int
+--
+-Init(): Void
++InitBaseAbility(power:Int, agility:Int, intelligence: Int, luck: Int): Void
++UpdateFinalAttr(): Void
++UpdateEquipAttr(ability: AttributeAbility,details:AttributeDetails): Void
++addExp(value: Int): Void
++LevelUp(): Int
++Save(): Map
++Load(map: Map): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>504</x><y>581</y><w>126</w><h>119</h></coordinates><panel_attributes>AttributeAbility
+--
++hp: int = 0
++mp: int = 0
++power : int = 0
++agility : int = 0
++intelligence : int = 0
++luck : int = 0
+--
++Save(): Map
++Load(map: Map): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>693</x><y>581</y><w>126</w><h>189</h></coordinates><panel_attributes>AttributeDetails
+--
++max_hp: int = 0
++max_mp: int = 0
+
++attack: int = 0
++defense: int = 0
++magic: int = 0
++magic_def: int = 0
++accuracy: int = 0
++evasion: int = 0
++hand_technology: int = 0
++move_speed: int = 0
++jump_power: int = 0
++exp_rate: int = 0
++critial_rate: int = 0
+--
++Save(): Map
++Load(map: Map): Void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>462</y><w>112</w><h>133</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;170;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>651</x><y>462</y><w>112</w><h>133</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>140;170;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>56</y><w>154</w><h>77</h></coordinates><panel_attributes>DataRole
+--
+hp: int
+mp: int
+is_dead: bool
+--
+get_hurt(damage:DataDamage)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>924</x><y>210</y><w>154</w><h>77</h></coordinates><panel_attributes>DataMonster
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>679</x><y>126</y><w>168</w><h>98</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;120;220;10</additional_attributes></element><element><id>Relation</id><coordinates><x>833</x><y>126</y><w>182</w><h>98</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>240;120;10;10</additional_attributes></element></diagram>

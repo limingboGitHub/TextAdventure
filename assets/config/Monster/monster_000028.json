@@ -1,0 +1,15 @@
+{
+	"name": "雪原狼",
+    "type":"normal",
+	"attack": "42",
+    "defense": "28",
+    "magic": "0",
+    "magic_def": "28",
+    "level": "24",
+    "maxHP": "600",
+    "maxMP": "0",
+    "acc": "150",
+    "eva": "220",
+    "exp": "125",
+    "undead": "0"
+} 

@@ -1,0 +1,14 @@
+{
+	"name": "土拨鼠",
+	"attack": "10",
+    "defense": "5",
+    "magic": "0",
+    "magic_def": "4",
+    "level": "3",
+    "maxHP": "35",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "5",
+    "undead": "0"
+}

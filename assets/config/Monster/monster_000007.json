@@ -1,0 +1,14 @@
+{
+	"name": "狐狸",
+	"attack": "18",
+    "defense": "8",
+    "magic": "0",
+    "magic_def": "8",
+    "level": "5",
+    "maxHP": "50",
+    "maxMP": "0",
+    "acc": "20",
+    "eva": "0",
+    "exp": "8",
+    "undead": "0"
+}
