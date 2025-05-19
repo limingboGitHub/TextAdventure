@@ -16,13 +16,16 @@ signal privacy_policy_refused()
 func loadJson():
 	var file = FileAccess.open(json_file, FileAccess.READ)
 	var content = file.get_as_text()
+	file.close()
 	return JSON.parse_string(content)
 
 
 func loadText(entity):
 	var file = FileAccess.open(entity.textPath, FileAccess.READ)
-	var content = file.get_as_text()
-	label.text = content
+	if file:
+		var content = file.get_as_text()
+		label.text = content
+		file.close()
 
 
 func loadPanel():

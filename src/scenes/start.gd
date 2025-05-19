@@ -22,8 +22,12 @@ func _ready() -> void:
 		pass
 	else:
 		$PrivacyDialog.hide()
-		# 将资源从应用目录复制到用户目录
-		cache_tool.copy_resources_to_user_dir()
+		start_game()
+
+
+func start_game():	
+	# 将资源从应用目录复制到用户目录
+	cache_tool.copy_resources_to_user_dir()
 
 	ToastManager.toast_added.connect(_on_toast_added)
 	# 监听开始游戏信号
@@ -217,6 +221,8 @@ func _on_role_select_enter_go_back() -> void:
 func _on_preivew_privacy_policy_agreed() -> void:
 	# 保存用户同意隐私政策
 	cache_tool.save_user_behavior(true)
+	# 开始游戏
+	start_game()
 
 
 func _on_preivew_privacy_policy_refused() -> void:

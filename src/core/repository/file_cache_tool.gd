@@ -15,13 +15,13 @@ var config_user_dir = OS.get_user_data_dir().path_join("config")
 
 # 保存用户行为信息（是否同意隐私政策）
 func save_user_behavior(is_agree: bool):
-	var file = FileAccess.open(game_save_dir.path_join("user_behavior.txt"), FileAccess.WRITE)
+	var file = FileAccess.open(OS.get_user_data_dir().path_join("user_behavior.txt"), FileAccess.WRITE)
 	file.store_line(str(is_agree))
 	file.close()
 
 # 加载用户行为信息（是否同意隐私政策）
 func load_user_behavior() -> bool:
-	var file = FileAccess.open(game_save_dir.path_join("user_behavior.txt"), FileAccess.READ)
+	var file = FileAccess.open(OS.get_user_data_dir().path_join("user_behavior.txt"), FileAccess.READ)
 	if file:
 		file.close()
 		return true
