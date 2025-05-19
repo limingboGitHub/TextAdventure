@@ -16,11 +16,14 @@ func _enter_tree() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if OS.get_name() == "Android":
-		# 请求权限
-		OS.request_permissions()
-	# 将资源从应用目录复制到用户目录
-	cache_tool.copy_resources_to_user_dir()
+	# 获取用户是否同意隐私政策
+	var is_agree = cache_tool.load_user_behavior()
+	if not is_agree:
+		pass
+	else:
+		$PrivacyDialog.hide()
+		# 将资源从应用目录复制到用户目录
+		cache_tool.copy_resources_to_user_dir()
 
 	ToastManager.toast_added.connect(_on_toast_added)
 	# 监听开始游戏信号
@@ -68,6 +71,10 @@ func _show_select_ui() -> void:
 
 func _show_custom_ui() -> void:
 	$CustomControl.show()
+	# 请求读写权限
+	if OS.get_name() == "Android":
+		# 请求权限
+		OS.request_permissions()
 
 
 func _on_toast_added(msg: String) -> void:
@@ -205,3 +212,12 @@ func _show_tip_label(text: String) -> void:
 func _on_role_select_enter_go_back() -> void:
 	# 展示开始界面
 	_show_start_ui()
+
+
+func _on_preivew_privacy_policy_agreed() -> void:
+	# 保存用户同意隐私政策
+	cache_tool.save_user_behavior(true)
+
+
+func _on_preivew_privacy_policy_refused() -> void:
+	get_tree().quit()

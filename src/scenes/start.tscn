@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6cxr68ckbsu3"]
+[gd_scene load_steps=6 format=3 uid="uid://b6cxr68ckbsu3"]
 
 [ext_resource type="Script" uid="uid://bg5vgj6bis5md" path="res://src/scenes/start.gd" id="1_rcs3e"]
 [ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_7h2dq"]
 [ext_resource type="PackedScene" uid="uid://c7uwowu07bhl3" path="res://src/scenes/role_select_enter.tscn" id="3_aid7j"]
 [ext_resource type="Script" uid="uid://dv11h1iikjk8d" path="res://src/scenes/widget/toast_control.gd" id="4_pqf2g"]
+[ext_resource type="PackedScene" uid="uid://drya3riyvlsfn" path="res://src/scenes/privacy_dialog.tscn" id="5_1l8s0"]
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -215,6 +216,8 @@ script = ExtResource("4_pqf2g")
 wait_time = 0.5
 one_shot = true
 
+[node name="PrivacyDialog" parent="." instance=ExtResource("5_1l8s0")]
+
 [connection signal="pressed" from="VBoxContainer/StartGameBt" to="." method="_on_start_game_bt_pressed"]
 [connection signal="pressed" from="VBoxContainer/CustomBt" to="." method="_on_custom_bt_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitBt" to="." method="_on_exit_bt_pressed"]
@@ -229,3 +232,5 @@ one_shot = true
 [connection signal="pressed" from="CustomControl/ResetConfigBt" to="." method="_on_reset_config_bt_pressed"]
 [connection signal="pressed" from="CustomControl/BackBt" to="." method="_on_back_bt_pressed"]
 [connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timeout"]
+[connection signal="privacy_policy_agreed" from="PrivacyDialog" to="." method="_on_preivew_privacy_policy_agreed"]
+[connection signal="privacy_policy_refused" from="PrivacyDialog" to="." method="_on_preivew_privacy_policy_refused"]

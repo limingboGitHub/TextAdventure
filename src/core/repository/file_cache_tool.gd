@@ -13,6 +13,22 @@ var config_res_dir = "res://assets/config"
 # 配置资源用户目录 Windows平台: 应用缓存目录 Android平台：应用的沙盒存储files目录
 var config_user_dir = OS.get_user_data_dir().path_join("config")
 
+# 保存用户行为信息（是否同意隐私政策）
+func save_user_behavior(is_agree: bool):
+	var file = FileAccess.open(game_save_dir.path_join("user_behavior.txt"), FileAccess.WRITE)
+	file.store_line(str(is_agree))
+	file.close()
+
+# 加载用户行为信息（是否同意隐私政策）
+func load_user_behavior() -> bool:
+	var file = FileAccess.open(game_save_dir.path_join("user_behavior.txt"), FileAccess.READ)
+	if file:
+		file.close()
+		return true
+	else:
+		return false
+
+	
 # 保存角色数据
 func save_data_player(data_player: DataPlayer,save_id: String):
 	var save_dir = game_save_dir + "/" + save_id

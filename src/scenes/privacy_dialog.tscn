@@ -1,0 +1,186 @@
+[gd_scene load_steps=7 format=3 uid="uid://drya3riyvlsfn"]
+
+[ext_resource type="Script" uid="uid://djikg60plyuxy" path="res://src/scenes/privacy_dialog.gd" id="1_vx72g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8cc4"]
+font_size = 14
+font_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc00h"]
+bg_color = Color(0.180392, 0.321569, 0.4, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.670588, 0.670588, 0.670588, 0.313726)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4j0cr"]
+font_color = Color(0.94902, 0.94902, 0.94902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r35ad"]
+bg_color = Color(0.439216, 0.756863, 0.701961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.0901961)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nefae"]
+bg_color = Color(0.94902, 0.372549, 0.360784, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.0901961)
+shadow_size = 4
+
+[node name="PrivacyDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 648.0
+offset_bottom = 1425.0
+script = ExtResource("1_vx72g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278431, 0.290196, 0.290196, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "此效果仅供预览,请勿直接修改，
+前往config.json配置参数后自动同步"
+label_settings = SubResource("LabelSettings_a8cc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -249.0
+offset_right = 156.5
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xc00h")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -11.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "隐私政策协议
+
+最后更新日期： 2025-05-18  
+生效日期： 2025-05-18  
+
+感谢您选择体验由刀霜工作室（以下简称\"我们\"）开发的《文字冒险》（以下简称\"本游戏\"）。我们高度重视用户隐私保护，请仔细阅读以下条款以了解我们如何处理您的个人信息。
+
+一、适用范围
+本政策适用于您通过移动设备体验本游戏时，我们可能收集和使用的信息。本游戏为单机游戏，原则上无需联网即可运行，但部分功能（如广告服务、错误日志提交等）可能涉及数据交互。
+
+二、信息收集与使用
+1. 基础设备信息
+   - 收集内容： 唯一设备标识符（Android ID。
+   - 用途说明： 用于确定用户数量。
+
+2. 本地存储权限
+   - 所需权限： 本游戏需访问设备存储空间以保存游戏进度及设置。
+   - 数据归属： 所有存档数据仅存储于您的设备本地，我们无法远程获取。
+
+
+三、数据共享与披露
+我们承诺：
+- 不主动向第三方出售或转让您的个人信息。
+- 仅在以下情况披露数据：
+  - 经您明确同意；
+  - 为遵守法律法规或响应司法机关合法要求；
+  - 为保护本游戏、开发者或用户合法权益免受侵害。
+
+
+四、数据安全措施
+我们采用合理技术手段（如加密存储、权限隔离）保护数据安全，但请注意，互联网传输及电子存储无法保证100%安全。
+
+
+五、未成年人保护
+- 本游戏不主动面向12周岁以下儿童设计，若您为未成年人，请在监护人指导下使用。
+- 如发现误收集未成年人信息，请联系我们立即删除。
+
+
+六、您的权利
+您有权：
+1. 通过设备系统设置拒绝授予非必要权限；
+2. 通过卸载游戏清除本地存档数据。
+
+七、政策更新
+我们可能根据法律法规或功能调整修订本政策。若您继续使用视为接受修订内容。
+
+
+八、联系我们
+如有隐私相关疑问，请通过以下方式联系：  
+电子邮箱： 675683354@qq.com  
+
+
+特别说明：  
+- 本游戏无社交、账号系统及强制联网功能，原则上不主动收集敏感个人信息。
+"
+label_settings = SubResource("LabelSettings_4j0cr")
+autowrap_mode = 2
+
+[node name="AgreeButton" type="Button" parent="ColorRect/Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 434.0
+offset_right = 133.0
+offset_bottom = 475.0
+theme_override_colors/font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_r35ad")
+text = "同意"
+
+[node name="RefuseButton" type="Button" parent="ColorRect/Panel"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 434.0
+offset_right = 275.0
+offset_bottom = 475.0
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_nefae")
+text = "退出"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="ColorRect/Panel/AgreeButton" to="." method="_on_agree_button_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/RefuseButton" to="." method="_on_refuse_button_pressed"]
