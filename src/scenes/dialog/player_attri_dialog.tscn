@@ -90,7 +90,15 @@ offset_top = 134.0
 offset_right = 125.0
 offset_bottom = 176.0
 theme = ExtResource("1_fgju1")
-text = "HP："
+text = "HP"
+
+[node name="mark" type="Label" parent="Hp"]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 100.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = ":"
 
 [node name="Label" type="Label" parent="Hp"]
 layout_mode = 0
@@ -129,7 +137,14 @@ offset_top = 184.0
 offset_right = 125.0
 offset_bottom = 226.0
 theme = ExtResource("1_fgju1")
-text = "MP："
+text = "MP"
+
+[node name="mark" type="Label" parent="Mp"]
+offset_left = 70.0
+offset_right = 100.0
+offset_bottom = 42.0
+theme = ExtResource("1_fgju1")
+text = ":"
 
 [node name="Label" type="Label" parent="Mp"]
 layout_mode = 0
@@ -172,8 +187,8 @@ text = "能力值："
 
 [node name="Label" type="Label" parent="AllocPoint"]
 layout_mode = 0
-offset_left = 110.0
-offset_right = 230.0
+offset_left = 115.0
+offset_right = 235.0
 offset_bottom = 42.0
 theme = ExtResource("1_fgju1")
 text = "0"
