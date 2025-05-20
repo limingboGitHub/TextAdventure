@@ -217,6 +217,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PrivacyDialog" parent="." instance=ExtResource("5_1l8s0")]
+visible = false
 
 [connection signal="pressed" from="VBoxContainer/StartGameBt" to="." method="_on_start_game_bt_pressed"]
 [connection signal="pressed" from="VBoxContainer/CustomBt" to="." method="_on_custom_bt_pressed"]

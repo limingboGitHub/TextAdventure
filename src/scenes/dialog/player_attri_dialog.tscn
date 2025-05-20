@@ -140,6 +140,7 @@ theme = ExtResource("1_fgju1")
 text = "MP"
 
 [node name="mark" type="Label" parent="Mp"]
+layout_mode = 0
 offset_left = 70.0
 offset_right = 100.0
 offset_bottom = 42.0

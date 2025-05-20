@@ -16,13 +16,7 @@ func _enter_tree() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# 获取用户是否同意隐私政策
-	var is_agree = cache_tool.load_user_behavior()
-	if not is_agree:
-		pass
-	else:
-		$PrivacyDialog.hide()
-		start_game()
+	start_game()
 
 
 func start_game():	
