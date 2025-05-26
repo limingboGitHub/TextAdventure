@@ -16,6 +16,33 @@ var rate_table = {
 	3: 16
 }
 
+# 角色名（随机角色名）
+var role_name_table = [
+	# 战士职业
+	"钢铁之拳",
+	"雷鸣战士",
+	"盾墙守护者",
+	"破甲勇士",
+	"铁血骑士",
+	"战锤英雄",
+	"钢铁意志",
+	# 法师职业
+	"月光法师",
+	"火焰术士",
+	"冰霜咏唱者",
+	"暗影法师",
+	"风暴召唤师",
+	"星辰占卜师",
+	"奥术导师",
+	# 盗贼职业
+	"暗影游侠",
+	"迅捷猎手",
+	"暗夜潜行者",
+	"迅影盗贼",
+	"无声隐士",
+	"机敏侠客"
+]
+
 '''
 创建角色信息成功
 create_info: {
@@ -35,6 +62,9 @@ func _ready() -> void:
 	$Player.clear_data()
 	# 随机分配属性点
 	_random_allocate()
+	# 随机一个角色名称
+	_random_role_name()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -108,11 +138,25 @@ func _request_create_role_callback(role_name) -> void:
 
 func show_this():
 	show()
-	# 清空角色名
-	$RoleNameLineEdit.text = ""
+	# 随机分配属性点
 	_random_allocate()
+	# 随机一个角色名称
+	_random_role_name()
 
 
 func _on_back_bt_pressed() -> void:
 	go_back.emit()
 	hide()
+
+
+func _on_random_name_bt_pressed() -> void:
+	# 重新随机一个名称
+	_random_role_name()
+
+
+func _random_role_name() -> void:
+	# 从角色名称表中随机选择一个名称
+	if role_name_table.size() > 0:
+		var random_index = randi() % role_name_table.size()
+		var selected_name = role_name_table[random_index]
+		$RoleNameLineEdit.text = selected_name

@@ -18,7 +18,7 @@ layout_mode = 0
 offset_left = 12.0
 offset_top = 644.0
 offset_right = 639.0
-offset_bottom = 1094.0
+offset_bottom = 1156.0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -124,15 +124,25 @@ offset_bottom = 1017.0
 theme = ExtResource("2_djl42")
 placeholder_text = "请输入角色名"
 max_length = 8
+editable = false
 
 [node name="OKCreateBt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 228.0
-offset_top = 1029.0
+offset_top = 1101.0
 offset_right = 428.0
-offset_bottom = 1079.0
+offset_bottom = 1151.0
 theme = ExtResource("3_ovwvj")
 text = "确认创建"
+
+[node name="RandomNameBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 1025.0
+offset_right = 428.0
+offset_bottom = 1075.0
+theme = ExtResource("3_ovwvj")
+text = "换一个名字"
 
 [node name="BackBt" type="Button" parent="."]
 layout_mode = 0
@@ -152,4 +162,5 @@ offset_bottom = 961.0
 
 [connection signal="pressed" from="AttributeRoot/RandomBt" to="." method="_on_random_bt_pressed"]
 [connection signal="pressed" from="OKCreateBt" to="." method="_on_ok_create_bt_pressed"]
+[connection signal="pressed" from="RandomNameBt" to="." method="_on_random_name_bt_pressed"]
 [connection signal="pressed" from="BackBt" to="." method="_on_back_bt_pressed"]
