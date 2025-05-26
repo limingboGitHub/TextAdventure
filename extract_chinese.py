@@ -21,6 +21,32 @@ INCLUDE_EXTENSIONS = ['.gd', '.tscn', '.json']
 # 输出文件名
 OUTPUT_FILE = 'game_texts.txt'
 
+# 需要手动额外插入的数据
+MANUAL_INSERT_DATA = [
+    "钢铁之拳",
+	"雷鸣战士",
+	"盾墙守护者",
+	"破甲勇士",
+	"铁血骑士",
+	"战锤英雄",
+	"钢铁意志",
+	# 法师职业
+	"月光法师",
+	"火焰术士",
+	"冰霜咏唱者",
+	"暗影法师",
+	"风暴召唤师",
+	"星辰占卜师",
+	"奥术导师",
+	# 盗贼职业
+	"暗影游侠",
+	"迅捷猎手",
+	"暗夜潜行者",
+	"迅影盗贼",
+	"无声隐士",
+	"机敏侠客"
+]
+
 # 注释正则表达式
 GD_COMMENT_PATTERN = re.compile(r'#.*?$', re.MULTILINE)  # GDScript单行注释
 TSCN_COMMENT_PATTERN = re.compile(r';.*?$', re.MULTILINE)  # TSCN文件注释
@@ -111,6 +137,12 @@ def scan_directory(directory):
 
 def save_to_file(texts, output_file):
     """将提取的文本保存到文件"""
+    # 将手动插入的数据添加到集合中
+    for item in MANUAL_INSERT_DATA:
+        # 跳过注释行
+        if not item.strip().startswith('#'):
+            texts.add(item.strip())
+    
     # 按文本排序
     sorted_texts = sorted(list(texts))
     
@@ -132,14 +164,22 @@ def main():
     quoted_texts, file_count, text_file_count = scan_directory(directory)
     
     if quoted_texts:
+        manual_data_count = sum(1 for item in MANUAL_INSERT_DATA if not item.strip().startswith('#'))
         save_to_file(quoted_texts, output_file)
         print(f"\n扫描完成:")
         print(f"已处理 {file_count} 个文件")
         print(f"发现包含文本的文件 {text_file_count} 个")
         print(f"共提取出 {len(quoted_texts)} 个不同的文本字符串")
+        print(f"额外手动添加了 {manual_data_count} 个文本字符串")
         print(f"结果已保存到: {output_file}")
     else:
-        print("未发现双引号内的文本")
+        manual_data_count = sum(1 for item in MANUAL_INSERT_DATA if not item.strip().startswith('#'))
+        if manual_data_count > 0:
+            save_to_file(set(), output_file)
+            print(f"虽然未从文件中提取到文本，但已添加 {manual_data_count} 个手动插入的文本")
+            print(f"结果已保存到: {output_file}")
+        else:
+            print("未发现任何文本")
 
 if __name__ == "__main__":
     main()
