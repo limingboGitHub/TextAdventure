@@ -37,6 +37,10 @@ movie_writer/movie_file="D:/godot/out/movie/test.avi"
 
 enabled=PackedStringArray("res://addons/GodotPrivacyPlugin/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://bgk2hvitb80d6"
+
 [input]
 
 attack={
