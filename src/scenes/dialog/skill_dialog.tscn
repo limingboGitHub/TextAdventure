@@ -73,4 +73,14 @@ offset_top = 4.0
 offset_right = 496.0
 offset_bottom = 54.0
 
+[node name="ResetBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 536.0
+offset_right = 330.0
+offset_bottom = 577.0
+theme = ExtResource("2_2jtef")
+text = "重置"
+
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ResetBt" to="." method="_on_reset_bt_pressed"]

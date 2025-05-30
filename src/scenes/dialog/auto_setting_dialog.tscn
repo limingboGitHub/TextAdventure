@@ -54,16 +54,16 @@ offset_right = 161.0
 offset_bottom = 21.0
 grow_vertical = 2
 theme = ExtResource("2_em0jk")
-text = "HP警戒值："
+text = "HP警戒值(%)："
 
 [node name="LineEdit" type="LineEdit" parent="HpWarningLine"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 177.0
+offset_left = 200.0
 offset_top = -25.0
-offset_right = 297.0
+offset_right = 320.0
 offset_bottom = 25.0
 grow_vertical = 2
 theme = ExtResource("2_em0jk")
@@ -88,16 +88,16 @@ offset_right = 161.0
 offset_bottom = 21.0
 grow_vertical = 2
 theme = ExtResource("2_em0jk")
-text = "MP警戒值："
+text = "MP警戒值(%)："
 
 [node name="LineEdit" type="LineEdit" parent="MpWarningLine"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 177.0
+offset_left = 200.0
 offset_top = -25.0
-offset_right = 297.0
+offset_right = 320.0
 offset_bottom = 25.0
 grow_vertical = 2
 theme = ExtResource("2_em0jk")

@@ -148,6 +148,8 @@ func on_load_finished():
 	$CanvasLayer/UI/Dialog/SkillDialog.skill_used.connect(_on_skill_used)
 	# 监听技能激活事件
 	$CanvasLayer/UI/Dialog/SkillDialog.skill_active_toggled.connect(_on_skill_active_toggled)
+	# 监听技能重置事件
+	$CanvasLayer/UI/Dialog/SkillDialog.skill_reset_pressed.connect(_on_skill_reset_pressed)
 	# 监听炼金制作事件
 	$CanvasLayer/UI/Dialog/AlchemyDialog.alchemy_maked.connect(_on_alchemy_maked)
 	# 监听地图选择事件
@@ -761,6 +763,12 @@ func _on_skill_used(data_skill: DataBaseSkill) -> void:
 
 func _on_skill_active_toggled(data_skill: DataEffectBuffSkill, active: bool) -> void:
 	data_world.get_player().set_buff_active(data_skill.id, active)
+
+
+func _on_skill_reset_pressed() -> void:
+	# 技能重置后，玩家挂机技能切换到普攻
+	var player = data_world.get_player()
+	player.skill = player.normal_attack
 
 
 func _on_game_save_timer_timeout() -> void:

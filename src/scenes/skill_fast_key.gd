@@ -24,6 +24,15 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 	if skill.level == 1 and skill.type == "attack":
 		var index = $ItemList.add_item(skill.name)
 		$ItemList.set_item_metadata(index,skill)
+	if skill.level == 0:
+		# 如果技能等级为0，则从技能列表中移除
+		for i in range($ItemList.get_item_count()):
+			var item_skill = $ItemList.get_item_metadata(i)
+			if item_skill != null and item_skill.id == skill.id:
+				$ItemList.remove_item(i)
+				# 重新选中第一个
+				$ItemList.select(0)
+				break
 
 
 func _show_skill_list(_data_skill_bag: DataSkillBag) -> void:

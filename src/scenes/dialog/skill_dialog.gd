@@ -8,6 +8,8 @@ signal skill_used(data_skill: DataBaseSkill)
 
 signal skill_active_toggled(data_skill: DataEffectBuffSkill, active: bool)
 
+signal skill_reset_pressed()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# 清理所有的技能组
@@ -104,3 +106,8 @@ func _on_skill_point_updated(skill_point: int) -> void:
 
 func _on_skill_item_active_toggled(data_skill: DataEffectBuffSkill, active: bool) -> void:
 	skill_active_toggled.emit(data_skill, active)
+
+
+func _on_reset_bt_pressed() -> void:
+	data_skill_bag.reset_skill_points()
+	skill_reset_pressed.emit()

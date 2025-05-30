@@ -128,12 +128,13 @@ func load_role_equip():
 
 func _on_skill_level_changed(data_skill: DataBaseSkill):
 	print('技能等级变化', data_skill.name, data_skill.level)
-	# 如果技能等级大于1，则删除旧的buff
+	# 删除旧BUFF
+	data_player.remove_buff(data_skill.id)
+	# 如果技能等级大于1，则添加新buff
 	if data_skill.level > 1:
-		data_player.remove_buff(data_skill.id)
-	# 技能类型为buff类，并且是永久被动技能，则在技能等级变化时就为玩家添加buff
-	if data_skill is DataBuffSkill and data_skill.is_permanent():
-		data_player.add_buff(data_skill.create_buff())
+		# 技能类型为buff类，并且是永久被动技能，则在技能等级变化时就为玩家添加buff
+		if data_skill is DataBuffSkill and data_skill.is_permanent():
+			data_player.add_buff(data_skill.create_buff())
 
 
 func _on_item_used(item: DataBagItem):

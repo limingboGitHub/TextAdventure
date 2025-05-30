@@ -358,6 +358,34 @@ func remove_skill_point(value: int):
 	skill_point_updated.emit(skill_point)
 
 
+## 重置技能点
+##
+## 将data中除"新手"阶段外的所有技能等级重置为0，
+## 并将重置的等级数加到skill_point中
+func reset_skill_points():
+	var reset_points = 0
+	
+	# 遍历所有阶段
+	for phase in data.keys():
+		# 跳过"新手"阶段
+		if phase == "新手":
+			continue
+			
+		# 遍历该阶段的所有技能
+		for skill in data[phase]:
+			if skill.level > 0:
+				# 累计重置的技能点
+				reset_points += skill.level
+				# 重置技能等级为0
+				skill.add_level(-skill.level)
+				# 发出技能等级更新信号
+				skill_level_updated.emit(skill)
+	
+	# 将重置的技能点加到可分配技能点中
+	if reset_points > 0:
+		add_skill_point(reset_points)
+
+
 func get_skill_by_phase(phase: String) -> Array:
 	if data.has(phase):
 		return data[phase]
