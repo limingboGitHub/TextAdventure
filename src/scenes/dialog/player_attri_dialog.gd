@@ -156,3 +156,11 @@ func _on_intel_all_bt_pressed() -> void:
 
 func _on_luck_all_bt_pressed() -> void:
 	data_player.alloc_ability(5,data_player.allot_point)
+
+
+func _on_hp_all_bt_pressed() -> void:
+	data_player.alloc_ability(0,data_player.allot_point)
+
+
+func _on_mpl_all_bt_pressed() -> void:
+	data_player.alloc_ability(1,data_player.allot_point)

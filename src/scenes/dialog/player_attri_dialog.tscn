@@ -119,7 +119,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "+"
 
-[node name="IntelAllBt" type="Button" parent="Hp"]
+[node name="HpAllBt" type="Button" parent="Hp"]
 layout_mode = 0
 offset_left = 235.0
 offset_right = 280.0
@@ -166,7 +166,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "+"
 
-[node name="IntelAllBt" type="Button" parent="Mp"]
+[node name="MplAllBt" type="Button" parent="Mp"]
 layout_mode = 0
 offset_left = 235.0
 offset_right = 280.0
@@ -586,9 +586,9 @@ offset_right = 335.0
 offset_bottom = 56.0
 
 [connection signal="pressed" from="Hp/Button" to="." method="_on_hp_button_pressed"]
-[connection signal="pressed" from="Hp/IntelAllBt" to="." method="_on_intel_all_bt_pressed"]
+[connection signal="pressed" from="Hp/HpAllBt" to="." method="_on_hp_all_bt_pressed"]
 [connection signal="pressed" from="Mp/Button" to="." method="_on_mp_button_pressed"]
-[connection signal="pressed" from="Mp/IntelAllBt" to="." method="_on_intel_all_bt_pressed"]
+[connection signal="pressed" from="Mp/MplAllBt" to="." method="_on_mpl_all_bt_pressed"]
 [connection signal="pressed" from="AllocPoint/Button" to="." method="_on_auto_alloc_button_pressed"]
 [connection signal="pressed" from="AllocPoint/ResetBt" to="." method="_on_reset_bt_pressed"]
 [connection signal="pressed" from="Power/Button" to="." method="_on_power_button_pressed"]
