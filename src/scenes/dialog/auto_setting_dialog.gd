@@ -40,8 +40,35 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_ok_button_pressed() -> void:
+	# 旧的值
+	var old_hp_warning_line = hp_warning_line
+	var old_mp_warning_line = mp_warning_line
+	# 获取输入值
+	var hp_input = $HpWarningLine/LineEdit.text
+	var mp_input = $MpWarningLine/LineEdit.text
+	
+	# 验证输入是否为有效数字
+	if not hp_input.is_valid_int():
+		$HpWarningLine/LineEdit.text = str(old_hp_warning_line)
+		return
+	if  not mp_input.is_valid_int():
+		$MpWarningLine/LineEdit.text = str(old_mp_warning_line)
+		return
+	
+	var hp_value = int(hp_input)
+	var mp_value = int(mp_input)
+	
+	# 验证数值范围（0-100）
+	if hp_value < 0 or hp_value > 100:
+		$HpWarningLine/LineEdit.text = str(old_hp_warning_line)
+		return
+	
+	if mp_value < 0 or mp_value > 100:
+		$MpWarningLine/LineEdit.text = str(old_mp_warning_line)
+		return
+	
 	# 保存设置
-	hp_warning_line = int($HpWarningLine/LineEdit.text)
-	mp_warning_line = int($MpWarningLine/LineEdit.text)
+	hp_warning_line = hp_value
+	mp_warning_line = mp_value
 	print('挂机设置保存:', hp_warning_line, mp_warning_line)
 	setting_saved.emit(hp_warning_line, mp_warning_line)
