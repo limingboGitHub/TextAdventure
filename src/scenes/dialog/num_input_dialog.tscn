@@ -7,7 +7,7 @@
 [node name="NumInputDialog" type="Panel"]
 offset_left = 103.0
 offset_top = 204.0
-offset_right = 402.0
+offset_right = 501.0
 offset_bottom = 285.0
 theme_override_styles/panel = ExtResource("1_r0wdh")
 script = ExtResource("2_g4y6k")
@@ -25,12 +25,21 @@ virtual_keyboard_type = 2
 
 [node name="OKBt" type="Button" parent="."]
 layout_mode = 0
-offset_left = 219.0
+offset_left = 326.0
 offset_top = 15.0
-offset_right = 287.0
+offset_right = 394.0
 offset_bottom = 65.0
 theme = ExtResource("2_y4rnx")
 text = "确认"
+
+[node name="BatchBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 15.0
+offset_right = 316.0
+offset_bottom = 65.0
+theme = ExtResource("2_y4rnx")
+text = "批量20"
 
 [node name="CancelBt" type="Button" parent="."]
 layout_mode = 0
@@ -42,4 +51,5 @@ theme = ExtResource("2_y4rnx")
 text = "取消"
 
 [connection signal="pressed" from="OKBt" to="." method="_on_ok_bt_pressed"]
+[connection signal="pressed" from="BatchBt" to="." method="_on_batch_bt_pressed"]
 [connection signal="pressed" from="CancelBt" to="." method="_on_cancel_bt_pressed"]

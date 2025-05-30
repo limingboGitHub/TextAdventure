@@ -34,3 +34,7 @@ func show_input(_data_bag_item:DataBagItem):
 
 func _on_cancel_bt_pressed() -> void:
 	hide()
+
+
+func _on_batch_bt_pressed() -> void:
+	$LineEdit.text = "20"
