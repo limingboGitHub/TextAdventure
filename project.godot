@@ -39,7 +39,7 @@ enabled=PackedStringArray("res://addons/GodotPrivacyPlugin/plugin.cfg")
 
 [gui]
 
-theme/custom_font="uid://bgk2hvitb80d6"
+theme/custom_font="uid://c0mmbe64slo8u"
 
 [input]
 

@@ -45,7 +45,7 @@ offset_bottom = 37.0
 theme = ExtResource("1_0hqn5")
 theme_override_colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
 theme_override_font_sizes/font_size = 23
-text = "max："
+text = "max:"
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MaxLevel"]
@@ -68,7 +68,7 @@ offset_bottom = 37.0
 theme = ExtResource("1_0hqn5")
 theme_override_colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
 theme_override_font_sizes/font_size = 23
-text = "当前："
+text = "当前:"
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="Level"]
