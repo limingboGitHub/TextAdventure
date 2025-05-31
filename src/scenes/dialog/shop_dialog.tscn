@@ -134,7 +134,7 @@ visible = false
 layout_mode = 0
 offset_left = 0.0
 offset_top = 210.0
-offset_right = 400.0
+offset_right = 410.0
 offset_bottom = 291.0
 
 [node name="CloseButton" parent="." instance=ExtResource("7_25p47")]

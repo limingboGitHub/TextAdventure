@@ -37,4 +37,4 @@ func _on_cancel_bt_pressed() -> void:
 
 
 func _on_batch_bt_pressed() -> void:
-	$LineEdit.text = "20"
+	$LineEdit.text = "100"
