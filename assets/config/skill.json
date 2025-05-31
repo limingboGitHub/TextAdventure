@@ -229,7 +229,7 @@
 	},
 	"skill_000202": {
 		"name": "涂毒",
-		"desc": "每次伤害有10%概率造成中毒，中毒持续5秒，每秒造成{d}伤害",
+		"desc": "每次伤害有20%概率造成中毒，中毒持续10秒，每秒造成{d}伤害",
 		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
@@ -238,8 +238,8 @@
 					"id": "effect_000019",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.0105,
-					"step_value": 0.0005
+					"start_value": 0.012,
+					"step_value": 0.002
 				}
 			]
 		}

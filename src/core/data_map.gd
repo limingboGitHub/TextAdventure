@@ -266,8 +266,8 @@ func _after_damage_effect(_data_player: DataPlayer, _target: DataMonster,_skill:
 	if _data_player.has_effect("effect_000019"):
 		var attack_attach_poison_effect = _data_player.get_effect("effect_000019")
 		if attack_attach_poison_effect.value_type == Constants.VALUE_TYPE_PERCENT:
-			# 百分之10的概率中毒
-			if randf() < 0.1:
+			# 百分之20的概率中毒
+			if randf() < 0.2:
 				var damage_value = _data_player.get_final_attack(1) * attack_attach_poison_effect.value
 				damage_value = max(damage_value, 1)
 				var buff = _create_poison_buff(damage_value)

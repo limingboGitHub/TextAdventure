@@ -130,9 +130,9 @@
 		"effect_000019": {
 			"name": "涂毒",
 			"effect_type": "attack_attach_poison",
-			"desc": "攻击时10%概率造成中毒，中毒持续10秒，每秒造成{d}伤害",
+			"desc": "攻击时20%概率造成中毒，中毒持续10秒，每秒造成{d}伤害",
 			"value_type": "percent",
-			"value": 0.01
+			"value": 0.02
 		},
 		"effect_000020": {
 			"name": "中毒",
