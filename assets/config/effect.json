@@ -102,7 +102,7 @@
 		"effect_000015": {
 			"name": "法力涌动",
 			"effect_type": "mp_cost_enhance_skill",
-			"desc": "消耗1000点MP后，提升下一次攻击{d}伤害",
+			"desc": "消耗200点MP后，提升下一次攻击{d}伤害",
 			"value_type": "percent",
 			"value": 0.2
 		},
@@ -116,9 +116,9 @@
 		"effect_000017": {
 			"name": "血气爆发",
 			"effect_type": "hp_cost_enhance_skill",
-			"desc": "消耗1000点HP后，提升下一次攻击{d}伤害",
+			"desc": "消耗200点HP后，提升下一次攻击{d}伤害",
 			"value_type": "percent",
-			"value": 0.1
+			"value": 0.2
 		},
 		"effect_000018": {
 			"name": "魔力汲取",

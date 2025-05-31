@@ -86,14 +86,14 @@ var attack_range_increase: float = 0
 # “法力涌动”特殊效果期间消耗的mp
 var mp_cost_enhance: int = 0
 # “法力涌动”mp消耗临界值
-const MP_COST_ENHANCE_CRITICAL_VALUE = 1000
+const MP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
 #region “血气爆发”特殊效果
 # “血气爆发”消耗的hp
 var hp_cost_enhance: int = 0
 # “血气爆发”hp消耗临界值
-const HP_COST_ENHANCE_CRITICAL_VALUE = 1000
+const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
 
