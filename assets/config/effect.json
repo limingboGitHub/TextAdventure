@@ -146,7 +146,7 @@
 			"effect_type": "evasion_success_attack",
 			"desc": "闪避时，有{d}概率追击一次目标",
 			"value_type": "percent",
-			"value": 0.10
+			"value": 0.2
 		},
 		"effect_000022": {
 			"name": "伤口撕裂",
@@ -167,7 +167,7 @@
 			"effect_type": "luck_increase_attack_max",
 			"desc": "每点运气值增加攻击力和魔法力波动上限{d}",
 			"value_type": "percent",
-			"value": 0.001
+			"value": 0.002
 		},
 		"effect_000025": {
 			"name": "护甲撕裂",
