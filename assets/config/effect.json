@@ -167,7 +167,7 @@
 			"effect_type": "luck_increase_attack_max",
 			"desc": "每点运气值增加攻击力和魔法力波动上限{d}",
 			"value_type": "percent",
-			"value": 0.005
+			"value": 0.002
 		},
 		"effect_000025": {
 			"name": "护甲撕裂",
