@@ -8,10 +8,15 @@ class_name FileCacheTool
 # 游戏存档目录
 var game_save_dir = "user://game_save"
 
+# 配置文件版本号
+const CONFIG_VERSION = 2
+
 # 配置资源目录内部目录
 var config_res_dir = "res://assets/config"
 # 配置资源用户目录 Windows平台: 应用缓存目录 Android平台：应用的沙盒存储files目录
 var config_user_dir = OS.get_user_data_dir().path_join("config")
+# 配置文件版本号缓存文件路径
+var config_version_cache_file = OS.get_user_data_dir().path_join("config_version.txt")
 
 # 保存用户行为信息（是否同意隐私政策）
 func save_user_behavior(is_agree: bool):
@@ -28,7 +33,29 @@ func load_user_behavior() -> bool:
 	else:
 		return false
 
-	
+# 保存配置文件版本号到缓存
+func save_config_version(version: int):
+	var file = FileAccess.open(config_version_cache_file, FileAccess.WRITE)
+	if file:
+		file.store_line(str(version))
+		file.close()
+		print("已保存配置文件版本号：", version)
+	else:
+		print("保存配置文件版本号失败")
+
+# 加载配置文件版本号缓存
+func load_config_version() -> int:
+	var file = FileAccess.open(config_version_cache_file, FileAccess.READ)
+	if file:
+		var version_str = file.get_line().strip_edges()
+		file.close()
+		var version = int(version_str)
+		print("读取到缓存的配置文件版本号：", version)
+		return version
+	else:
+		print("配置文件版本号缓存不存在，默认版本号为1")
+		return 1
+
 # 保存角色数据
 func save_data_player(data_player: DataPlayer,save_id: String):
 	var save_dir = game_save_dir + "/" + save_id
@@ -285,15 +312,29 @@ func _write_file(file_name: String, data: Dictionary):
 
 
 func copy_resources_to_user_dir(is_force: bool = false):
-	# 如果用户的配置文件目录已经存在了，则使用已有的配置信息，不再复制
+	# 检查配置文件版本号
+	var cached_version = load_config_version()
+	var current_version = CONFIG_VERSION
+	
+	# 如果缓存版本号小于当前版本号，则需要更新配置文件
+	var need_update = cached_version < current_version
+	
+	if need_update:
+		print("检测到配置文件版本更新，从版本 ", cached_version, " 更新到版本 ", current_version)
+		is_force = true
+	
+	# 如果用户的配置文件目录已经存在了，且不需要强制更新，则使用已有的配置信息，不再复制
 	if !is_force and DirAccess.dir_exists_absolute(config_user_dir):
-		print("配置文件目录已经存在，不再复制")
+		print("配置文件目录已经存在，且版本号为最新，不再复制")
 		return
 
 	# 创建用户配置文件目录
 	DirAccess.make_dir_recursive_absolute(config_user_dir)
 	# 执行递归复制
 	copy_directory(config_res_dir, config_user_dir)
+	
+	# 复制完成后，保存当前版本号到缓存
+	save_config_version(current_version)
 
 
 # 递归复制文件夹
