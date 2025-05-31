@@ -48,7 +48,7 @@
 			"effect_type": "skill_enhance",
 			"skill_enhance": {
 				"skill_id": "skill_000100",
-				"cd": -0.2
+				"cd": -0.25
 			}
 		},
 		"effect_000009": {
@@ -87,7 +87,7 @@
 			"effect_type": "skill_enhance",
 			"skill_enhance": {
 				"skill_id": "skill_000101",
-				"damage": 0.1
+				"damage": 0.2
 			}
 		},
 		"effect_000014": {

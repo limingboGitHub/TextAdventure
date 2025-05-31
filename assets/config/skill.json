@@ -196,8 +196,8 @@
 					"calculate_type": "formula",
 					"start_add_count": 1,
 					"step_add_count": 0,
-					"start_add_probability": 0.01,
-					"step_add_probability": 0.01,
+					"start_add_probability": 0.03,
+					"step_add_probability": 0.03,
 					"start_mp_cost": 1,
 					"step_mp_cost": 1
 				}
