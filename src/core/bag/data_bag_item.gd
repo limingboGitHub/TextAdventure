@@ -88,6 +88,7 @@ func save() -> Dictionary:
 	dict['uuid'] = uuid
 	dict['name'] = name
 	dict['count'] = count
+	dict['price'] = price
 	return dict
 
 
@@ -96,6 +97,8 @@ func load(dict: Dictionary) -> void:
 	uuid = dict['uuid']
 	name = dict['name']
 	count = dict['count']
+	if dict.has('price'):
+		price = dict['price']
 
 
 # 子类重写
