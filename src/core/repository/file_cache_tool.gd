@@ -468,6 +468,14 @@ func _find_and_replace_file(dir_path: String, target_file_name: String, content:
 	var dir = DirAccess.open(dir_path)
 	if !dir:
 		return "无法打开目录：" + dir_path
+
+	# 怪物配置文件夹可能有新文件，直接加入
+	if target_file_name.begins_with("monster_"):
+		var monster_path = config_user_dir.path_join("Monster")
+		var target_file = _save_file(monster_path.path_join(target_file_name), content)
+		if target_file:
+			print("已成功导入文件到：", monster_path.path_join(target_file_name))
+			return ""
 	
 	var found = false
 	
@@ -486,10 +494,8 @@ func _find_and_replace_file(dir_path: String, target_file_name: String, content:
 					found = true
 			elif file_name == target_file_name:
 				# 找到同名文件，覆盖内容
-				var target_file = FileAccess.open(full_path, FileAccess.WRITE)
+				var target_file = _save_file(full_path, content)
 				if target_file:
-					target_file.store_string(content)
-					target_file.close()
 					print("已成功导入文件到：", full_path)
 					found = true
 				else:
@@ -499,3 +505,13 @@ func _find_and_replace_file(dir_path: String, target_file_name: String, content:
 	
 	dir.list_dir_end()
 	return ""
+
+
+func _save_file(file_name: String, content: String) -> bool:
+	var file = FileAccess.open(file_name, FileAccess.WRITE)
+	if file:
+		file.store_string(content)
+		file.close()
+		return true
+	else:
+		return false
