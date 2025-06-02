@@ -167,6 +167,27 @@
 					"x": 400,
 					"y": 550
 				}
+			},
+			"portal_000005":{
+				"target_map_id":"map_000122",
+				"position":{
+					"x": 0,
+					"y": 550
+				}
+			},
+			"portal_000006":{
+				"target_map_id":"map_000127",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			},
+			"portal_000007":{
+				"target_map_id":"map_000132",
+				"position":{
+					"x": 550,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -572,10 +593,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000101"
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 550,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000123"
+				"target_map_id":"map_000123",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -585,10 +614,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000122"
+				"target_map_id":"map_000122",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000124"
+				"target_map_id":"map_000124",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -598,10 +635,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000123"
+				"target_map_id":"map_000123",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000125"
+				"target_map_id":"map_000125",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -611,10 +656,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000124"
+				"target_map_id":"map_000124",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000126"
+				"target_map_id":"map_000126",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -624,7 +677,11 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000125"
+				"target_map_id":"map_000125",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			}
 		}
 	},
@@ -636,10 +693,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000101"
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000128"
+				"target_map_id":"map_000128",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -649,10 +714,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000127"
+				"target_map_id":"map_000127",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000129"
+				"target_map_id":"map_000129",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -662,10 +735,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000128"
+				"target_map_id":"map_000128",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000130"
+				"target_map_id":"map_000130",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -675,10 +756,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000129"
+				"target_map_id":"map_000129",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000131"
+				"target_map_id":"map_000131",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -688,7 +777,11 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000130"
+				"target_map_id":"map_000130",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			}
 		}
 	},
@@ -700,10 +793,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000101"
+				"target_map_id":"map_000101",
+				"position":{
+					"x": 0,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000133"
+				"target_map_id":"map_000133",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -713,10 +814,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000132"
+				"target_map_id":"map_000132",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000134"
+				"target_map_id":"map_000134",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -726,10 +835,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000133"
+				"target_map_id":"map_000133",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000135"
+				"target_map_id":"map_000135",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -739,10 +856,18 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000134"
+				"target_map_id":"map_000134",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			},
 			"portal_000002":{
-				"target_map_id":"map_000136"
+				"target_map_id":"map_000136",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
 			}
 		}
 	},
@@ -752,7 +877,11 @@
 		"region": "星丘大陆",
 		"portals":{
 			"portal_000001":{
-				"target_map_id":"map_000135"
+				"target_map_id":"map_000135",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
 			}
 		}
 	},
