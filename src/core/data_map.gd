@@ -173,6 +173,13 @@ func _on_monster_hurted(data_role:DataRole,data_damage:DataDamage):
 
 
 func _on_monster_dead(data_role:DataRole):
+	# 给玩家增加经验
+	if not is_endless:
+		if data_player:
+			data_player.add_exp(data_role.exp)
+	# 生成掉落物
+	_create_drop_thing(data_role)
+	
 	# 删除数据
 	remove_monster(data_role)
 	# 无尽之塔判断怪物是否全部死亡
@@ -249,13 +256,6 @@ func player_attack_skill_effect(
 			# 判断击杀类的特殊效果
 			_check_kill_monster_effect(_data_player, target)
 
-			# 给玩家增加经验
-			if not is_endless:
-				_data_player.add_exp(target.exp)
-			
-			# 生成掉落物
-			_create_drop_thing(target)
-
 
 func _after_damage_effect(_data_player: DataPlayer, _target: DataMonster,_skill: DataBaseSkill, damage: DataDamage):
 	if _data_player.has_effect("effect_000018"):
@@ -267,7 +267,7 @@ func _after_damage_effect(_data_player: DataPlayer, _target: DataMonster,_skill:
 		var attack_attach_poison_effect = _data_player.get_effect("effect_000019")
 		if attack_attach_poison_effect.value_type == Constants.VALUE_TYPE_PERCENT:
 			# 百分之20的概率中毒
-			if randf() < 0.2:
+			if randf() < 1:
 				var damage_value = _data_player.get_final_attack(1) * attack_attach_poison_effect.value
 				damage_value = max(damage_value, 1)
 				var buff = _create_poison_buff(damage_value)
@@ -315,6 +315,7 @@ func _create_drop_thing(target: DataMonster):
 	# 无尽之塔不会掉落
 	if is_endless:
 		return
+
 	# 掉落物的偏移值，方便展示
 	var offset_index = 0
 	var drop_things = drop_thing_manager.get_drop_things(target.monster_id,target.is_elite)
