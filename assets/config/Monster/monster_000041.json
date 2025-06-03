@@ -1,0 +1,14 @@
+{
+	"name": "小螃蟹",
+	"attack": "48",
+    "defense": "30",
+    "magic": "0",
+    "magic_def": "18",
+    "level": "34",
+    "maxHP": "850",
+    "maxMP": "0",
+    "acc": "290",
+    "eva": "160",
+    "exp": "190",
+    "undead": "0"
+} 

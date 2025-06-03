@@ -1,0 +1,14 @@
+{
+	"name": "彩色水母",
+	"attack": "52",
+    "defense": "22",
+    "magic": "40",
+    "magic_def": "45",
+    "level": "36",
+    "maxHP": "950",
+    "maxMP": "250",
+    "acc": "310",
+    "eva": "190",
+    "exp": "210",
+    "undead": "0"
+} 

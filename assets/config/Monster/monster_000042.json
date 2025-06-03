@@ -1,0 +1,14 @@
+{
+	"name": "蓝色水母",
+	"attack": "50",
+    "defense": "20",
+    "magic": "35",
+    "magic_def": "40",
+    "level": "35",
+    "maxHP": "900",
+    "maxMP": "200",
+    "acc": "300",
+    "eva": "180",
+    "exp": "200",
+    "undead": "0"
+} 

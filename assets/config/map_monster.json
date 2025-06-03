@@ -341,5 +341,67 @@
 				"y": 0.5
 			}
 		}
+	],
+	"map_000122": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000040",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000041",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000123": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000042",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000043",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000124": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000044",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000045",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000126": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000046",
+					"refresh_rate": 1,
+					"refresh_interval": 180,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
 	]
 }

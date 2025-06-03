@@ -1,0 +1,15 @@
+{
+	"name": "水晶守卫",
+    "type":"boss",
+	"attack": "120",
+    "defense": "50",
+    "magic": "80",
+    "magic_def": "60",
+    "level": "40",
+    "maxHP": "50000",
+    "maxMP": "1000",
+    "acc": "350",
+    "eva": "250",
+    "exp": "3000",
+    "undead": "0"
+} 

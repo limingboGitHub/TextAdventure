@@ -1,0 +1,14 @@
+{
+	"name": "大龙虾",
+	"attack": "58",
+    "defense": "35",
+    "magic": "15",
+    "magic_def": "30",
+    "level": "38",
+    "maxHP": "1100",
+    "maxMP": "80",
+    "acc": "330",
+    "eva": "180",
+    "exp": "240",
+    "undead": "0"
+} 
