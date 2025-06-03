@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c11xysl3ajpv6"]
+
+[sub_resource type="Gradient" id="Gradient_5r0yw"]
+colors = PackedColorArray(0.921569, 0.27451, 0, 0.278431, 0.921569, 0.27451, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6oa2g"]
+gradient = SubResource("Gradient_5r0yw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5r0yw"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 38.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+radial_velocity_min = -50.0
+radial_velocity_max = -50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_6oa2g")
+
+[node name="AttackEffect3" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 30
+trail_lifetime = 0.2
+trail_sections = 4
+process_material = SubResource("ParticleProcessMaterial_5r0yw")

@@ -36,9 +36,9 @@ func _ready() -> void:
 		data_player.attribute_updated.connect(_on_player_attribute_updated)
 		# 监听玩家休息开始事件
 		data_player.rest_started.connect(_on_player_rest_started)
-		# 监听“法力涌动”状态变化事件
+		# 监听"法力涌动"状态变化事件
 		data_player.mp_cost_enhance_status_changed.connect(_on_mp_cost_enhance_status_changed)
-		# 监听“血气爆发”状态变化事件
+		# 监听"血气爆发"状态变化事件
 		data_player.hp_cost_enhance_status_changed.connect(_on_hp_cost_enhance_status_changed)
 
 		if data_player.role_equip:
@@ -274,3 +274,8 @@ func _on_mp_cost_enhance_status_changed(_player: DataPlayer,is_match: bool):
 
 func _on_hp_cost_enhance_status_changed(_player: DataPlayer,is_match: bool):
 	$HpCostEnhanceLabel.visible = is_match
+
+
+func show_build_strength_effect(is_show: bool):
+	$AttackEffect3.visible = is_show
+	

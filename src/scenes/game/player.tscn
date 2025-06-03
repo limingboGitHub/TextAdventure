@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckgolexat0dxo"]
+[gd_scene load_steps=11 format=3 uid="uid://ckgolexat0dxo"]
 
 [ext_resource type="Script" uid="uid://sdtpcokcuu21" path="res://src/scenes/game/player.gd" id="1_y2cg1"]
 [ext_resource type="PackedScene" uid="uid://bx2d4keg6x7ho" path="res://src/scenes/game/color_bar.tscn" id="2_agfvh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ctsj20lbvsrfc" path="res://src/scenes/game/skill_name_group.gd" id="4_75e52"]
 [ext_resource type="StyleBox" uid="uid://ch8tsa4454dfj" path="res://theme/quality/quality_epic.tres" id="5_syj1c"]
 [ext_resource type="Script" uid="uid://cgg153p8wa2cr" path="res://src/scenes/game/poison_damage_group.gd" id="6_53qtt"]
+[ext_resource type="PackedScene" uid="uid://c11xysl3ajpv6" path="res://src/scenes/effect/attack_effect3.tscn" id="8_lgh6a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi0aj"]
 bg_color = Color(0.329412, 0.317647, 0.32549, 1)
@@ -130,5 +131,8 @@ theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 12
 text = "血"
+
+[node name="AttackEffect3" parent="." instance=ExtResource("8_lgh6a")]
+visible = false
 
 [connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]

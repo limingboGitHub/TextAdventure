@@ -42,7 +42,11 @@ func set_data_skill_bag(_data_skill_bag: DataSkillBag) -> void:
 	self.data_skill_bag = _data_skill_bag
 	
 	# 显示技能组
-	for key in _data_skill_bag.data.keys():
+	var keys = _data_skill_bag.data.keys()
+	# 按字符串长度排序
+	keys.sort_custom(func(a, b): return a.length() < b.length())
+	
+	for key in keys:
 		_show_skill_group(key)
 	# 监听技能的新增
 	_data_skill_bag.skill_added.connect(_on_skill_added)

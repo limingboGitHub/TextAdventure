@@ -423,11 +423,16 @@ func process_attack():
 					_hp_update()
 				
 				execute_skill(skill,skill_add_count)
+				# 特殊效果影响技能CD
+				var effect_cd = 0.0
+				if has_effect("effect_000026"):
+					effect_cd = 2.0
+
 				# 重置冷却
 				if has_skill_enhance(skill.id):
-					execute_cd_rest = (skill.cd + get_skill_enhance(skill.id).cd) / float(SingletonGame.speed)
+					execute_cd_rest = (skill.cd + effect_cd + get_skill_enhance(skill.id).cd) / float(SingletonGame.speed)
 				else:
-					execute_cd_rest = skill.cd / float(SingletonGame.speed)
+					execute_cd_rest = (skill.cd + effect_cd) / float(SingletonGame.speed)
 				print("技能释放后，冷却时间：",execute_cd_rest)
 			# 退出休息状态
 			is_resting = false

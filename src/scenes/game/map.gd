@@ -547,6 +547,15 @@ func _skill_executed_casting(
 		attack_effect.ani_skill_cast_interrupted.connect(call_back_cast_interrupted)
 		# 监听动画结束
 		attack_effect.ani_all_finished.connect(call_back_finished)
+	elif skill.id == "skill_000001":
+		if player_scene.data_player.has_effect("effect_000026"):
+			var effect = player_scene.data_player.get_effect("effect_000026")
+			player_scene.show_build_strength_effect(true)
+			# 蓄力一段时间后回调
+			await get_tree().create_timer(2.0).timeout
+			player_scene.show_build_strength_effect(false)
+			call_back_cast_finished.call(null)
+			call_back_finished.call()
 	else:
 		# 没有释放动画的直接执行回调
 		call_back_cast_finished.call(null)

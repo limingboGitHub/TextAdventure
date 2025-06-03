@@ -35,7 +35,7 @@ movie_writer/movie_file="D:/godot/out/movie/test.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotPrivacyPlugin/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 
