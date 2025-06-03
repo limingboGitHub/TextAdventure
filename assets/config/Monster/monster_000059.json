@@ -1,0 +1,14 @@
+{
+	"name": "圣甲虫",
+	"attack": "88",
+    "defense": "55",
+    "magic": "30",
+    "magic_def": "50",
+    "level": "49",
+    "maxHP": "1700",
+    "maxMP": "150",
+    "acc": "460",
+    "eva": "220",
+    "exp": "460",
+    "undead": "0"
+} 

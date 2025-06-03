@@ -1,0 +1,14 @@
+{
+	"name": "木乃伊",
+	"attack": "85",
+    "defense": "50",
+    "magic": "20",
+    "magic_def": "45",
+    "level": "48",
+    "maxHP": "1650",
+    "maxMP": "100",
+    "acc": "450",
+    "eva": "200",
+    "exp": "440",
+    "undead": "1"
+} 

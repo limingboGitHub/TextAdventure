@@ -1,0 +1,14 @@
+{
+	"name": "小幽灵",
+	"attack": "70",
+    "defense": "15",
+    "magic": "50",
+    "magic_def": "60",
+    "level": "42",
+    "maxHP": "1000",
+    "maxMP": "300",
+    "acc": "390",
+    "eva": "280",
+    "exp": "320",
+    "undead": "1"
+} 

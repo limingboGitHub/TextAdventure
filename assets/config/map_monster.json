@@ -403,5 +403,129 @@
 				"y": 0.5
 			}
 		}
+	],
+	"map_000127": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000047",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000048",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000129": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000049",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000050",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000130": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000051",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000052",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000131": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000053",
+					"refresh_rate": 1,
+					"refresh_interval": 300,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
+	],
+	"map_000132": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000054",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000055",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000134": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000056",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000057",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000135": [
+		{
+			"count": 20,
+			"monster_list": [
+				{
+					"id": "monster_000058",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_000059",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000136": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_000060",
+					"refresh_rate": 1,
+					"refresh_interval": 360,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
 	]
 }

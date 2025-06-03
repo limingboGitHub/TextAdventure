@@ -1,0 +1,15 @@
+{
+	"name": "人面狮身兽",
+    "type":"boss",
+	"attack": "160",
+    "defense": "90",
+    "magic": "120",
+    "magic_def": "100",
+    "level": "50",
+    "maxHP": "80000",
+    "maxMP": "2000",
+    "acc": "450",
+    "eva": "300",
+    "exp": "5000",
+    "undead": "0"
+} 
