@@ -131,6 +131,23 @@
 			"step_mp": 0.5
 		}
 	},
+	"skill_000003": {
+		"name": "深蹲蓄力",
+		"desc": "奋力一击前，进行2秒钟的蓄力，每0.1秒增加{d}伤害",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000026",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.005,
+					"step_value": 0.005
+				}
+			]
+		}
+	},
 
 	"skill_000100": {
 		"name": "魔力飞弹",

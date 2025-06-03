@@ -175,6 +175,13 @@
 			"desc": "攻击时{d}概率降低目标双抗1点",
 			"value_type": "percent", 
 			"value": 0.10
+		},
+		"effect_000026": {
+			"name": "深蹲蓄力",
+			"effect_type": "squat_strength",
+			"desc": "",
+			"value_type": "percent", 
+			"value": 0.01
 		}
 	}
 }
