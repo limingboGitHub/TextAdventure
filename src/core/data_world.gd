@@ -629,6 +629,7 @@ func _mission_rewarded(rewards: Array[MissionReward]):
 			for skill_id in job_skills:
 				var skill = skill_bag.create(skill_id)
 				skill_bag.add_skill(reward.job_name, skill)
+			ToastManager.add_toast("转职成功，获得新技能")
 		elif reward is MissionRewardAlchemy:
 			player_manager.data_alchemy_bag.add_alchemy(reward.alchemy_id)
 			# 更新炼金配方中的物品要求数量信息
