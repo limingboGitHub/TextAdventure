@@ -182,6 +182,13 @@
 			"desc": "",
 			"value_type": "percent", 
 			"value": 0.01
+		},
+		"effect_000027": {
+			"name": "大力奇迹",
+			"effect_type": "power_charge",
+			"desc": "每10点力量增加{d}秒的深蹲蓄力时间",
+			"value_type": "number", 
+			"value": 0.1
 		}
 	}
 }

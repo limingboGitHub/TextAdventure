@@ -253,7 +253,14 @@ func _show_effect_desc(data_effect: DataEffect)-> String:
 			attribute_text += desc + "\n"
 		else:
 			var effect_value = data_effect.value
-			var effect_value_str = _effect_value_color() + str(int(effect_value)) + "[/color]"
+			# 优化小数和整数的展示
+			var effect_value_tmp = ""
+			if (effect_value - int(effect_value)) > 0:
+				effect_value_tmp = str(effect_value)
+			else:
+				effect_value_tmp = str(int(effect_value))
+
+			var effect_value_str = _effect_value_color() + effect_value_tmp + "[/color]"
 			var desc = data_effect.desc.replace("{d}", effect_value_str)
 			attribute_text += desc + "\n"
 	return attribute_text

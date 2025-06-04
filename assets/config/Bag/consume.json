@@ -743,6 +743,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000025"
+		},
+		"consume_002123": {
+			"name": "[卷轴]大力奇迹",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000027"
 		}
 	}
 }

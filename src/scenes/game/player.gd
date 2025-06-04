@@ -294,5 +294,9 @@ func _on_charge_started():
 
 
 ## 蓄力完成时的回调
-func _on_charge_completed():
+func _on_charge_completed(is_success: bool):
 	$AttackEffect3.visible = false
+	if is_success:
+		print("玩家场景：蓄力正常完成，隐藏蓄力特效")
+	else:
+		print("玩家场景：蓄力被取消，隐藏蓄力特效")

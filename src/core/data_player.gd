@@ -56,7 +56,7 @@ var can_not_be_hurt_rest: float = 0
 # 无敌总时长
 var CAN_NOT_BE_HURT_DURATION = 2
 
-# 能力值来源为“加点分配”
+# 能力值来源为"加点分配"
 const ATTRIBUTE_ALLOC = "allocate"
 
 
@@ -82,17 +82,17 @@ var role_equip: DataRoleEquip
 # 玩家的攻击范围增幅 百分比
 var attack_range_increase: float = 0
 
-#region “法力涌动”特殊效果
-# “法力涌动”特殊效果期间消耗的mp
+#region "法力涌动"特殊效果
+# "法力涌动"特殊效果期间消耗的mp
 var mp_cost_enhance: int = 0
-# “法力涌动”mp消耗临界值
+# "法力涌动"mp消耗临界值
 const MP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
-#region “血气爆发”特殊效果
-# “血气爆发”消耗的hp
+#region "血气爆发"特殊效果
+# "血气爆发"消耗的hp
 var hp_cost_enhance: int = 0
-# “血气爆发”hp消耗临界值
+# "血气爆发"hp消耗临界值
 const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
@@ -102,7 +102,7 @@ var charge_time: float = 0.0
 var charge_duration: float = 0.0
 
 signal charge_started
-signal charge_completed
+signal charge_completed(is_success: bool)  # true表示正常完成，false表示被取消
 
 
 signal before_skill_executed(player: DataPlayer, skill: DataBaseSkill)
@@ -508,7 +508,7 @@ func recover_mp(value: int):
 	mp_value_changed.emit(self,value)
 	if mp > attribute.final_details.max_mp:
 		mp = attribute.final_details.max_mp
-	# “法力涌动”期间消耗的mp
+	# "法力涌动"期间消耗的mp
 	if value < 0 and has_mp_cost_enhance() and mp_cost_enhance < MP_COST_ENHANCE_CRITICAL_VALUE:
 		mp_cost_enhance += abs(value)
 		if mp_cost_enhance >= MP_COST_ENHANCE_CRITICAL_VALUE:
@@ -672,44 +672,48 @@ func get_final_details() -> AttributeDetails:
 	return attribute.final_details
 
 
-# 判断是否达到了“法力涌动”临界值
+func get_final_ability() -> AttributeAbility:
+	return attribute.get_all_ability()
+
+
+# 判断是否达到了"法力涌动"临界值
 func is_match_mp_cost_enhance()-> bool:
 	return has_mp_cost_enhance() and mp_cost_enhance >= MP_COST_ENHANCE_CRITICAL_VALUE
 
 
-# 重置“法力涌动”累计值
+# 重置"法力涌动"累计值
 func reset_mp_cost_enhance():
 	mp_cost_enhance = 0
 	mp_cost_enhance_status_changed.emit(self,false)
 
 
-# 判断是否存在“法力涌动”特殊效果
+# 判断是否存在"法力涌动"特殊效果
 func has_mp_cost_enhance()-> bool:
 	return has_effect("effect_000015")
 
 
-# 获取“法力涌动”特殊效果
+# 获取"法力涌动"特殊效果
 func get_mp_cost_enhance()-> DataEffect:
 	return get_effect("effect_000015")
 
 
-# 判断是否达到了“血气爆发”临界值
+# 判断是否达到了"血气爆发"临界值
 func is_match_hp_cost_enhance()-> bool:
 	return has_hp_cost_enhance() and hp_cost_enhance >= HP_COST_ENHANCE_CRITICAL_VALUE
 
 
-# 重置“血气爆发”累计值
+# 重置"血气爆发"累计值
 func reset_hp_cost_enhance():
 	hp_cost_enhance = 0
 	hp_cost_enhance_status_changed.emit(self,false)
 
 
-# 判断是否存在“血气爆发”特殊效果
+# 判断是否存在"血气爆发"特殊效果
 func has_hp_cost_enhance()-> bool:
 	return has_effect("effect_000017")
 
 
-# 获取“血气爆发”特殊效果
+# 获取"血气爆发"特殊效果
 func get_hp_cost_enhance()-> DataEffect:
 	return get_effect("effect_000017")
 
@@ -743,8 +747,8 @@ func _complete_charge():
 	charge_time = 0.0
 	charge_duration = 0.0
 	
-	# 发出蓄力完成信号
-	charge_completed.emit()
+	# 发出蓄力完成信号，参数为true表示正常完成
+	charge_completed.emit(true)
 	print("玩家蓄力完成")
 
 
@@ -756,7 +760,14 @@ func cancel_charge():
 	is_charging = false
 	charge_time = 0.0
 	charge_duration = 0.0
+	
+	# 发出蓄力完成信号，参数为false表示被取消
+	charge_completed.emit(false)
 	print("玩家蓄力被取消")
+
+
+func reset():
+	cancel_charge()
 
 
 ## 获取蓄力状态

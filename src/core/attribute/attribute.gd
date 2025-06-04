@@ -73,6 +73,10 @@ func get_final_details() -> AttributeDetails:
 	return final_details
 
 
+func get_all_ability() -> AttributeAbility:
+	return all_ability
+
+
 func update():
 	# 如果只有最终属性，没有base属性，则不更新（怪物没有base属性）
 	if not details.has(ATTRIBUTE_BASE):

@@ -417,6 +417,9 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 					# 重置玩家执行CD
 					player.reset_execute_cd(),
 				func():
+					# 如果玩家离开了地图，则跳过
+					if data_map.data_player == null:
+						return
 					# 开始伤害判定
 					skill.damage_array_index = 0
 					# 确定技能作用目标
@@ -552,15 +555,21 @@ func _skill_executed_casting(
 		if player_scene.data_player.has_effect("effect_000026"):
 			# 确定蓄力时间，基础蓄力时间2秒
 			var charge_time = 2.0
-			# TODO 其他蓄力效果增幅
+			# 其他蓄力效果增幅
+			if player_scene.data_player.has_effect("effect_000027"):
+				var effect = player_scene.data_player.get_effect("effect_000027")
+				var effect_value = effect.value * player_scene.data_player.get_final_ability().power / 10.0
+				print("蓄力时间增加：",effect_value)
+				charge_time += effect_value
 			
 			# 蓄力段数 = 蓄力时间/0.1
 			skill.charge_num = charge_time / 0.1
 
 			# 开始蓄力
 			player_scene.data_player.start_charge(charge_time)
-			# 等待蓄力结束
-			await player_scene.data_player.charge_completed
+			# 等待蓄力结束，获取结果
+			var is_success = await player_scene.data_player.charge_completed
+			print("蓄力结束，成功：", is_success)
 		# 回调
 		call_back_cast_finished.call(null)
 		call_back_finished.call()

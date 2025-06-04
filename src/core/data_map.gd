@@ -102,6 +102,8 @@ func remove_player(_player_id: String):
 	data_player.role_hurted.disconnect(_on_player_hurted)
 	# 发出玩家离开地图信号
 	player_removed.emit(self, data_player)
+	# 玩家状态重置
+	data_player.reset()
 	data_player = null
 
 	# 无尽之塔退出，则清空怪物
