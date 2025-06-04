@@ -21,23 +21,26 @@ func _ready() -> void:
 	
 	if cache_tool != null:
 		# 加载角色列表
-		var role_id_dic_json = cache_tool.load_roles()
-		if not role_id_dic_json.is_empty():
-			# 解析角色列表
-			var role_id_dic_from_json = JSON.parse_string(role_id_dic_json)
-			for index_str in role_id_dic_from_json.keys():
-				var index = int(index_str)
-				if role_id_dic_from_json.has(index_str):
-					var role_id = role_id_dic_from_json[index_str]
-					role_id_dic[index_str] = role_id
-					role_dic[role_id] = cache_tool.load_data_player(role_id)
-					# 展示角色
-					add_role(role_dic[role_id], index)
+		_add_role_from_cache()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _add_role_from_cache():
+	var role_id_dic_json = cache_tool.load_roles()
+	if not role_id_dic_json.is_empty():
+		var role_id_dic_from_json = JSON.parse_string(role_id_dic_json)
+		for index_str in role_id_dic_from_json.keys():
+			var index = int(index_str)
+			if role_id_dic_from_json.has(index_str):
+				var role_id = role_id_dic_from_json[index_str]
+				role_id_dic[index_str] = role_id
+				role_dic[role_id] = cache_tool.load_data_player(role_id)
+				# 展示角色
+				add_role(role_dic[role_id], index)
 
 
 func init_cache_tool(_cache_tool: BaseCacheTool) -> void:
@@ -198,3 +201,14 @@ func _on_delete_role_bt_pressed() -> void:
 
 	select_role_index = -1
 	$RoleSelect/RoleInfo.hide()
+
+
+# 更新角色
+func update_roles():
+	# 删除所有角色
+	for child in get_node("RoleSelect/RoleBack").get_children():
+		if child.name.begins_with("RolePlaceHold"):
+			child.remove_child(child.get_child(0))
+
+	# 重新加载角色
+	_add_role_from_cache()

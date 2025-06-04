@@ -179,6 +179,9 @@ func _on_import_file_dialog_dir_selected(dir: String) -> void:
 	var reason = cache_tool.import_dir_to_user_dir(dir)
 	if reason != "":
 		_show_tip_label(reason)
+		# 存档导入成功时，刷新角色
+		if reason.begins_with("存档导入成功"):
+			$RoleSelectEnter.update_roles()
 	else:
 		_show_tip_label("导入成功")
 
