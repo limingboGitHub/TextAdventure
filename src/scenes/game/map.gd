@@ -548,14 +548,22 @@ func _skill_executed_casting(
 		# 监听动画结束
 		attack_effect.ani_all_finished.connect(call_back_finished)
 	elif skill.id == "skill_000001":
+		# 播放蓄力特效动画
 		if player_scene.data_player.has_effect("effect_000026"):
-			var effect = player_scene.data_player.get_effect("effect_000026")
-			player_scene.show_build_strength_effect(true)
-			# 蓄力一段时间后回调
-			await get_tree().create_timer(2.0).timeout
-			player_scene.show_build_strength_effect(false)
-			call_back_cast_finished.call(null)
-			call_back_finished.call()
+			# 确定蓄力时间，基础蓄力时间2秒
+			var charge_time = 2.0
+			# TODO 其他蓄力效果增幅
+			
+			# 蓄力段数 = 蓄力时间/0.1
+			skill.charge_num = charge_time / 0.1
+
+			# 开始蓄力
+			player_scene.data_player.start_charge(charge_time)
+			# 等待蓄力结束
+			await player_scene.data_player.charge_completed
+		# 回调
+		call_back_cast_finished.call(null)
+		call_back_finished.call()
 	else:
 		# 没有释放动画的直接执行回调
 		call_back_cast_finished.call(null)

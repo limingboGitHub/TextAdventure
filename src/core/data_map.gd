@@ -347,7 +347,7 @@ func _create_percent_damage(
 	# 攻击力波动的比率 0-1之间
 	var attack_value_rate = randf()	
 
-	#region 技能伤害加成
+	#region 技能百分比伤害加成，各种加成+算
 	var skill_damage_rate = 0
 	# 技能增幅加成
 	if _data_player.has_skill_enhance(skill.id):
@@ -365,6 +365,12 @@ func _create_percent_damage(
 		skill_damage_rate += data_effect.value
 		# 重置“血气爆发”累计值
 		_data_player.reset_hp_cost_enhance()
+	# “奋力一击”蓄力效果
+	if skill.id == "skill_000001" and _data_player.has_effect("effect_000026"):
+		var effect = _data_player.get_effect("effect_000026")
+		var charge_damage_rate = effect.value * skill.charge_num
+		skill_damage_rate += charge_damage_rate
+		print("蓄力伤害加成：",charge_damage_rate)
 	_damage_rate *= 1 + skill_damage_rate
 	print("技能伤害加成：",skill_damage_rate)
 	#endregion

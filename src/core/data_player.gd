@@ -96,6 +96,14 @@ var hp_cost_enhance: int = 0
 const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
+# 蓄力相关
+var is_charging: bool = false
+var charge_time: float = 0.0
+var charge_duration: float = 0.0
+
+signal charge_started
+signal charge_completed
+
 
 signal before_skill_executed(player: DataPlayer, skill: DataBaseSkill)
 
@@ -322,6 +330,9 @@ func process(delta: float):
 		if can_not_be_hurt_rest <= 0:
 			can_not_be_hurt = false
 			can_not_be_hurt_rest = 0
+
+	# 处理蓄力
+	_process_charge(delta)
 
 	# 玩家生命恢复
 	# 残血状态
@@ -706,6 +717,65 @@ func get_hp_cost_enhance()-> DataEffect:
 # 玩家对其他对象造成了伤害，发出信号
 func cause_damage(damage: DataDamage):
 	damage_caused.emit(self,damage)
+
+
+
+## 开始蓄力
+func start_charge(time: float):
+	if is_charging:
+		return  # 已经在蓄力中，不重复开始
+	
+	is_charging = true
+	charge_time = 0.0
+	charge_duration = time
+	
+	# 发出蓄力开始信号
+	charge_started.emit()
+	print("玩家开始蓄力，持续时间：", time, "秒")
+
+
+## 完成蓄力
+func _complete_charge():
+	if not is_charging:
+		return
+	
+	is_charging = false
+	charge_time = 0.0
+	charge_duration = 0.0
+	
+	# 发出蓄力完成信号
+	charge_completed.emit()
+	print("玩家蓄力完成")
+
+
+## 取消蓄力
+func cancel_charge():
+	if not is_charging:
+		return
+	
+	is_charging = false
+	charge_time = 0.0
+	charge_duration = 0.0
+	print("玩家蓄力被取消")
+
+
+## 获取蓄力状态
+func get_charging_status() -> bool:
+	return is_charging
+
+
+## 获取蓄力进度 (0.0 - 1.0)
+func get_charge_progress() -> float:
+	if not is_charging or charge_duration <= 0:
+		return 0.0
+	return min(charge_time / charge_duration, 1.0)
+
+
+func _process_charge(delta: float):
+	if is_charging:
+		charge_time += delta
+		if charge_time >= charge_duration:
+			_complete_charge()
 
 
 func save() -> Dictionary:

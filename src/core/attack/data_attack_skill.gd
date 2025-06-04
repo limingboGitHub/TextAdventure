@@ -25,6 +25,9 @@ var skill_move_speed: int = 100
 # 技能伤害判定段数
 var damage_array_index = 0
 
+# 蓄力段数(蓄力技能专用)
+var charge_num = 0
+
 
 func get_mp_cost():
 	if mp_cost_level:

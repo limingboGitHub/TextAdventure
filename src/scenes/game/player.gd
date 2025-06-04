@@ -40,6 +40,10 @@ func _ready() -> void:
 		data_player.mp_cost_enhance_status_changed.connect(_on_mp_cost_enhance_status_changed)
 		# 监听"血气爆发"状态变化事件
 		data_player.hp_cost_enhance_status_changed.connect(_on_hp_cost_enhance_status_changed)
+		# 监听蓄力开始事件
+		data_player.charge_started.connect(_on_charge_started)
+		# 监听蓄力完成事件
+		data_player.charge_completed.connect(_on_charge_completed)
 
 		if data_player.role_equip:
 			data_player.role_equip.equip_on.connect(_on_role_equip_on)
@@ -57,12 +61,16 @@ func _process(delta: float) -> void:
 			if data_player.is_resting:
 				pass
 			else:
-				_process_attack(delta)
+				# 蓄力时不进行攻击
+				if not data_player.is_charging:
+					_process_attack(delta)
 				data_player.process_pick()
 		else:
 			# 监听玩家的attack事件
 			if Input.is_action_pressed("attack"):
-				_process_attack(delta)
+				# 蓄力时不进行攻击
+				if not data_player.is_charging:
+					_process_attack(delta)
 			elif Input.is_action_just_released("attack"):
 				pass
 
@@ -279,3 +287,12 @@ func _on_hp_cost_enhance_status_changed(_player: DataPlayer,is_match: bool):
 func show_build_strength_effect(is_show: bool):
 	$AttackEffect3.visible = is_show
 	
+
+## 蓄力开始时的回调
+func _on_charge_started():
+	$AttackEffect3.visible = true
+
+
+## 蓄力完成时的回调
+func _on_charge_completed():
+	$AttackEffect3.visible = false

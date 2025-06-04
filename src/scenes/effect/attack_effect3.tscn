@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c11xysl3ajpv6"]
+[gd_scene load_steps=5 format=3 uid="uid://c11xysl3ajpv6"]
+
+[ext_resource type="Script" uid="uid://crhocext32rqj" path="res://src/scenes/effect/attack_effect_3.gd" id="1_qe0q7"]
 
 [sub_resource type="Gradient" id="Gradient_5r0yw"]
 colors = PackedColorArray(0.921569, 0.27451, 0, 0.278431, 0.921569, 0.27451, 0, 1)
@@ -11,8 +13,8 @@ particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 0.0
-emission_ring_radius = 40.0
-emission_ring_inner_radius = 38.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 48.0
 emission_ring_cone_angle = 90.0
 direction = Vector3(0, 0, 0)
 spread = 0.0
@@ -24,9 +26,22 @@ scale_max = 3.0
 color_ramp = SubResource("GradientTexture1D_6oa2g")
 
 [node name="AttackEffect3" type="Node2D"]
+script = ExtResource("1_qe0q7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+offset_left = -26.0
+offset_top = -53.0
+offset_right = 24.0
+offset_bottom = -34.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 30
+amount = 50
+local_coords = true
 trail_lifetime = 0.2
 trail_sections = 4
 process_material = SubResource("ParticleProcessMaterial_5r0yw")
