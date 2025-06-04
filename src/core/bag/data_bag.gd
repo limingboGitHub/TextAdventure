@@ -200,10 +200,10 @@ func exchange_item(item1: DataBagItem, item2: DataBagItem):
 	pass
 
 
-## 整理物品，按照id排序
+## 整理物品，按照name排序
 func sort_item():
 	for items in items_dic.values():
-		items.sort()
+		items.sort_custom(func(a, b): return a.id < b.id)
 
 
 ## 删除选择的物品

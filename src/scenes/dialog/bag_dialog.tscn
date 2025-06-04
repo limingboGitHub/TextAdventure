@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyxpmgfjunylo"]
+[gd_scene load_steps=13 format=3 uid="uid://dyxpmgfjunylo"]
 
 [ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_486bh"]
 [ext_resource type="Script" uid="uid://d3w88egdee6b4" path="res://src/scenes/dialog/bag_dialog.gd" id="1_a5pre"]
 [ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_8h33t"]
 [ext_resource type="PackedScene" uid="uid://mbnmc3xs1636" path="res://src/scenes/dialog/bag_item.tscn" id="4_h1hbm"]
 [ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="4_lffgt"]
-[ext_resource type="StyleBox" uid="uid://bq33b5goabg0s" path="res://src/scenes/dialog/bag_tag_back.tres" id="5_3c2jo"]
 [ext_resource type="Script" uid="uid://k6f0ld4sd00s" path="res://src/scenes/widget/my_scroll_container.gd" id="5_qr37t"]
 [ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="8_h40eb"]
 
@@ -236,124 +235,6 @@ layout_mode = 2
 [node name="BagItem31" parent="Consume/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
 layout_mode = 2
 
-[node name="Setting" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 263.0
-offset_top = 77.0
-offset_right = 263.0
-offset_bottom = 77.0
-
-[node name="Label" type="Label" parent="Setting"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "设置"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Setting"]
-layout_mode = 0
-offset_top = 25.0
-offset_right = 120.0
-offset_bottom = 345.0
-theme_override_styles/panel = ExtResource("5_3c2jo")
-
-[node name="GridContainer" type="GridContainer" parent="Setting/ScrollContainer"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="BagItem" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem2" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem3" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem4" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem5" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem6" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem7" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem8" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem9" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem10" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem11" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem12" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem13" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem14" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem15" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem16" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem17" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem18" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem19" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem20" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem21" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem22" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem23" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem24" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem25" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem26" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem27" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem28" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem29" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem30" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem31" parent="Setting/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
 [node name="Etc" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 430.0
@@ -474,124 +355,6 @@ layout_mode = 2
 [node name="BagItem31" parent="Etc/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
 layout_mode = 2
 
-[node name="Special" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 516.0
-offset_top = 77.0
-offset_right = 516.0
-offset_bottom = 77.0
-
-[node name="Label" type="Label" parent="Special"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "特殊"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Special"]
-layout_mode = 0
-offset_top = 25.0
-offset_right = 120.0
-offset_bottom = 345.0
-theme_override_styles/panel = ExtResource("5_3c2jo")
-
-[node name="GridContainer" type="GridContainer" parent="Special/ScrollContainer"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="BagItem" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem2" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem3" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem4" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem5" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem6" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem7" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem8" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem9" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem10" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem11" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem12" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem13" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem14" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem15" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem16" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem17" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem18" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem19" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem20" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem21" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem22" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem23" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem24" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem25" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem26" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem27" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem28" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem29" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem30" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
-[node name="BagItem31" parent="Special/ScrollContainer/GridContainer" instance=ExtResource("4_h1hbm")]
-layout_mode = 2
-
 [node name="Test" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -672,8 +435,18 @@ offset_top = 5.0
 offset_right = 638.0
 offset_bottom = 55.0
 
+[node name="SortBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 458.0
+offset_right = 630.0
+offset_bottom = 499.0
+theme = ExtResource("2_8h33t")
+text = "整理"
+
 [connection signal="pressed" from="Test/AddEquipBt" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Test/AddConsumeBt" to="." method="_on_add_consume_bt_pressed"]
 [connection signal="toggled" from="DeleteControl/DeleteCheckBox" to="." method="_on_delete_check_box_toggled"]
 [connection signal="pressed" from="DeleteControl/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="SortBt" to="." method="_on_sort_bt_pressed"]
