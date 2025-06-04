@@ -38,7 +38,8 @@ offset_right = 202.0
 offset_bottom = 783.0
 theme = ExtResource("2_ux6g7")
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
-text = "初始属性值："
+text = "初始属性值：
+(单项最高12)"
 
 [node name="AttributeRoot" type="Panel" parent="."]
 layout_mode = 0
