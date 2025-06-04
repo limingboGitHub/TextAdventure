@@ -13,9 +13,9 @@ var tab_names = [
 var recycles: Array = []
 
 var capcity: Dictionary = {
-	DataBagItem.TYPE_EQUIP: 50,
-	DataBagItem.TYPE_CONSUME: 50,
-	DataBagItem.TYPE_ETC: 50
+	DataBagItem.TYPE_EQUIP: 500,
+	DataBagItem.TYPE_CONSUME: 500,
+	DataBagItem.TYPE_ETC: 500
 }
 
 var money: int = 0
