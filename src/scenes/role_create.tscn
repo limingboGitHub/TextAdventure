@@ -160,6 +160,19 @@ offset_top = 961.0
 offset_right = 277.0
 offset_bottom = 961.0
 
+[node name="AttributeDes" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 469.0
+offset_right = 607.0
+offset_bottom = 626.0
+theme_override_font_sizes/font_size = 25
+text = "属性说明：
+力量：影响攻击力，少量影响HP上限
+敏捷：影响命中，攻击/魔法力波动下限，少量攻击
+智力：影响魔法力，少量影响MP上限
+运气：影响闪避，命中，少量攻击/魔法力"
+
 [connection signal="pressed" from="AttributeRoot/RandomBt" to="." method="_on_random_bt_pressed"]
 [connection signal="pressed" from="OKCreateBt" to="." method="_on_ok_create_bt_pressed"]
 [connection signal="pressed" from="RandomNameBt" to="." method="_on_random_name_bt_pressed"]
