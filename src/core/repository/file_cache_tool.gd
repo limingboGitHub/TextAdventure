@@ -9,7 +9,7 @@ class_name FileCacheTool
 var game_save_dir = "user://game_save"
 
 # 配置文件版本号
-const CONFIG_VERSION = 3
+const CONFIG_VERSION = 4
 
 # 配置资源目录内部目录
 var config_res_dir = "res://assets/config"
@@ -388,7 +388,34 @@ func import_dir_to_user_dir(dir: String) -> String:
 	# 检查源目录是否存在
 	if !DirAccess.dir_exists_absolute(dir):
 		return "导入目录不存在：" + dir
-	
+
+	# 如果是存档文件夹，则删除旧存档，覆盖导入
+	if dir.ends_with("game_save"):
+		# 删除当前game_save_dir目录下的所有文件
+		if DirAccess.dir_exists_absolute(game_save_dir):
+			var save_dir = DirAccess.open(game_save_dir)
+			if save_dir:
+				save_dir.list_dir_begin()
+				var file_name = save_dir.get_next()
+				while file_name != "":
+					if file_name != "." and file_name != "..":
+						var file_path = game_save_dir.path_join(file_name)
+						if save_dir.current_is_dir():
+							# 如果是子目录，递归删除整个存档
+							var save_id = file_name
+							remove(save_id)
+						else:
+							# 删除文件
+							DirAccess.remove_absolute(file_path)
+					file_name = save_dir.get_next()
+				save_dir.list_dir_end()
+		
+		# 将dir中所有的文件递归复制到game_save_dir下
+		if not DirAccess.dir_exists_absolute(game_save_dir):
+			DirAccess.make_dir_recursive_absolute(game_save_dir)
+		copy_directory(dir, game_save_dir)
+		return "存档导入成功"
+
 	# 调用辅助函数进行递归导入
 	var result = _import_dir_recursive(dir, config_user_dir)
 	return result

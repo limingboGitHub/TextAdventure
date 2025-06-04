@@ -6,7 +6,7 @@
 			"desc": "非常粗糙的面包，恢复50点体力",
 			"type": "recovery",
 			"price": 10,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"hp": 50
 		},
 		"consume_000002": {
@@ -14,7 +14,7 @@
 			"desc": "精心制作的松饼，非常可口，恢复100点体力",
 			"type": "recovery",
 			"price": 25,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"hp": 100
 		},
 		"consume_000003": {
@@ -22,7 +22,7 @@
 			"desc": "新鲜的烤鸡肉，恢复200点体力",
 			"type": "recovery",
 			"price": 50,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"hp": 200
 		},
 		"consume_000004": {
@@ -30,7 +30,7 @@
 			"desc": "清甜可口，恢复50点魔法值",
 			"type": "recovery",
 			"price": 10,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"mp": 50
 		},
 		"consume_000005": {
@@ -38,7 +38,7 @@
 			"desc": "新鲜的橙汁，恢复100点魔法值",
 			"type": "recovery",
 			"price": 25,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"mp": 100
 		},
 		"consume_000006": {
@@ -46,7 +46,7 @@
 			"desc": "美味营养的牛奶，恢复200点魔法值",
 			"type": "recovery",
 			"price": 50,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"mp": 200
 		},
 		"consume_000007": {
@@ -55,7 +55,7 @@
 			"type": "recovery",
 			"quality":"稀有",
 			"price": 70,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"hpR": 0.5,
 			"mpR": 0.5
 		},
@@ -65,7 +65,7 @@
 			"type": "recovery",
 			"quality":"稀有",
 			"price": 70,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"hpR": 1,
 			"mpR": 1
 		},
@@ -74,7 +74,7 @@
 			"desc": "披萨，恢复400点体力",
 			"type": "recovery",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"hp": 400
 		},
 		"consume_000010": {
@@ -82,7 +82,7 @@
 			"desc": "咖啡，恢复400点魔法值",
 			"type": "recovery",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"mp": 400
 		},
 
@@ -91,7 +91,7 @@
 			"desc": "增加力量2点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"power": 2
@@ -104,7 +104,7 @@
 			"desc": "增加经验10%",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"details": {
 					"exp_gain": 0.1
@@ -117,7 +117,7 @@
 			"desc": "增加敏捷2点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"agility": 2
@@ -130,7 +130,7 @@
 			"desc": "增加100点HP上限",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"details": {
 					"max_hp": 100
@@ -143,7 +143,7 @@
 			"desc": "增加智力2点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"intelligence": 2
@@ -156,7 +156,7 @@
 			"desc": "增加力量4点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"power": 4
@@ -169,7 +169,7 @@
 			"desc": "增加智力4点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"intelligence": 4
@@ -182,7 +182,7 @@
 			"desc": "增加幸运2点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"luck": 2
@@ -195,7 +195,7 @@
 			"desc": "增加幸运4点",
 			"type": "buff",
 			"price": 100,
-			"slotMax": 200,
+			"slotMax": 9999999,
 			"buff": {
 				"ability": {
 					"luck": 4

@@ -171,3 +171,10 @@ func _on_item_show_pressed(ui: BagItem) -> void:
 
 func _on_money_changed(money: int) -> void:
 	$Money/Value.text = str(money)
+
+
+func _on_sort_bt_pressed() -> void:
+	if data_bag:
+		data_bag.sort_item()
+	# 刷新显示
+	_update_bag()
