@@ -27,7 +27,7 @@ func _on_damage_record_added(damage_data: DataDamage) -> void:
 	for damage_detail in damage_data.damage_details:
 		damage_details_str += damage_detail.name
 		if damage_detail.rate != 0:
-			damage_details_str += "("+str(damage_detail.rate)+")"
+			damage_details_str += "("+str(round(damage_detail.rate*100.0)/100.0)+")"
 		if damage_detail.value != 0:
 			damage_details_str += str(damage_detail.value)
 			damage_details_str += "[color=green][" \
