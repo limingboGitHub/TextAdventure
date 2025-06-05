@@ -25,7 +25,7 @@
 		"effect_000005": {
 			"name": "赤焰",
 			"effect_type": "attack_explode_damage",
-			"desc": "攻击时10%几率造成目标70范围内{d}爆炸伤害",
+			"desc": "攻击时10%几率造成目标70范围内{d}爆炸伤害(攻击+魔法力加成)",
 			"value_type": "percent",
 			"value": 0.3
 		},
