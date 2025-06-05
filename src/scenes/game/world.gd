@@ -330,7 +330,7 @@ func _update_player_exp_bar(data_role: DataRole):
 
 
 func _on_player_level_updated(data_player: DataPlayer):
-	var max_level = "(满级)" if data_player.is_max_level() else ""
+	var max_level = "(满)" if data_player.is_max_level() else ""
 	$CanvasLayer/UI/StatusBar/PlayerInfo/Level/Value.text = str(data_player.level) + max_level
 	# 升级时同时更新经验值
 	_update_player_exp_bar(data_player)
