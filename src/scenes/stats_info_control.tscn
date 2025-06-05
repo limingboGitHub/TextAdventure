@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtn4sapjumnyd"]
+[gd_scene load_steps=3 format=3 uid="uid://dtn4sapjumnyd"]
 
 [ext_resource type="Script" uid="uid://dx74vf1cj4iib" path="res://src/scenes/stats_info_control.gd" id="1_qi0w5"]
+[ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_rygoi"]
 
 [node name="StatsInfoControl" type="Control"]
 layout_mode = 3
@@ -50,11 +51,13 @@ text = "蓝耗/秒："
 
 [node name="StatsTimer" type="Timer" parent="."]
 
-[node name="Button" type="Button" parent="."]
-visible = false
+[node name="DetailsButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "测试"
+offset_left = 195.0
+offset_top = 130.0
+offset_right = 325.0
+offset_bottom = 175.0
+theme = ExtResource("2_rygoi")
+text = "更多详情"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DetailsButton" to="." method="_on_details_button_pressed"]

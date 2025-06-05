@@ -32,6 +32,9 @@ var data_floors = {}
 var monster_manager = MonsterManager.new()
 var drop_thing_manager: DropThingManager
 
+# 伤害创建信号，用于通知DataWorld记录伤害信息
+signal damage_created(damage: DataDamage)
+
 
 ## 已经击杀当前地图的怪物个数,key:怪物id value:击杀数量，用于解锁某些传送点限制
 var kill_monster_count_dic = {}
@@ -232,6 +235,7 @@ func player_attack_skill_effect(
 			if skill.damage_value_type == Constants.VALUE_TYPE_PERCENT:
 				damage = _create_percent_damage(skill, damage_value, _data_player, target)
 			else:
+				# TODO 未测试
 				damage = _create_number_damage(skill, damage_value, _data_player, target)
 			damage.direction = direction
 
@@ -345,26 +349,58 @@ func _create_percent_damage(
 	target: DataMonster
 ) -> DataDamage:
 	# 计算伤害值
-	var damage_value = 0				
+	var damage_value = 0
+	# 伤害详情统计
+	var damage_details: Array[DataDamage.DamageDetail] = []
+	
+	#region 攻击力
 	# 攻击力波动的比率 0-1之间
-	var attack_value_rate = randf()	
+	var attack_value_rate = randf()
+	var attack_value = 0
+	# 根据不同加成类型计算最终技能加成的伤害值
+	if skill.damage_source_type == 0:
+		# 攻击力加成
+		# 从玩家的最小攻击力到最大攻击力之间随机一个值
+		attack_value = _data_player.get_final_attack(attack_value_rate)
+	elif skill.damage_source_type == 1:
+		# 魔法力加成
+		# 从玩家的最小魔法攻击力到最大魔法攻击力之间随机一个值
+		attack_value = _data_player.get_final_magic_attack(attack_value_rate)
+	elif skill.damage_source_type == 2:
+		# 攻击力+魔法力加成
+		# 从玩家的最小攻击力到最大攻击力之间随机一个值
+		var phy_attack_value = _data_player.get_final_attack(attack_value_rate)
+		# 从玩家的最小魔法攻击力到最大魔法攻击力之间随机一个值
+		var magic_attack_value = _data_player.get_final_magic_attack(attack_value_rate)
+		attack_value = phy_attack_value + magic_attack_value
+	#endregion
 
-	#region 技能百分比伤害加成，各种加成+算
+	damage_details.append(DataDamage.DamageDetail.new(skill.name, attack_value * _damage_rate, _damage_rate))
+	#region 技能百分比伤害加成，各种加成+算，这些加成只吃基础的攻击力面板
 	var skill_damage_rate = 0
 	# 技能增幅加成
 	if _data_player.has_skill_enhance(skill.id):
 		var skill_enhance = _data_player.get_skill_enhance(skill.id)
 		skill_damage_rate += skill_enhance.damage
+		# 评估该效果最终的伤害值
+		var record_damage_value = attack_value * _damage_rate * skill_enhance.damage
+		damage_details.append(DataDamage.DamageDetail.new("技能增幅", record_damage_value, skill_enhance.damage))
 	# 技能伤害加成
 	if _data_player.is_match_mp_cost_enhance():
 		var data_effect = _data_player.get_mp_cost_enhance()
 		skill_damage_rate += data_effect.value
+		# 评估该效果最终的伤害值
+		var record_damage_value = attack_value * _damage_rate * data_effect.value
+		damage_details.append(DataDamage.DamageDetail.new("法力涌动", record_damage_value, data_effect.value))
 		# 重置“法力涌动”累计值
 		_data_player.reset_mp_cost_enhance()
 	# “血气爆发”特殊效果
 	if _data_player.is_match_hp_cost_enhance():
 		var data_effect = _data_player.get_hp_cost_enhance()
 		skill_damage_rate += data_effect.value
+		# 评估该效果最终的伤害值
+		var record_damage_value = attack_value * _damage_rate * data_effect.value
+		damage_details.append(DataDamage.DamageDetail.new("血气爆发", record_damage_value, data_effect.value))
 		# 重置“血气爆发”累计值
 		_data_player.reset_hp_cost_enhance()
 	# “奋力一击”蓄力效果
@@ -372,48 +408,43 @@ func _create_percent_damage(
 		var effect = _data_player.get_effect("effect_000026")
 		var charge_damage_rate = effect.value * skill.charge_num
 		skill_damage_rate += charge_damage_rate
-		print("蓄力伤害加成：",charge_damage_rate)
+		# 评估该效果最终的伤害值
+		var record_damage_value = attack_value * _damage_rate * charge_damage_rate
+		damage_details.append(DataDamage.DamageDetail.new("深蹲蓄力", record_damage_value, charge_damage_rate))
+	
 	_damage_rate *= 1 + skill_damage_rate
 	print("技能伤害加成：",skill_damage_rate)
 	#endregion
 
-	# 根据不同加成类型计算最终技能加成的伤害值
-	if skill.damage_source_type == 0:
-		# 攻击力加成
-		# 从玩家的最小攻击力到最大攻击力之间随机一个值
-		var attack_value = _data_player.get_final_attack(attack_value_rate)
-		# 计算伤害值
-		damage_value = attack_value * _damage_rate
-	elif skill.damage_source_type == 1:
-		# 魔法力加成
-		# 从玩家的最小魔法攻击力到最大魔法攻击力之间随机一个值
-		var attack_value = _data_player.get_final_magic_attack(attack_value_rate)
-		# 计算伤害值
-		damage_value = attack_value * _damage_rate
-	elif skill.damage_source_type == 2:
-		# 攻击力+魔法力加成
-		# 从玩家的最小攻击力到最大攻击力之间随机一个值
-		var attack_value = _data_player.get_final_attack(attack_value_rate)
-		# 从玩家的最小魔法攻击力到最大魔法攻击力之间随机一个值
-		var magic_attack_value = _data_player.get_final_magic_attack(attack_value_rate)
-		# 计算伤害值
-		damage_value = (attack_value + magic_attack_value) * _damage_rate
+	# 计算伤害值
+	damage_value = attack_value * _damage_rate
+
+	#region 和攻击力系数无关的伤害加成
+	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details)
+	damage_value += effect_damage_value
+	#endregion
 	
 	# 根据伤害类型计算防御减伤
 	if skill.damage_type == 0:
 		# 计算目标防御减伤
 		var defense_reduction_value = target.attribute.defense_reduction_value()
 		damage_value -= defense_reduction_value
+		damage_details.append(DataDamage.DamageDetail.new("防御减伤", -defense_reduction_value,0))
 	elif skill.damage_type == 1:
 		# 计算目标魔法防御减伤
 		var defense_reduction_value = target.attribute.magic_defense_reduction_value()
 		damage_value -= defense_reduction_value
-
-
-	# 计算最终伤害值（存在各种伤害加成的计算）
-	damage_value = _calculate_damage(damage_value, _data_player, target)
+		damage_details.append(DataDamage.DamageDetail.new("魔法防御减伤", -defense_reduction_value,0))
+	
 	var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, damage_value)
 	damage.value_show_rate = _data_player.get_show_rate(attack_value_rate)
+	damage.attack_value = attack_value
+	damage.damage_details = damage_details
+
+	# 发射伤害创建信号，通知DataWorld记录伤害信息
+	damage_created.emit(damage)
+
+	print("伤害详情：",damage_details)
 	return damage
 
 
@@ -425,10 +456,15 @@ func _create_number_damage(
 ) -> DataDamage:
 	# 计算伤害值
 	var damage_value = 0	
+	# 伤害详情统计
+	var damage_details: Array[DataDamage.DamageDetail] = []
 	# 技能增幅加成
 	if _data_player.has_skill_enhance(skill.id):
 		var skill_enhance = _data_player.get_skill_enhance(skill.id)
 		_damage_value *= 1 + skill_enhance.damage
+
+	# 计算最终伤害值（存在各种伤害加成的计算）
+	damage_value += _effect_damage_value(_data_player, target, damage_details)
 
 	if skill.damage_type == 0:
 		# 物理伤害
@@ -442,30 +478,13 @@ func _create_number_damage(
 		var defense_reduction_value = target.attribute.magic_defense_reduction_value()
 		# 计算伤害值
 		damage_value = _damage_value - defense_reduction_value
-	# 计算最终伤害值（存在各种伤害加成的计算）
-	damage_value = _calculate_damage(damage_value, _data_player, target)
+	
 	var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, damage_value)
+	
+	# 发射伤害创建信号，通知DataWorld记录伤害信息
+	damage_created.emit(damage)
+	
 	return damage
-
-
-func _calculate_damage(
-	origin_damage_value: int, 
-	_data_player: DataPlayer, 
-	target: DataMonster
-):
-	# 伤害值最小为1
-	origin_damage_value = max(1, origin_damage_value)
-	print("初始伤害值：",origin_damage_value)
-	# 特殊效果百分比伤害加成
-	#var effect_damage_rate = _effect_damage_rate(_data_player, target)
-	#print("特殊效果百分比伤害加成：",effect_damage_rate)
-	# 特殊效果固定伤害加成
-	var effect_damage_value = _effect_damage_value(_data_player,target)
-	print("特殊效果固定伤害加成：",effect_damage_value)
-	# 计算最终伤害值
-	var final_damage_value = max(1, origin_damage_value + effect_damage_value)
-	print("最终伤害值：",final_damage_value)
-	return final_damage_value
 
 
 func _effect_damage_rate(
@@ -476,7 +495,11 @@ func _effect_damage_rate(
 	return effect_damage_rate
 
 
-func _effect_damage_value(_data_player: DataPlayer, _target: DataMonster) -> float:
+func _effect_damage_value(
+	_data_player: DataPlayer, 
+	_target: DataMonster, 
+	_damage_details: Array[DataDamage.DamageDetail]
+) -> float:
 	var effect_damage_value = 0
 	# 巨人之力
 	if _data_player.has_effect("effect_000011"):
@@ -486,6 +509,7 @@ func _effect_damage_value(_data_player: DataPlayer, _target: DataMonster) -> flo
 			var max_hp_damage = _data_player.get_final_details().max_hp * effect.value
 			print("最大生命值附加伤害：",max_hp_damage)
 			effect_damage_value += max_hp_damage
+			_damage_details.append(DataDamage.DamageDetail.new("巨人之力", max_hp_damage,0))
 		else:
 			# 未实现
 			pass
@@ -499,6 +523,7 @@ func _effect_damage_value(_data_player: DataPlayer, _target: DataMonster) -> flo
 			var lost_hp_damage = lost_hp * effect.value
 			print("损失生命值附加伤害：",lost_hp_damage)
 			effect_damage_value += lost_hp_damage
+			_damage_details.append(DataDamage.DamageDetail.new("背水一战", lost_hp_damage,0))
 		else:
 			# 未实现
 			pass
@@ -508,6 +533,7 @@ func _effect_damage_value(_data_player: DataPlayer, _target: DataMonster) -> flo
 		if effect.value_type == Constants.VALUE_TYPE_NUMBER:
 			print("损血特效附加伤害：",effect.value)
 			effect_damage_value += effect.value
+			_damage_details.append(DataDamage.DamageDetail.new("自损八千", effect.value,0))
 		else:
 			# 未实现
 			pass
@@ -517,6 +543,7 @@ func _effect_damage_value(_data_player: DataPlayer, _target: DataMonster) -> flo
 		if effect.value_type == Constants.VALUE_TYPE_NUMBER:
 			#print("撕裂特效附加伤害：",effect.value)
 			effect_damage_value += effect.value
+			_damage_details.append(DataDamage.DamageDetail.new("撕裂", effect.value,0))
 		else:
 			# 未实现
 			pass

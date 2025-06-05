@@ -119,6 +119,7 @@ func on_load_finished():
 	$CanvasLayer/UI/AlchemyStatus.init_data(data_world.get_data_bag())
 	# 初始化统计信息
 	$CanvasLayer/UI/StatsInfoControl.init()
+	$CanvasLayer/UI/Dialog/StatsDetailsDialog.init(data_world.damage_info_manager)
 	# 监听NPC对话框
 	_set_npc_dialog_listener()
 	# 监听商店展示事件
@@ -870,3 +871,10 @@ func _on_debug_dialog_all_job_3_added() -> void:
 
 func _on_role_info_bt_pressed() -> void:
 	_on_player_info_pressed()
+
+
+func _on_stats_info_control_details_pressed() -> void:
+	if !$CanvasLayer/UI/Dialog/StatsDetailsDialog.visible:
+		_dialog_show($CanvasLayer/UI/Dialog/StatsDetailsDialog)
+	else:
+		$CanvasLayer/UI/Dialog/StatsDetailsDialog.hide()

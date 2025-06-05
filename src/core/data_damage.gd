@@ -15,6 +15,22 @@ enum SOURCE_TYPE {
 	POISON
 }
 
+
+# 伤害详情类
+class DamageDetail:
+	# 伤害名称
+	var name: String
+	# 伤害数值
+	var value: int
+	# 伤害比例
+	var rate: float = 0.0
+
+	func _init(_name: String, _value: int, _rate: float) -> void:
+		self.name = _name
+		self.value = _value
+		self.rate = _rate
+
+
 # 伤害类型
 var type : int = TYPE.PHYSICAL
 # 伤害来源类型
@@ -25,6 +41,11 @@ var value : int = 0
 var value_show_rate : float = 1.0
 # 方向向量（归一化）
 var direction : Vector2 = Vector2.RIGHT
+
+#region 伤害详情
+var attack_value: int = 0
+var damage_details:Array[DamageDetail]
+#endregion
 
 func _init(type: int,source_type: int, value: int) -> void:
 	self.type = type

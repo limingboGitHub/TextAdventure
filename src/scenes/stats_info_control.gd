@@ -30,6 +30,8 @@ var mps: float = 0  # 蓝耗/秒
 @onready var _all_damage_label: Label = $VBoxContainer/AllDamage
 
 
+signal details_pressed
+
 func init():
 	# 初始化定时器
 	_stats_timer = Timer.new()
@@ -103,3 +105,7 @@ func _on_button_pressed() -> void:
 	## 测试代码，添加伤害
 	var damage = DataDamage.new(DataDamage.TYPE.PHYSICAL, DataDamage.SOURCE_TYPE.PLAYER, 100)
 	player_damage_caused(damage)
+
+
+func _on_details_button_pressed() -> void:
+	details_pressed.emit()

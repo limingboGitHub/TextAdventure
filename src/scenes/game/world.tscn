@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cjhlw4uxh43lk"]
+[gd_scene load_steps=30 format=3 uid="uid://cjhlw4uxh43lk"]
 
 [ext_resource type="Script" uid="uid://bgbay81accbeh" path="res://src/scenes/game/world.gd" id="1_wlcum"]
 [ext_resource type="Script" uid="uid://b7omic3ntn17t" path="res://src/scenes/game/map_graph.gd" id="2_g74vk"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://c067ug5y61ddh" path="res://src/scenes/dialog/alchemy_dialog.tscn" id="23_hpdnf"]
 [ext_resource type="PackedScene" uid="uid://gp18ukfvqqg0" path="res://src/scenes/msg_control.tscn" id="24_hpdnf"]
 [ext_resource type="PackedScene" uid="uid://dtn4sapjumnyd" path="res://src/scenes/stats_info_control.tscn" id="27_fhtq7"]
+[ext_resource type="PackedScene" uid="uid://wagqulrsu77s" path="res://src/scenes/dialog/stats_details_dialog.tscn" id="28_b6sft"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_wlcum")
@@ -529,6 +530,12 @@ offset_top = 763.0
 offset_right = 126.0
 offset_bottom = 803.0
 
+[node name="StatsDetailsDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("28_b6sft")]
+offset_left = 81.0
+offset_top = 440.0
+offset_right = 81.0
+offset_bottom = 440.0
+
 [node name="ToastControl" type="Control" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -567,6 +574,7 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer/UI/ButtonControl/AlchemyBt" to="." method="_on_alchemy_bt_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonControl/RoleInfoBt" to="." method="_on_role_info_bt_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/StatusBar/PlayerInfo" to="." method="_on_player_info_pressed"]
+[connection signal="details_pressed" from="CanvasLayer/UI/StatsInfoControl" to="." method="_on_stats_info_control_details_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/MapGraph/MapCloseBt" to="." method="_on_map_close_bt_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Dialog/DeadDialog/Back/ReviveBt" to="." method="_on_revive_bt_pressed"]
 [connection signal="all_consume_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_all_consume_added"]

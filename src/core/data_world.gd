@@ -8,6 +8,7 @@ var mission_manager = MissionManager.new()
 var res_manager = ResManager.new()
 var player_manager = PlayerManager.new()
 var dropthing_manager: DropThingManager
+var damage_info_manager = DamageInfoManager.new()
 
 # 地区数据 key:地区id,value:地区数据，结构见map_region.json
 var region_dic: Dictionary = {}
@@ -48,6 +49,17 @@ signal mission_phase_finished(data_mission_phase: DataMissionPhase)
 signal mission_phase_require_updated(data_mission_phase: DataMissionPhase)
 
 signal drop_thing_picked(drop_thing: DataBagItem)
+
+# 伤害记录信号，用于通知UI或其他系统伤害信息已被记录
+signal damage_recorded(damage: DataDamage)
+
+
+# 记录伤害信息的方法，接收DataMap发出的伤害信息
+func record_damage(damage: DataDamage) -> void:
+	# 将伤害信息添加到DamageInfoManager中
+	damage_info_manager.add_damage_record(damage)
+	# 发射伤害记录信号，通知UI或其他系统
+	damage_recorded.emit(damage)
 
 
 func start():
@@ -165,6 +177,8 @@ func load_data_world(
 				map.load(map_dic_from_cache[map_id])
 			# 监听地图的拾取事件
 			map.drop_thing_picked.connect(_on_map_drop_thing_picked)
+			# 监听地图的伤害创建事件
+			map.damage_created.connect(record_damage)
 			# （任务管理器）监听地图的击杀怪物事件
 			# 监听玩家的进入和离开
 			map.player_added.connect(_on_map_player_added)

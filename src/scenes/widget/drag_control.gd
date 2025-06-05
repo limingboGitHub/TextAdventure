@@ -22,3 +22,7 @@ func _gui_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and is_dragging:
 		# 鼠标移动时更新控件位置
 		get_parent().position = get_global_mouse_position() - drag_start_pos
+
+
+func _on_close_button_pressed() -> void:
+	pass # Replace with function body.
