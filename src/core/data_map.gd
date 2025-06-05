@@ -406,6 +406,7 @@ func _create_percent_damage(
 	# “奋力一击”蓄力效果
 	if skill.id == "skill_000001" and _data_player.has_effect("effect_000026"):
 		var effect = _data_player.get_effect("effect_000026")
+		# 根据蓄力段数结算伤害
 		var charge_damage_rate = effect.value * skill.charge_num
 		skill_damage_rate += charge_damage_rate
 		# 评估该效果最终的伤害值

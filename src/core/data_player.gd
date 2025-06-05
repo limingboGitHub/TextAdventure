@@ -100,9 +100,11 @@ const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 var is_charging: bool = false
 var charge_time: float = 0.0
 var charge_duration: float = 0.0
+# 用于计算蓄力蓝耗
+var charge_last_mp_cost_time: float = 0.0
 
 signal charge_started
-signal charge_completed(is_success: bool)  # true表示正常完成，false表示被取消
+signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
 
 
 signal before_skill_executed(player: DataPlayer, skill: DataBaseSkill)
@@ -739,7 +741,7 @@ func start_charge(time: float):
 
 
 ## 完成蓄力
-func _complete_charge():
+func _complete_charge(complete_charge_time: float):
 	if not is_charging:
 		return
 	
@@ -748,7 +750,7 @@ func _complete_charge():
 	charge_duration = 0.0
 	
 	# 发出蓄力完成信号，参数为true表示正常完成
-	charge_completed.emit(true)
+	charge_completed.emit(complete_charge_time)
 	print("玩家蓄力完成")
 
 
@@ -761,8 +763,8 @@ func cancel_charge():
 	charge_time = 0.0
 	charge_duration = 0.0
 	
-	# 发出蓄力完成信号，参数为false表示被取消
-	charge_completed.emit(false)
+	# 发出蓄力完成信号，参数为0表示被取消
+	charge_completed.emit(0)
 	print("玩家蓄力被取消")
 
 
@@ -784,9 +786,19 @@ func get_charge_progress() -> float:
 
 func _process_charge(delta: float):
 	if is_charging:
-		charge_time += delta
+		charge_time += delta * SingletonGame.speed
 		if charge_time >= charge_duration:
-			_complete_charge()
+			_complete_charge(charge_time)
+		else:
+			# 计算蓄力蓝耗，每0.1秒5点蓝耗
+			charge_last_mp_cost_time += delta
+			if charge_last_mp_cost_time >= 0.1:
+				charge_last_mp_cost_time = 0.0
+				var mp_cost = 5 * SingletonGame.speed
+				if mp < mp_cost:
+					_complete_charge(charge_time)
+				else:
+					recover_mp(-mp_cost)
 
 
 func save() -> Dictionary:

@@ -384,6 +384,8 @@ func load_local_player(data_player: DataPlayer):
 	data_player.level_updated.connect(_on_player_level_updated)
 	# 监听玩家血量变化
 	data_player.hp_updated.connect(_on_player_hp_updated)
+	# 监听玩家蓝量变化
+	data_player.mp_updated.connect(_on_player_mp_updated)
 	# 监听玩机技能释放前
 	data_player.before_skill_executed.connect(_on_player_before_skill_executed)
 	
@@ -476,10 +478,17 @@ func _on_player_hp_updated(data_player: DataPlayer):
 			data_player.rest()
 
 
+func _on_player_mp_updated(data_player: DataPlayer):
+	var mp_warning_value = data_player.get_max_mp() * SingletonGame.mp_warning_line / 100.0
+	if data_player.mp <= mp_warning_value:
+		#print("玩家蓝量低，尝试使用药品")
+		player_manager.data_bag.find_mp_medicine_and_use()
+
+
 func _on_player_before_skill_executed(data_player: DataPlayer, _skill: DataBaseSkill):
 	var mp_warning_value = data_player.get_max_mp() * SingletonGame.mp_warning_line / 100.0
 	if data_player.mp <= mp_warning_value:
-		print("玩家蓝量低，尝试使用药品")
+		#print("玩家蓝量低，尝试使用药品")
 		player_manager.data_bag.find_mp_medicine_and_use()
 
 

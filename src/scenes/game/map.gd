@@ -403,6 +403,9 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 				target_monster_list[0],
 				skill_add_count,
 				func(scene: Node2D):
+					# 如果玩家离开了地图，则跳过
+					if data_map.data_player == null:
+						return
 					# 解除和玩家的联系，加入到地图特效中
 					_add_to_effect_groups(scene)
 
@@ -561,15 +564,18 @@ func _skill_executed_casting(
 				var effect_value = effect.value * player_scene.data_player.get_final_ability().power / 10.0
 				print("蓄力时间增加：",effect_value)
 				charge_time += effect_value
-			
-			# 蓄力段数 = 蓄力时间/0.1
-			skill.charge_num = charge_time / 0.1
 
 			# 开始蓄力
 			player_scene.data_player.start_charge(charge_time)
 			# 等待蓄力结束，获取结果
-			var is_success = await player_scene.data_player.charge_completed
-			print("蓄力结束，成功：", is_success)
+			var complete_charge_time = await player_scene.data_player.charge_completed
+			print("蓄力结束，成功：", complete_charge_time > 0)
+			# 结算最终蓄力段数
+			if complete_charge_time > 0:
+				skill.charge_num = complete_charge_time / 0.1
+			else:
+				# 蓄力失败，不回调
+				return
 		# 回调
 		call_back_cast_finished.call(null)
 		call_back_finished.call()
