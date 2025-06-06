@@ -131,7 +131,7 @@ func _on_skill_level_changed(data_skill: DataBaseSkill):
 	# 删除旧BUFF
 	data_player.remove_buff(data_skill.id)
 	# 如果技能等级大于1，则添加新buff
-	if data_skill.level > 1:
+	if data_skill.level >= 1:
 		# 技能类型为buff类，并且是永久被动技能，则在技能等级变化时就为玩家添加buff
 		if data_skill is DataBuffSkill and data_skill.is_permanent():
 			data_player.add_buff(data_skill.create_buff())
