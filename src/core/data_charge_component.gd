@@ -2,17 +2,13 @@ class_name DataChargeComponent extends RefCounted
 
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
+signal charge_interval_invoked
 
-var owner_role  # 引用拥有该组件的角色
 var is_charging: bool = false
 var charge_time: float = 0.0
 var charge_duration: float = 0.0
-var charge_last_mp_cost_time: float = 0.0
-var mp_cost_per_interval: int = 5  # 每间隔消耗的魔法值
-var mp_cost_interval: float = 0.1  # 消耗魔法值的时间间隔
-
-func _init(_owner):
-    owner_role = _owner
+var charge_last_invoke_time: float = 0.0
+var charge_invoke_interval: float = 0.1  # 充能间隔
 
 # 开始蓄力
 func start_charge(time: float) -> bool:
@@ -22,7 +18,7 @@ func start_charge(time: float) -> bool:
     is_charging = true
     charge_time = 0.0
     charge_duration = time
-    charge_last_mp_cost_time = 0.0
+    charge_last_invoke_time = 0.0
     
     # 发出蓄力开始信号
     charge_started.emit()
@@ -62,19 +58,16 @@ func process(delta: float):
         if charge_time >= charge_duration:
             complete_charge(charge_time)
         else:
-            # 计算蓄力蓝耗，每间隔消耗魔法值
-            _process_mp_cost(delta)
+            _process_charge_invertal(delta)
 
-# 处理魔法值消耗
-func _process_mp_cost(delta: float):
-    charge_last_mp_cost_time += delta
-    if charge_last_mp_cost_time >= mp_cost_interval:
-        charge_last_mp_cost_time = 0.0
-        var mp_cost = mp_cost_per_interval * SingletonGame.speed
-        if owner_role.mp < mp_cost:
-            complete_charge(charge_time)
-        else:
-            owner_role.recover_mp(-mp_cost)
+# 处理充能间隔
+func _process_charge_invertal(delta: float):
+    charge_last_invoke_time += delta
+    if charge_last_invoke_time >= charge_invoke_interval:
+        charge_last_invoke_time = 0.0
+        # 充能间隔信号（用于外部判断蓝耗）
+        charge_interval_invoked.emit()
+
 
 # 获取蓄力状态
 func get_charging_status() -> bool:
@@ -89,8 +82,3 @@ func get_charge_progress() -> float:
 # 重置蓄力状态
 func reset():
     cancel_charge()
-
-# 配置魔法值消耗
-func set_mp_cost(cost: int, interval: float = 0.1):
-    mp_cost_per_interval = cost
-    mp_cost_interval = interval 

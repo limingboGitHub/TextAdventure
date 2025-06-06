@@ -100,7 +100,7 @@ const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
 # 蓄力相关
-var charge_component
+var charge_component: DataChargeComponent = DataChargeComponent.new()
 
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
@@ -146,9 +146,9 @@ func _init() -> void:
 	attribute.updated.connect(_on_attribute_updated)
 	
 	# 初始化充能组件
-	charge_component = DataChargeComponentClass.new(self)
 	charge_component.charge_started.connect(func(): charge_started.emit())
 	charge_component.charge_completed.connect(func(time): charge_completed.emit(time))
+	charge_component.charge_interval_invoked.connect(_charge_interval_invoked)
 
 
 func init_base_ability(power: int, agility: int, intelligence: int, luck: int) -> void:
@@ -760,6 +760,13 @@ func get_charge_progress() -> float:
 	return charge_component.get_charge_progress()
 
 
+## 充能间隔出发信号
+func _charge_interval_invoked():
+	var mp_cost = 5 * SingletonGame.speed
+	if mp < mp_cost:
+		charge_component.complete_charge(charge_component.charge_time)
+	else:
+		recover_mp(-mp_cost)
 
 
 func save() -> Dictionary:
