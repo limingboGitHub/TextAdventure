@@ -471,7 +471,7 @@ func player_revive_and_punish():
 
 func _on_player_hp_updated(data_player: DataPlayer):
 	var hp_warning_value = data_player.get_max_hp() * SingletonGame.hp_warning_line / 100.0
-	if data_player.hp <= hp_warning_value:
+	if !data_player.is_dead and data_player.hp <= hp_warning_value:
 		#print("玩家血量低，尝试使用药品")
 		var use_success = player_manager.data_bag.find_hp_medicine_and_use()
 		if not use_success and SingletonGame.is_auto:
@@ -481,16 +481,13 @@ func _on_player_hp_updated(data_player: DataPlayer):
 
 func _on_player_mp_updated(data_player: DataPlayer):
 	var mp_warning_value = data_player.get_max_mp() * SingletonGame.mp_warning_line / 100.0
-	if data_player.mp <= mp_warning_value:
+	if !data_player.is_dead and data_player.mp <= mp_warning_value:
 		#print("玩家蓝量低，尝试使用药品")
 		player_manager.data_bag.find_mp_medicine_and_use()
 
 
 func _on_player_before_skill_executed(data_player: DataPlayer, _skill: DataBaseSkill):
-	var mp_warning_value = data_player.get_max_mp() * SingletonGame.mp_warning_line / 100.0
-	if data_player.mp <= mp_warning_value:
-		#print("玩家蓝量低，尝试使用药品")
-		player_manager.data_bag.find_mp_medicine_and_use()
+	_on_player_mp_updated(data_player)
 
 
 ## 判断任务可见性限制是否满足
