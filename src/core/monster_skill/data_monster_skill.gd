@@ -1,13 +1,18 @@
 class_name DataMonsterSkill
 
-## 怪物技能基类
+## 怪物特殊技能基类（该技能区别于DataAttackSkill，只携带一些信息，不做攻击事件处理）
 ## 唯一标识
 var id: String
 ## 技能名称
 var name: String
 ## 技能类型
 var type: String
-
+## 技能开始CD
+var start_cd: float
+## 技能CD
+var cd: float
+## 剩余cd
+var cd_rest: float
 
 ## 蓄力攻击
 class ChargeAttack extends DataMonsterSkill:
@@ -19,10 +24,7 @@ class ChargeAttack extends DataMonsterSkill:
 	var charge_damage_step: float
 	## 每段步长增加的伤害
 	var charge_damage_step_value: float
-	## 技能开始CD
-	var start_cd: float
-	## 技能CD
-	var cd: float
+	
 	
 	## 将对象序列化为字典(私有方法)
 	func to_dict() -> Dictionary:
@@ -56,6 +58,8 @@ static func create_monster_skill(monster_config) -> DataMonsterSkill:
 	if _type == "charge_attack":
 		var charge_attack = ChargeAttack.new()
 		charge_attack.from_dict(monster_config)
+		# 初始化剩余cd
+		charge_attack.cd_rest = charge_attack.start_cd
 		return charge_attack
 	
 	return null

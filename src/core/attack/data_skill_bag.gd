@@ -411,6 +411,14 @@ static func create_normal_attack() -> DataAttackSkill:
 	data_skill.damage_level = [[1.0]]
 	return data_skill
 
+static func create_monster_attack(name: String, damage_rate: float) -> DataAttackSkill:
+	var data_skill = DataAttackSkill.new(NORMAL_ATTACK, "attack")
+	data_skill.name = name
+	data_skill.count = 1
+	data_skill.level = 1
+	data_skill.damage_level = [[damage_rate]]
+	return data_skill
+
 
 func get_skill(skill_id: String)-> DataBaseSkill:
 	if skill_id == NORMAL_ATTACK:

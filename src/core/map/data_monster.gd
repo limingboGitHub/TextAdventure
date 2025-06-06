@@ -1,5 +1,8 @@
 class_name DataMonster extends DataRole
 
+# 引用充能组件
+const DataChargeComponentClass = preload("res://src/core/data_charge_component.gd")
+
 # 怪物的创建id
 var monster_id: String
 # 怪物的唯一标识，两只一样的怪物有不同的唯一标识
@@ -28,10 +31,25 @@ var execute_cd_rest = 0
 # 怪物被攻击的来源(玩家id)
 var attack_sources: Array[String] = []
 
-# 怪物特殊技能
+# 怪物特殊技能列表
 var monster_skills: Array[DataMonsterSkill] = []
+# 怪物当前执行的特殊技能
+var monster_skill_current: DataMonsterSkill
+# 怪物特殊技能和对应的攻击技能字典 key：怪物特殊技能id value：攻击技能（用于处理攻击事件）
+var monster_skills_dic: Dictionary
 
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
+signal charge_started
+signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
+
+# 蓄力相关
+var charge_component = DataChargeComponent.new()
+
+
+func _init() -> void:
+	# 初始化充能组件
+	charge_component.charge_started.connect(_on_charge_started)
+	charge_component.charge_completed.connect(_on_charge_completed)
 
 
 func set_attribute(base_attr: AttributeDetails):
@@ -48,6 +66,14 @@ func _to_string() -> String:
 func process(delta: float):
 	if execute_cd_rest > 0:
 		execute_cd_rest -= int(delta * 1000)
+	
+	# 处理蓄力
+	charge_component.process(delta)
+
+	# 处理怪物特殊技能剩余CD
+	for monster_skill in monster_skills:
+		if monster_skill.cd_rest > 0:
+			monster_skill.cd_rest -= delta
 
 	super.process(delta)
 
@@ -64,23 +90,55 @@ func upgrade(rate: float):
 
 ## 怪物的攻击没有冷却时间，只要玩家未处在无敌状态，就会一直攻击
 func process_attack():
+	# 如果正在蓄力，则不执行攻击
+	if charge_component.get_charging_status():
+		return
+
 	if execute_cd_rest > 0:	
 		return
 	
 	if is_dead:
 		return
 	
-	# 优先尝试使用技能
+	# 优先尝试使用怪物特殊技能
 	for monster_skill in monster_skills:
-		pass
+		# 检查特殊技能剩余CD
+		if monster_skill.cd_rest > 0:
+			continue
+		else:
+			# 处理怪物特殊技能
+			process_monster_skill(monster_skill)
+			return
 
-	# 在攻击生效之前，上层逻辑可能还会有一些判定
+	# 如果没有执行特殊技能，则执行普通攻击
 	if skill is DataAttackSkill:
 		# 技能执行
-		print("怪物技能执行：", skill.name)
-		skill_executed.emit(self, skill)
-		# 重置冷却
-		execute_cd_rest = execute_cd / float(SingletonGame.speed)
+		execute_skill(skill)
+
+
+func process_monster_skill(monster_skill: DataMonsterSkill):
+	if monster_skill.type == "charge_attack":
+		# 随机一个蓄力时长
+		var charge_time = monster_skill.charge_time_min + \
+			randf() * (monster_skill.charge_time_max - monster_skill.charge_time_min)
+		# 进入蓄力状态
+		charge_component.start_charge(charge_time)
+	
+	# 标记当前执行的怪物技能
+	monster_skill_current = monster_skill
+
+
+func execute_skill(_skill: DataAttackSkill):
+	print("怪物技能执行：", _skill.name)
+	skill_executed.emit(self, _skill)
+	# 重置冷却
+	execute_cd_rest = execute_cd / float(SingletonGame.speed)
+
+
+func add_monster_skill(monster_skill: DataMonsterSkill):
+	monster_skills.append(monster_skill)
+	#var attack_skill = DataSkillBag.create_monster_attack(monster_skill.name)
+	#monster_skills_dic[monster_skill.id] = attack_skill
 
 
 func add_attack_source(id: String):
@@ -96,7 +154,44 @@ func is_boss() -> bool:
 	return type == "boss"
 
 
+## 开始蓄力
+func start_charge(time: float):
+	charge_component.start_charge(time)
+
+
+## 取消蓄力
+func cancel_charge():
+	charge_component.cancel_charge()
+
+
+## 获取蓄力状态
+func get_charging_status() -> bool:
+	return charge_component.get_charging_status()
+
+
+## 获取蓄力进度 (0.0 - 1.0)
+func get_charge_progress() -> float:
+	return charge_component.get_charge_progress()
+
+
 func get_hurt(data_damage: DataDamage):
 	super.get_hurt(data_damage)
 	if not is_hurted:
 		is_hurted = true
+
+
+func _on_charge_completed(time: float):
+	charge_completed.emit(time)
+	if monster_skill_current != null and monster_skill_current is DataMonsterSkill.ChargeAttack:
+		# 结算伤害比例
+		var charge_num = time / monster_skill_current.charge_damage_step
+		var damage_rate = 1 + charge_num * monster_skill_current.charge_damage_step_value
+		# 执行技能
+		var _skill = DataSkillBag.create_monster_attack(monster_skill_current.name,damage_rate)
+		execute_skill(_skill)
+		# 充值怪物特殊技能CD
+		monster_skill_current.cd_rest = monster_skill_current.cd
+
+
+func _on_charge_started():
+	charge_started.emit()

@@ -31,6 +31,11 @@ func _ready() -> void:
 		data_monster.role_hurted.connect(_on_get_hurted)
 		# 监听特效添加事件
 		data_monster.effect_added.connect(_on_effect_added)
+		# 监听充能开始
+		data_monster.charge_started.connect(_on_charge_started)
+		# 监听充能完成
+		data_monster.charge_completed.connect(_on_charge_completed)
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,6 +60,8 @@ func _process(delta: float) -> void:
 func clear():
 	data_monster.role_hurted.disconnect(_on_get_hurted)
 	data_monster.effect_added.disconnect(_on_effect_added)
+	data_monster.charge_started.disconnect(_on_charge_started)
+	data_monster.charge_completed.disconnect(_on_charge_completed)
 
 
 func _process_attack(delta: float):
@@ -224,3 +231,13 @@ func _shake_effect(direction: Vector2 = Vector2.RIGHT):
 
 func _on_shake_finished():
 	current_shake_tween = null
+
+
+func _on_charge_started():
+	# 显示充能特效
+	$ChargeEffect.show()
+
+
+func _on_charge_completed(_time: float):
+	# 隐藏充能特效
+	$ChargeEffect.hide()

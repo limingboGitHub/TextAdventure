@@ -41,7 +41,7 @@ func create_monster(
 	if monster_config.has("skills"):
 		for monster_skill_id in monster_config["skills"]:
 			var monster_skill = monster_skill_dic[monster_skill_id]
-			monster.monster_skills.append(DataMonsterSkill.create_monster_skill(monster_skill))
+			monster.add_monster_skill(DataMonsterSkill.create_monster_skill(monster_skill))
 
 	return monster
 	

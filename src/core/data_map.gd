@@ -642,10 +642,16 @@ func on_monster_skill_executed(
 ):
 	if skill is DataAttackSkill:
 		if _is_attack_hit(data_monster, target):
-			# 防御减伤率
+			# 怪物攻击力
+			var attack_value = data_monster.attribute.final_details.attack
+			# 怪物技能伤害系数
+			var skill_damage_rate = skill.get_damage_value()
+
+			# 最终伤害值
+			var damage_value = attack_value * skill_damage_rate
+			# 防御减伤
 			var defense_reduction_value = target.attribute.defense_reduction_value()
-			# 伤害值
-			var damage_value = data_monster.attribute.final_details.attack - defense_reduction_value
+			damage_value -= defense_reduction_value
 			# 伤害值最小为1
 			damage_value = max(1, damage_value)
 			var damage = DataDamage.new(DataDamage.TYPE.PHYSICAL,DataDamage.SOURCE_TYPE.MONSTER, damage_value)
