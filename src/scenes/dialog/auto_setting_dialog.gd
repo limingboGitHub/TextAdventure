@@ -58,12 +58,12 @@ func _on_ok_button_pressed() -> void:
 	var hp_value = int(hp_input)
 	var mp_value = int(mp_input)
 	
-	# 验证数值范围（0-100）
-	if hp_value < 0 or hp_value > 100:
+	# 验证数值范围（0-99）
+	if hp_value < 1 or hp_value > 99:
 		$HpWarningLine/LineEdit.text = str(old_hp_warning_line)
 		return
 	
-	if mp_value < 0 or mp_value > 100:
+	if mp_value < 1 or mp_value > 99:
 		$MpWarningLine/LineEdit.text = str(old_mp_warning_line)
 		return
 	
