@@ -531,6 +531,7 @@ offset_right = 126.0
 offset_bottom = 803.0
 
 [node name="StatsDetailsDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("28_b6sft")]
+visible = false
 offset_left = 81.0
 offset_top = 440.0
 offset_right = 81.0

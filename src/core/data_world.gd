@@ -159,11 +159,12 @@ func load_data_world(
 				map_id,
 				map_config,
 				map_monster_refresh_pos,
-				map_monster_config_dic,
 				res_manager.map_npc_dic,
 				dropthing_manager,
 				mission_manager
 			)
+			map.monster_config_dic = map_monster_config_dic
+			map.monster_skill_dic = res_manager.monster_skill_dic
 			# 完善地图位置信息
 			map.position = Vector2(maps_dic[map_id]["x"],maps_dic[map_id]["y"])
 			# 完善地图的传送点信息

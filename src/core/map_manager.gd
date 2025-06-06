@@ -11,7 +11,6 @@ func get_map_by_config(
 	map_id,
 	map_config,
 	monster_refresh_pos_list,
-	map_monster_config_dic,
 	map_npc_dic,
 	dropthing_manager,
 	mission_manager
@@ -97,8 +96,6 @@ func get_map_by_config(
 
 			map.map_monster_refresh_pos.append(refresh_pos)
 	
-	map.monster_config_dic = map_monster_config_dic
-
 	return map
 
 

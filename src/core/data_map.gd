@@ -19,6 +19,8 @@ var map_monster_refresh_pos: Array[MonsterRefreshPos] = []
 var monster_config_dic = {}
 # 怪物刷新时间信息 key:monster_id value:刷新间隔开始时间
 var monster_refresh_time_dic = {}
+# 怪物技能信息 key:monster_skill_id value:技能信息
+var monster_skill_dic = {}
 #endregion
 
 # 数据
@@ -162,7 +164,9 @@ func refresh_monsters():
 				# 精英怪的概率
 				var is_elite = randf() < 0.01
 				# 创建怪物对象
-				var monster = monster_manager.create_monster(monster_id, is_elite, monster_config)
+				var monster = monster_manager.create_monster(
+					monster_id, is_elite, monster_config,monster_skill_dic
+				)
 				refresh_pos.data_monster = monster
 				# 添加怪物
 				_add_monster(monster,refresh_pos.pos)
@@ -702,7 +706,9 @@ func start_endless():
 	for i in range(monster_count):
 		var monster_id = "monster_00000" + str(endless_layer)
 		var monster_config = monster_config_dic[monster_id]
-		var monster = monster_manager.create_monster(monster_id, false, monster_config)
+		var monster = monster_manager.create_monster(
+			monster_id, false, monster_config,monster_skill_dic
+		)
 		# 强化怪物
 		monster.upgrade(monster_upgrade)
 		# 修改名称

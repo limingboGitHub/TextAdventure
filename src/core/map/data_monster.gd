@@ -28,6 +28,9 @@ var execute_cd_rest = 0
 # 怪物被攻击的来源(玩家id)
 var attack_sources: Array[String] = []
 
+# 怪物特殊技能
+var monster_skills: Array[DataMonsterSkill] = []
+
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 
 

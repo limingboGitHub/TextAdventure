@@ -1,0 +1,16 @@
+{
+	"desc":"怪物技能配置",
+	"skills":{
+		"monster_skill_000001":{
+			"name":"蓄力攻击",
+			"type":"charge_attack",
+			"desc":"charge_time_min：蓄力时间最小值，charge_time_max：蓄力时间最大值，charge_damage_step：蓄力伤害步长，charge_damage_step_value：每段步长增加的伤害，start_cd：技能开始CD，cd：技能CD",
+			"charge_time_min": 1,
+			"charge_time_max": 3,
+			"charge_damage_step": 0.1,
+			"charge_damage_step_value": 0.1,
+			"start_cd": 5,
+			"cd": 10
+		}
+	}
+}

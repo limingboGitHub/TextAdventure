@@ -51,6 +51,9 @@ var alchemy_dic = {}
 ## 特效信息
 var effect_dic = {}
 
+## 怪物技能信息
+var monster_skill_dic = {}
+
 # 必要资源加载完成
 signal load_res_finished()
 
@@ -112,6 +115,9 @@ func load():
 
 	# 加载特效信息
 	effect_dic = _read_config_json(res_path + "effect.json")["effects"]
+
+	# 加载怪物技能信息
+	monster_skill_dic = _read_config_json(res_path + "monster_skill.json")["skills"]
 
 	load_res_finished.emit()
 

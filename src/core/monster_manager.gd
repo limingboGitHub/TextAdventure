@@ -2,7 +2,12 @@ class_name MonsterManager
 
 
 # 对外接口 创建怪物
-func create_monster(monster_id: String,is_elite: bool,monster_config: Dictionary)-> DataMonster:
+func create_monster(
+	monster_id: String,
+	is_elite: bool,
+	monster_config: Dictionary,
+	monster_skill_dic: Dictionary
+)-> DataMonster:
 	var monster = DataMonster.new()
 	monster.monster_id = monster_id
 	monster.monster_unique_id = RandomTool.random_num()
@@ -31,6 +36,12 @@ func create_monster(monster_id: String,is_elite: bool,monster_config: Dictionary
 	else:
 		base_attr.move_speed = 100
 	monster.set_attribute(base_attr)
+
+	#怪物技能
+	if monster_config.has("skills"):
+		for monster_skill_id in monster_config["skills"]:
+			var monster_skill = monster_skill_dic[monster_skill_id]
+			monster.monster_skills.append(DataMonsterSkill.create_monster_skill(monster_skill))
 
 	return monster
 	
