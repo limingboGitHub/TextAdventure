@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bpcfk56u3agxt" path="res://src/scenes/game/damage_group.gd" id="4_ofkwm"]
 [ext_resource type="Script" uid="uid://ctsj20lbvsrfc" path="res://src/scenes/game/skill_name_group.gd" id="5_3klio"]
 [ext_resource type="Script" uid="uid://cgg153p8wa2cr" path="res://src/scenes/game/poison_damage_group.gd" id="5_kv8ei"]
-[ext_resource type="PackedScene" uid="uid://c11xysl3ajpv6" path="res://src/scenes/effect/attack_effect3.tscn" id="7_dsv8w"]
+[ext_resource type="PackedScene" uid="uid://c4h3xx4l84aqx" path="res://src/scenes/effect/attack_effect4.tscn" id="7_dsv8w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6afn"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
