@@ -2,6 +2,9 @@ class_name DataPlayer extends DataRole
 
 ## 该类只包含玩家的数据信息，不涉及到UI层代码
 
+# 引用充能组件
+const DataChargeComponentClass = preload("res://src/core/data_charge_component.gd")
+
 var player_id: String = ""
 var player_name: String = "无影"
 var job_id: String = "job_000000"
@@ -97,11 +100,7 @@ const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 #endregion
 
 # 蓄力相关
-var is_charging: bool = false
-var charge_time: float = 0.0
-var charge_duration: float = 0.0
-# 用于计算蓄力蓝耗
-var charge_last_mp_cost_time: float = 0.0
+var charge_component
 
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
@@ -145,6 +144,11 @@ func _init() -> void:
 	attribute.ability_dic[ATTRIBUTE_ALLOC] = AttributeAbility.new()
 	# 监听属性的变化
 	attribute.updated.connect(_on_attribute_updated)
+	
+	# 初始化充能组件
+	charge_component = DataChargeComponentClass.new(self)
+	charge_component.charge_started.connect(func(): charge_started.emit())
+	charge_component.charge_completed.connect(func(time): charge_completed.emit(time))
 
 
 func init_base_ability(power: int, agility: int, intelligence: int, luck: int) -> void:
@@ -334,7 +338,7 @@ func process(delta: float):
 			can_not_be_hurt_rest = 0
 
 	# 处理蓄力
-	_process_charge(delta)
+	charge_component.process(delta)
 
 	# 玩家生命恢复
 	# 残血状态
@@ -728,77 +732,34 @@ func cause_damage(damage: DataDamage):
 
 ## 开始蓄力
 func start_charge(time: float):
-	if is_charging:
-		return  # 已经在蓄力中，不重复开始
-	
-	is_charging = true
-	charge_time = 0.0
-	charge_duration = time
-	
-	# 发出蓄力开始信号
-	charge_started.emit()
-	print("玩家开始蓄力，持续时间：", time, "秒")
+	charge_component.start_charge(time)
 
 
-## 完成蓄力
+## 完成蓄力 - 内部方法，由组件调用
 func _complete_charge(complete_charge_time: float):
-	if not is_charging:
-		return
-	
-	is_charging = false
-	charge_time = 0.0
-	charge_duration = 0.0
-	
-	# 发出蓄力完成信号，参数为true表示正常完成
-	charge_completed.emit(complete_charge_time)
-	print("玩家蓄力完成")
+	# 此方法已由组件替代，保留接口以兼容现有代码
+	pass
 
 
 ## 取消蓄力
 func cancel_charge():
-	if not is_charging:
-		return
-	
-	is_charging = false
-	charge_time = 0.0
-	charge_duration = 0.0
-	
-	# 发出蓄力完成信号，参数为0表示被取消
-	charge_completed.emit(0)
-	print("玩家蓄力被取消")
+	charge_component.cancel_charge()
 
 
 func reset():
-	cancel_charge()
+	charge_component.reset()
 
 
 ## 获取蓄力状态
 func get_charging_status() -> bool:
-	return is_charging
+	return charge_component.get_charging_status()
 
 
 ## 获取蓄力进度 (0.0 - 1.0)
 func get_charge_progress() -> float:
-	if not is_charging or charge_duration <= 0:
-		return 0.0
-	return min(charge_time / charge_duration, 1.0)
+	return charge_component.get_charge_progress()
 
 
-func _process_charge(delta: float):
-	if is_charging:
-		charge_time += delta * SingletonGame.speed
-		if charge_time >= charge_duration:
-			_complete_charge(charge_time)
-		else:
-			# 计算蓄力蓝耗，每0.1秒5点蓝耗
-			charge_last_mp_cost_time += delta
-			if charge_last_mp_cost_time >= 0.1:
-				charge_last_mp_cost_time = 0.0
-				var mp_cost = 5 * SingletonGame.speed
-				if mp < mp_cost:
-					_complete_charge(charge_time)
-				else:
-					recover_mp(-mp_cost)
 
 
 func save() -> Dictionary:

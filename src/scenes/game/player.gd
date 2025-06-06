@@ -62,14 +62,14 @@ func _process(delta: float) -> void:
 				pass
 			else:
 				# 蓄力时不进行攻击
-				if not data_player.is_charging:
+				if not data_player.get_charging_status():
 					_process_attack(delta)
 				data_player.process_pick()
 		else:
 			# 监听玩家的attack事件
 			if Input.is_action_pressed("attack"):
 				# 蓄力时不进行攻击
-				if not data_player.is_charging:
+				if not data_player.get_charging_status():
 					_process_attack(delta)
 			elif Input.is_action_just_released("attack"):
 				pass

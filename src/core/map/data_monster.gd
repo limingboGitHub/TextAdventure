@@ -69,6 +69,10 @@ func process_attack():
 	
 	if is_dead:
 		return
+	
+	# 优先尝试使用技能
+	for monster_skill in monster_skills:
+		pass
 
 	# 在攻击生效之前，上层逻辑可能还会有一些判定
 	if skill is DataAttackSkill:
