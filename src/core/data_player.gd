@@ -101,6 +101,8 @@ const HP_COST_ENHANCE_CRITICAL_VALUE = 200
 
 # 蓄力相关
 var charge_component: DataChargeComponent = DataChargeComponent.new()
+# 蓄力技能
+var charge_skill: DataBaseSkill = null
 
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
@@ -438,6 +440,7 @@ func process_attack():
 					_hp_update()
 				
 				if skill.id == "skill_000001" and has_effect("effect_000026"):
+					charge_skill = skill
 					process_charge_attack()
 				else:
 					execute_skill(skill,skill_add_count)
@@ -784,10 +787,11 @@ func _charge_completed(complete_charge_time: float):
 	if complete_charge_time > 0:
 		skill.charge_num = complete_charge_time / 0.1
 		# 执行技能
-		execute_skill(skill)
+		execute_skill(charge_skill)
 	else:
 		# 蓄力失败
 		pass
+	charge_skill = null
 
 
 func save() -> Dictionary:
