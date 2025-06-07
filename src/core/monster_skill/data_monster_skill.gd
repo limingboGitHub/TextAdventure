@@ -14,6 +14,26 @@ var cd: float
 ## 剩余cd
 var cd_rest: float
 
+# 基类的to_dict方法
+func to_dict() -> Dictionary:
+	return {
+		"id": id,
+		"name": name,
+		"type": type,
+		"start_cd": start_cd,
+		"cd": cd
+	}
+
+
+# 基类的from_dict方法
+func from_dict(data: Dictionary):
+	id = data.get("id", "")
+	name = data.get("name", "")
+	type = data.get("type", "")
+	start_cd = data.get("start_cd", 0.0)
+	cd = data.get("cd", 0.0)
+
+
 ## 蓄力攻击
 class ChargeAttack extends DataMonsterSkill:
 	## 蓄力时间最小值
@@ -28,29 +48,47 @@ class ChargeAttack extends DataMonsterSkill:
 	
 	## 将对象序列化为字典(私有方法)
 	func to_dict() -> Dictionary:
-		return {
-			"id": id,
-			"name": name,
-			"type": type,
+		var dic = super.to_dict()
+		dic.merge({
 			"charge_time_min": charge_time_min,
 			"charge_time_max": charge_time_max,
 			"charge_damage_step": charge_damage_step,
-			"charge_damage_step_value": charge_damage_step_value,
-			"start_cd": start_cd,
-			"cd": cd
-		}
+			"charge_damage_step_value": charge_damage_step_value
+		})
+		return dic
 	
 	## 从字典创建对象(私有静态方法)
 	func from_dict(data: Dictionary):
-		id = data.get("id", "")
-		name = data.get("name", "")
-		type = data.get("type", "")
+		super.from_dict(data)
 		charge_time_min = data.get("charge_time_min", 0.0)
 		charge_time_max = data.get("charge_time_max", 0.0)
 		charge_damage_step = data.get("charge_damage_step", 0.0)
 		charge_damage_step_value = data.get("charge_damage_step_value", 0.0)
-		start_cd = data.get("start_cd", 0.0)
-		cd = data.get("cd", 0.0)
+
+
+## 召唤小怪
+class SpawnMonster extends DataMonsterSkill:
+	## 召唤怪物列表
+	var monster_id_list: Array[String]
+	## 召唤怪物数量
+	var monster_count: int
+
+	## 将对象序列化为字典(私有方法)
+	func to_dict() -> Dictionary:
+		var dic = super.to_dict()
+		dic.merge({
+			"monster_id_list": monster_id_list,
+			"monster_count": monster_count
+		})
+		return dic
+
+	## 从字典创建对象(私有静态方法)
+	func from_dict(data: Dictionary):
+		super.from_dict(data)
+		if data.has("monster_id_list"):
+			for monster_id in data.get("monster_id_list", []):
+				monster_id_list.append(monster_id)
+		monster_count = data.get("monster_count", 0)
 
 
 static func create_monster_skill(monster_config) -> DataMonsterSkill:
@@ -61,5 +99,11 @@ static func create_monster_skill(monster_config) -> DataMonsterSkill:
 		# 初始化剩余cd
 		charge_attack.cd_rest = charge_attack.start_cd
 		return charge_attack
+	elif _type == "spawn_monster":
+		var spawn_monster = SpawnMonster.new()
+		spawn_monster.from_dict(monster_config)
+		# 初始化剩余cd
+		spawn_monster.cd_rest = spawn_monster.start_cd
+		return spawn_monster
 	
 	return null

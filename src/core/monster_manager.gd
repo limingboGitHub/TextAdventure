@@ -37,11 +37,14 @@ func create_monster(
 		base_attr.move_speed = 100
 	monster.set_attribute(base_attr)
 
-	#怪物技能
+	# 怪物技能
 	if monster_config.has("skills"):
 		for monster_skill_id in monster_config["skills"]:
 			var monster_skill = monster_skill_dic[monster_skill_id]
 			monster.add_monster_skill(DataMonsterSkill.create_monster_skill(monster_skill))
+
+	if monster_config.has("attack_cd"):
+		monster.execute_cd = float(monster_config["attack_cd"])
 
 	return monster
 	

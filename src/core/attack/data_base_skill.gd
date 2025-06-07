@@ -6,7 +6,7 @@ class_name DataBaseSkill
 
 # 技能id
 var id: String
-# 技能类型 attack 攻击 buff 增益 effect_buff 特殊增益 attri_buff 属性增益
+# 技能类型 attack 攻击 buff 增益 effect_buff 特殊增益 attri_buff 属性增益 spawn 召唤
 var type: String
 # 技能名称
 var name: String

@@ -11,6 +11,18 @@
 			"charge_damage_step_value": 0.1,
 			"start_cd": 5,
 			"cd": 10
+		},
+		"monster_skill_000002":{
+			"name":"召唤小怪",
+			"type":"spawn_monster",
+			"desc":"monster_id_list:召唤的怪物列表，从中随机，monster_count: 召唤怪物的数量",
+			"monster_count": 10,
+			"monster_id_list":[
+				"monster_000040",
+				"monster_000041"
+			],
+			"start_cd": 5,
+			"cd": 20
 		}
 	}
 }

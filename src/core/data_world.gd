@@ -274,7 +274,21 @@ func get_monster_config_dic(map_monster_refresh_pos):
 			var monster_id = monster_info["id"]
 			if not monster_config_dic.has(monster_id):
 				monster_config_dic[monster_id] = res_manager.get_monster_config(monster_id)
+				# 怪物可能召唤的怪物ID
+				get_monster_config_dic_spawn_monster(monster_id,monster_config_dic)
+				
 	return monster_config_dic
+
+
+## 部分怪物会召唤其他怪物，将这部分怪物配置也添加到配置字典中
+func get_monster_config_dic_spawn_monster(monster_id: String,monster_config_dic: Dictionary):
+	if monster_config_dic[monster_id].has("skills"):
+		for skill_id in monster_config_dic[monster_id]["skills"]:
+			var skill_config = res_manager.monster_skill_dic[skill_id]
+			if skill_config.has("monster_id_list"):
+				for spawn_monster_id in skill_config["monster_id_list"]:
+					if not monster_config_dic.has(spawn_monster_id):
+						monster_config_dic[spawn_monster_id] = res_manager.get_monster_config(spawn_monster_id)
 
 
 func get_monster_config_dic_endless():

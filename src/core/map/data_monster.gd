@@ -25,8 +25,8 @@ var current_map_id: String = ""
 var skill: DataBaseSkill = DataSkillBag.create_normal_attack()
 
 # 执行CD
-var execute_cd = 2000
-var execute_cd_rest = 0
+var execute_cd = 2.0
+var execute_cd_rest = 0.0
 
 # 怪物被攻击的来源(玩家id)
 var attack_sources: Array[String] = []
@@ -35,8 +35,11 @@ var attack_sources: Array[String] = []
 var monster_skills: Array[DataMonsterSkill] = []
 # 怪物当前执行的特殊技能
 var monster_skill_current: DataMonsterSkill
-# 怪物特殊技能和对应的攻击技能字典 key：怪物特殊技能id value：攻击技能（用于处理攻击事件）
-var monster_skills_dic: Dictionary
+
+# 自动锁定玩家
+var auto_lock_player = false
+# 此怪物是否会掉落物品（部分特殊怪物不掉落物品）
+var is_drop_item = true
 
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
@@ -47,6 +50,8 @@ var charge_component = DataChargeComponent.new()
 
 
 func _init() -> void:
+	# 怪物的普攻CD为execute_cd
+	skill.cd = execute_cd
 	# 初始化充能组件
 	charge_component.charge_started.connect(_on_charge_started)
 	charge_component.charge_completed.connect(_on_charge_completed)
@@ -65,15 +70,16 @@ func _to_string() -> String:
 
 func process(delta: float):
 	if execute_cd_rest > 0:
-		execute_cd_rest -= int(delta * 1000)
+		execute_cd_rest -= delta
 	
 	# 处理蓄力
 	charge_component.process(delta)
 
-	# 处理怪物特殊技能剩余CD
-	for monster_skill in monster_skills:
-		if monster_skill.cd_rest > 0:
-			monster_skill.cd_rest -= delta
+	# 处理怪物特殊技能剩余CD（受伤后开始计算特殊技能CD）
+	if is_hurted:
+		for monster_skill in monster_skills:
+			if monster_skill.cd_rest > 0:
+				monster_skill.cd_rest -= delta
 
 	super.process(delta)
 
@@ -123,22 +129,28 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 			randf() * (monster_skill.charge_time_max - monster_skill.charge_time_min)
 		# 进入蓄力状态
 		charge_component.start_charge(charge_time)
+		# 标记当前执行的怪物技能
+		monster_skill_current = monster_skill
+	elif monster_skill.type == "spawn_monster":
+		# 召唤技能
+		var _skill = DataSpawnSkill.new(monster_skill.id,"spawn")
+		_skill.monster_id_list = monster_skill.monster_id_list
+		_skill.monster_count = monster_skill.monster_count
+		execute_skill(_skill)
+		# 重置怪物特殊技能CD
+		monster_skill.cd_rest = monster_skill.cd
 	
-	# 标记当前执行的怪物技能
-	monster_skill_current = monster_skill
 
 
-func execute_skill(_skill: DataAttackSkill):
+func execute_skill(_skill: DataBaseSkill):
 	print("怪物技能执行：", _skill.name)
 	skill_executed.emit(self, _skill)
 	# 重置冷却
-	execute_cd_rest = execute_cd / float(SingletonGame.speed)
+	execute_cd_rest = _skill.cd / float(SingletonGame.speed)
 
 
 func add_monster_skill(monster_skill: DataMonsterSkill):
 	monster_skills.append(monster_skill)
-	#var attack_skill = DataSkillBag.create_monster_attack(monster_skill.name)
-	#monster_skills_dic[monster_skill.id] = attack_skill
 
 
 func add_attack_source(id: String):
