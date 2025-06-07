@@ -45,6 +45,7 @@ func create_monster(
 
 	if monster_config.has("attack_cd"):
 		monster.execute_cd = float(monster_config["attack_cd"])
+		monster.skill.cd = monster.execute_cd
 
 	return monster
 	

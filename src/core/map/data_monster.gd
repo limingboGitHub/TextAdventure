@@ -50,8 +50,6 @@ var charge_component = DataChargeComponent.new()
 
 
 func _init() -> void:
-	# 怪物的普攻CD为execute_cd
-	skill.cd = execute_cd
 	# 初始化充能组件
 	charge_component.charge_started.connect(_on_charge_started)
 	charge_component.charge_completed.connect(_on_charge_completed)
