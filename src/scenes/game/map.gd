@@ -71,6 +71,19 @@ func _process(delta: float) -> void:
 	# 更新击杀记录
 	_update_boss_kill_record()
 
+	# 如果有怪物有自动锁定丢失目标，则重新锁定
+	_process_auto_lock_player()
+
+
+func _process_auto_lock_player():
+	if not data_map.get_player():
+		return
+
+	for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
+		if monster_scene.attack_target == null and monster_scene.data_monster.auto_lock_player:
+			var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.get_player().player_id)
+			monster_scene.set_attack_target(player_scene)
+
 
 func _update_boss_kill_record():
 	for start_time in boss_hurt_time.values():

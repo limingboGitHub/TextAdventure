@@ -70,7 +70,7 @@ func _process_attack(delta: float):
 		if data_player.is_dead:
 			return
 		# 普通怪物在目标休息时会丢失目标
-		if (data_player.is_resting and data_monster.type == "normal"):
+		if (data_player.is_resting and data_monster.type == "normal" and not data_monster.auto_lock_player):
 			attack_target = null
 			return
 
