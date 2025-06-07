@@ -667,7 +667,7 @@ func on_monster_skill_executed(
 				var effect = data_player.get_effect("effect_000021")
 				if randf() < effect.value:
 					# 闪避追击
-						data_player.execute_normal_attack()
+					data_player.execute_normal_attack_no_cd()
 
 
 # 判断玩家是否有魔法屏障技能的buff，如果有，则调整伤害

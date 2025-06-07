@@ -147,7 +147,7 @@ func _init() -> void:
 	
 	# 初始化充能组件
 	charge_component.charge_started.connect(func(): charge_started.emit())
-	charge_component.charge_completed.connect(func(time): charge_completed.emit(time))
+	charge_component.charge_completed.connect(_charge_completed)
 	charge_component.charge_interval_invoked.connect(_charge_interval_invoked)
 
 
@@ -426,8 +426,6 @@ func process_attack():
 			if mp < mp_cost:
 				# 蓝耗不足时释放普攻
 				execute_skill(normal_attack,skill_add_count)
-				# 重置冷却
-				execute_cd_rest = normal_attack.cd / float(SingletonGame.speed)
 			else:
 				# 扣除蓝耗
 				recover_mp(-mp_cost)
@@ -439,28 +437,39 @@ func process_attack():
 					# 通知血量变化
 					_hp_update()
 				
-				execute_skill(skill,skill_add_count)
-				# 特殊效果影响技能CD
-				var effect_cd = 0.0
-				if has_effect("effect_000026"):
-					effect_cd = 2.0
-
-				# 重置冷却
-				if has_skill_enhance(skill.id):
-					execute_cd_rest = (skill.cd + effect_cd + get_skill_enhance(skill.id).cd) / float(SingletonGame.speed)
+				if skill.id == "skill_000001" and has_effect("effect_000026"):
+					process_charge_attack()
 				else:
-					execute_cd_rest = (skill.cd + effect_cd) / float(SingletonGame.speed)
-				print("技能释放后，冷却时间：",execute_cd_rest)
+					execute_skill(skill,skill_add_count)
 			# 退出休息状态
 			is_resting = false
 
 
+func process_charge_attack():
+	# 计算蓄力时间
+	var _charge_time = 2.0
+	# 其他蓄力效果增幅
+	if has_effect("effect_000027"):
+		var effect = get_effect("effect_000027")
+		var effect_value = effect.value * get_final_ability().power / 10.0
+		print("蓄力时间增加：",effect_value)
+		_charge_time += effect_value
+	# 进入蓄力状态
+	charge_component.start_charge(_charge_time)
+
+
 func execute_skill(_skill: DataBaseSkill,skill_add_count: int = 0):
 	skill_executed.emit(self, _skill,skill_add_count)
+	# 重置冷却
+	if has_skill_enhance(_skill.id):
+		execute_cd_rest = (_skill.cd + get_skill_enhance(_skill.id).cd) / float(SingletonGame.speed)
+	else:
+		execute_cd_rest = (_skill.cd ) / float(SingletonGame.speed)
 
 
-func execute_normal_attack():
-	execute_skill(normal_attack)
+func execute_normal_attack_no_cd():
+	# 直接发送一次普攻事件，不触发技能CD
+	skill_executed.emit(self, normal_attack,0)
 
 
 func process_pick():
@@ -767,6 +776,18 @@ func _charge_interval_invoked():
 		charge_component.complete_charge(charge_component.charge_time)
 	else:
 		recover_mp(-mp_cost)
+
+
+## 充能完成
+func _charge_completed(complete_charge_time: float):
+	charge_completed.emit(complete_charge_time)
+	if complete_charge_time > 0:
+		skill.charge_num = complete_charge_time / 0.1
+		# 执行技能
+		execute_skill(skill)
+	else:
+		# 蓄力失败
+		pass
 
 
 func save() -> Dictionary:

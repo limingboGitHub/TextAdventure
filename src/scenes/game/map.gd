@@ -553,32 +553,6 @@ func _skill_executed_casting(
 		attack_effect.ani_skill_cast_interrupted.connect(call_back_cast_interrupted)
 		# 监听动画结束
 		attack_effect.ani_all_finished.connect(call_back_finished)
-	elif skill.id == "skill_000001":
-		# 播放蓄力特效动画
-		if player_scene.data_player.has_effect("effect_000026"):
-			# 确定蓄力时间，基础蓄力时间2秒
-			var charge_time = 2.0
-			# 其他蓄力效果增幅
-			if player_scene.data_player.has_effect("effect_000027"):
-				var effect = player_scene.data_player.get_effect("effect_000027")
-				var effect_value = effect.value * player_scene.data_player.get_final_ability().power / 10.0
-				print("蓄力时间增加：",effect_value)
-				charge_time += effect_value
-
-			# 开始蓄力
-			player_scene.data_player.start_charge(charge_time)
-			# 等待蓄力结束，获取结果
-			var complete_charge_time = await player_scene.data_player.charge_completed
-			print("蓄力结束，成功：", complete_charge_time > 0)
-			# 结算最终蓄力段数
-			if complete_charge_time > 0:
-				skill.charge_num = complete_charge_time / 0.1
-			else:
-				# 蓄力失败，不回调
-				return
-		# 回调
-		call_back_cast_finished.call(null)
-		call_back_finished.call()
 	else:
 		# 没有释放动画的直接执行回调
 		call_back_cast_finished.call(null)
