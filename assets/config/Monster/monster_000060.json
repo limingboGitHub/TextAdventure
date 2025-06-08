@@ -11,5 +11,9 @@
     "acc": "450",
     "eva": "300",
     "exp": "5000",
-    "undead": "0"
+    "undead": "0",
+    "attack_cd": 1,
+    "skills": [
+        "monster_skill_000004"
+    ]
 } 

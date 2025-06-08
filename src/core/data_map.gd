@@ -21,6 +21,8 @@ var monster_config_dic = {}
 var monster_refresh_time_dic = {}
 # 怪物技能信息 key:monster_skill_id value:技能信息
 var monster_skill_dic = {}
+# 怪物特殊效果配置信息 key:effect_id value:配置信息
+var effect_config_dic = {}
 #endregion
 
 # 数据
@@ -165,7 +167,7 @@ func refresh_monsters():
 				var is_elite = randf() < 0.01
 				# 创建怪物对象
 				var monster = monster_manager.create_monster(
-					monster_id, is_elite, monster_config,monster_skill_dic
+					monster_id, is_elite, monster_config,monster_skill_dic,effect_config_dic
 				)
 				refresh_pos.data_monster = monster
 				# 添加怪物
@@ -676,7 +678,9 @@ func on_monster_skill_executed(
 		# 召唤怪物
 		for monster_id in skill.monster_id_list:
 			var monster_config = monster_config_dic[monster_id]
-			var monster = monster_manager.create_monster(monster_id, false, monster_config,monster_skill_dic)
+			var monster = monster_manager.create_monster(
+				monster_id, false, monster_config,monster_skill_dic,effect_config_dic
+			)
 			# 自动锁定玩家
 			monster.auto_lock_player = true
 			# 不掉落物品
@@ -684,6 +688,10 @@ func on_monster_skill_executed(
 			# 随机一个位置
 			var pos = Vector2(randf(), randf())
 			_add_monster(monster, pos)
+	elif skill is DataEffectBuffSkill:
+		# 给怪物添加特殊效果
+		var buff = skill.create_buff()
+		data_monster.add_buff(buff)
 
 
 # 判断玩家是否有魔法屏障技能的buff，如果有，则调整伤害
@@ -729,7 +737,7 @@ func start_endless():
 		var monster_id = "monster_00000" + str(endless_layer)
 		var monster_config = monster_config_dic[monster_id]
 		var monster = monster_manager.create_monster(
-			monster_id, false, monster_config,monster_skill_dic
+			monster_id, false, monster_config,monster_skill_dic,effect_config_dic
 		)
 		# 强化怪物
 		monster.upgrade(monster_upgrade)

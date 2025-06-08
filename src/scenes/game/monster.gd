@@ -31,6 +31,7 @@ func _ready() -> void:
 		data_monster.role_hurted.connect(_on_get_hurted)
 		# 监听特效添加事件
 		data_monster.effect_added.connect(_on_effect_added)
+		data_monster.effect_removed.connect(_on_effect_removed)
 		# 监听充能开始
 		data_monster.charge_started.connect(_on_charge_started)
 		# 监听充能完成
@@ -134,6 +135,15 @@ func _on_effect_added(_data_effect: DataEffect):
 		var effect = data_monster.get_effect("effect_000023")
 		$DeepDamageLabel.show()
 		$DeepDamageLabel.text = "裂" + str(int(effect.value))
+	if data_monster and data_monster.has_effect("effect_000029"):
+		# 越战越勇
+		$TimeAddDamageLabel.show()
+
+
+func _on_effect_removed(_data_effect: DataEffect):
+	if data_monster and data_monster.has_effect("effect_000029"):
+		# 越战越勇
+		$TimeAddDamageLabel.hide()
 
 
 func _update_hp():

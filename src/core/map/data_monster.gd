@@ -41,6 +41,12 @@ var auto_lock_player = false
 # 此怪物是否会掉落物品（部分特殊怪物不掉落物品）
 var is_drop_item = true
 
+# 怪物特殊效果（配置信息）,怪物创建时注入该信息
+var effect_config: Dictionary = {}
+
+# 越战越勇特殊效果出发时间
+var time_add_damage_rest_time = 1.0
+
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
@@ -76,8 +82,20 @@ func process(delta: float):
 	# 处理怪物特殊技能剩余CD（受伤后开始计算特殊技能CD）
 	if is_hurted:
 		for monster_skill in monster_skills:
+			# -1表示永久技能，永久技能不计算CD
+			if monster_skill.cd_rest == -1:
+				continue
 			if monster_skill.cd_rest > 0:
 				monster_skill.cd_rest -= delta
+
+	# 处理“越战越勇”特殊效果
+	if has_effect("effect_000029"):
+		if time_add_damage_rest_time > 0:
+			time_add_damage_rest_time -= delta
+		else:
+			time_add_damage_rest_time = 1.0
+			attribute.final_details.attack += effect_config["effect_000029"]["value"]
+			#print("越战越勇：", attribute.final_details.attack)
 
 	super.process(delta)
 
@@ -106,10 +124,15 @@ func process_attack():
 	
 	# 优先尝试使用怪物特殊技能
 	for monster_skill in monster_skills:
-		# 检查特殊技能剩余CD
-		if monster_skill.cd_rest > 0:
+		
+		if monster_skill.cd_rest == -1:
+			# 永久技能
+			continue
+		elif monster_skill.cd_rest > 0:
+			# 技能CD中
 			continue
 		else:
+			# 技能CD结束
 			# 处理怪物特殊技能
 			process_monster_skill(monster_skill)
 			return
@@ -137,14 +160,30 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 		execute_skill(_skill)
 		# 重置怪物特殊技能CD
 		monster_skill.cd_rest = monster_skill.cd
-	
+	elif monster_skill.type == "debuff_skill":
+		pass
+	elif monster_skill.type == "buff_skill":
+		# 特殊效果
+		var effect_id = monster_skill.effect_id
+		var effect = DataEffect.new(effect_id,"buff")
+		effect.load(effect_config[effect_id])
+		# buff技能
+		var buff_skill = DataSkillBag.create_buff_skill(
+			monster_skill.id,
+			monster_skill.name,
+			monster_skill.buff_time)
+		buff_skill.effect_list.append(effect)
+		execute_skill(buff_skill)
+		# 重置怪物特殊技能CD
+		monster_skill.cd_rest = monster_skill.cd
+		print("怪物特殊技能执行：", monster_skill.name)
 
 
 func execute_skill(_skill: DataBaseSkill):
 	print("怪物技能执行：", _skill.name)
 	skill_executed.emit(self, _skill)
 	# 重置冷却
-	execute_cd_rest = _skill.cd / float(SingletonGame.speed)
+	execute_cd_rest = execute_cd / float(SingletonGame.speed)
 
 
 func add_monster_skill(monster_skill: DataMonsterSkill):

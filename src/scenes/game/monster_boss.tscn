@@ -115,6 +115,19 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "裂"
 
+[node name="TimeAddDamageLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -100.0
+offset_top = -56.0
+offset_right = -80.0
+offset_bottom = -28.0
+theme_override_colors/font_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "勇"
+
 [node name="ChargeEffect" parent="." instance=ExtResource("7_dsv8w")]
 visible = false
 

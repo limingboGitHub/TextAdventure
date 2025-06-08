@@ -91,19 +91,40 @@ class SpawnMonster extends DataMonsterSkill:
 		monster_count = data.get("monster_count", 0)
 
 
+## 增益技能
+class BuffSkill extends DataMonsterSkill:
+	## buff时间
+	var buff_time: float
+	## buff效果id
+	var effect_id: String
+
+	## 将对象序列化为字典(私有方法)
+	func to_dict() -> Dictionary:
+		var dic = super.to_dict()
+		dic.merge({
+			"buff_time": buff_time,
+			"effect_id": effect_id
+		})
+		return dic
+
+	## 从字典创建对象(私有静态方法)
+	func from_dict(data: Dictionary):
+		super.from_dict(data)
+		buff_time = data.get("buff_time", 0.0)
+		effect_id = data.get("effect_id", "")
+
+
 static func create_monster_skill(monster_config) -> DataMonsterSkill:
 	var _type = monster_config["type"]
+	var monster_skill: DataMonsterSkill = null
 	if _type == "charge_attack":
-		var charge_attack = ChargeAttack.new()
-		charge_attack.from_dict(monster_config)
-		# 初始化剩余cd
-		charge_attack.cd_rest = charge_attack.start_cd
-		return charge_attack
+		monster_skill = ChargeAttack.new()
 	elif _type == "spawn_monster":
-		var spawn_monster = SpawnMonster.new()
-		spawn_monster.from_dict(monster_config)
-		# 初始化剩余cd
-		spawn_monster.cd_rest = spawn_monster.start_cd
-		return spawn_monster
-	
-	return null
+		monster_skill = SpawnMonster.new()
+	elif _type == "buff_skill":
+		monster_skill = BuffSkill.new()
+	# 初始化剩余cd
+	if monster_skill != null:
+		monster_skill.from_dict(monster_config)
+		monster_skill.cd_rest = monster_skill.start_cd
+	return monster_skill

@@ -5,7 +5,7 @@ class_name DataBuffSkill extends DataBaseSkill
 ## 有持续时间的技能
 
 # 持续时间，-1表示永久，即传统的被动技能
-var time: int = -1
+var time: float = -1
 
 # 蓝耗等级表
 var mp_cost_level: Array

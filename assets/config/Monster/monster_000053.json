@@ -1,15 +1,19 @@
 {
-	"name": "熔岩巨人",
+	"name": "远古邪龙",
     "type":"boss",
 	"attack": "140",
     "defense": "70",
     "magic": "100",
     "magic_def": "80",
     "level": "45",
-    "maxHP": "60000",
+    "maxHP": "200000",
     "maxMP": "1500",
     "acc": "400",
     "eva": "200",
     "exp": "4000",
-    "undead": "0"
+    "undead": "0",
+    "attack_cd": 1.5,
+    "skills": [
+        "monster_skill_000002"
+    ]
 } 

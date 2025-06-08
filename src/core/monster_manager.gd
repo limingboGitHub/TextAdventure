@@ -6,7 +6,8 @@ func create_monster(
 	monster_id: String,
 	is_elite: bool,
 	monster_config: Dictionary,
-	monster_skill_dic: Dictionary
+	monster_skill_dic: Dictionary,
+	effect_config: Dictionary
 )-> DataMonster:
 	var monster = DataMonster.new()
 	monster.monster_id = monster_id
@@ -40,12 +41,15 @@ func create_monster(
 	# 怪物技能
 	if monster_config.has("skills"):
 		for monster_skill_id in monster_config["skills"]:
-			var monster_skill = monster_skill_dic[monster_skill_id]
-			monster.add_monster_skill(DataMonsterSkill.create_monster_skill(monster_skill))
+			var monster_skill_info = monster_skill_dic[monster_skill_id]
+			var monster_skill = DataMonsterSkill.create_monster_skill(monster_skill_info)
+			monster.add_monster_skill(monster_skill)
+			if monster_skill is DataMonsterSkill.BuffSkill:
+				# 注入buff效果配置信息
+				monster.effect_config[monster_skill.effect_id] = effect_config[monster_skill.effect_id]
 
 	if monster_config.has("attack_cd"):
 		monster.execute_cd = float(monster_config["attack_cd"])
-		monster.skill.cd = monster.execute_cd
 
 	return monster
 	

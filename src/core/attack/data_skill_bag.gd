@@ -77,7 +77,7 @@ func create_by_type(id: String, type: String):
 	if type == "attack":
 		return DataAttackSkill.new(id, type)
 	elif type == "effect_buff":
-		return DataEffectBuffSkill.new(id, type)
+		return DataEffectBuffSkill.new(id)
 	elif type == "attribute_buff":
 		return DataAttriBuffSkill.new(id, type)
 	# TODO 其他类型技能
@@ -417,6 +417,15 @@ static func create_monster_attack(name: String, damage_rate: float) -> DataAttac
 	data_skill.count = 1
 	data_skill.level = 1
 	data_skill.damage_level = [[damage_rate]]
+	return data_skill
+
+static func create_buff_skill(id: String,name: String,time: float) -> DataEffectBuffSkill:
+	var data_skill = DataEffectBuffSkill.new(id)
+	data_skill.name = "buff"
+	data_skill.level = 1
+	data_skill.max_level = 1
+	data_skill.distance = 1000
+	data_skill.time = time
 	return data_skill
 
 

@@ -7,6 +7,10 @@ class_name DataEffectBuffSkill extends DataBuffSkill
 var effect_list: Array[DataEffect] = []
 
 
+func _init(_id: String) -> void:
+	super._init(_id,"effect_buff")
+
+
 func get_effect(level: int) -> DataEffect:
 	return effect_list[level - 1]
 

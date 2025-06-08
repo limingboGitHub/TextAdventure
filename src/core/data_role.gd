@@ -32,6 +32,8 @@ signal buff_added(data_buff: DataBuff)
 
 signal effect_added(data_effect: DataEffect)
 
+signal effect_removed(data_effect: DataEffect)
+
 func process(delta: float):
 
 	# buff时间计算
@@ -142,6 +144,8 @@ func _remove_effect(data_effect: DataEffect):
 			# 如果特效值为0，则删除特效
 			if effect_dic[data_effect.id].value <= 0:
 				effect_dic.erase(data_effect.id)
+				# 发送特效移除信号
+				effect_removed.emit(data_effect)
 
 
 func remove_buff(buff_id: String):

@@ -23,6 +23,24 @@
 			],
 			"start_cd": 5,
 			"cd": 20
+		},
+		"monster_skill_000003":{
+			"name":"血源诅咒",
+			"type":"buff_skill",
+			"desc":"buff_time：buff时间，effect_id：buff效果id",
+			"buff_time": 10,
+			"effect_id": "effect_000028",
+			"start_cd": 10,
+			"cd": 30
+		},
+		"monster_skill_000004":{
+			"name":"越战越勇",
+			"type":"buff_skill",
+			"desc":"buff_time：buff时间，effect_id：buff效果id，cd:冷却时间(-1表示永久)",
+			"buff_time": -1,
+			"effect_id": "effect_000029",
+			"start_cd": 10,
+			"cd": -1
 		}
 	}
 }
