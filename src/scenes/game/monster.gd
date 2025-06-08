@@ -36,7 +36,8 @@ func _ready() -> void:
 		data_monster.charge_started.connect(_on_charge_started)
 		# 监听充能完成
 		data_monster.charge_completed.connect(_on_charge_completed)
-		
+		# 监听怪物重置事件
+		data_monster.monster_reseted.connect(_on_monster_reseted)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,6 +64,7 @@ func clear():
 	data_monster.effect_added.disconnect(_on_effect_added)
 	data_monster.charge_started.disconnect(_on_charge_started)
 	data_monster.charge_completed.disconnect(_on_charge_completed)
+	data_monster.monster_reseted.disconnect(_on_monster_reseted)
 
 
 func _process_attack(delta: float):
@@ -130,18 +132,17 @@ func _on_get_hurted(_data_role: DataRole,data_damage: DataDamage):
 
 
 func _on_effect_added(_data_effect: DataEffect):
-	if data_monster and data_monster.has_effect("effect_000023"):
+	if data_monster and _data_effect.id == "effect_000023":
 		# 撕裂
-		var effect = data_monster.get_effect("effect_000023")
 		$DeepDamageLabel.show()
-		$DeepDamageLabel.text = "裂" + str(int(effect.value))
-	if data_monster and data_monster.has_effect("effect_000029"):
+		$DeepDamageLabel.text = "裂" + str(int(_data_effect.value))
+	if data_monster and _data_effect.id == "effect_000029":
 		# 越战越勇
 		$TimeAddDamageLabel.show()
 
 
 func _on_effect_removed(_data_effect: DataEffect):
-	if data_monster and data_monster.has_effect("effect_000029"):
+	if data_monster and _data_effect.id == "effect_000029":
 		# 越战越勇
 		$TimeAddDamageLabel.hide()
 
@@ -251,3 +252,8 @@ func _on_charge_started():
 func _on_charge_completed(_time: float):
 	# 隐藏充能特效
 	$ChargeEffect.hide()
+
+
+func _on_monster_reseted(_data_monster: DataMonster):
+	_update_hp()
+	

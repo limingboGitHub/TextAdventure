@@ -116,6 +116,11 @@ func remove_player(_player_id: String):
 	# 无尽之塔退出，则清空怪物
 	if is_endless:
 		_reset()
+	
+	# 重置"monster_000060"怪物状态
+	for monster in data_monsters.values():
+		if monster.monster_id == "monster_000060":
+			monster.reset()
 
 
 func _reset():

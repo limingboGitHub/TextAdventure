@@ -133,6 +133,8 @@ func _add_monster(monster: DataMonster,_position: Vector2):
 	monster_scene.pressed.connect(_on_monster_pressed.bind(monster_scene))
 	# 监听怪物技能执行
 	monster.skill_executed.connect(_on_monster_skill_executed)
+	# 监听怪物重置事件
+	monster.monster_reseted.connect(_on_monster_reseted)
 
 	# 如果刷新的是boss，则展示击杀信息
 	if monster.is_boss():
@@ -148,6 +150,13 @@ func _add_monster(monster: DataMonster,_position: Vector2):
 	if monster.auto_lock_player:
 		var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.get_player().player_id)
 		monster_scene.set_attack_target(player_scene)
+
+
+func _on_monster_reseted(data_monster: DataMonster):
+	# 如果是boss，归零击杀时间
+	if data_monster.is_boss():
+		boss_hurt_time.clear()
+		$CanvasLayer/BossStatus/CostTime.text = "-"
 
 
 func _on_monster_skill_executed(data_monster: DataMonster, skill: DataBaseSkill):

@@ -76,6 +76,7 @@ func _show_damage_percent():
 		
 		# 每达到10%增加一个方块，使用预计算的方块字符串
 		var block_count = min(int(percent / 10), 10)  # 限制最多10个方块
+		block_count = max(block_count,0)
 		var blocks = block_strings[block_count]
 		
 		lines.append(damage_info["name"] + " " + blocks + str(percent) + "%")

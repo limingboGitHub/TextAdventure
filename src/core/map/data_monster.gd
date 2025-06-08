@@ -50,6 +50,7 @@ var time_add_damage_rest_time = 1.0
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
+signal monster_reseted(data_monster: DataMonster)
 
 # 蓄力相关
 var charge_component = DataChargeComponent.new()
@@ -62,8 +63,9 @@ func _init() -> void:
 
 
 func set_attribute(base_attr: AttributeDetails):
+	attribute.add_details(Attribute.ATTRIBUTE_BASE,base_attr)
 	# 怪物的基础属性直接就是最终属性
-	attribute.final_details = base_attr
+	attribute.final_details = base_attr.copy()
 	hp = attribute.final_details.max_hp
 	mp = attribute.final_details.max_mp
 
@@ -244,3 +246,22 @@ func _on_charge_completed(time: float):
 
 func _on_charge_started():
 	charge_started.emit()
+
+
+## 怪物状态重置
+func reset():
+	# 重置技能剩余CD
+	for monster_skill in monster_skills:
+		monster_skill.cd_rest = monster_skill.start_cd
+	# 清除所有buff
+	for buff_id in buff_dic.keys():
+		remove_buff(buff_id)
+	# 重置属性
+	attribute.final_details = attribute.get_details(Attribute.ATTRIBUTE_BASE).copy()
+	hp = attribute.final_details.max_hp
+	mp = attribute.final_details.max_mp
+	is_hurted = false
+	# 重置信号
+	monster_reseted.emit(self)
+	
+	

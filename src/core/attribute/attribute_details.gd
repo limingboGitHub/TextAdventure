@@ -142,3 +142,10 @@ func load(json: Dictionary):
 		magic_min_rate = json.get("magic_min_rate", 0.0)
 	if json.has("magic_max_rate"):
 		magic_max_rate = json.get("magic_max_rate", 0.0)
+
+
+func copy() -> AttributeDetails:
+	var new_attribute = AttributeDetails.new()
+	var json = save()
+	new_attribute.load(json)
+	return new_attribute
