@@ -34,6 +34,8 @@ var level: int
 var description: String
 # 武器类型要求
 var weapon_type: int
+# 技能释放方向
+var direction: Vector2 = Vector2.ZERO
 
 # 技能是否触发释放后的特效
 var is_effect_after_skill_executed: bool = true

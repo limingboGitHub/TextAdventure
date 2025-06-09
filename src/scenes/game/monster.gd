@@ -1,5 +1,5 @@
 extends Control
-
+class_name Monster
 
 var data_monster: DataMonster
 

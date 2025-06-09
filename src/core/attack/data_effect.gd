@@ -74,6 +74,18 @@ func get_special_skill() -> DataBaseSkill:
 		skill.damage_level = [[value]]
 		skill.center_type = 1
 		special_skill = skill
+	elif special_skill == null and id == "effect_000030":
+		var skill = DataAttackSkill.new(type,"attack")
+		skill.count = 99999
+		skill.target_type = 1
+		skill.level = 1
+		skill.name = "破空剑气"
+		skill.damage_source_type = 0
+		skill.damage_type = 1
+		skill.is_effect_after_skill_executed = false
+		skill.damage_value_type = value_type
+		skill.damage_level = [[value]]
+		special_skill = skill
 	return special_skill
 
 

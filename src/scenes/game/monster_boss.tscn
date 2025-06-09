@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3vdl8qhgqhpv"]
+[gd_scene load_steps=10 format=3 uid="uid://b3vdl8qhgqhpv"]
 
 [ext_resource type="Script" uid="uid://s10j0pm4j6m7" path="res://src/scenes/game/monster.gd" id="1_8k3o6"]
 [ext_resource type="Script" uid="uid://chsyljgrm8kf0" path="res://src/scenes/widget/button.gd" id="2_mxduu"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6afn"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsv8w"]
+size = Vector2(5, 5)
 
 [node name="Monster" type="Control"]
 layout_mode = 3
@@ -130,5 +133,10 @@ text = "勇"
 
 [node name="ChargeEffect" parent="." instance=ExtResource("7_dsv8w")]
 visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dsv8w")
 
 [connection signal="my_released" from="Back" to="." method="_on_panel_my_released"]
