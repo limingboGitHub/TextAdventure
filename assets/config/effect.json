@@ -203,6 +203,13 @@
 			"desc": "每隔1秒增加{d}点伤害",
 			"value_type": "number", 
 			"value": 20
+		},
+		"effect_000030": {
+			"name": "破空剑气",
+			"effect_type": "attack_add_damage",
+			"desc": "普攻或者释放技能时，向前方扇形30°发出一道剑气，造成攻击力{d}的伤害",
+			"value_type": "percent", 
+			"value": 0.1
 		}
 	}
 }
