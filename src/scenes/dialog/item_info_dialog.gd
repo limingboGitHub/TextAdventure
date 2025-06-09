@@ -70,7 +70,7 @@ func _show_equip_info(item: DataEquip) -> void:
 	
 
 	# 展示装备能力值
-	attribute_text += "[color=#7ac8ff]"
+	attribute_text += _show_blue_color()
 	if item.final_ability.power != 0:
 		attribute_text += "力量：" + str(item.final_ability.power) + "\n"
 	if item.final_ability.agility != 0:
@@ -107,13 +107,13 @@ func _show_equip_info(item: DataEquip) -> void:
 		attribute_text += "攻击力最小值：" + str(int(item.final_details.attack_min_rate * 100)) + "%\n"
 	if item.final_details.attack_max_rate != 0:
 		attribute_text += "攻击力最大值：" + str(int(item.final_details.attack_max_rate * 100)) + "%\n"
+	if item.final_details.exp_gain > 0:
+		attribute_text += "增加" + str(int(item.final_details.exp_gain * 100)) + "%经验值获取\n"
 	attribute_text += "[/color]"
 
 	#region 紫色属性
 	attribute_text += _effect_text_color()
 
-	if item.final_details.exp_gain > 0:
-		attribute_text += "增加" + str(int(item.final_details.exp_gain * 100)) + "%经验值获取\n"
 	# 展示装备特殊效果
 	for data_effect in item.get_all_effects():
 		attribute_text += _show_effect_desc(data_effect)	
@@ -132,6 +132,9 @@ func _show_equip_info(item: DataEquip) -> void:
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
 
+
+func _show_blue_color() -> String:
+	return "[color=#7ac8ff]"
 
 
 func _show_consume_info(item: DataConsume) -> void:
@@ -154,60 +157,80 @@ func _show_consume_info(item: DataConsume) -> void:
 		# 卷轴成功率
 		if item.scroll.success_rate > 0:
 			attribute_text += "成功率：" + str(item.scroll.success_rate * 100) + "%\n"
+		
+		# 是否有能力值和属性值
+		var is_have_ability = false
 		if item.scroll.attribute_ability != null:
 			# 卷轴增加力量
 			if item.scroll.attribute_ability.power > 0:
 				attribute_text += "增加力量：" + str(item.scroll.attribute_ability.power) + "\n"
+				is_have_ability = true
 			# 卷轴增加敏捷
 			if item.scroll.attribute_ability.agility > 0:
 				attribute_text += "增加敏捷：" + str(item.scroll.attribute_ability.agility) + "\n"
+				is_have_ability = true
 			# 卷轴增加智力
 			if item.scroll.attribute_ability.intelligence > 0:
 				attribute_text += "增加智力：" + str(item.scroll.attribute_ability.intelligence) + "\n"
+				is_have_ability = true
 			# 卷轴增加幸运
 			if item.scroll.attribute_ability.luck > 0:
 				attribute_text += "增加幸运：" + str(item.scroll.attribute_ability.luck) + "\n"
+				is_have_ability = true
 		if item.scroll.attribute_details != null:
 			# 卷轴增加攻击力
 			if item.scroll.attribute_details.attack > 0:
 				attribute_text += "增加攻击力：" + str(item.scroll.attribute_details.attack) + "\n"
+				is_have_ability = true
 			# 卷轴增加魔法攻击力
 			if item.scroll.attribute_details.magic > 0:
 				attribute_text += "增加魔法攻击力：" + str(item.scroll.attribute_details.magic) + "\n"
+				is_have_ability = true
 			# 卷轴增加防御力
 			if item.scroll.attribute_details.defense > 0:
 				attribute_text += "增加防御力：" + str(item.scroll.attribute_details.defense) + "\n"
+				is_have_ability = true
 			# 卷轴增加魔法防御力
 			if item.scroll.attribute_details.magic_def > 0:
 				attribute_text += "增加魔法防御力：" + str(item.scroll.attribute_details.magic_def) + "\n"
+				is_have_ability = true
 			# 卷轴增加命中
 			if item.scroll.attribute_details.accuracy > 0:
 				attribute_text += "增加命中：" + str(item.scroll.attribute_details.accuracy) + "\n"
+				is_have_ability = true
 			# 卷轴增加闪避
 			if item.scroll.attribute_details.evasion > 0:
 				attribute_text += "增加闪避：" + str(item.scroll.attribute_details.evasion) + "\n"
+				is_have_ability = true
 			# 卷轴增加恢复生命值
 			if item.scroll.attribute_details.recover_hp > 0:
 				attribute_text += "增加恢复生命值：" + str(item.scroll.attribute_details.recover_hp) + "\n"
+				is_have_ability = true
 			# 卷轴增加恢复魔法值
 			if item.scroll.attribute_details.recover_mp > 0:
 				attribute_text += "增加恢复魔法值：" + str(item.scroll.attribute_details.recover_mp) + "\n"
+				is_have_ability = true
 			# 卷轴增加HP上限
 			if item.scroll.attribute_details.max_hp > 0:
 				attribute_text += "增加HP上限：" + str(item.scroll.attribute_details.max_hp) + "\n"
+				is_have_ability = true
 			# 卷轴增加MP上限
 			if item.scroll.attribute_details.max_mp > 0:
 				attribute_text += "增加MP上限：" + str(item.scroll.attribute_details.max_mp) + "\n"
-			
+				is_have_ability = true
 			attribute_text += _effect_text_color()
 			# 卷轴增加经验值获取
 			if item.scroll.attribute_details.exp_gain > 0:
 				attribute_text += "增加经验值获取：" + str(int(item.scroll.attribute_details.exp_gain * 100)) + "%\n"
+				is_have_ability = true
 			attribute_text += "[/color]"
+			if is_have_ability:
+				attribute_text += _attribute_append_str(true)
 		if item.scroll.data_effect != null:
 			attribute_text += _effect_text_color()
 			attribute_text += _show_effect_desc(item.scroll.data_effect)
 			attribute_text += "[/color]"
+			attribute_text += _attribute_append_str(false)
 		
 	elif item.data_buff != null:
 		# TODO 属性展示
@@ -216,6 +239,14 @@ func _show_consume_info(item: DataConsume) -> void:
 			attribute_text += "持续时间：" + str(item.data_buff.duration) + "\n"
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
+
+
+# 属性是否可以叠加的提示
+func _attribute_append_str(is_append: bool) -> String:
+	if is_append:
+		return "[color=#00ff00](单件装备可叠加)[/color]\n"
+	else:
+		return "[color=#ff0000](单件装备不可叠加)[/color]\n"
 
 
 func _show_effect_desc(data_effect: DataEffect)-> String:

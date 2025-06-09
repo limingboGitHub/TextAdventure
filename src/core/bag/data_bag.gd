@@ -352,9 +352,20 @@ func ready_use_scroll(item: DataConsume) -> void:
 	var equips: Array[DataEquip] = []
 	for equip in items_dic[DataBagItem.TYPE_EQUIP]:
 		if (equip.equip_type == item.scroll.use_type or item.scroll.use_type == "") and equip.can_upgrade():
-			equips.append(equip)
+			# 判断装备是否已经包含卷轴的特殊效果
+			if not _is_equip_have_scroll_effect(equip, item.scroll):
+				equips.append(equip)
 	# 发出准备对装备进行卷轴操作的信号
 	scroll_ready_used.emit(item, equips)
+
+
+# 判断装备是否已经包含卷轴的特殊效果
+func _is_equip_have_scroll_effect(equip: DataEquip, scroll: DataConsume.Scroll) -> bool:
+	if scroll.data_effect != null:
+		for effect_id in equip.data_effects.keys():
+			if effect_id == scroll.data_effect.id:
+				return true
+	return false
 
 
 # 使用卷轴，根据卷轴的强化属性，增加到装备上
