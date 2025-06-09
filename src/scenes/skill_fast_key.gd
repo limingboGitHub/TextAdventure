@@ -20,11 +20,20 @@ func set_data(_data_skill_bag: DataSkillBag, _auto_skill: DataBaseSkill) -> void
 
 
 func _on_skill_level_updated(skill: DataBaseSkill):
-	# 当技能从0升级到1，且为攻击技能，则添加到技能列表
-	if skill.level == 1 and skill.type == "attack":
+	# 如果技能类型不是攻击类，则不进行处理
+	if skill.type != "attack":
+		return
+	
+	# 如果技能等级大于0，且技能列表中已经存在该技能，则不进行处理
+	if skill.level > 0:
+		for i in range($ItemList.get_item_count()):
+			var item_skill = $ItemList.get_item_metadata(i)
+			if item_skill.name == skill.name:
+				return
+		# 添加到技能列表
 		var index = $ItemList.add_item(skill.name)
 		$ItemList.set_item_metadata(index,skill)
-	if skill.level == 0:
+	else:
 		# 如果技能等级为0，则从技能列表中移除
 		for i in range($ItemList.get_item_count()):
 			var item_skill = $ItemList.get_item_metadata(i)
