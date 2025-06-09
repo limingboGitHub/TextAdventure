@@ -420,7 +420,7 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 		return
 	# 碰撞体区域类型技能判定
 	if skill.id == "attack_add_sector_damage":
-		_add_sector_damage_effect(player_scene.position,skill.direction)
+		_add_sector_damage_effect(player_scene.position,skill)
 		return
 
 	# 常规的中心点半径类型的技能伤害判定
@@ -649,12 +649,19 @@ func _add_explode_particle_effect(_position: Vector2):
 	explode_particle_effect.play_effect()
 
 
-func _add_sector_damage_effect(_position: Vector2, _direction: Vector2):
+func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):
 	var sector_damage_effect = SingletonGameScenePre.AttackEffect5Scene.instantiate()
-	sector_damage_effect.start(_position,_direction)
+	sector_damage_effect.start(_skill,_position,_skill.direction)
 	$CanvasLayer/GameZone/Effects.add_child(sector_damage_effect)
+	# 监听怪物检测
+	sector_damage_effect.monster_detected.connect(_on_monster_detected)
 
 
+func _on_monster_detected(monster: Monster,skill: DataBaseSkill):
+	print("monster_detected:",monster.name,skill.name)
+	var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.data_player.player_id)
+	_skill_executed_damage_judge([monster],skill,player_scene)
+						
 
 # 技能执行后，处理一些特殊效果，例如"自身受到伤害"
 func _effect_after_skill_executed(_player: DataPlayer, _skill: DataBaseSkill):

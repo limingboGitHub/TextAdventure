@@ -33,8 +33,11 @@ var area: Area2D
 # 碰撞多边形节点
 var collision_polygon: CollisionPolygon2D
 
+# 技能信息
+var skill: DataBaseSkill
+
 # 动画完成信号
-signal animation_finished
+signal monster_detected(monster: Monster,skill: DataBaseSkill)
 
 
 func _ready() -> void:
@@ -79,7 +82,6 @@ func _process(delta: float) -> void:
 	if elapsed_time >= ANIMATION_DURATION:
 		# 动画结束
 		animation_active = false
-		animation_finished.emit()
 		queue_free()
 		return
 	
@@ -146,31 +148,25 @@ func _on_area_entered(_area: Area2D) -> void:
 	print("area_entered:",_area.name)
 	var parent = _area.get_parent()
 	if parent is Monster:
-		print("area_entered:",parent.name)
-		var damage = DataDamage.new(
-			DataDamage.TYPE.PHYSICAL, 
-			DataDamage.SOURCE_TYPE.PLAYER, 10)
-		parent.data_monster.get_hurt(damage)
+		monster_detected.emit(parent,skill)
+		#print("area_entered:",parent.name)
+		#var damage = DataDamage.new(
+		#	DataDamage.TYPE.PHYSICAL, 
+		#	DataDamage.SOURCE_TYPE.PLAYER, 10)
+		#parent.data_monster.get_hurt(damage)
 	#area_detected.emit(area)
 
-func start(_position: Vector2, _direction: Vector2) -> void:
+func start(_skill: DataBaseSkill,_position: Vector2, _direction: Vector2) -> void:
+	skill = _skill
 	var degree = rad_to_deg(_direction.angle())
-	print("_position:",_position," ",degree)
 	position = _position
 	direction = _direction
 	animation_active = true
 	elapsed_time = 0.0
 	current_radius = 0.0
-	#if degree > 0:
 	$Area2D.rotation_degrees = degree + 90
-	#else:
-	#	$Area2D.rotation = degree + 90
-	print("_position: Area2D",$Area2D.rotation)
-
-	#_setup_collision_area()
 
 
 func stop() -> void:
 	animation_active = false
-	animation_finished.emit()
 	queue_free()
