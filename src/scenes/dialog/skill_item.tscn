@@ -102,7 +102,19 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/hover = SubResource("StyleBoxFlat_eoncr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a6h6d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g8dfc")
-text = "↑"
+text = "+"
+
+[node name="AddAllBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 14.0
+offset_right = 406.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = SubResource("StyleBoxFlat_eoncr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a6h6d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8dfc")
+text = "++"
 
 [node name="UseBt" type="Button" parent="."]
 visible = false
@@ -124,5 +136,6 @@ button_pressed = true
 text = "激活"
 
 [connection signal="pressed" from="AddBt" to="." method="_on_add_bt_pressed"]
+[connection signal="pressed" from="AddAllBt" to="." method="_on_add_all_bt_pressed"]
 [connection signal="pressed" from="UseBt" to="." method="_on_use_bt_pressed"]
 [connection signal="toggled" from="ActiveButton" to="." method="_on_active_button_toggled"]

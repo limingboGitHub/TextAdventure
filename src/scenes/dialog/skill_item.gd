@@ -7,6 +7,8 @@ var data_skill: DataBaseSkill
 
 signal skill_add_pressed(data_skill: DataBaseSkill)
 
+signal skill_add_all_pressed(data_skill: DataBaseSkill)
+
 signal skill_used(data_skill: DataBaseSkill)
 
 signal skill_active_toggled(data_skill: DataEffectBuffSkill, active: bool)
@@ -155,3 +157,7 @@ func _on_use_bt_pressed() -> void:
 
 func _on_active_button_toggled(toggled_on: bool) -> void:
 	skill_active_toggled.emit(data_skill, toggled_on)
+
+
+func _on_add_all_bt_pressed() -> void:
+	skill_add_all_pressed.emit(data_skill)

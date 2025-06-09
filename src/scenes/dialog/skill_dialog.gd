@@ -87,6 +87,8 @@ func _create_skill_group(_name: String) -> Control:
 	skill_group.skill_used.connect(_on_skill_item_used)
 	# 监听技能组技能激活事件
 	skill_group.skill_active_toggled.connect(_on_skill_item_active_toggled)
+	# 监听技能组技能添加所有事件
+	skill_group.skill_add_all_pressed.connect(_on_skill_item_add_all_pressed)
 	return skill_group
 
 
@@ -115,3 +117,18 @@ func _on_skill_item_active_toggled(data_skill: DataEffectBuffSkill, active: bool
 func _on_reset_bt_pressed() -> void:
 	data_skill_bag.reset_skill_points()
 	skill_reset_pressed.emit()
+
+
+func _on_skill_item_add_all_pressed(phase: String,data_skill: DataBaseSkill) -> void:
+	if data_skill_bag.skill_point <= 0 or data_skill.is_max_level():
+		return
+	
+	# 计算技能当前等级到最大等级的差距
+	var level_diff = data_skill.max_level - data_skill.level
+	# 计算实际可以增加的等级数（取技能点数和等级差的较小值）
+	var levels_to_add = min(data_skill_bag.skill_point, level_diff)
+	
+	# 一次性提升技能等级
+	data_skill.add_level(levels_to_add)
+	# 一次性消耗相应的技能点
+	data_skill_bag.remove_skill_point(levels_to_add)

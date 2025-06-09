@@ -5,6 +5,8 @@ signal skill_used(data_skill: DataBaseSkill)
 
 signal skill_add_pressed(phase: String,data_skill: DataBaseSkill)
 
+signal skill_add_all_pressed(phase: String,data_skill: DataBaseSkill)
+
 signal skill_active_toggled(data_skill: DataEffectBuffSkill, active: bool)
 
 
@@ -29,6 +31,7 @@ func add_skill_item(data_skill: DataBaseSkill) -> void:
 	skill_item.skill_add_pressed.connect(_on_skill_item_add_pressed)
 	skill_item.skill_used.connect(_on_skill_item_used)
 	skill_item.skill_active_toggled.connect(_on_skill_item_active_toggled)
+	skill_item.skill_add_all_pressed.connect(_on_skill_item_add_all_pressed)
 	$GridContainer.add_child(skill_item)
 
 
@@ -42,3 +45,7 @@ func _on_skill_item_used(data_skill: DataBaseSkill) -> void:
 
 func _on_skill_item_active_toggled(data_skill: DataEffectBuffSkill, active: bool) -> void:
 	skill_active_toggled.emit(data_skill, active)
+
+
+func _on_skill_item_add_all_pressed(data_skill: DataBaseSkill) -> void:
+	skill_add_all_pressed.emit(name,data_skill)
