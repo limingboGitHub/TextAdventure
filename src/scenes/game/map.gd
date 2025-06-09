@@ -659,8 +659,10 @@ func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):
 
 func _on_monster_detected(monster: Monster,skill: DataBaseSkill):
 	print("monster_detected:",monster.name,skill.name)
-	var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.data_player.player_id)
-	_skill_executed_damage_judge([monster],skill,player_scene)
+	if data_map.data_player:
+		var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.data_player.player_id)
+		if player_scene:
+			_skill_executed_damage_judge([monster],skill,player_scene)
 						
 
 # 技能执行后，处理一些特殊效果，例如"自身受到伤害"

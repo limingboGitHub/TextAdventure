@@ -27,8 +27,6 @@ var desc: String = ""
 var price: int = 0
 
 ## 在地图中存在时的相关属性
-# 拾取权
-var picker: DataPlayer
 # 归属
 var owner: DataPlayer
 

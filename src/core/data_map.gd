@@ -372,8 +372,6 @@ func _create_drop_thing(target: DataMonster):
 	for drop_thing in drop_things:
 		# 放入地图数据中
 		data_drop_things[drop_thing.uuid] = drop_thing
-		# 确定掉落物的归属，当前掉落物归属是击杀者
-		drop_thing.picker = data_player
 
 		drop_thing_dropped.emit(drop_thing, target, offset_index)
 		offset_index += 1
@@ -625,8 +623,8 @@ func _player_buff_skill_effect(data_player: DataPlayer, target: DataPlayer, skil
 func _process_drop_thing_pick(_data_player: DataPlayer):
 	# 遍历地图数据中的掉落物
 	for drop_thing in data_drop_things.values():
-		# 看是否有拾取权属于data_player的物品，如果有的话，则设置归属者为data_player
-		if drop_thing.owner == null and drop_thing.picker == _data_player:
+		# 设置归属者为data_player
+		if drop_thing.owner == null:
 			drop_thing_picked.emit(self, drop_thing)
 			# 一次只能拾取一个物品
 			break
