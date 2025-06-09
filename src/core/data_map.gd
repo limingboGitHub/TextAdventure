@@ -247,7 +247,6 @@ func player_attack_skill_effect(
 			if skill.damage_value_type == Constants.VALUE_TYPE_PERCENT:
 				damage = _create_percent_damage(skill, damage_value, _data_player, target)
 			else:
-				# TODO 未测试
 				damage = _create_number_damage(skill, damage_value, _data_player, target)
 			damage.direction = direction
 
@@ -329,6 +328,8 @@ func _after_damage_effect(
 			print("破空剑气：",effect.value)
 			var skill = effect.get_special_skill()
 			skill.direction = direction
+			skill.damage_value_type = Constants.VALUE_TYPE_NUMBER
+			skill.damage_level = [[damage.value * effect.value]]
 			if skill != null:
 				_data_player.execute_skill_no_cd(skill)
 
@@ -463,7 +464,7 @@ func _create_percent_damage(
 	damage_value = attack_value * _damage_rate
 
 	#region 和攻击力系数无关的伤害加成
-	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details)
+	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details,skill)
 	damage_value += effect_damage_value
 	#endregion
 	
@@ -507,7 +508,7 @@ func _create_number_damage(
 		_damage_value *= 1 + skill_enhance.damage
 
 	# 计算最终伤害值（存在各种伤害加成的计算）
-	damage_value += _effect_damage_value(_data_player, target, damage_details)
+	damage_value += _effect_damage_value(_data_player, target, damage_details, skill)
 
 	if skill.damage_type == 0:
 		# 物理伤害
@@ -541,45 +542,52 @@ func _effect_damage_rate(
 func _effect_damage_value(
 	_data_player: DataPlayer, 
 	_target: DataMonster, 
-	_damage_details: Array[DataDamage.DamageDetail]
+	_damage_details: Array[DataDamage.DamageDetail],
+	_skill: DataBaseSkill
 ) -> float:
 	var effect_damage_value = 0
 	# 巨人之力
 	if _data_player.has_effect("effect_000011"):
-		# 最大生命值相关伤害
-		var effect = _data_player.get_effect("effect_000011")
-		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
-			var max_hp_damage = _data_player.get_final_details().max_hp * effect.value
-			print("最大生命值附加伤害：",max_hp_damage)
-			effect_damage_value += max_hp_damage
-			_damage_details.append(DataDamage.DamageDetail.new("巨人之力", max_hp_damage,0))
-		else:
-			# 未实现
-			pass
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):
+			# 最大生命值相关伤害
+			var effect = _data_player.get_effect("effect_000011")
+			if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+				var max_hp_damage = _data_player.get_final_details().max_hp * effect.value
+				print("最大生命值附加伤害：",max_hp_damage)
+				effect_damage_value += max_hp_damage
+				_damage_details.append(DataDamage.DamageDetail.new("巨人之力", max_hp_damage,0))
+			else:
+				# 未实现
+				pass
 	# 背水一战
 	if _data_player.has_effect("effect_000012"):
-		var effect = _data_player.get_effect("effect_000012")
-		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
-			# 损失生命值相关伤害
-			var lost_hp = _data_player.get_final_details().max_hp - _data_player.hp
-			# 每损失100点生命值，增加value点伤害
-			var lost_hp_damage = lost_hp * effect.value
-			print("损失生命值附加伤害：",lost_hp_damage)
-			effect_damage_value += lost_hp_damage
-			_damage_details.append(DataDamage.DamageDetail.new("背水一战", lost_hp_damage,0))
-		else:
-			# 未实现
-			pass
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):
+			var effect = _data_player.get_effect("effect_000012")
+			if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+				# 损失生命值相关伤害
+				var lost_hp = _data_player.get_final_details().max_hp - _data_player.hp
+				# 每损失100点生命值，增加value点伤害
+				var lost_hp_damage = lost_hp * effect.value
+				print("损失生命值附加伤害：",lost_hp_damage)
+				effect_damage_value += lost_hp_damage
+				_damage_details.append(DataDamage.DamageDetail.new("背水一战", lost_hp_damage,0))
+			else:
+				# 未实现
+				pass
 	# 自损八千
 	if _data_player.has_effect("effect_000004"):
-		var effect = _data_player.get_effect("effect_000004")
-		if effect.value_type == Constants.VALUE_TYPE_NUMBER:
-			print("损血特效附加伤害：",effect.value)
-			effect_damage_value += effect.value
-			_damage_details.append(DataDamage.DamageDetail.new("自损八千", effect.value,0))
-		else:
-			# 未实现
-			pass
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):
+			var effect = _data_player.get_effect("effect_000004")
+			if effect.value_type == Constants.VALUE_TYPE_NUMBER:
+				print("损血特效附加伤害：",effect.value)
+				effect_damage_value += effect.value
+				_damage_details.append(DataDamage.DamageDetail.new("自损八千", effect.value,0))
+			else:
+				# 未实现
+				pass
 	# 撕裂
 	if _target.has_effect("effect_000023"):
 		var effect = _target.get_effect("effect_000023")
