@@ -229,7 +229,8 @@ func player_attack_skill_effect(
 	_data_player: DataPlayer,
 	target: DataMonster,
 	skill: DataBaseSkill,
-	direction: Vector2 = Vector2.RIGHT
+	direction: Vector2 = Vector2.RIGHT,
+	effect_position: Vector2 = Vector2.ZERO
 ):
 	if target.is_dead:
 		return
@@ -257,7 +258,7 @@ func player_attack_skill_effect(
 
 
 			# 造成伤害后的特效处理
-			_after_damage_effect(_data_player,target, skill, damage)
+			_after_damage_effect(_data_player,target, skill, damage,effect_position)
 		else:
 			var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, 0)
 			damage.direction = direction
@@ -274,7 +275,13 @@ func player_attack_skill_effect(
 			_check_kill_monster_effect(_data_player, target)
 
 
-func _after_damage_effect(_data_player: DataPlayer, _target: DataMonster,_skill: DataBaseSkill, damage: DataDamage):
+func _after_damage_effect(
+	_data_player: DataPlayer, 
+	_target: DataMonster,
+	_skill: DataBaseSkill, 
+	damage: DataDamage,
+	effect_position: Vector2 = Vector2.ZERO
+):
 	if _data_player.has_effect("effect_000018"):
 		var effect = _data_player.get_effect("effect_000018")
 		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
@@ -302,6 +309,18 @@ func _after_damage_effect(_data_player: DataPlayer, _target: DataMonster,_skill:
 			var details = _target.get_final_details()
 			details.defense -= 1
 			details.magic_def -= 1
+	if _data_player.has_effect("effect_000005"):
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):	
+			var effect = _data_player.get_effect("effect_000005")
+			# 10%的概率命中
+			var hit_rate = randf() <= 1
+			if hit_rate:
+				print("赤焰爆炸：",effect.value)
+				var skill = effect.get_special_skill()
+				skill.effect_position = effect_position
+				if skill != null:
+					_data_player.execute_skill_no_cd(skill)
 
 
 func _create_deep_damage_effect() -> DataEffect:

@@ -475,6 +475,10 @@ func execute_normal_attack_no_cd():
 	skill_executed.emit(self, normal_attack,0)
 
 
+func execute_skill_no_cd(_skill: DataBaseSkill):
+	skill_executed.emit(self, _skill,0)
+
+
 func process_pick():
 	if pick_up_cd_rest > 0:
 		return

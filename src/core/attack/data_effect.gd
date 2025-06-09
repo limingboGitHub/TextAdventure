@@ -72,6 +72,7 @@ func get_special_skill() -> DataBaseSkill:
 		skill.is_effect_after_skill_executed = false
 		skill.damage_value_type = value_type
 		skill.damage_level = [[value]]
+		skill.center_type = 1
 		special_skill = skill
 	return special_skill
 

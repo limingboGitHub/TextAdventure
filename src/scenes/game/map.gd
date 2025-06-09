@@ -421,6 +421,7 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 
 	if skill.target_type == 1 or skill.target_type == 2:
 		var target_monster_list = _get_skill_effect_monster_list(player_scene, skill)
+
 		if target_monster_list.size() > 0:
 			# 添加释放动画
 			_skill_executed_casting(
@@ -580,6 +581,9 @@ func _skill_executed_casting(
 		# 监听动画结束
 		attack_effect.ani_all_finished.connect(call_back_finished)
 	else:
+		if skill.id == "attack_explode_damage":
+			# 添加爆炸粒子特效
+			_add_explode_particle_effect(first_target.position)
 		# 没有释放动画的直接执行回调
 		call_back_cast_finished.call(null)
 		call_back_finished.call()
@@ -591,39 +595,23 @@ func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, pl
 		# 计算攻击方向
 		var direction = (monster_scene.global_position - player_scene.global_position).normalized()
 		# 伤害判定
-		data_map.player_attack_skill_effect(player_scene.data_player, monster_scene.data_monster, skill, direction)
+		data_map.player_attack_skill_effect(
+			player_scene.data_player, 
+			monster_scene.data_monster, 
+			skill, 
+			direction,
+			monster_scene.global_position)
 		# 如果怪物未死亡，则设定目标为攻击者
 		if not monster_scene.data_monster.is_dead:
 			monster_scene.set_attack_target(player_scene)
 		# 技能作用到目标后的特殊效果
-		_effect_after_attack_target(player_scene.data_player, skill, monster_scene,direction)
+		#_effect_after_attack_target(player_scene.data_player, skill, monster_scene,direction)
 
 
 func _add_skill_name_ani(first_target,player_scene,skill):
 	# 添加释放特效
 	var direction = (first_target.global_position - player_scene.global_position).normalized()
 	player_scene.add_skill_executed_effect(skill,direction)
-
-
-func _on_attack_effect_finished(
-	attack_effect: Node2D,
-	player_scene: Control,
-	_target_scene: Control,
-	skill: DataBaseSkill,
-	direction: Vector2 = Vector2.RIGHT):
-	if _target_scene.data_monster.is_dead:
-		return
-
-	attack_effect.animation_finished.disconnect(_on_attack_effect_finished)
-	# 移除特效
-	attack_effect.queue_free()
-	# 技能作用到目标
-	data_map.player_attack_skill_effect(player_scene.data_player, _target_scene.data_monster, skill, direction)
-	# 如果怪物未死亡，则设定目标为攻击者
-	if not _target_scene.data_monster.is_dead:
-		_target_scene.set_attack_target(player_scene)
-	# 技能作用到目标后的特殊效果
-	_effect_after_attack_target(player_scene.data_player, skill, _target_scene,direction)
 
 
 func _effect_after_attack_target(
