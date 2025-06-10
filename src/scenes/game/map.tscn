@@ -113,6 +113,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hjwdf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_34gjn")
 text = "掉落"
 
+[node name="DropDicBt" type="Button" parent="CanvasLayer"]
+offset_left = 505.0
+offset_top = 106.0
+offset_right = 565.0
+offset_bottom = 145.0
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 25
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hjwdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_34gjn")
+text = "出处"
+
 [node name="RefreshTime" type="Panel" parent="CanvasLayer"]
 visible = false
 offset_left = 386.0
@@ -221,5 +232,6 @@ wait_time = 5.0
 one_shot = true
 
 [connection signal="pressed" from="CanvasLayer/MapDropBt" to="." method="_on_map_drop_bt_pressed"]
+[connection signal="pressed" from="CanvasLayer/DropDicBt" to="." method="_on_drop_dic_bt_pressed"]
 [connection signal="timeout" from="MonsterRefreshTimer" to="." method="_on_monster_refresh_timer_timeout"]
 [connection signal="timeout" from="CloseMonsRefreshTimer" to="." method="_on_close_mons_refresh_timer_timeout"]

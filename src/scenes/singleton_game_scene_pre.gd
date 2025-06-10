@@ -54,3 +54,5 @@ const SkillItemScene = preload("res://src/scenes/dialog/skill_item.tscn")
 const BagTabScene = preload("res://src/scenes/dialog/bag_tab.tscn")
 
 const ToastScene = preload("res://src/scenes/widget/toast.tscn")
+
+const ItemFromInfoScene = preload("res://src/scenes/item_from_info.tscn")

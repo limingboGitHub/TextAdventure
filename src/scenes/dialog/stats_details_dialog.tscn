@@ -54,6 +54,7 @@ offset_bottom = 624.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Back/Panel2"]
 custom_minimum_size = Vector2(450, 220)
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 460.0
@@ -87,6 +88,7 @@ theme = ExtResource("5_sts58")
 text = "清空"
 
 [node name="Title" type="Label" parent="."]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 633.0
 offset_right = 167.0
@@ -95,6 +97,7 @@ theme_override_font_sizes/font_size = 25
 text = "自动清理上限:"
 
 [node name="Label" type="Label" parent="Title"]
+layout_mode = 0
 offset_left = 170.0
 offset_right = 246.0
 offset_bottom = 29.0

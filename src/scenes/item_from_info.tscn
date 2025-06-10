@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh1m6rafwafco"]
+
+[ext_resource type="Script" uid="uid://bpxd88nybqvcq" path="res://src/scenes/item_from_info.gd" id="1_po1wo"]
+[ext_resource type="PackedScene" uid="uid://mbnmc3xs1636" path="res://src/scenes/dialog/bag_item.tscn" id="1_whveb"]
+
+[node name="ItemFromInfo" type="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_po1wo")
+
+[node name="BagItem" parent="." instance=ExtResource("1_whveb")]
+offset_left = 2.5
+offset_top = 2.5
+offset_right = 202.5
+offset_bottom = 47.5
+
+[node name="Monster" type="Label" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_right = 450.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+text = "怪物："
+
+[node name="Label" type="Label" parent="Monster"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 20
+text = "小白兔的兔子"
+
+[node name="Map" type="Label" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_right = 330.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 20
+text = "地图："
+
+[node name="Label" type="Label" parent="Map"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 60.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 20
+text = "遗忘的图书馆"

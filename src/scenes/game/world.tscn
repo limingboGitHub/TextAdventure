@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cjhlw4uxh43lk"]
+[gd_scene load_steps=31 format=3 uid="uid://cjhlw4uxh43lk"]
 
 [ext_resource type="Script" uid="uid://bgbay81accbeh" path="res://src/scenes/game/world.gd" id="1_wlcum"]
 [ext_resource type="Script" uid="uid://b7omic3ntn17t" path="res://src/scenes/game/map_graph.gd" id="2_g74vk"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://gp18ukfvqqg0" path="res://src/scenes/msg_control.tscn" id="24_hpdnf"]
 [ext_resource type="PackedScene" uid="uid://dtn4sapjumnyd" path="res://src/scenes/stats_info_control.tscn" id="27_fhtq7"]
 [ext_resource type="PackedScene" uid="uid://wagqulrsu77s" path="res://src/scenes/dialog/stats_details_dialog.tscn" id="28_b6sft"]
+[ext_resource type="PackedScene" uid="uid://conrnjl67ihc2" path="res://src/scenes/item_dic_dialog.tscn" id="29_qap03"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_wlcum")
@@ -536,6 +537,13 @@ offset_left = 81.0
 offset_top = 440.0
 offset_right = 81.0
 offset_bottom = 440.0
+
+[node name="ItemDicDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("29_qap03")]
+visible = false
+offset_left = 74.0
+offset_top = 86.0
+offset_right = 74.0
+offset_bottom = 86.0
 
 [node name="ToastControl" type="Control" parent="CanvasLayer/UI"]
 layout_mode = 1

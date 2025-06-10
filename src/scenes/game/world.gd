@@ -75,6 +75,8 @@ func on_load_finished():
 		map_scene.attack_target_changed.connect(_on_attack_target_changed)
 		# 监听地图掉落展示事件
 		map_scene.map_drop_showed.connect(_on_map_drop_showed)
+		# 监听地图出处展示事件
+		map_scene.drop_dic_showed.connect(_on_drop_dic_showed)
 		if map.is_endless:
 			# 监听无尽之塔退出事件
 			map_scene.endless_exit.connect(_on_endless_exit)
@@ -120,6 +122,10 @@ func on_load_finished():
 	# 初始化统计信息
 	$CanvasLayer/UI/StatsInfoControl.init()
 	$CanvasLayer/UI/Dialog/StatsDetailsDialog.init(data_world.damage_info_manager)
+	# 初始化物品出处对话框
+	$CanvasLayer/UI/Dialog/ItemDicDialog.set_data(
+		data_world.res_manager.categorized_item_source_dict, 
+		data_world.dropthing_manager)
 	# 监听NPC对话框
 	_set_npc_dialog_listener()
 	# 监听商店展示事件
@@ -718,6 +724,10 @@ func _on_map_player_removed(data_map: DataMap, data_player: DataPlayer):
 func _on_map_drop_showed(data_map: DataMap):
 	$CanvasLayer/UI/Dialog/MonsterInfoDialog.show_map_drop(data_map.name)
 	_dialog_show($CanvasLayer/UI/Dialog/MonsterInfoDialog)
+
+
+func _on_drop_dic_showed(_data_map: DataMap):
+	_dialog_show($CanvasLayer/UI/Dialog/ItemDicDialog)
 
 
 # 展示对话框，同时将对话框的显示层级设置为最高

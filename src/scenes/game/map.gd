@@ -27,6 +27,8 @@ signal attack_target_changed(attack_target)
 
 signal map_drop_showed(data_map: DataMap)
 
+signal drop_dic_showed(data_map: DataMap)
+
 signal endless_exit()
 
 
@@ -678,3 +680,7 @@ func _on_map_drop_bt_pressed() -> void:
 
 func _on_endless_exit():
 	endless_exit.emit()
+
+
+func _on_drop_dic_bt_pressed() -> void:
+	drop_dic_showed.emit(data_map)

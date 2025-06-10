@@ -17,7 +17,7 @@ var map_monster = {}
 # 地区和地图信息
 var map_region_dic = {}
 
-# 怪物掉落表
+# 怪物掉落表 key：monster_id value：掉落物id和掉落概率
 var monster_drops_rate = {}
 # 怪物名称和怪物id的映射，方便通过怪物名查询怪物id
 var monster_name_id_map = {}
@@ -53,6 +53,12 @@ var effect_dic = {}
 
 ## 怪物技能信息
 var monster_skill_dic = {}
+
+## 物品出处词典：key为物品ID，value为包含掉落此物品的怪物及其所在地图信息
+var item_source_dict = {}
+
+## 按物品类型分类的物品出处词典
+var categorized_item_source_dict = {}
 
 # 必要资源加载完成
 signal load_res_finished()
@@ -118,6 +124,9 @@ func load():
 
 	# 加载怪物技能信息
 	monster_skill_dic = _read_config_json(res_path + "monster_skill.json")["skills"]
+	
+	# 构建物品出处词典
+	_build_item_source_dict()
 
 	load_res_finished.emit()
 
@@ -332,3 +341,150 @@ func get_effect_info(effect_id) -> Dictionary:
 	if not effect_dic.has(effect_id):
 		return {}
 	return effect_dic[effect_id]
+
+
+## 构建物品出处词典
+func _build_item_source_dict():
+	item_source_dict.clear()
+	categorized_item_source_dict.clear()
+	
+	# 遍历怪物掉落表
+	for monster_id in monster_drops_rate.keys():
+		var drops = monster_drops_rate[monster_id]
+		
+		# 遍历怪物掉落的物品
+		for item_id in drops.keys():
+			var drop_rate = drops[item_id]["rate"]
+			
+			# 确保物品ID在词典中存在
+			if not item_source_dict.has(item_id):
+				item_source_dict[item_id] = {"monsters": []}
+			
+			# 获取怪物名称
+			var monster_name = ""
+			if monster_name_id_map.has(monster_id):
+				monster_name = monster_name_id_map[monster_id]
+			else:
+				var monster_config = get_monster_config(monster_id)
+				monster_name = monster_config["name"]
+			
+			# 查找怪物所在的地图
+			var maps = []
+			for map_id in map_monster.keys():
+				var monster_pos_list = map_monster[map_id]
+				for monster_pos in monster_pos_list:
+					for monster_info in monster_pos["monster_list"]:
+						if monster_info["id"] == monster_id:
+							var map_name = ""
+							if map_res.has(map_id):
+								map_name = map_res[map_id]["name"]
+							
+							maps.append({
+								"map_id": map_id,
+								"map_name": map_name
+							})
+							break
+			
+			# 创建怪物信息
+			var monster_info = {
+				"monster_id": monster_id,
+				"monster_name": monster_name,
+				"drop_rate": drop_rate,
+				"maps": maps
+			}
+			
+			# 添加怪物信息到物品出处词典
+			item_source_dict[item_id]["monsters"].append(monster_info)
+			
+			# 分类添加到categorized_item_source_dict
+			var category = _get_item_category(item_id)
+			
+			# 确保分类在词典中存在
+			if not categorized_item_source_dict.has(category):
+				categorized_item_source_dict[category] = {}
+			
+			# 确保物品ID在分类词典中存在
+			if not categorized_item_source_dict[category].has(item_id):
+				categorized_item_source_dict[category][item_id] = {"monsters": []}
+			
+			# 添加怪物信息到分类词典
+			categorized_item_source_dict[category][item_id]["monsters"].append(monster_info)
+
+## 根据物品ID获取物品类别
+##
+## @param item_id 物品ID
+## @return 物品类别字符串
+func _get_item_category(item_id: String) -> String:
+	# 如果物品ID包含下划线，以下划线前的部分作为类别
+	if item_id.contains("_"):
+		return item_id.split("_")[0]
+	
+	# 如果是纯数字，尝试根据ID范围判断类别
+	if item_id.is_valid_int():
+		var id_num = int(item_id)
+		# 这里可以根据游戏规则添加更多判断
+		# 例如：装备ID在10000-20000范围，消耗品在20001-30000范围等
+		if id_num >= 10000 and id_num < 20000:
+			return "equip"
+		elif id_num >= 20001 and id_num < 30000:
+			return "consume"
+		# ... 更多类别判断
+	
+	# 默认类别
+	return "unknown"
+
+## 外部接口：查询物品的出处信息
+##
+## @param item_id 物品ID
+## @return 返回包含怪物和地图信息的字典，若物品不存在则返回空字典
+func get_item_source(item_id: String) -> Dictionary:
+	if item_source_dict.has(item_id):
+		return item_source_dict[item_id]
+	return {}
+
+## 外部接口：通过物品名称查询物品的出处信息
+##
+## @param item_name 物品名称
+## @return 返回包含怪物和地图信息的字典，若物品不存在则返回空字典
+func get_item_source_by_name(item_name: String) -> Dictionary:
+	# 通过物品名称查找物品ID
+	var item_id = ""
+	for id in item_id_name_map.keys():
+		if item_id_name_map[id] == item_name:
+			item_id = id
+			break
+	
+	# 如果找到物品ID，查询其出处
+	if item_id != "":
+		return get_item_source(item_id)
+	return {}
+
+## 外部接口：获取物品名称
+##
+## @param item_id 物品ID
+## @return 物品名称，若物品不存在则返回空字符串
+func get_item_name(item_id: String) -> String:
+	if item_id_name_map.has(item_id):
+		return item_id_name_map[item_id]
+	return ""
+
+## 外部接口：获取按类别分类的物品出处词典
+##
+## @return 分类后的物品出处词典
+func get_categorized_item_source() -> Dictionary:
+	return categorized_item_source_dict
+
+## 外部接口：获取指定类别的物品出处信息
+##
+## @param category 物品类别
+## @return 指定类别的物品出处词典，若类别不存在则返回空字典
+func get_item_source_by_category(category: String) -> Dictionary:
+	if categorized_item_source_dict.has(category):
+		return categorized_item_source_dict[category]
+	return {}
+
+## 外部接口：获取所有物品类别
+##
+## @return 物品类别数组
+func get_all_item_categories() -> Array:
+	return categorized_item_source_dict.keys()
