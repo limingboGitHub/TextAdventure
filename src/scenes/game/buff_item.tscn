@@ -27,8 +27,9 @@ script = ExtResource("2_eeuea")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 3.0
+offset_top = 5.0
 offset_right = 47.0
-offset_bottom = 51.0
+offset_bottom = 56.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 17
@@ -50,3 +51,15 @@ layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8hxi3")
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.231373, 0.231373, 0.219608, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "180"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

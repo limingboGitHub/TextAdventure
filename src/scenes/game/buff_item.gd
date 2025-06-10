@@ -48,6 +48,7 @@ func _on_buff_updated(_buff: DataBuff):
 	# 使用ColorRect组件的高度来表示buff的剩余时间
 	#print("buff.last_update_time: ", buff.last_update_time)
 	$Progress.size.y = progress_max_height * (1 - buff.last_update_time / buff.duration)
+	$TimeLabel.text = str(int(_buff.remaining_time))
 
 
 func _on_buff_removed(_buff: DataBuff):
