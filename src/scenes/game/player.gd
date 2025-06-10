@@ -104,6 +104,8 @@ func _process_attack(delta: float):
 
 
 func _move_to_attack_target(delta: float):
+	if not data_player or data_player.is_dead:
+		return
 	var move_direction = attack_target.global_position - global_position
 	move_direction = move_direction.normalized()
 	# 速度
