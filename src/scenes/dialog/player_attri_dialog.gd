@@ -92,7 +92,7 @@ func _on_auto_alloc_button_pressed() -> void:
 	# 根据当前职业自动分配属性点
 	if data_player.job_id == "job_000000":
 		data_player.alloc_ability(2,data_player.allot_point)
-	elif data_player.job_id == "job_000001":
+	elif data_player.job_id == "job_000001" or data_player.job_id == "job_000002":
 		# 4/5 力量 1/5 敏捷
 		var power_point = int(data_player.allot_point * 4 / 5.0)
 		var agility_point = int(data_player.allot_point * 1 / 5.0)
