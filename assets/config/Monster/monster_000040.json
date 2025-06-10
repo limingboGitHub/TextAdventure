@@ -1,14 +1,14 @@
 {
 	"name": "小乌龟",
-	"attack": "45",
-    "defense": "25",
+	"attack": "70",
+    "defense": "50",
     "magic": "0",
-    "magic_def": "20",
-    "level": "33",
-    "maxHP": "800",
+    "magic_def": "50",
+    "level": "31",
+    "maxHP": "1200",
     "maxMP": "0",
-    "acc": "280",
-    "eva": "150",
-    "exp": "180",
+    "acc": "250",
+    "eva": "270",
+    "exp": "200",
     "undead": "0"
 } 

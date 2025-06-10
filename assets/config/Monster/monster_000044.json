@@ -1,14 +1,14 @@
 {
 	"name": "泡泡虾",
-	"attack": "55",
+	"attack": "110",
     "defense": "28",
     "magic": "20",
     "magic_def": "25",
     "level": "37",
-    "maxHP": "1000",
+    "maxHP": "2000",
     "maxMP": "100",
     "acc": "320",
-    "eva": "200",
-    "exp": "220",
+    "eva": "320",
+    "exp": "280",
     "undead": "0"
 } 

@@ -6,11 +6,11 @@
     "magic": "80",
     "magic_def": "60",
     "level": "40",
-    "maxHP": "100000",
+    "maxHP": "150000",
     "maxMP": "1000",
     "acc": "350",
-    "eva": "250",
-    "exp": "3000",
+    "eva": "340",
+    "exp": "4000",
     "undead": "0",
     "skills": [
         "monster_skill_000003"
