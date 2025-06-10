@@ -220,6 +220,20 @@ func remove_selected_item() -> void:
 			else:
 				item_index += 1
 
+## 删除所有tab中的物品
+func remove_all_tab_items(tab_name: String) -> void:
+	var item_index = 0
+	while item_index < items_dic[tab_name].size():
+		var item = items_dic[tab_name][item_index]
+		# 如果物品被锁定，则不删除
+		if item.is_locked:
+			item_index += 1
+			continue
+		items_dic[tab_name].remove_at(item_index)
+		# 更新物品数量字典
+		_update_item_count_dic(item.id, -item.count)
+		item_removed.emit(item, item_index)
+
 
 func use_item(item: DataBagItem) -> void:
 	if item.is_empty():

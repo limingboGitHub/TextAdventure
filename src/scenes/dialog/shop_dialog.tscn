@@ -67,6 +67,15 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
+[node name="SellAllTabBt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 41.0
+offset_right = 409.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 19
+text = "当前页面全部出售"
+
 [node name="PlayerBag" type="TabContainer" parent="."]
 layout_mode = 0
 offset_left = 240.0
@@ -144,5 +153,6 @@ offset_top = 6.0
 offset_right = 465.0
 offset_bottom = 56.0
 
+[connection signal="pressed" from="SellAllTabBt" to="." method="_on_sell_all_tab_bt_pressed"]
 [connection signal="pressed" from="Test/AddMoneyBt" to="." method="_on_add_money_bt_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

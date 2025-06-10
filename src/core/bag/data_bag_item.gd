@@ -35,6 +35,8 @@ var owner: DataPlayer
 var is_selected = false
 # 是否会回收
 var is_recycle = false
+# 物品锁（不会被删除或者出售）
+var is_locked = false
 
 ## 物品品质
 ##
@@ -45,6 +47,8 @@ const QUALITY_RARE = "稀有"
 const QUALITY_EPIC = "史诗"
 # 当前品质
 var quality: String = QUALITY_COMMON
+
+signal locked_changed(is_locked: bool)
 
 
 func _init() -> void:
@@ -76,6 +80,11 @@ static func equip_name(item_id: String) -> String:
 	return equip_str
 
 
+func set_locked(_is_locked: bool) -> void:
+	self.is_locked = _is_locked
+	locked_changed.emit(_is_locked)
+
+
 # 保存需要额外存储的信息
 # 这里将类中的信息分为两类：
 # 1. 需要额外存储的信息，这些信息需要保存到持久化存储中
@@ -87,6 +96,7 @@ func save() -> Dictionary:
 	dict['name'] = name
 	dict['count'] = count
 	dict['price'] = price
+	dict['is_locked'] = is_locked
 	return dict
 
 
@@ -97,6 +107,8 @@ func load(dict: Dictionary) -> void:
 	count = dict['count']
 	if dict.has('price'):
 		price = dict['price']
+	if dict.has('is_locked'):
+		is_locked = dict['is_locked']
 
 
 # 子类重写

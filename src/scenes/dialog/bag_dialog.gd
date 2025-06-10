@@ -178,3 +178,15 @@ func _on_sort_bt_pressed() -> void:
 		data_bag.sort_item()
 	# 刷新显示
 	_update_bag()
+
+
+func _on_sell_all_equip_bt_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_sell_all_consume_bt_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_sell_all_etc_bt_pressed() -> void:
+	pass # Replace with function body.

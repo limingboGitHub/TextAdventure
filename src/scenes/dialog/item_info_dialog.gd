@@ -4,6 +4,9 @@ extends Control
 
 var item: DataBagItem
 
+@onready var name_label: Label = $Back/HBoxContainer/InfoContainer/HBoxContainer/Name
+@onready var lock_bt: Button = $Back/HBoxContainer/InfoContainer/HBoxContainer/LockBt
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +21,9 @@ func _process(delta: float) -> void:
 func set_item(item: DataBagItem) -> void:
 	self.item = item
 	# 设置物品名称
-	$Back/HBoxContainer/InfoContainer/Name.text = item.name
+	name_label.text = item.name
+	# 设置物品锁定状态
+	lock_bt.text = "解锁" if item.is_locked else "锁定"
 	# 设置物品描述
 	$Back/HBoxContainer/InfoContainer/Description.text = item.desc
 
@@ -63,10 +68,10 @@ func _show_equip_info(item: DataEquip) -> void:
 		attribute_text += "幸运要求：" + str(item.require_luck) + "\n"
 	
 	# 装备名称
-	$Back/HBoxContainer/InfoContainer/Name.text = item.name
+	name_label.text = item.name
 	# 强化等级
 	if item.upgrade_level > 0:
-		$Back/HBoxContainer/InfoContainer/Name.text += "(+" + str(item.upgrade_level) + ")"
+		name_label.text += "(+" + str(item.upgrade_level) + ")"
 	
 
 	# 展示装备能力值
@@ -320,3 +325,9 @@ func _equip_type_to_string(equip_type: String) -> String:
 		_:
 			return ""
 	
+
+
+func _on_lock_bt_pressed() -> void:
+	if item:
+		item.set_locked(!item.is_locked)
+		lock_bt.text = "解锁" if item.is_locked else "锁定"

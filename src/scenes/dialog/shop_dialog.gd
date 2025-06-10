@@ -240,3 +240,18 @@ func _on_buy_num_input_ok(data_bag_item:DataBagItem,num: int):
 	#	_buy_item(data_bag_item,data_bag_item.count)
 	#else:
 	_buy_item(data_bag_item,num)
+
+
+func _on_sell_all_tab_bt_pressed() -> void:
+	# 获取当前tab
+	var tab_control = $PlayerBag.get_current_tab_control()
+	var tab_name = tab_control.name
+	# 遍历出售
+	var item_index = 0
+	while item_index < player_bag.items_dic[tab_name].size():
+		var item = player_bag.items_dic[tab_name][item_index]
+		# 如果物品被锁定，则不出售
+		if item.is_locked:
+			item_index += 1
+			continue
+		_sell_item(item,item.count)

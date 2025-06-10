@@ -32,12 +32,19 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="Back/HBoxContainer/InfoContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Back/HBoxContainer/InfoContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Back/HBoxContainer/InfoContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("2_mv2v6")
 text = "物品名称"
+
+[node name="LockBt" type="Button" parent="Back/HBoxContainer/InfoContainer/HBoxContainer"]
+layout_mode = 2
+text = "加锁"
 
 [node name="AttributeLabel" type="RichTextLabel" parent="Back/HBoxContainer/InfoContainer"]
 custom_minimum_size = Vector2(370, 0)
@@ -66,4 +73,5 @@ offset_top = 5.0
 offset_right = 395.0
 offset_bottom = 55.0
 
+[connection signal="pressed" from="Back/HBoxContainer/InfoContainer/HBoxContainer/LockBt" to="." method="_on_lock_bt_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

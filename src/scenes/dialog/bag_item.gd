@@ -33,10 +33,13 @@ func set_item(item: DataBagItem):
 	if data_bag_item is DataEquip:
 		# 监听装备信息更新
 		data_bag_item.updated.connect(_on_item_updated)
+	
+	# 监听物品锁定状态更新
+	data_bag_item.locked_changed.connect(_on_item_locked_changed)
 
 
 func _show_item_info(item: DataBagItem) -> void:
-	$Label.text = item.name
+	_on_item_name_show(item)
 
 	# 品质
 	_show_quality(item.quality)
@@ -62,6 +65,17 @@ func _show_item_info(item: DataBagItem) -> void:
 		$Count.text = str(item.count)
 	else:
 		$Count.text = ""
+
+
+func _on_item_name_show(item: DataBagItem) -> void:
+	# 物品锁定状态
+	var lock_bt_text = "(锁)" if item.is_locked else ""
+	# 物品名称
+	$Label.text = item.name + lock_bt_text
+
+
+func _on_item_locked_changed(_is_locked: bool) -> void:
+	_on_item_name_show(data_bag_item)
 
 
 func _on_item_updated(item: DataBagItem) -> void:
@@ -102,6 +116,9 @@ func hide_use_button() -> void:
 
 
 func delete_mode(enable: bool):
+	# 如果物品被锁定，则不显示删除按钮
+	if data_bag_item.is_locked:
+		return
 	$DeleteBt.visible = enable
 
 
