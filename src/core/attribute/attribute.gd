@@ -146,6 +146,9 @@ func save() -> Dictionary:
 		ability_dic_to_save[key] = ability_dic[key].save()
 	var details_dic_to_save = {}
 	for key in details.keys():
+		# 消耗品附加属性不保存
+		if key.begins_with("consume_"):
+			continue
 		details_dic_to_save[key] = details[key].save()
 
 	return {
@@ -175,6 +178,9 @@ func load(dic: Dictionary):
 	# Load details
 	var details_dic_loaded = dic["details"]
 	for key in details_dic_loaded.keys():
+		# 消耗品附加属性不加载
+		if key.begins_with("consume_"):
+			continue
 		var detail = AttributeDetails.new()
 		detail.load(details_dic_loaded[key])
 		details[key] = detail
