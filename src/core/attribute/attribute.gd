@@ -140,6 +140,9 @@ func magic_defense_reduction_value() -> float:
 func save() -> Dictionary:
 	var ability_dic_to_save = {}
 	for key in ability_dic.keys():
+		# 消耗品附加属性不保存
+		if key.begins_with("consume_"):
+			continue
 		ability_dic_to_save[key] = ability_dic[key].save()
 	var details_dic_to_save = {}
 	for key in details.keys():
@@ -162,6 +165,9 @@ func load(dic: Dictionary):
 	# Load ability_list
 	var ability_dic_loaded = dic["ability_dic"]
 	for key in ability_dic_loaded.keys():
+		# 消耗品附加属性不加载
+		if key.begins_with("consume_"):
+			continue
 		var ability = AttributeAbility.new()
 		ability.load(ability_dic_loaded[key])
 		ability_dic[key] = ability
