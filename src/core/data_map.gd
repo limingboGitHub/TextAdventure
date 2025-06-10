@@ -499,32 +499,35 @@ func _create_number_damage(
 	target: DataMonster
 ) -> DataDamage:
 	# 计算伤害值
-	var damage_value = 0	
+	var damage_value = _damage_value
 	# 伤害详情统计
 	var damage_details: Array[DataDamage.DamageDetail] = []
+	damage_details.append(DataDamage.DamageDetail.new(skill.name, _damage_value, 0))
 	# 技能增幅加成
 	if _data_player.has_skill_enhance(skill.id):
 		var skill_enhance = _data_player.get_skill_enhance(skill.id)
-		_damage_value *= 1 + skill_enhance.damage
+		var enhance_damage_value = _damage_value * skill_enhance.damage
+		_damage_value += enhance_damage_value
+		damage_details.append(DataDamage.DamageDetail.new("技能增幅", enhance_damage_value, skill_enhance.damage))
 
 	# 计算最终伤害值（存在各种伤害加成的计算）
-	damage_value += _effect_damage_value(_data_player, target, damage_details, skill)
+	var effect_damage_value = _effect_damage_value(_data_player, target, damage_details, skill)
+	damage_value += effect_damage_value
 
+	var defense_reduction_value = 0
 	if skill.damage_type == 0:
 		# 物理伤害
 		# 计算目标防御减伤
-		var defense_reduction_value = target.attribute.defense_reduction_value()
-		# 计算伤害值
-		damage_value = _damage_value - defense_reduction_value
+		defense_reduction_value = target.attribute.defense_reduction_value()
 	elif skill.damage_type == 1:
 		# 魔法伤害
 		# 计算目标魔法防御减伤
-		var defense_reduction_value = target.attribute.magic_defense_reduction_value()
-		# 计算伤害值
-		damage_value = _damage_value - defense_reduction_value
+		defense_reduction_value = target.attribute.magic_defense_reduction_value()
+	damage_value -= defense_reduction_value
+	damage_details.append(DataDamage.DamageDetail.new("防御减伤", -defense_reduction_value,0))
 	
 	var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, damage_value)
-	
+	damage.damage_details = damage_details
 	# 发射伤害创建信号，通知DataWorld记录伤害信息
 	damage_created.emit(damage)
 	
