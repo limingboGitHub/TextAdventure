@@ -745,7 +745,7 @@
 			"effect": "effect_000025"
 		},
 		"consume_002123": {
-			"name": "[卷轴]神力奇迹",
+			"name": "[卷轴]强化蓄力",
 			"desc": "",
 			"quality": "稀有",
 			"type": "scroll",
@@ -753,6 +753,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000027"
+		},
+		"consume_002124": {
+			"name": "[卷轴]无端嘲讽",
+			"desc": "",
+			"quality": "稀有",
+			"type": "scroll",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000031"
 		}
 	}
 }
