@@ -216,7 +216,7 @@
 			"effect_type": "mock_monster",
 			"desc": "无缘无故嘲讽敌人，{d}范围内的敌人会主动攻击",
 			"value_type": "number", 
-			"value": 40
+			"value": 70
 		}
 	}
 }

@@ -66,7 +66,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# 判断玩家是否有嘲讽技能
-	_process_drag_monster(delta)
+	_process_mock_monster(delta)
 
 	# 更新击杀记录
 	_update_boss_kill_record()
@@ -91,20 +91,22 @@ func _update_boss_kill_record():
 		$CanvasLayer/BossStatus/CostTime.text = str(hurt_time / 1000.0)
 
 
-func _process_drag_monster(delta: float):
+func _process_mock_monster(_delta: float):
 	var data_player = data_map.get_player()
 	if data_player:
-		if data_player.has_effect(DataEffect.DragMonster):
-			var effect = data_player.get_effect(DataEffect.DragMonster)
-			var speed = effect.value
+		if data_player.has_effect("effect_000031"):
+			var effect = data_player.get_effect("effect_000031")
+
 			var player_scene = $CanvasLayer/GameZone/Players.get_node(data_player.player_id)
 			for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
 				if monster_scene.data_monster.is_dead:
 					continue
+				if monster_scene.attack_target != null:
+					continue
+				var distance = player_scene.global_position.distance_to(monster_scene.global_position)
+				if distance > effect.value:
+					continue
 				monster_scene.set_attack_target(player_scene)
-				var direction = player_scene.global_position - monster_scene.global_position
-				if direction.length() > 30:
-					monster_scene.position += direction.normalized() * speed * delta
 
 
 # 添加怪物
