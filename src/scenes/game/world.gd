@@ -648,6 +648,7 @@ func _on_item_showed(ui: BagItem):
 	)
 
 	$CanvasLayer/UI/Dialog/ItemInfoDialog.set_item(item)
+	$CanvasLayer/UI/Dialog/ItemInfoDialog.set_lock_bt_visible(ui.is_show_lock_bt)
 
 
 func _on_scroll_ready_used(item: DataConsume, equips: Array[DataEquip]):

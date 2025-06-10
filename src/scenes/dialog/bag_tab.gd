@@ -50,7 +50,9 @@ func set_data(items: Array, shop_button: String = "") -> void:
 		if not item.is_empty():
 			# 实例化物品场景
 			var item_scene = SingletonGameScenePre.BagItemScene.instantiate()
-			item_scene.set_item(item)
+			# 商店不展示锁定
+			var is_show_lock_bt = shop_button == ""
+			item_scene.set_item(item,is_show_lock_bt)
 			# 如果物品被锁定，则不展示出售按钮
 			if shop_button != "" and not item.is_locked:
 				item_scene.set_shop_bt(shop_button)

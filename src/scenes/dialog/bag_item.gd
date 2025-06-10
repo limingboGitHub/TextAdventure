@@ -4,6 +4,8 @@ class_name BagItem extends Control
 
 var data_bag_item: DataBagItem
 
+var is_show_lock_bt: bool = true
+
 signal shop_bt_pressed(data_bag_item: DataBagItem)
 
 signal item_show_bt_pressed(ui: BagItem)
@@ -23,8 +25,9 @@ func _ready() -> void:
 	pass
 
 
-func set_item(item: DataBagItem):
+func set_item(item: DataBagItem,_is_show_lock_bt: bool = true):
 	self.data_bag_item = item
+	self.is_show_lock_bt = _is_show_lock_bt
 	name = item.uuid
 	
 	# 显示物品信息

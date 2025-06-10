@@ -42,6 +42,10 @@ func _on_close_button_pressed() -> void:
 	hide()
 
 
+func set_lock_bt_visible(_visible: bool) -> void:
+	lock_bt.visible = _visible
+
+
 func get_item() -> DataBagItem:
 	return item
 
