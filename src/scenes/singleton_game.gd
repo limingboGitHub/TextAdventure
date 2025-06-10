@@ -21,6 +21,8 @@ var hp_warning_line = 30
 var mp_warning_line = 30
 # 挂机技能(默认普攻)
 var auto_skill_id: String = "skill_000000"
+# 自动连续使用炼金药剂
+var auto_use_alchemy = false
 #endregion
 
 #region 通用配置
@@ -39,7 +41,8 @@ func save() -> Dictionary:
 		"auto_skill_id": auto_skill_id,
 		"all_damage": all_damage,
 		"dps_max_record": dps_max_record,
-		"boss_kill_time": boss_kill_time
+		"boss_kill_time": boss_kill_time,
+		"auto_use_alchemy": auto_use_alchemy
 	}
 	return dic
 
@@ -54,3 +57,5 @@ func load(dic: Dictionary) -> void:
 		dps_max_record = dic["dps_max_record"]
 	if dic.has("boss_kill_time"):
 		boss_kill_time = dic["boss_kill_time"]
+	if dic.has("auto_use_alchemy"):
+		auto_use_alchemy = dic["auto_use_alchemy"]

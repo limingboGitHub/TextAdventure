@@ -152,7 +152,11 @@ func _on_item_used(item: DataBagItem):
 
 		if item.data_buff != null:
 			# 这里的buff类需要copy一个新实例，否则重复使用时会有问题
-			data_player.add_buff(item.data_buff.copy())
+			var buff_copy = item.data_buff.copy()
+			data_player.add_buff(buff_copy)
+			# 如果自动连续使用炼金药剂，则监听buff的移除
+			if SingletonGame.auto_use_alchemy:
+				buff_copy.buff_removed.connect(_on_buff_removed)
 
 		if item.scroll != null:
 			# 使用卷轴
@@ -178,6 +182,13 @@ func _on_item_used(item: DataBagItem):
 		return
 	else:
 		print('未知物品类型')
+
+
+func _on_buff_removed(buff: DataBuff):
+	# 如果自动连续使用炼金药剂，则监听buff的移除
+	if SingletonGame.auto_use_alchemy:
+		buff.buff_removed.disconnect(_on_buff_removed)
+		data_bag.find_item_and_use(buff.id)
 
 
 # 判断玩家属性是否满足装备要求

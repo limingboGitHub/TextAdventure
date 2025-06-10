@@ -241,7 +241,7 @@ func _show_consume_info(item: DataConsume) -> void:
 		# TODO 属性展示
 		# 持续时间
 		if item.data_buff.duration > 0:
-			attribute_text += "持续时间：" + str(item.data_buff.duration) + "\n"
+			attribute_text += "持续时间：" + str(int(item.data_buff.duration)) + "秒\n"
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
 

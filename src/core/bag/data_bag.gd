@@ -243,6 +243,23 @@ func use_item(item: DataBagItem) -> void:
 	item_used.emit(item)
 
 
+## 查找指定id物品，并使用
+func find_item_and_use(item_id: String) -> bool:
+	var item = find_item_by_id(item_id)
+	if item != null:
+		use_item(item)
+		return true
+	return false
+
+
+func find_item_by_id(item_id: String) -> DataBagItem:
+	for tab_name in items_dic.keys():
+		for item in items_dic[tab_name]:
+			if item.id == item_id:
+				return item
+	return null
+
+
 ## 查找hp回复值最小的药品，使用
 func find_hp_medicine_and_use() -> bool:
 	var min_hp_item = find_hp_medicine()

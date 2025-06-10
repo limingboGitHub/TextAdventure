@@ -6,12 +6,15 @@ extends Control
 var hp_warning_line: int
 # MP警戒线
 var mp_warning_line: int
+# 自动连续使用炼金药剂
+var auto_use_alchemy: bool
 # 技能列表
 var data_skill_bag: DataSkillBag
 
 signal setting_saved(
 	hp_warning_line: int, 
-	mp_warning_line: int
+	mp_warning_line: int,
+	auto_use_alchemy: bool
 )
 
 # Called when the node enters the scene tree for the first time.
@@ -27,12 +30,15 @@ func _process(delta: float) -> void:
 func set_data(
 	hp_warning_line: int, 
 	mp_warning_line: int,
+	auto_use_alchemy: bool
 ) -> void:
 	self.hp_warning_line = hp_warning_line
 	self.mp_warning_line = mp_warning_line
+	self.auto_use_alchemy = auto_use_alchemy
 	
 	$HpWarningLine/LineEdit.text = str(hp_warning_line)
 	$MpWarningLine/LineEdit.text = str(mp_warning_line)
+	$CheckButton.button_pressed = auto_use_alchemy
 
 
 func _on_close_button_pressed() -> void:
@@ -71,4 +77,8 @@ func _on_ok_button_pressed() -> void:
 	hp_warning_line = hp_value
 	mp_warning_line = mp_value
 	print('挂机设置保存:', hp_warning_line, mp_warning_line)
-	setting_saved.emit(hp_warning_line, mp_warning_line)
+	setting_saved.emit(hp_warning_line, mp_warning_line, auto_use_alchemy)
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	auto_use_alchemy = toggled_on
