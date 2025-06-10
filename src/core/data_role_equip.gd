@@ -67,9 +67,10 @@ func remove_by_type(equip_type: String)-> DataEquip:
 
 # 遍历装备物品字典
 func for_each_item(callback: Callable):
-	var _items = items_list[current_equip_index]
-	for equip_type in _items.keys():
-		callback.call(_items[equip_type])
+	for tab_index in range(items_list.size()):
+		var _items = items_list[tab_index]
+		for equip_type in _items.keys():
+			callback.call(_items[equip_type])
 
 
 func set_current_equip_index(index: int):
