@@ -255,7 +255,6 @@ func player_attack_skill_effect(
 			# 标记攻击来源
 			target.add_attack_source(_data_player.player_id)
 
-
 			# 造成伤害后的特效处理
 			_after_damage_effect(_data_player,target, skill, damage,direction,effect_position)
 		else:
@@ -332,6 +331,20 @@ func _after_damage_effect(
 			skill.damage_level = [[damage.value * effect.value]]
 			if skill != null:
 				_data_player.execute_skill_no_cd(skill)
+	# 自损八千
+	if _data_player.has_effect("effect_000004"):
+		if _skill.id.begins_with("skill_"):	
+			# 承受自损八千伤害的50%
+			for damage_detail in damage.damage_details:
+				if damage_detail.name == "自损八千":
+					var damage_value = damage_detail.value * 0.5
+					var self_damage = DataDamage.new(
+						DataDamage.TYPE.MAGICAL, 
+						DataDamage.SOURCE_TYPE.MONSTER, 
+						damage_value
+					)
+					_data_player.get_hurt(self_damage)
+					print("自损八千受伤:",self_damage.value)
 
 
 func _create_deep_damage_effect() -> DataEffect:
@@ -455,6 +468,18 @@ func _create_percent_damage(
 		# 评估该效果最终的伤害值
 		var record_damage_value = attack_value * _damage_rate * charge_damage_rate
 		damage_details.append(DataDamage.DamageDetail.new("深蹲蓄力", record_damage_value, charge_damage_rate))
+	# 自损八千
+	if _data_player.has_effect("effect_000004"):
+		# 只有常规攻击技能会触发该效果
+		if skill.id.begins_with("skill_"):
+			var effect = _data_player.get_effect("effect_000004")
+			if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+				skill_damage_rate += effect.value
+				var record_damage_value = attack_value * effect.value
+				damage_details.append(DataDamage.DamageDetail.new("自损八千", record_damage_value,effect.value))
+			else:
+				# 未实现
+				pass
 	
 	_damage_rate *= 1 + skill_damage_rate
 	print("技能伤害加成：",skill_damage_rate)
@@ -576,18 +601,6 @@ func _effect_damage_value(
 				print("损失生命值附加伤害：",lost_hp_damage)
 				effect_damage_value += lost_hp_damage
 				_damage_details.append(DataDamage.DamageDetail.new("背水一战", lost_hp_damage,0))
-			else:
-				# 未实现
-				pass
-	# 自损八千
-	if _data_player.has_effect("effect_000004"):
-		# 只有常规攻击技能会触发该效果
-		if _skill.id.begins_with("skill_"):
-			var effect = _data_player.get_effect("effect_000004")
-			if effect.value_type == Constants.VALUE_TYPE_NUMBER:
-				print("损血特效附加伤害：",effect.value)
-				effect_damage_value += effect.value
-				_damage_details.append(DataDamage.DamageDetail.new("自损八千", effect.value,0))
 			else:
 				# 未实现
 				pass

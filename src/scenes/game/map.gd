@@ -477,10 +477,6 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 								_skill_executed_damage_judge(_target_monster_list,skill,player_scene)
 								print("第",i,"段技能伤害判定")
 			)
-			
-		# 处理技能释放后的特殊效果
-		if skill.is_effect_after_skill_executed:
-			_effect_after_skill_executed(player, skill)
 
 
 	elif skill.target_type == 0 or skill.target_type == 2:
@@ -666,14 +662,6 @@ func _on_monster_detected(monster: Monster,skill: DataBaseSkill):
 		if player_scene:
 			_skill_executed_damage_judge([monster],skill,player_scene)
 						
-
-# 技能执行后，处理一些特殊效果，例如"自身受到伤害"
-func _effect_after_skill_executed(_player: DataPlayer, _skill: DataBaseSkill):
-	if _player.has_effect("effect_000004"):
-		var effect = _player.get_effect("effect_000004")
-		var damage = DataDamage.new(DataDamage.TYPE.MAGICAL, DataDamage.SOURCE_TYPE.MONSTER, effect.value)
-		_player.get_hurt(damage)
-
 
 func _on_drag_monster_requested(_player: DataPlayer,_speed: int):
 	print("drag_monster_requested:",_player.player_id)

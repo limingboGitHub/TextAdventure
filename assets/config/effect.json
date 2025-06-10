@@ -18,9 +18,9 @@
 		"effect_000004": {
 			"name": "自损八千",
 			"effect_type": "attack_lost_hp_attach_damage",
-			"desc": "每次攻击承受5点伤害，增加{d}点伤害",
-			"value_type": "number",
-			"value": 7
+			"desc": "每次攻击额外附加攻击力{d}伤害，并承受该伤害的50%",
+			"value_type": "percent",
+			"value": 0.2
 		},
 		"effect_000005": {
 			"name": "赤焰",
