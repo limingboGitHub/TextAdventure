@@ -110,7 +110,8 @@ func save() -> Dictionary:
 		for equip_type in items3.keys():
 			items_data[equip_type] = items3[equip_type].save()
 		json["items3"] = items_data
-	
+	# 保存当前装备栏
+	json["current_equip_index"] = current_equip_index
 	return json
 
 
@@ -140,4 +141,5 @@ func load(dic: Dictionary) -> void:
 			var data_equip = DataEquip.new()
 			data_equip.load(items_data[equip_type])
 			items3[equip_type] = data_equip
-	
+	if dic.has("current_equip_index"):
+		current_equip_index = dic["current_equip_index"]

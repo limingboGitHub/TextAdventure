@@ -124,7 +124,9 @@ func load_role_equip():
 	if role_equip == null:
 		return
 
-	for item in role_equip.items.values():
+	# 初始化加载装备栏属性
+	var _items = role_equip.items_list[role_equip.current_equip_index]
+	for item in _items.values():
 		if item is DataEquip and not item.data_effects.is_empty():
 			_on_equip_attribute_on(item)
 

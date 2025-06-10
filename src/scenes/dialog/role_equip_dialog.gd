@@ -57,7 +57,8 @@ func set_data_role_equip(input: DataRoleEquip) -> void:
 		for equip_type in role_equip.items_list[tab_index].keys():
 			var data_equip = role_equip.items_list[tab_index][equip_type]
 			_on_equip_on(data_equip,tab_index)
-
+	# 切换到当前装备栏
+	equip_tab_container.current_tab = role_equip.current_equip_index
 	# 监听装备栏的数据变化
 	role_equip.equip_on.connect(_on_equip_on)
 	role_equip.equip_off.connect(_on_equip_off)
