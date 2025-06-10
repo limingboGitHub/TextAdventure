@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://6jqmon4r3h48"]
+[gd_scene load_steps=8 format=3 uid="uid://6jqmon4r3h48"]
 
 [ext_resource type="StyleBox" uid="uid://bxkkepypipykx" path="res://src/scenes/dialog/dialog_back.tres" id="1_t15yu"]
 [ext_resource type="Script" uid="uid://tly8q5lpe3ua" path="res://src/scenes/dialog/role_equip_dialog.gd" id="1_uoild"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://dee063as2b3jr" path="res://src/scenes/widget/drag_control.gd" id="4_xl745"]
 [ext_resource type="PackedScene" uid="uid://mbnmc3xs1636" path="res://src/scenes/dialog/bag_item.tscn" id="5_fus1g"]
 [ext_resource type="PackedScene" uid="uid://ck22puk0vt35n" path="res://src/scenes/widget/close_button.tscn" id="6_74df0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymxoq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="RoleEquipDialog" type="Control"]
 layout_mode = 3
@@ -34,90 +37,264 @@ offset_right = 644.0
 offset_bottom = 55.0
 script = ExtResource("4_xl745")
 
-[node name="EquipContainer" type="VBoxContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 77.0
-offset_right = 287.0
-offset_bottom = 171.0
+offset_top = 55.0
+offset_right = 307.0
+offset_bottom = 323.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ymxoq")
+current_tab = 0
 
-[node name="WeaponContainer" type="HBoxContainer" parent="EquipContainer"]
+[node name="第1套" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="WeaponContainer" type="HBoxContainer" parent="TabContainer/第1套"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipContainer/WeaponContainer"]
+[node name="Label" type="Label" parent="TabContainer/第1套/WeaponContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "武器："
 vertical_alignment = 1
 
-[node name="BagItem4" parent="EquipContainer/WeaponContainer" instance=ExtResource("5_fus1g")]
+[node name="BagItem4" parent="TabContainer/第1套/WeaponContainer" instance=ExtResource("5_fus1g")]
 layout_mode = 2
 
-[node name="LongcoatContainer" type="HBoxContainer" parent="EquipContainer"]
+[node name="LongcoatContainer" type="HBoxContainer" parent="TabContainer/第1套"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipContainer/LongcoatContainer"]
+[node name="Label" type="Label" parent="TabContainer/第1套/LongcoatContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "上衣："
 vertical_alignment = 1
 
-[node name="BagItem4" parent="EquipContainer/LongcoatContainer" instance=ExtResource("5_fus1g")]
+[node name="BagItem4" parent="TabContainer/第1套/LongcoatContainer" instance=ExtResource("5_fus1g")]
 layout_mode = 2
 
-[node name="LongcoatContainer2" type="HBoxContainer" parent="EquipContainer"]
+[node name="LongcoatContainer2" type="HBoxContainer" parent="TabContainer/第1套"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipContainer/LongcoatContainer2"]
+[node name="Label" type="Label" parent="TabContainer/第1套/LongcoatContainer2"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "下衣："
 vertical_alignment = 1
 
-[node name="BagItem4" parent="EquipContainer/LongcoatContainer2" instance=ExtResource("5_fus1g")]
+[node name="BagItem4" parent="TabContainer/第1套/LongcoatContainer2" instance=ExtResource("5_fus1g")]
 layout_mode = 2
 
-[node name="CapConainer" type="HBoxContainer" parent="EquipContainer"]
+[node name="CapConainer" type="HBoxContainer" parent="TabContainer/第1套"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipContainer/CapConainer"]
+[node name="Label" type="Label" parent="TabContainer/第1套/CapConainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "帽子："
 vertical_alignment = 1
 
-[node name="BagItem4" parent="EquipContainer/CapConainer" instance=ExtResource("5_fus1g")]
+[node name="BagItem4" parent="TabContainer/第1套/CapConainer" instance=ExtResource("5_fus1g")]
 layout_mode = 2
 
-[node name="ShoesContainer" type="HBoxContainer" parent="EquipContainer"]
+[node name="ShoesContainer" type="HBoxContainer" parent="TabContainer/第1套"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipContainer/ShoesContainer"]
+[node name="Label" type="Label" parent="TabContainer/第1套/ShoesContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "鞋子："
 vertical_alignment = 1
 
-[node name="BagItem4" parent="EquipContainer/ShoesContainer" instance=ExtResource("5_fus1g")]
+[node name="BagItem4" parent="TabContainer/第1套/ShoesContainer" instance=ExtResource("5_fus1g")]
 layout_mode = 2
 
-[node name="GloveContainer" type="HBoxContainer" parent="EquipContainer"]
+[node name="GloveContainer" type="HBoxContainer" parent="TabContainer/第1套"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EquipContainer/GloveContainer"]
+[node name="Label" type="Label" parent="TabContainer/第1套/GloveContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "手套："
 vertical_alignment = 1
 
-[node name="BagItem4" parent="EquipContainer/GloveContainer" instance=ExtResource("5_fus1g")]
+[node name="BagItem4" parent="TabContainer/第1套/GloveContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="第2套" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="WeaponContainer" type="HBoxContainer" parent="TabContainer/第2套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第2套/WeaponContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "武器："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第2套/WeaponContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="LongcoatContainer" type="HBoxContainer" parent="TabContainer/第2套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第2套/LongcoatContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "上衣："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第2套/LongcoatContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="LongcoatContainer2" type="HBoxContainer" parent="TabContainer/第2套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第2套/LongcoatContainer2"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "下衣："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第2套/LongcoatContainer2" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="CapConainer" type="HBoxContainer" parent="TabContainer/第2套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第2套/CapConainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "帽子："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第2套/CapConainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="ShoesContainer" type="HBoxContainer" parent="TabContainer/第2套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第2套/ShoesContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "鞋子："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第2套/ShoesContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="GloveContainer" type="HBoxContainer" parent="TabContainer/第2套"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第2套/GloveContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "手套："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第2套/GloveContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="第3套" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="WeaponContainer" type="HBoxContainer" parent="TabContainer/第3套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第3套/WeaponContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "武器："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第3套/WeaponContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="LongcoatContainer" type="HBoxContainer" parent="TabContainer/第3套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第3套/LongcoatContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "上衣："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第3套/LongcoatContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="LongcoatContainer2" type="HBoxContainer" parent="TabContainer/第3套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第3套/LongcoatContainer2"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "下衣："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第3套/LongcoatContainer2" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="CapConainer" type="HBoxContainer" parent="TabContainer/第3套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第3套/CapConainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "帽子："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第3套/CapConainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="ShoesContainer" type="HBoxContainer" parent="TabContainer/第3套"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第3套/ShoesContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "鞋子："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第3套/ShoesContainer" instance=ExtResource("5_fus1g")]
+layout_mode = 2
+
+[node name="GloveContainer" type="HBoxContainer" parent="TabContainer/第3套"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/第3套/GloveContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "手套："
+vertical_alignment = 1
+
+[node name="BagItem4" parent="TabContainer/第3套/GloveContainer" instance=ExtResource("5_fus1g")]
 layout_mode = 2
 
 [node name="EquipContainer2" type="VBoxContainer" parent="."]
@@ -241,4 +418,5 @@ offset_top = 5.0
 offset_right = 335.0
 offset_bottom = 55.0
 
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_container_tab_changed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

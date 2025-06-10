@@ -62,10 +62,13 @@ func init_role_equip(_data_role_equip: DataRoleEquip):
 	else:
 		role_equip = _data_role_equip
 	
+
 	# 监听装备栏的装备添加
 	role_equip.equip_on.connect(_on_equip_on)
+	role_equip.equip_attribute_on.connect(_on_equip_attribute_on)
 	# 监听装备栏的装备移除
 	role_equip.equip_off.connect(_on_equip_off)
+	role_equip.equip_attribute_off.connect(_on_equip_attribute_off)
 	return role_equip
 
 
@@ -123,7 +126,7 @@ func load_role_equip():
 
 	for item in role_equip.items.values():
 		if item is DataEquip and not item.data_effects.is_empty():
-			_on_equip_on(item)
+			_on_equip_attribute_on(item)
 
 
 func _on_skill_level_changed(data_skill: DataBaseSkill):
@@ -201,7 +204,17 @@ func is_match_equip_require(item: DataEquip) -> bool:
 
 
 ## 监听装备栏装备的添加
-func _on_equip_on(item: DataEquip):
+func _on_equip_on(_item: DataEquip,_tab_index: int):
+	pass
+
+
+## 监听装备栏装备的卸载
+func _on_equip_off(_item: DataEquip,_tab_index: int):
+	data_bag.add_item(_item)
+
+
+## 监听装备栏装备的添加
+func _on_equip_attribute_on(item: DataEquip):
 	# 更新人物的装备属性
 	if item.has_ability():
 		data_player.attribute.add_ability(item.equip_type, item.get_all_ability())
@@ -241,10 +254,8 @@ func _skill_enhance(skill_enhance: DataSkillEnhance,is_add: bool):
 			skill.cd -= skill_enhance.cd
 
 
-## 监听装备栏装备的移除
-func _on_equip_off(item: DataEquip):
-	data_bag.add_item(item)
-
+## 监听装备属性的移除
+func _on_equip_attribute_off(item: DataEquip):
 	# 移除装备属性
 	data_player.attribute.ability_dic.erase(item.equip_type)
 	data_player.attribute.details.erase(item.equip_type)
