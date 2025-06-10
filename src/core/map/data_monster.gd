@@ -40,6 +40,8 @@ var monster_skill_current: DataMonsterSkill
 var auto_lock_player = false
 # 此怪物是否会掉落物品（部分特殊怪物不掉落物品）
 var is_drop_item = true
+# 此怪物是否会无视玩家休息状态
+var is_ignore_rest = false
 
 # 怪物特殊效果（配置信息）,怪物创建时注入该信息
 var effect_config: Dictionary = {}

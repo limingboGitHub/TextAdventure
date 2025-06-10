@@ -728,5 +728,17 @@
 			],
 			"function": []
 		}
+	],
+	"map_000122":[
+		{
+			"id": "npc_000124",
+			"name": "警示牌",
+			"visible":true,
+			"position": {"x": 300, "y": 70},
+			"default_messages":[
+				"注意危险！"
+			],
+			"function": []
+		}
 	]
 }

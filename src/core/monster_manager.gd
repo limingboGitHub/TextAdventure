@@ -50,6 +50,8 @@ func create_monster(
 
 	if monster_config.has("attack_cd"):
 		monster.execute_cd = float(monster_config["attack_cd"])
+	if monster_config.has("ignore_rest"):
+		monster.is_ignore_rest = monster_config["ignore_rest"]
 
 	return monster
 	

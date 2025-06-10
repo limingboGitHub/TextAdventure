@@ -342,9 +342,10 @@
 			}
 		}
 	],
+
 	"map_000122": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000040",
@@ -359,7 +360,7 @@
 	],
 	"map_000123": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000042",
@@ -374,7 +375,7 @@
 	],
 	"map_000124": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000044",
@@ -406,7 +407,7 @@
 	],
 	"map_000127": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000047",
@@ -421,7 +422,7 @@
 	],
 	"map_000129": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000049",
@@ -436,7 +437,7 @@
 	],
 	"map_000130": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000051",
@@ -468,7 +469,7 @@
 	],
 	"map_000132": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000054",
@@ -483,7 +484,7 @@
 	],
 	"map_000134": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000056",
@@ -498,7 +499,7 @@
 	],
 	"map_000135": [
 		{
-			"count": 20,
+			"count": 40,
 			"monster_list": [
 				{
 					"id": "monster_000058",

@@ -1777,6 +1777,23 @@
 			}
 		]
 	},
+	"mission_000123": {
+		"name": "星光浅滩",
+		"enable": true,
+		"visible_limit": {
+			"level": 1
+		},
+		"mission_phase_list": [
+			{
+				"name": "危险海域",
+				"desc": "",
+				"attach_npc_id": "npc_000124",
+				"messages": [
+					"告示：这里的怪物即使在你休息的时候也会主动攻击你！"
+				]
+			}
+		]
+	},
 
 	"mission_000199": {
 		"name": "无尽之塔",
