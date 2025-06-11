@@ -18,5 +18,6 @@ func get_effect(level: int) -> DataEffect:
 func create_buff() -> DataBuff:
 	var data_buff = super.create_buff()
 	if effect_list.size() > 0:
-		data_buff.add_effect(get_effect(level))
+		var effect = get_effect(level)
+		data_buff.add_effect(effect)
 	return data_buff

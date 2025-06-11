@@ -191,11 +191,11 @@
 			"value": 0.1
 		},
 		"effect_000028": {
-			"name": "血源诅咒",
-			"effect_type": "blood_curse",
-			"desc": "诅咒状态无法使用血药",
+			"name": "眩晕攻击",
+			"effect_type": "attack_attach_dizziness",
+			"desc": "攻击会导致目标进入{d}秒眩晕状态",
 			"value_type": "number", 
-			"value": 0
+			"value": 2
 		},
 		"effect_000029": {
 			"name": "越战越勇",
@@ -217,6 +217,13 @@
 			"desc": "无缘无故嘲讽敌人，{d}范围内的敌人会主动攻击",
 			"value_type": "number", 
 			"value": 70
+		},
+		"effect_000032":{
+			"name": "眩晕状态",
+			"effect_type": "dizziness",
+			"desc": "进入眩晕状态，无法进行任何操作",
+			"value_type": "number", 
+			"value": 1
 		}
 	}
 }

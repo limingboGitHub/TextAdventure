@@ -28,6 +28,7 @@ const MpCostEnhanceSkill = "mp_cost_enhance_skill"
 const SkillEnhance = "skill_enhance"
 
 var id: String
+var name: String
 var type: String
 var value: float
 # 描述
@@ -116,6 +117,7 @@ func remove(data_effect: DataEffect) -> void:
 func save() -> Dictionary:
 	var data = {
 		"id": id,
+		"name": name,
 		"type": type,
 		"value": value,
 		"desc": desc,
@@ -136,6 +138,8 @@ func load(data: Dictionary) -> void:
 	if data.has("skill_enhance"):
 		skill_enhance = DataSkillEnhance.new()
 		skill_enhance.load(data["skill_enhance"])
+	if data.has("name") and data["name"]:
+		name = data["name"]
 
 
 func copy() -> DataEffect:

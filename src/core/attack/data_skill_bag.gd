@@ -421,10 +421,11 @@ static func create_monster_attack(name: String, damage_rate: float) -> DataAttac
 
 static func create_buff_skill(id: String,name: String,time: float) -> DataEffectBuffSkill:
 	var data_skill = DataEffectBuffSkill.new(id)
-	data_skill.name = "buff"
+	data_skill.name = name
 	data_skill.level = 1
 	data_skill.max_level = 1
 	data_skill.distance = 1000
+	data_skill.radius = 1000
 	data_skill.time = time
 	return data_skill
 

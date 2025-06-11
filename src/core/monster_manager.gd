@@ -44,9 +44,8 @@ func create_monster(
 			var monster_skill_info = monster_skill_dic[monster_skill_id]
 			var monster_skill = DataMonsterSkill.create_monster_skill(monster_skill_info)
 			monster.add_monster_skill(monster_skill)
-			if monster_skill is DataMonsterSkill.BuffSkill:
-				# 注入buff效果配置信息
-				monster.effect_config[monster_skill.effect_id] = effect_config[monster_skill.effect_id]
+	# 注入配置信息
+	monster.effect_config = effect_config
 
 	if monster_config.has("attack_cd"):
 		monster.execute_cd = float(monster_config["attack_cd"])

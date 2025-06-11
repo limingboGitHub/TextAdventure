@@ -164,19 +164,29 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 		execute_skill(_skill)
 		# 重置怪物特殊技能CD
 		monster_skill.cd_rest = monster_skill.cd
-	elif monster_skill.type == "debuff_skill":
-		pass
 	elif monster_skill.type == "buff_skill":
 		# 特殊效果
 		var effect_id = monster_skill.effect_id
-		var effect = DataEffect.new(effect_id,"buff")
+		var effect_type = effect_config[effect_id]["effect_type"]
+		var effect = DataEffect.new(effect_id,effect_type)
 		effect.load(effect_config[effect_id])
 		# buff技能
 		var buff_skill = DataSkillBag.create_buff_skill(
 			monster_skill.id,
 			monster_skill.name,
 			monster_skill.buff_time)
-		buff_skill.effect_list.append(effect)
+		if effect.type == "attack_attach_dizziness":
+			# 附加眩晕buff
+			var dizziness_effect_id = "effect_000032"
+			var dizziness_effect_name = effect_config[dizziness_effect_id]["name"]
+			var dizziness_effect_type = effect_config[dizziness_effect_id]["effect_type"]
+			var dizziness_effect = DataEffect.new(dizziness_effect_id,dizziness_effect_type)
+			dizziness_effect.load(effect_config[dizziness_effect_id])
+			buff_skill.effect_list.append(dizziness_effect)
+			# buff名称调整为附加状态的名称，例如“眩晕”
+			buff_skill.name = dizziness_effect_name
+		else:
+			buff_skill.effect_list.append(effect)
 		execute_skill(buff_skill)
 		# 重置怪物特殊技能CD
 		monster_skill.cd_rest = monster_skill.cd

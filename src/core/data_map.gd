@@ -745,9 +745,10 @@ func on_monster_skill_executed(
 			var pos = Vector2(randf(), randf())
 			_add_monster(monster, pos)
 	elif skill is DataEffectBuffSkill:
-		# 给怪物添加特殊效果
-		var buff = skill.create_buff()
-		data_monster.add_buff(buff)
+		if skill.target_type == 0:
+			# 给玩家添加特殊效果
+			var buff = skill.create_buff()
+			data_player.add_buff(buff)
 
 
 # 判断玩家是否有魔法屏障技能的buff，如果有，则调整伤害
