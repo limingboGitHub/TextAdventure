@@ -495,9 +495,9 @@ visible = false
 
 [node name="ScrollUseDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("18_tgmgh")]
 visible = false
-offset_left = 169.0
+offset_left = 210.0
 offset_top = 680.0
-offset_right = 169.0
+offset_right = 210.0
 offset_bottom = 680.0
 
 [node name="OtherFunctionDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("19_03is1")]

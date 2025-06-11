@@ -177,11 +177,11 @@
 			"value": 0.10
 		},
 		"effect_000026": {
-			"name": "深蹲蓄力",
+			"name": "拔刀蓄力",
 			"effect_type": "squat_strength",
-			"desc": "",
+			"desc": "进行2秒钟的蓄力；每0.1秒增加奋力一击{d}伤害和5点蓝耗",
 			"value_type": "percent", 
-			"value": 0.01
+			"value": 0.1
 		},
 		"effect_000027": {
 			"name": "暴力蓄力",
@@ -226,7 +226,7 @@
 		"effect_000033":{
 			"name": "暴力美学",
 			"effect_type": "power_add_damage",
-			"desc": "每1点力量增加{d}技能伤害",
+			"desc": "每1点力量附加{d}技能伤害",
 			"value_type": "percent", 
 			"value": 0.0005
 		}
