@@ -493,6 +493,12 @@ func recover_hp_with_signal(value: int):
 	hp_recovered.emit(self, value)
 
 
+func recover_hp_rate_with_signal(rate: float):
+	var recover_value = int(attribute.final_details.max_hp * rate)
+	recover_hp(recover_value)
+	hp_recovered.emit(self, recover_value)
+
+
 func recover_hp(value: int):
 	if value == 0:
 		return

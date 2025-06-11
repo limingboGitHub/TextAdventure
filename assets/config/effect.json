@@ -11,9 +11,9 @@
 		"effect_000003": {
 			"name": "战士荣耀",
 			"effect_type": "monster_kill_add_hp",
-			"desc": "击杀怪物时，恢复{d}点生命值",
-			"value_type": "number",
-			"value": 5
+			"desc": "击杀怪物时，恢复{d}最大生命值",
+			"value_type": "percent",
+			"value": 0.02
 		},
 		"effect_000004": {
 			"name": "自损八千",

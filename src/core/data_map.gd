@@ -395,7 +395,7 @@ func _create_drop_thing(target: DataMonster):
 func _check_kill_monster_effect(_data_player: DataPlayer, _target: DataMonster):
 	if _data_player.has_effect("effect_000003"):
 		var data_effect = _data_player.get_effect("effect_000003")
-		_data_player.recover_hp_with_signal(data_effect.value)
+		_data_player.recover_hp_rate_with_signal(data_effect.value)
 
 
 func _create_percent_damage(
