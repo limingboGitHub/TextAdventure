@@ -105,6 +105,42 @@
 			},
 			"max_upgrade_times": 6
 		},
+		"lower_body_000010": {
+			"name": "冰晶下装",
+			"desc": "蕴含着冰晶的力量",
+			"require_level": 30,
+			"quality": "优秀",
+			"price": 9000,
+			"attribute_details": {
+				"max_hp": 25,
+				"defense": 17
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_000011": {
+			"name": "熔岩下装",
+			"desc": "蕴含着熔岩的力量",
+			"require_level": 40,
+			"quality": "优秀",
+			"price": 16000,
+			"attribute_details": {
+				"max_hp": 40,
+				"defense": 25
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_000012": {
+			"name": "沙金下装",
+			"desc": "璀璨的沙金下装，散发着耀眼的光芒。",
+			"require_level": 50,
+			"quality": "优秀",
+			"price": 28000,
+			"attribute_details": {
+				"max_hp": 60,
+				"defense": 35
+			},
+			"max_upgrade_times": 6
+		},
 
 		"lower_body_001001": {
 			"name": "学徒长裤",
@@ -190,6 +226,42 @@
 			},
 			"max_upgrade_times": 6
 		},
+		"lower_body_001008": {
+			"name": "冰晶长裤",
+			"desc": "蕴含冰晶力量的长裤，能增强魔法师的施法能力。",
+			"require_level": 30,
+			"quality": "优秀",
+			"price": 9000,
+			"attribute_details": {
+				"max_mp": 20,
+				"defense": 8
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_001009": {
+			"name": "熔岩长裤",
+			"desc": "注入熔岩能量的长裤，行走时有微热的温度。",
+			"require_level": 40,
+			"quality": "优秀",
+			"price": 16000,
+			"attribute_details": {
+				"max_mp": 35,
+				"defense": 15
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_001010": {
+			"name": "星沙长裤",
+			"desc": "由星辰沙粒编织而成的长裤，闪烁着神秘的光辉。",
+			"require_level": 50,
+			"quality": "优秀",
+			"price": 28000,
+			"attribute_details": {
+				"max_mp": 55,
+				"defense": 20
+			},
+			"max_upgrade_times": 6
+		},
 
 		"lower_body_002001": {
 			"name": "潜行裤",
@@ -248,6 +320,42 @@
 			"attribute_details": {
 				"defense": 6,
 				"evasion": 4
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_002006": {
+			"name": "冰晶护腿",
+			"desc": "蕴含冰晶力量的轻便护腿，行走时不发出声响。",
+			"require_level": 30,
+			"quality": "优秀",
+			"price": 9000,
+			"attribute_details": {
+				"defense": 10,
+				"evasion": 5
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_002007": {
+			"name": "熔岩护腿",
+			"desc": "注入熔岩能量的护腿，在黑暗中微微发光。",
+			"require_level": 40,
+			"quality": "优秀",
+			"price": 16000,
+			"attribute_details": {
+				"defense": 15,
+				"evasion": 6
+			},
+			"max_upgrade_times": 6
+		},
+		"lower_body_002008": {
+			"name": "沙金护腿",
+			"desc": "由沙金材质打造的护腿，轻盈如沙，坚韧如金。",
+			"require_level": 50,
+			"quality": "优秀",
+			"price": 28000,
+			"attribute_details": {
+				"defense": 20,
+				"evasion": 8
 			},
 			"max_upgrade_times": 6
 		}

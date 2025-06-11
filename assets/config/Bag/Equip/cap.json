@@ -94,6 +94,42 @@
 			},
 			"max_upgrade_times":6
 		},
+		"cap_000009":{
+			"name":"冰晶头盔",
+			"desc":"蕴含着冰晶的力量",
+			"require_level":30,
+			"quality":"优秀",
+			"price":5000,
+			"attribute_details":{
+				"max_hp":20,
+				"defense":15
+			},
+			"max_upgrade_times":6
+		},
+		"cap_000010":{
+			"name":"熔岩头盔",
+			"desc":"蕴含着熔岩的力量",
+			"require_level":40,
+			"quality":"优秀",
+			"price":5000,
+			"attribute_details":{
+				"max_hp":30,
+				"defense":25
+			},
+			"max_upgrade_times":6
+		},
+		"cap_000011":{
+			"name":"沙金头盔",
+			"desc":"璀璨的沙金头盔，散发着耀眼的光芒。",
+			"require_level":50,
+			"quality":"优秀",
+			"price":5000,
+			"attribute_details":{
+				"max_hp":50,
+				"defense":35
+			},
+			"max_upgrade_times":6
+		},
 
 		"cap_001001":{
 			"name":"学徒兜帽",

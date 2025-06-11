@@ -105,6 +105,42 @@
 			},
 			"max_upgrade_times": 6
 		},
+		"shoes_000010": {
+			"name": "冰晶战靴",
+			"desc": "蕴含着冰晶的力量",
+			"require_level": 30,
+			"quality": "优秀",
+			"price": 7000,
+			"attribute_details": {
+				"max_hp": 20,
+				"defense": 12
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_000011": {
+			"name": "熔岩战靴",
+			"desc": "蕴含着熔岩的力量",
+			"require_level": 40,
+			"quality": "优秀",
+			"price": 13000,
+			"attribute_details": {
+				"max_hp": 35,
+				"defense": 20
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_000012": {
+			"name": "沙金战靴",
+			"desc": "璀璨的沙金战靴，散发着耀眼的光芒。",
+			"require_level": 50,
+			"quality": "优秀",
+			"price": 22000,
+			"attribute_details": {
+				"max_hp": 55,
+				"defense": 30
+			},
+			"max_upgrade_times": 6
+		},
 
 		"shoes_001001": {
 			"name": "学徒便鞋",
@@ -190,6 +226,42 @@
 			},
 			"max_upgrade_times": 6
 		},
+		"shoes_001008": {
+			"name": "冰晶便鞋",
+			"desc": "蕴含冰晶力量的便鞋，踏过之处留下霜痕。",
+			"require_level": 30,
+			"quality": "优秀",
+			"price": 7000,
+			"attribute_details": {
+				"max_mp": 15,
+				"defense": 6
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_001009": {
+			"name": "熔岩便鞋",
+			"desc": "注入熔岩能量的便鞋，踏过之处留下灼痕。",
+			"require_level": 40,
+			"quality": "优秀",
+			"price": 13000,
+			"attribute_details": {
+				"max_mp": 20,
+				"defense": 10
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_001010": {
+			"name": "星沙便鞋",
+			"desc": "由星辰沙粒编织而成的便鞋，每一步都仿佛踏在星河中。",
+			"require_level": 50,
+			"quality": "优秀",
+			"price": 22000,
+			"attribute_details": {
+				"max_mp": 55,
+				"defense": 20
+			},
+			"max_upgrade_times": 6
+		},
 
 		"shoes_002001": {
 			"name": "潜行便鞋",
@@ -249,6 +321,42 @@
 			"attribute_details": {
 				"defense": 4,
 				"evasion": 4
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_002006": {
+			"name": "冰晶轻靴",
+			"desc": "蕴含冰晶力量的轻便靴子，行走时无声无息。",
+			"require_level": 30,
+			"quality": "优秀",
+			"price": 8000,
+			"attribute_details": {
+				"defense": 8,
+				"evasion": 5
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_002007": {
+			"name": "熔岩轻靴",
+			"desc": "注入熔岩能量的轻靴，在暗处能微微发光指引方向。",
+			"require_level": 40,
+			"quality": "优秀",
+			"price": 13000,
+			"attribute_details": {
+				"defense": 12,
+				"evasion": 6
+			},
+			"max_upgrade_times": 6
+		},
+		"shoes_002008": {
+			"name": "沙金轻靴",
+			"desc": "由沙金材质打造的轻靴，轻盈如沙，坚韧如金。",
+			"require_level": 50,
+			"quality": "优秀",
+			"price": 22000,
+			"attribute_details": {
+				"defense": 15,
+				"evasion": 8
 			},
 			"max_upgrade_times": 6
 		}
