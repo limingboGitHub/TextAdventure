@@ -229,6 +229,13 @@
 			"desc": "每1点力量附加{d}技能伤害",
 			"value_type": "percent", 
 			"value": 0.0005
+		},
+		"effect_000034":{
+			"name": "剑气纵横",
+			"effect_type": "squat_strength",
+			"desc": "首道剑气释放后，有{d}概率追加一道剑气",
+			"value_type": "percent", 
+			"value": 0.2
 		}
 	}
 }

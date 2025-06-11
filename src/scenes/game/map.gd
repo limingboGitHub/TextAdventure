@@ -425,6 +425,13 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 	# 碰撞体区域类型技能判定
 	if skill.id == "attack_add_sector_damage":
 		_add_sector_damage_effect(player_scene.position,skill)
+		# 剑气纵横追加剑气
+		if player.has_effect("effect_000034"):
+			var effect2 = player.get_effect("effect_000034")
+			if randf() < effect2.value:
+				# 延迟0.3秒释放剑气
+				await get_tree().create_timer(0.3).timeout
+				_add_sector_damage_effect(player_scene.position,skill)
 		return
 
 	# 常规的中心点半径类型的技能伤害判定

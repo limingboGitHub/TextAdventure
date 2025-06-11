@@ -329,8 +329,8 @@ func _after_damage_effect(
 			skill.direction = direction
 			skill.damage_value_type = Constants.VALUE_TYPE_NUMBER
 			skill.damage_level = [[damage.value * effect.value]]
-			if skill != null:
-				_data_player.execute_skill_no_cd(skill)
+			_data_player.execute_skill_no_cd(skill)
+			
 	# 自损八千
 	if _data_player.has_effect("effect_000004"):
 		if _skill.id.begins_with("skill_"):	

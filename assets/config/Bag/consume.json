@@ -746,7 +746,7 @@
 		},
 		"consume_002123": {
 			"name": "[卷轴]强化蓄力",
-			"desc": "",
+			"desc": "这一剑二十年的功力，你挡得住吗？",
 			"quality": "稀有",
 			"type": "scroll",
 			"price": 100,
@@ -756,7 +756,7 @@
 		},
 		"consume_002124": {
 			"name": "[卷轴]无端嘲讽",
-			"desc": "",
+			"desc": "你过来呀！",
 			"quality": "稀有",
 			"type": "scroll",
 			"price": 100,
@@ -793,6 +793,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000033"
+		},
+		"consume_002127": {
+			"name": "[卷轴]剑气纵横",
+			"desc": "这世界曾经流传过他的传说",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000034"
 		}
 	}
 }
