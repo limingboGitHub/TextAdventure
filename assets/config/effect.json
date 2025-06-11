@@ -195,7 +195,7 @@
 			"effect_type": "attack_attach_dizziness",
 			"desc": "攻击会导致目标进入{d}秒眩晕状态",
 			"value_type": "number", 
-			"value": 2
+			"value": 3
 		},
 		"effect_000029": {
 			"name": "越战越勇",

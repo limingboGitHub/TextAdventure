@@ -44,6 +44,10 @@ func _ready() -> void:
 		data_player.charge_started.connect(_on_charge_started)
 		# 监听蓄力完成事件
 		data_player.charge_completed.connect(_on_charge_completed)
+		# 监听特效添加
+		data_player.effect_added.connect(_effect_added)
+		# 监听特效删除
+		data_player.effect_removed.connect(_effect_removed)
 
 		if data_player.role_equip:
 			data_player.role_equip.equip_on.connect(_on_role_equip_on)
@@ -302,3 +306,13 @@ func _on_charge_completed(complete_charge_time: float):
 		print("玩家场景：蓄力正常完成，隐藏蓄力特效")
 	else:
 		print("玩家场景：蓄力被取消，隐藏蓄力特效")
+
+
+func _effect_added(data_effect: DataEffect):
+	if data_effect.type == "dizziness":
+		$DizzinessLabel.show()
+
+
+func _effect_removed(data_effect: DataEffect):
+	if data_effect.type == "dizziness":
+		$DizzinessLabel.hide()

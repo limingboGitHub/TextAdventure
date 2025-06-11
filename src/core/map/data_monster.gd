@@ -174,7 +174,7 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 		var buff_skill = DataSkillBag.create_buff_skill(
 			monster_skill.id,
 			monster_skill.name,
-			monster_skill.buff_time)
+			effect.value)
 		if effect.type == "attack_attach_dizziness":
 			# 附加眩晕buff
 			var dizziness_effect_id = "effect_000032"

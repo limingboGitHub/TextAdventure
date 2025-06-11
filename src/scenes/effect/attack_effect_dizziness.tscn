@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7vmw5wcumaij"]
+
+[ext_resource type="Script" uid="uid://bnmxkkj7s32j2" path="res://src/scenes/effect/attack_effect_5.gd" id="1_17ci1"]
+
+[node name="AttackEffectDizziness" type="Node2D"]
+script = ExtResource("1_17ci1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]

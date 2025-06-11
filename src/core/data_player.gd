@@ -388,9 +388,17 @@ func _process_recover_mp(delta: float,recover_mp_value: int):
 		recover_mp_rest_time = RECOVER_MP_INTERVAL / float(SingletonGame.speed)
 
 
+func is_dizziness()-> bool:
+	return has_effect("effect_000032")
+
+
 func process_attack():
 	if is_dead:
 		return
+	# 如果处在眩晕状态，则无法处理攻击事件
+	if is_dizziness():
+		return
+
 	# 判断普攻的是否还有冷却
 	if execute_cd_rest > 0:
 		# print("攻击还在冷却")
@@ -480,6 +488,9 @@ func execute_skill_no_cd(_skill: DataBaseSkill):
 
 
 func process_pick():
+	if is_dizziness():
+		return
+
 	if pick_up_cd_rest > 0:
 		return
 	else:
