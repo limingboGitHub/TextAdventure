@@ -783,6 +783,16 @@
 					"count": 1
 				}
 			]
+		},
+		"consume_002126": {
+			"name": "[卷轴]暴力美学",
+			"desc": "只追求纯粹的力量！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000033"
 		}
 	}
 }

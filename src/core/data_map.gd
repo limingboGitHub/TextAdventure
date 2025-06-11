@@ -468,18 +468,15 @@ func _create_percent_damage(
 		# 评估该效果最终的伤害值
 		var record_damage_value = attack_value * _damage_rate * charge_damage_rate
 		damage_details.append(DataDamage.DamageDetail.new("深蹲蓄力", record_damage_value, charge_damage_rate))
-	# 自损八千
-	if _data_player.has_effect("effect_000004"):
-		# 只有常规攻击技能会触发该效果
-		if skill.id.begins_with("skill_"):
-			var effect = _data_player.get_effect("effect_000004")
-			if effect.value_type == Constants.VALUE_TYPE_PERCENT:
-				skill_damage_rate += effect.value
-				var record_damage_value = attack_value * effect.value
-				damage_details.append(DataDamage.DamageDetail.new("自损八千", record_damage_value,effect.value))
-			else:
-				# 未实现
-				pass
+	
+	# 暴力美学
+	if _data_player.has_effect("effect_000033"):
+		var effect = _data_player.get_effect("effect_000033")
+		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+			var power_add_damage = _data_player.get_final_ability().power * effect.value
+			skill_damage_rate += power_add_damage
+			var record_damage_value = attack_value * _damage_rate * power_add_damage
+			damage_details.append(DataDamage.DamageDetail.new("暴力美学", record_damage_value,power_add_damage))
 	
 	_damage_rate *= 1 + skill_damage_rate
 	print("技能伤害加成：",skill_damage_rate)
@@ -488,8 +485,8 @@ func _create_percent_damage(
 	# 计算伤害值
 	damage_value = attack_value * _damage_rate
 
-	#region 和攻击力系数无关的伤害加成
-	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details,skill)
+	#region 和技能系数无关的伤害加成
+	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details,skill,attack_value)
 	damage_value += effect_damage_value
 	#endregion
 	
@@ -536,7 +533,7 @@ func _create_number_damage(
 		damage_details.append(DataDamage.DamageDetail.new("技能增幅", enhance_damage_value, skill_enhance.damage))
 
 	# 计算最终伤害值（存在各种伤害加成的计算）
-	var effect_damage_value = _effect_damage_value(_data_player, target, damage_details, skill)
+	var effect_damage_value = _effect_damage_value(_data_player, target, damage_details, skill,0)
 	damage_value += effect_damage_value
 
 	var defense_reduction_value = 0
@@ -571,7 +568,8 @@ func _effect_damage_value(
 	_data_player: DataPlayer, 
 	_target: DataMonster, 
 	_damage_details: Array[DataDamage.DamageDetail],
-	_skill: DataBaseSkill
+	_skill: DataBaseSkill,
+	_attack_value: int
 ) -> float:
 	var effect_damage_value = 0
 	# 巨人之力
@@ -614,6 +612,18 @@ func _effect_damage_value(
 		else:
 			# 未实现
 			pass
+	# 自损八千
+	if _data_player.has_effect("effect_000004"):
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):
+			var effect = _data_player.get_effect("effect_000004")
+			if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+				var record_damage_value = _attack_value * effect.value
+				effect_damage_value +=  record_damage_value
+				_damage_details.append(DataDamage.DamageDetail.new("自损八千", record_damage_value,effect.value))
+			else:
+				# 未实现
+				pass
 	return effect_damage_value
 
 

@@ -184,7 +184,7 @@
 			"value": 0.01
 		},
 		"effect_000027": {
-			"name": "强化蓄力",
+			"name": "暴力蓄力",
 			"effect_type": "power_charge",
 			"desc": "每10点力量增加{d}秒拔刀蓄力时间",
 			"value_type": "number", 
@@ -202,7 +202,7 @@
 			"effect_type": "time_add_damage",
 			"desc": "每隔1秒增加{d}点伤害",
 			"value_type": "number", 
-			"value": 20
+			"value": 5
 		},
 		"effect_000030": {
 			"name": "破空剑气",
@@ -221,9 +221,14 @@
 		"effect_000032":{
 			"name": "眩晕状态",
 			"effect_type": "dizziness",
-			"desc": "进入眩晕状态，无法进行任何操作",
-			"value_type": "number", 
-			"value": 1
+			"desc": "进入眩晕状态，无法进行任何操作"
+		},
+		"effect_000033":{
+			"name": "暴力美学",
+			"effect_type": "power_add_damage",
+			"desc": "每1点力量增加{d}技能伤害",
+			"value_type": "percent", 
+			"value": 0.0005
 		}
 	}
 }

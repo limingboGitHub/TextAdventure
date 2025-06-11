@@ -818,6 +818,9 @@ func _on_debug_dialog_all_consume_added() -> void:
 		"consume_002106",
 		"consume_002009",
 		"consume_002123",
+		"consume_002124",
+		"consume_002125",
+		"consume_002126",
 		"consume_002114",
 		"consume_002115",
 		"consume_002116",
@@ -845,11 +848,11 @@ func _on_debug_dialog_all_consume_added() -> void:
 
 func _on_debug_dialog_all_job_1_added() -> void:
 	var all_equipments = [
-		"weapon_000020",
-		"cap_000008",
-		"lower_body_000009",
-		"shoes_000009",
-		"upper_body_000009",
+		"weapon_000022",
+		"cap_000011",
+		"lower_body_000012",
+		"shoes_000012",
+		"upper_body_000012",
 	]
 	for equipment_id in all_equipments:
 		var item = data_world.dropthing_manager.create_item(equipment_id)
