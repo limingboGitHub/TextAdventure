@@ -409,6 +409,27 @@ func _build_item_source_dict():
 			
 			# 添加怪物信息到分类词典
 			categorized_item_source_dict[category][item_id]["monsters"].append(monster_info)
+	
+	# 对每个类别下的物品按ID进行排序
+	_sort_categorized_items()
+
+## 对每个类别下的物品按ID进行排序
+func _sort_categorized_items():
+	# 遍历所有类别
+	for category in categorized_item_source_dict.keys():
+		# 获取该类别下的所有物品ID
+		var item_ids = categorized_item_source_dict[category].keys()
+		# 对物品ID进行排序
+		item_ids.sort()
+		
+		# 创建一个新的有序字典
+		var sorted_items = {}
+		# 按排序后的ID顺序重建字典
+		for item_id in item_ids:
+			sorted_items[item_id] = categorized_item_source_dict[category][item_id]
+		
+		# 用排序后的字典替换原字典
+		categorized_item_source_dict[category] = sorted_items
 
 ## 根据物品ID获取物品类别
 ##

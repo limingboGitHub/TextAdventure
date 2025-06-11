@@ -20,6 +20,16 @@ extends Control
 ##   }
 ## }
 var item_from_info: Dictionary
+## 物品分类展示的顺序
+var item_category_order = [
+	"weapon",
+	"upper",
+	"lower",
+	"shoes",
+	"cap",
+	"consume",
+	"etc"
+]
 
 var dropthing_manager: DropThingManager
 
@@ -36,7 +46,7 @@ func set_data(data: Dictionary, _dropthing_manager: DropThingManager):
 	item_from_info = data
 	self.dropthing_manager = _dropthing_manager
 	
-	for tab in data.keys():
+	for tab in item_category_order:
 		# tab转换为中文
 		var tab_name = _tab_name_to_chinese(tab)
 
