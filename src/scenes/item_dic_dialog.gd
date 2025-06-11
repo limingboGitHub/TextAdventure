@@ -25,6 +25,8 @@ var dropthing_manager: DropThingManager
 
 @onready var tab_container = $Back/TabContainer
 
+signal item_show_bt_pressed(bag_item: BagItem)
+
 func _ready():
 	for child in tab_container.get_children():
 		child.queue_free()
@@ -46,6 +48,8 @@ func set_data(data: Dictionary, _dropthing_manager: DropThingManager):
 			var item_from_info_scene = SingletonGameScenePre.ItemFromInfoScene.instantiate()
 			item_from_info_scene.set_data(data_bag_item, data[tab][item_id])
 			vbox_container.add_child(item_from_info_scene)
+			# 监听item点击事件
+			item_from_info_scene.item_show_bt_pressed.connect(_on_item_show_bt_pressed)
 		scroll_container.add_child(vbox_container)
 		tab_container.add_child(scroll_container)
 
@@ -71,3 +75,7 @@ func _tab_name_to_chinese(tab_name: String) -> String:
 
 func _on_close_button_pressed() -> void:
 	hide()
+
+
+func _on_item_show_bt_pressed(bag_item: BagItem):
+	item_show_bt_pressed.emit(bag_item)

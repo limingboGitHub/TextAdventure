@@ -897,3 +897,7 @@ func _on_stats_info_control_details_pressed() -> void:
 		_dialog_show($CanvasLayer/UI/Dialog/StatsDetailsDialog)
 	else:
 		$CanvasLayer/UI/Dialog/StatsDetailsDialog.hide()
+
+
+func _on_item_dic_dialog_item_show_bt_pressed(bag_item: BagItem) -> void:
+	_on_item_showed(bag_item)

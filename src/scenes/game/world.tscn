@@ -593,4 +593,5 @@ autostart = true
 [connection signal="debug_exp_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_exp_added"]
 [connection signal="debug_item_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_item_added"]
 [connection signal="debug_money_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_money_added"]
+[connection signal="item_show_bt_pressed" from="CanvasLayer/UI/Dialog/ItemDicDialog" to="." method="_on_item_dic_dialog_item_show_bt_pressed"]
 [connection signal="timeout" from="GameSaveTimer" to="." method="_on_game_save_timer_timeout"]
