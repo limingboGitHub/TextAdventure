@@ -749,6 +749,10 @@ func on_monster_skill_executed(
 			# 给玩家添加特殊效果
 			var buff = skill.create_buff()
 			data_player.add_buff(buff)
+		elif skill.target_type == 1:
+			# 给怪物添加特殊效果
+			var buff = skill.create_buff()
+			data_monster.add_buff(buff)
 
 
 # 判断玩家是否有魔法屏障技能的buff，如果有，则调整伤害
