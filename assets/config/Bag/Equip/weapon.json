@@ -159,6 +159,29 @@
 			},
 			"max_upgrade_times": 7
 		},
+		"weapon_000021": {
+			"name": "邪龙肋骨",
+			"desc": "散发着邪恶气息",
+			"require_level": 40,
+			"quality": "稀有",
+			"price": 15000,
+			"attribute_details": {
+				"attack": 30
+			},
+			"max_upgrade_times": 7
+		},
+		"weapon_000022": {
+			"name": "圣剑",
+			"desc": "传说中的圣剑，拥有强大的力量。",
+			"require_level": 50,
+			"quality": "稀有",
+			"price": 20000,
+			"attribute_details": {
+				"attack": 40
+			},
+			"max_upgrade_times": 7
+		},
+
 
 		"weapon_001001": {
 			"name": "短树枝",
@@ -377,7 +400,7 @@
 			"max_upgrade_times": 6
 		},
 		"weapon_002008": {
-			"name": "冰之牙",
+			"name": "冰牙短刀",
 			"desc": "这个牙齿用起来非常顺手...",
 			"require_level": 25,
 			"quality": "稀有",
