@@ -296,7 +296,7 @@ func show_build_strength_effect(is_show: bool):
 
 ## 蓄力开始时的回调
 func _on_charge_started():
-	$AttackEffect3.visible = true
+	$AttackEffect3.start()
 
 
 ## 蓄力完成时的回调

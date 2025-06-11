@@ -28,20 +28,26 @@ color_ramp = SubResource("GradientTexture1D_6oa2g")
 [node name="AttackEffect3" type="Node2D"]
 script = ExtResource("1_qe0q7")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-custom_minimum_size = Vector2(50, 0)
-offset_left = -26.0
-offset_top = -53.0
-offset_right = 24.0
-offset_bottom = -34.0
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 50
 local_coords = true
 trail_lifetime = 0.2
 trail_sections = 4
 process_material = SubResource("ParticleProcessMaterial_5r0yw")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.5
+offset_right = 25.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
