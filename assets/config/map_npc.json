@@ -452,7 +452,13 @@
 					},
 					"map_id_list":[
 						"map_000199"
-					]
+					],
+					"requires": {
+						"map_000199":{
+							"type": "money",
+							"count": 1000000
+						}
+					}
 				}
 			]
 		}

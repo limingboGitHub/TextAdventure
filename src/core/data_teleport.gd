@@ -8,4 +8,5 @@ var map_id_list: Array[String] = []
 ## 传送限制条件
 var visible_limit: MissionVisibleLimit
 
-
+## 传送限制条件 key：地图id value：限制条件
+var requires: Dictionary = {}

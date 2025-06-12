@@ -56,6 +56,10 @@ const ENDLESS_LAYER_MAX: int = 9
 var monster_upgrade: float = 0
 # 怪物数量
 var monster_count: int = 0
+# 怪物id列表
+var monster_id_list: Array[String] = []
+# 奖励列表
+var reward_list: Array[Dictionary] = []
 #endregion
 
 ## 首个玩家进入
@@ -809,7 +813,7 @@ func start_endless():
 	endless_layer += 1
 	# 根据层数确定怪物id
 	for i in range(monster_count):
-		var monster_id = "monster_00000" + str(endless_layer)
+		var monster_id = monster_id_list[endless_layer-1]
 		var monster_config = monster_config_dic[monster_id]
 		var monster = monster_manager.create_monster(
 			monster_id, false, monster_config,monster_skill_dic,effect_config_dic
@@ -827,6 +831,12 @@ func start_endless():
 func end_endless():
 	# 结束无尽之塔
 	endless_ended.emit(self)
+
+
+func get_endless_reward():
+	for reward in reward_list:
+		if reward.type == "allot_point":
+			data_player.add_allot_point(reward.value)
 
 
 func is_endless_max():

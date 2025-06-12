@@ -15,7 +15,7 @@ script = ExtResource("1_wookx")
 
 [node name="Back" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 300.0
+offset_right = 350.0
 offset_bottom = 250.0
 theme_override_styles/panel = ExtResource("1_p4hx2")
 
@@ -43,7 +43,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="Selections" type="VBoxContainer" parent="Back/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Back/HBoxContainer/VBoxContainer/Selections"]
@@ -61,9 +61,9 @@ layout_mode = 2
 
 [node name="CloseButton" parent="." instance=ExtResource("3_wookx")]
 layout_mode = 0
-offset_left = 245.0
+offset_left = 295.0
 offset_top = 5.0
-offset_right = 295.0
+offset_right = 345.0
 offset_bottom = 55.0
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

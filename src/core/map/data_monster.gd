@@ -115,9 +115,10 @@ func upgrade(rate: float):
 	details.max_hp *= rate
 	details.attack *= rate
 	details.defense *= rate
-	details.accuracy *= rate
-	details.evasion *= rate
+	#details.accuracy *= rate
+	#details.evasion *= rate
 	hp = attribute.final_details.max_hp
+	is_ignore_rest = true
 
 
 ## 怪物的攻击没有冷却时间，只要玩家未处在无敌状态，就会一直攻击

@@ -33,9 +33,9 @@ func get_drop_things(monster_id: String,is_elite: bool) -> Array[DataBagItem]:
 		else:
 			var drop_rate_info = drop_rate[drop_id]
 			# 物品爆率（精英怪10倍爆率）
-			var rate = float(drop_rate_info["rate"]) * (10 if is_elite else 1)
+			var rate = float(drop_rate_info["rate"]) * (10 if is_elite else 1) * SingletonGame.drop_rate_multiplier
 			# 随机一个0-1的数字，查看是否命中
-			var random_hit = randf() * SingletonGame.drop_rate_multiplier
+			var random_hit = randf()
 			if random_hit < rate:
 				## 命中
 				var data_bag_item = create_item(drop_id)

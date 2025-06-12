@@ -160,7 +160,7 @@ func on_load_finished():
 	# 监听炼金制作事件
 	$CanvasLayer/UI/Dialog/AlchemyDialog.alchemy_maked.connect(_on_alchemy_maked)
 	# 监听地图选择事件
-	$CanvasLayer/UI/Dialog/MapSelectDialog.map_selected.connect(_move_to_target_map)
+	$CanvasLayer/UI/Dialog/MapSelectDialog.map_selected.connect(_on_npc_map_selected)
 
 
 func _on_local_player_created(data_player: DataPlayer):
@@ -551,7 +551,7 @@ func _on_teleport_selection_pressed(data_teleport: DataTeleport):
 	for map_id in data_teleport.map_id_list:
 		var data_map = data_world.get_data_map(map_id)
 		maps.append(data_map)
-	$CanvasLayer/UI/Dialog/MapSelectDialog.set_data(maps)
+	$CanvasLayer/UI/Dialog/MapSelectDialog.set_data(maps,data_teleport.requires)
 	_dialog_show($CanvasLayer/UI/Dialog/MapSelectDialog)
 	
 
@@ -804,6 +804,20 @@ func _on_alchemy_bt_pressed() -> void:
 
 func _on_alchemy_maked(data_alchemy: DataAlchemy, count: int) -> void:
 	data_world.alchemy_maked(data_alchemy, count)
+
+
+func _on_npc_map_selected(map_id: String,require: Dictionary) -> void:
+	if require:
+		# 查看要求
+		var type = require["type"]
+		if type == "money":
+			var count = require["count"]
+			if data_world.get_data_bag().money < count:
+				ToastManager.add_toast("金币不足")
+				return
+			# 扣除金币
+			data_world.get_data_bag().add_money(-count)
+			_move_to_target_map(map_id)
 
 
 func _on_endless_exit():

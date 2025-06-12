@@ -151,9 +151,6 @@ func load_data_world(
 			var map_monster_refresh_pos = res_manager.get_map_monster_pos(map_id)
 			# 根据地图怪物获取怪物配置信息
 			var map_monster_config_dic = get_monster_config_dic(map_monster_refresh_pos)
-			# 无尽之塔需要获取所有怪物配置信息
-			if map_config.has("endless"):
-				map_monster_config_dic = get_monster_config_dic_endless()
 			# 创建地图
 			var map = map_manager.get_map_by_config(
 				map_id,
@@ -163,7 +160,11 @@ func load_data_world(
 				dropthing_manager,
 				mission_manager
 			)
-			map.monster_config_dic = map_monster_config_dic
+			# 无尽之塔需要获取所有怪物配置信息
+			if map_config.has("endless"):
+				map.monster_config_dic = get_monster_config_dic_endless(map.monster_id_list)
+			else:
+				map.monster_config_dic = map_monster_config_dic
 			map.monster_skill_dic = res_manager.monster_skill_dic
 			map.effect_config_dic = res_manager.effect_dic
 			# 完善地图位置信息
@@ -292,10 +293,9 @@ func get_monster_config_dic_spawn_monster(monster_id: String,monster_config_dic:
 						monster_config_dic[spawn_monster_id] = res_manager.get_monster_config(spawn_monster_id)
 
 
-func get_monster_config_dic_endless():
+func get_monster_config_dic_endless(monster_id_list: Array[String]):
 	var monster_config_dic = {}
-	for i in range(1, 10):
-		var monster_id = "monster_00000" + str(i)
+	for monster_id in monster_id_list:
 		var monster_config = res_manager.get_monster_config(monster_id)
 		monster_config_dic[monster_id] = monster_config
 	return monster_config_dic

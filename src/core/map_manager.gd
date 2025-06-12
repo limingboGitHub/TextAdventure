@@ -35,6 +35,12 @@ func get_map_by_config(
 		map.is_endless = true
 		map.monster_upgrade = map_config["endless"]["monster_upgrade"]
 		map.monster_count = map_config["endless"]["monster_count"]
+		if map_config["endless"].has("monster_id_list"):
+			for monster_id in map_config["endless"]["monster_id_list"]:
+				map.monster_id_list.append(monster_id)
+		if map_config["endless"].has("reward_list"):
+			for reward in map_config["endless"]["reward_list"]:
+				map.reward_list.append(reward)
 
 	# 加载NPC
 	for map_id_key in map_npc_dic.keys():
@@ -65,6 +71,9 @@ func get_map_by_config(
 								function["visible_limit"]
 							)
 							npc.teleport_data = data_teleport
+							# 传送限制条件
+							if function.has("requires"):
+								data_teleport.requires = function["requires"]
 				
 				map.add_npc(npc)
 

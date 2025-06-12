@@ -890,8 +890,25 @@
 		"description":"玩家满级后可进入，无尽的试炼。",
 		"region": "星丘大陆",
 		"endless":{
-			"monster_upgrade":10,
-			"monster_count":50
+			"monster_id_list": [
+				"monster_000050",
+				"monster_000051",
+				"monster_000052",
+				"monster_000054",
+				"monster_000055",
+				"monster_000056",
+				"monster_000057",
+				"monster_000058",
+				"monster_000059"
+			],
+			"monster_upgrade":2,
+			"monster_count":50,
+			"reward_list": [
+				{
+					"type": "allot_point",
+					"value": 2
+				}
+			]
 		}
 	}
 }

@@ -815,6 +815,11 @@ func _charge_completed(complete_charge_time: float):
 	charge_skill = null
 
 
+func add_allot_point(value: int):
+	allot_point += value
+	attribute_updated.emit(self)
+
+
 func save() -> Dictionary:
 	var json = {
 		"player_id": player_id,

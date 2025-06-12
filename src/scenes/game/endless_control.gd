@@ -8,6 +8,8 @@ var end_time : int = 0
 
 signal endless_exit()
 
+signal get_endless_reward()
+
 
 func init_data(_data_map: DataMap):
 	self.data_map = _data_map
@@ -24,7 +26,12 @@ func _on_player_removed(_data_map: DataMap, _data_player: DataPlayer):
 
 func _on_endless_ended(_data_map: DataMap):
 	$Timer.stop()
-	$Panel1/StartBt.disabled = _data_map.is_endless_max()
+	$Panel1/StartBt.disabled = false
+	# 如果是最后一层，显示奖励
+	if data_map.is_endless_max():
+		$Panel1/StartBt.text = "领取奖励"
+	else:
+		$Panel1/StartBt.text = "下一层"
 
 
 func reset():
@@ -33,6 +40,7 @@ func reset():
 	$Panel2.text = "用时：0秒"
 	$Panel1/Layer/Label.text = "1"
 	$Panel1/Damage/Label.text = "0"
+	$Panel1/StartBt.text = "开始"
 	$Panel1/StartBt.disabled = false
 
 
@@ -52,6 +60,11 @@ func _on_panel_2_pressed() -> void:
 
 
 func _on_start_bt_pressed() -> void:
+	if $Panel1/StartBt.text == "领取奖励":
+		get_endless_reward.emit()
+		endless_exit.emit()
+		return
+
 	# 开始记时
 	$Timer.start()
 	start_time = Time.get_ticks_msec()

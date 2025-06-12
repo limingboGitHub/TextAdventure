@@ -54,6 +54,8 @@ func _ready() -> void:
 		endless_control.init_data(data_map)
 		# 监听无尽之塔退出事件
 		endless_control.endless_exit.connect(_on_endless_exit)
+		# 监听无尽之塔领取奖励事件
+		endless_control.get_endless_reward.connect(_on_get_endless_reward)
 
 	# 监听
 	data_map.first_player_entered.connect(_on_first_player_entered)
@@ -691,3 +693,9 @@ func _on_endless_exit():
 
 func _on_drop_dic_bt_pressed() -> void:
 	drop_dic_showed.emit(data_map)
+
+
+func _on_get_endless_reward():
+	data_map.get_endless_reward()
+	# 增加提示
+	ToastManager.add_toast("获得2点能力值")
