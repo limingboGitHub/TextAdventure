@@ -3,6 +3,7 @@ extends Control
 ## 技能展示对话框
 
 var data_skill_bag: DataSkillBag
+var attribute: Attribute
 
 signal skill_used(data_skill: DataBaseSkill)
 
@@ -38,8 +39,9 @@ func _on_close_button_pressed() -> void:
 	hide()
 
 
-func set_data_skill_bag(_data_skill_bag: DataSkillBag) -> void:
+func set_data_skill_bag(_data_skill_bag: DataSkillBag, _attribute: Attribute) -> void:
 	self.data_skill_bag = _data_skill_bag
+	self.attribute = _attribute
 	
 	# 显示技能组
 	var keys = _data_skill_bag.data.keys()
@@ -75,7 +77,7 @@ func _show_skill_group(_name: String) -> void:
 	$TabContainer.add_child(skill_group)
 
 	var skill_list = data_skill_bag.get_skill_by_phase(_name)
-	skill_group.add_skill_group(skill_list)
+	skill_group.add_skill_group(skill_list, attribute)
 
 
 func _create_skill_group(_name: String) -> Control:

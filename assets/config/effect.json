@@ -236,6 +236,27 @@
 			"desc": "首道剑气释放后，有{d}概率追加一道剑气",
 			"value_type": "percent", 
 			"value": 0.2
+		},
+		"effect_000035":{
+			"name": "运气加持",
+			"effect_type": "luck_add_attack_probability",
+			"desc": "每点运气增加各种攻击或闪避概率事件几率{d}",
+			"value_type": "percent", 
+			"value": 0.001
+		},
+		"effect_000036":{
+			"name": "瞬身追击",
+			"effect_type": "monster_kill_add_distance",
+			"desc": "击杀怪物后，有{d}概率瞬间移动到距离自身最远的一只怪物附近",
+			"value_type": "percent",
+			"value": 0.2
+		},
+		"effect_000037":{
+			"name": "毫无章法",
+			"effect_type": "attack_speed_add_damage_variance",
+			"desc": "旋转身体打出毫无章法的攻击，增加{d}普攻和致命连击的攻击范围，但是打出更小的攻击力波动值",
+			"value_type": "number",
+			"value": 50
 		}
 	}
 }

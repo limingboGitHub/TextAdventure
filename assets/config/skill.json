@@ -282,18 +282,70 @@
 		}
 	},
 	"skill_000203": {
-		"name": "手技精通",
-		"desc": "永久提升手部技巧，使得伤害更加稳定",
+		"name": "运气加持",
+		"desc": "每1点运气增加各种攻击或闪避概率事件几率{d}",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000035",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.00055,
+					"step_value": 0.00005
+				}
+			]
+		}
+	},
+	"skill_000204": {
+		"name": "毫无章法",
+		"desc": "旋转身体打出毫无章法的攻击，增加{d}普攻和致命连击的攻击范围，但是打出更小的攻击力波动值",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000037",
+					"calculate_type": "formula",
+					"value_type": "number",
+					"start_value": 55,
+					"step_value": 5
+				}
+			]
+		}
+	},
+	"skill_000205": {
+		"name": "瞬身追击",
+		"desc": "每次击杀怪物后，有{d}概率瞬间移动到距离自身最远的一只怪物附近",
 		"type": "attribute_buff",
 		"max_level": 20,
 		"buff": {
-			"attribute_list": [
+			"effect_list": [
 				{
-					"attribute_details": "hand_technology",
-					"value_type": "number",
+					"id": "effect_000036",
 					"calculate_type": "formula",
-					"start_value": 1,
-					"step_value": 1
+					"value_type": "percent",
+					"start_value": 0.025,
+					"step_value": 0.025
+				}
+			]
+		}
+	},
+	
+	"skill_000206": {
+		"name": "爆裂狂舞",
+		"desc": "旋转着身体发出攻击，普通攻击和致命连击都变成{d}范围的AOE伤害",
+		"type": "attribute_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000037",
+					"calculate_type": "formula",
+					"value_type": "number",
+					"start_value": 55,
+					"step_value": 5
 				}
 			]
 		}

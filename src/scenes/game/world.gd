@@ -105,8 +105,6 @@ func on_load_finished():
 	$CanvasLayer/UI/Dialog/RoleEquipDialog.set_data_role_equip(data_world.get_data_role_equip())
 	# 监听角色装备栏装备展示事件
 	$CanvasLayer/UI/Dialog/RoleEquipDialog.item_showed.connect(_on_item_showed)
-	# 初始化技能栏
-	$CanvasLayer/UI/Dialog/SkillDialog.set_data_skill_bag(data_world.get_data_skill_bag())
 	# 初始化怪物手册
 	$CanvasLayer/UI/Dialog/MonsterInfoDialog.init(data_world.res_manager, data_world.dropthing_manager, data_world.map_dic)
 	# 监听怪物手册掉落物展示事件
@@ -151,12 +149,6 @@ func on_load_finished():
 	$CanvasLayer/UI/Dialog/ScrollUseDialog.item_show_bt_pressed.connect(_on_item_showed)
 	# 监听卷轴使用对话框的装备使用事件
 	$CanvasLayer/UI/Dialog/ScrollUseDialog.item_use_bt_pressed.connect(_on_scroll_used)
-	# 监听技能使用事件
-	$CanvasLayer/UI/Dialog/SkillDialog.skill_used.connect(_on_skill_used)
-	# 监听技能激活事件
-	$CanvasLayer/UI/Dialog/SkillDialog.skill_active_toggled.connect(_on_skill_active_toggled)
-	# 监听技能重置事件
-	$CanvasLayer/UI/Dialog/SkillDialog.skill_reset_pressed.connect(_on_skill_reset_pressed)
 	# 监听炼金制作事件
 	$CanvasLayer/UI/Dialog/AlchemyDialog.alchemy_maked.connect(_on_alchemy_maked)
 	# 监听地图选择事件
@@ -174,6 +166,10 @@ func _on_local_player_created(data_player: DataPlayer):
 	$CanvasLayer/UI/MapGraph.update_current_map(data_player.map_id)
 	# 监听地图选择事件
 	$CanvasLayer/UI/MapGraph.map_selected.connect(_on_map_selected)
+	# 初始化技能栏
+	$CanvasLayer/UI/Dialog/SkillDialog.set_data_skill_bag(
+		data_world.get_data_skill_bag(),
+		data_world.get_player().attribute)
 
 	# 监听玩家状态变化
 	data_player.hp_updated.connect(_on_player_hp_updated)
@@ -212,6 +208,12 @@ func _on_local_player_created(data_player: DataPlayer):
 	$CanvasLayer/UI/SkillFastKey.skill_selected.connect(_on_skill_fast_key_selected)
 	# 监听怪物手册按钮点击事件
 	$CanvasLayer/UI/Dialog/OtherFunctionDialog.monster_info_bt_pressed.connect(_on_monster_info_bt_pressed)
+	# 监听技能使用事件
+	$CanvasLayer/UI/Dialog/SkillDialog.skill_used.connect(_on_skill_used)
+	# 监听技能激活事件
+	$CanvasLayer/UI/Dialog/SkillDialog.skill_active_toggled.connect(_on_skill_active_toggled)
+	# 监听技能重置事件
+	$CanvasLayer/UI/Dialog/SkillDialog.skill_reset_pressed.connect(_on_skill_reset_pressed)
 
 
 func _on_player_scene_created(_data_player: DataPlayer):
@@ -818,6 +820,8 @@ func _on_npc_map_selected(map_id: String,require: Dictionary) -> void:
 			# 扣除金币
 			data_world.get_data_bag().add_money(-count)
 			_move_to_target_map(map_id)
+	else:
+		_move_to_target_map(map_id)
 
 
 func _on_endless_exit():

@@ -33,6 +33,20 @@
 				"skill_000201",
 				"skill_000202"
 			]
+		},
+		"job_000202":{
+			"job_name":"混混",
+			"skill_list":[
+				"skill_000203",
+				"skill_000204"
+			]
+		},
+		"job_000203":{
+			"job_name":"乱舞者",
+			"skill_list":[
+				"skill_000205",
+				"skill_000206"
+			]
 		}
 	}
 }

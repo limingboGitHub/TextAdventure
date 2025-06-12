@@ -19,15 +19,15 @@ func _ready() -> void:
 ## 添加技能组
 ## 
 ## @param _skill_list: 技能列表
-func add_skill_group(_skill_list: Array) -> void:
+func add_skill_group(_skill_list: Array, _attribute: Attribute) -> void:
 	for skill in _skill_list:
-		add_skill_item(skill)
+		add_skill_item(skill, _attribute)
 
 
-func add_skill_item(data_skill: DataBaseSkill) -> void:
+func add_skill_item(data_skill: DataBaseSkill, _attribute: Attribute) -> void:
 	var skill_item = SingletonGameScenePre.SkillItemScene.instantiate()
 	skill_item.name = data_skill.id
-	skill_item.set_data(data_skill)
+	skill_item.set_data(data_skill, _attribute)
 	skill_item.skill_add_pressed.connect(_on_skill_item_add_pressed)
 	skill_item.skill_used.connect(_on_skill_item_used)
 	skill_item.skill_active_toggled.connect(_on_skill_item_active_toggled)

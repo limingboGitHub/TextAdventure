@@ -1794,6 +1794,33 @@
 			}
 		]
 	},
+	"mission_000124": {
+		"name": "盗贼二转",
+		"enable": true,
+		"visible_limit": {
+			"level": 25,
+			"jobs": [
+				"job_000201"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "混混",
+				"desc": "二转。",
+				"attach_npc_id": "npc_000125",
+				"messages": [
+					"你想跟着我？",
+					"带着我的名号，出去大干一场，小子！（点击完成后转职成功，不可逆！！！请想好再点击。）"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000202"
+					}
+				]
+			}
+		]
+	},
 
 	"mission_000199": {
 		"name": "无尽之塔",

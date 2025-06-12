@@ -4,6 +4,8 @@ extends Control
 
 var data_skill: DataBaseSkill
 
+# 玩家的属性，技能的某些信息需要依赖属性计算详情
+var attribute: Attribute
 
 signal skill_add_pressed(data_skill: DataBaseSkill)
 
@@ -24,8 +26,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func set_data(data_skill: DataBaseSkill) -> void:
+func set_data(data_skill: DataBaseSkill, _attribute: Attribute) -> void:
 	self.data_skill = data_skill
+	self.attribute = _attribute
 	$Name.text = data_skill.name
 	$MaxLevel/Label.text = str(data_skill.max_level)
 	$Level/Label.text = str(data_skill.level)
@@ -36,6 +39,12 @@ func set_data(data_skill: DataBaseSkill) -> void:
 
 	# 监听技能等级变化
 	data_skill.level_changed.connect(_on_level_changed)
+	# 监听属性变化
+	attribute.updated.connect(_on_attribute_changed)
+
+
+func _on_attribute_changed(_attribute: Attribute) -> void:
+	_show_description(data_skill)
 
 
 func _update_use_bt() -> void:
@@ -106,7 +115,14 @@ func _show_description(data_skill: DataBaseSkill):
 		
 			var effect_str = "[color=#7ac8ff]" + effect_value + "[/color]"
 			var mp_str = "[color=#7ac8ff]" + str(int(data_skill.get_mp_cost())) + "[/color]"
-			$Description.text = data_skill.description.replace("{d}", effect_str).replace("{m}", mp_str)
+			var description = data_skill.description.replace("{d}", effect_str).replace("{m}", mp_str)
+
+			# 增加属性结算
+			if data_skill.id == "skill_000203":
+				var luck_value = attribute.get_all_ability().luck * effect.value
+				description += "(当前增加概率" + str(round(luck_value * 10000) / 100) + "%)"
+			$Description.text = description
+				
 	elif data_skill is DataAttriBuffSkill:
 		_show_attribute_str(data_skill)
 
