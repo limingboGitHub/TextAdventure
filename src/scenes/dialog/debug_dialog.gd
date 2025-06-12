@@ -10,7 +10,7 @@ signal debug_money_added(money: int)
 
 signal all_consume_added
 
-signal all_job1_added
+signal all_job1_added(level: int)
 
 signal all_job2_added
 
@@ -60,13 +60,21 @@ func _on_scroll_bt_pressed() -> void:
 	all_consume_added.emit()
 
 
-func _on_job_1_bt_pressed() -> void:
-	all_job1_added.emit()
-
-
 func _on_job_2_bt_pressed() -> void:
 	all_job2_added.emit()
 
 
 func _on_job_3_bt_pressed() -> void:
 	all_job3_added.emit()
+
+
+func _on_job_1_30_bt_pressed() -> void:
+	all_job1_added.emit(30)
+
+
+func _on_job_1_40_bt_pressed() -> void:
+	all_job1_added.emit(40)
+
+
+func _on_job_1_50_bt_pressed() -> void:
+	all_job1_added.emit(50)

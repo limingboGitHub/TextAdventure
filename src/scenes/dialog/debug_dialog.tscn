@@ -103,27 +103,45 @@ text = "设置速率"
 [node name="ScrollBt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 23.0
+offset_top = 378.0
+offset_right = 151.0
+offset_bottom = 428.0
+theme = ExtResource("2_2tysi")
+text = "全套卷轴"
+
+[node name="Job1_30Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
 offset_top = 321.0
 offset_right = 151.0
 offset_bottom = 371.0
 theme = ExtResource("2_2tysi")
-text = "全套卷轴"
+text = "士兵30装"
 
-[node name="Job1Bt" type="Button" parent="."]
+[node name="Job1_40Bt" type="Button" parent="."]
 layout_mode = 0
-offset_left = 160.0
+offset_left = 159.0
 offset_top = 321.0
-offset_right = 288.0
+offset_right = 287.0
 offset_bottom = 371.0
 theme = ExtResource("2_2tysi")
-text = "士兵装备"
+text = "士兵40装"
 
-[node name="Job2Bt" type="Button" parent="."]
+[node name="Job1_50Bt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 297.0
 offset_top = 321.0
 offset_right = 425.0
 offset_bottom = 371.0
+theme = ExtResource("2_2tysi")
+text = "士兵50装"
+
+[node name="Job2Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 379.0
+offset_right = 425.0
+offset_bottom = 429.0
 theme = ExtResource("2_2tysi")
 text = "学者装备"
 
@@ -148,7 +166,9 @@ offset_bottom = 55.0
 [connection signal="pressed" from="MoneyEdit/GetMoneyBt" to="." method="_on_get_money_bt_pressed"]
 [connection signal="pressed" from="SpeedEdit/SpeedOkBt" to="." method="_on_speed_ok_bt_pressed"]
 [connection signal="pressed" from="ScrollBt" to="." method="_on_scroll_bt_pressed"]
-[connection signal="pressed" from="Job1Bt" to="." method="_on_job_1_bt_pressed"]
+[connection signal="pressed" from="Job1_30Bt" to="." method="_on_job_1_30_bt_pressed"]
+[connection signal="pressed" from="Job1_40Bt" to="." method="_on_job_1_40_bt_pressed"]
+[connection signal="pressed" from="Job1_50Bt" to="." method="_on_job_1_50_bt_pressed"]
 [connection signal="pressed" from="Job2Bt" to="." method="_on_job_2_bt_pressed"]
 [connection signal="pressed" from="Job3Bt" to="." method="_on_job_3_bt_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_bt_pressed"]
