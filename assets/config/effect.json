@@ -202,7 +202,7 @@
 			"effect_type": "time_add_damage",
 			"desc": "每隔1秒增加{d}点伤害",
 			"value_type": "number", 
-			"value": 5
+			"value": 10
 		},
 		"effect_000030": {
 			"name": "破空剑气",
