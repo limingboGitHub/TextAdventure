@@ -1,14 +1,14 @@
 {
 	"name": "熔岩小怪",
-	"attack": "72",
-    "defense": "40",
-    "magic": "30",
-    "magic_def": "35",
+	"attack": "140",
+    "defense": "140",
+    "magic": "60",
+    "magic_def": "140",
     "level": "43",
-    "maxHP": "1400",
-    "maxMP": "150",
-    "acc": "400",
-    "eva": "200",
-    "exp": "340",
+    "maxHP": "2400",
+    "maxMP": "300",
+    "acc": "280",
+    "eva": "320",
+    "exp": "390",
     "undead": "0"
 } 

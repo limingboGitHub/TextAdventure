@@ -1,14 +1,14 @@
 {
 	"name": "熔岩精灵",
-	"attack": "75",
-    "defense": "35",
-    "magic": "45",
-    "magic_def": "50",
+	"attack": "145",
+    "defense": "145",
+    "magic": "100",
+    "magic_def": "145",
     "level": "44",
-    "maxHP": "1350",
+    "maxHP": "2500",
     "maxMP": "250",
-    "acc": "410",
-    "eva": "220",
-    "exp": "360",
+    "acc": "280",
+    "eva": "320",
+    "exp": "400",
     "undead": "0"
 } 

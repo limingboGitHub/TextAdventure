@@ -1,14 +1,14 @@
 {
 	"name": "小沙虫",
-	"attack": "78",
-    "defense": "30",
+	"attack": "150",
+    "defense": "150",
     "magic": "0",
-    "magic_def": "25",
+    "magic_def": "150",
     "level": "45",
-    "maxHP": "1500",
+    "maxHP": "2800",
     "maxMP": "0",
-    "acc": "420",
-    "eva": "180",
-    "exp": "380",
+    "acc": "290",
+    "eva": "330",
+    "exp": "460",
     "undead": "0"
 } 

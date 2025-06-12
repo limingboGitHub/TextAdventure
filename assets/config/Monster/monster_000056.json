@@ -1,14 +1,14 @@
 {
 	"name": "小蜥蜴",
-	"attack": "80",
-    "defense": "40",
+	"attack": "155",
+    "defense": "155",
     "magic": "0",
-    "magic_def": "35",
+    "magic_def": "155",
     "level": "46",
-    "maxHP": "1550",
+    "maxHP": "3000",
     "maxMP": "0",
-    "acc": "430",
-    "eva": "240",
-    "exp": "400",
+    "acc": "300",
+    "eva": "340",
+    "exp": "480",
     "undead": "0"
 } 

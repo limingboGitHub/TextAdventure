@@ -1,14 +1,14 @@
 {
 	"name": "灰蜥蜴",
-	"attack": "82",
-    "defense": "45",
+	"attack": "155",
+    "defense": "155",
     "magic": "0",
-    "magic_def": "40",
+    "magic_def": "155",
     "level": "47",
-    "maxHP": "1600",
+    "maxHP": "3200",
     "maxMP": "0",
-    "acc": "440",
-    "eva": "250",
-    "exp": "420",
+    "acc": "300",
+    "eva": "340",
+    "exp": "500",
     "undead": "0"
 } 

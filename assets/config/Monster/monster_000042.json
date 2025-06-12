@@ -1,14 +1,14 @@
 {
 	"name": "蓝色水母",
 	"attack": "90",
-    "defense": "20",
+    "defense": "90",
     "magic": "35",
-    "magic_def": "40",
+    "magic_def": "90",
     "level": "35",
     "maxHP": "1500",
     "maxMP": "200",
-    "acc": "300",
-    "eva": "300",
+    "acc": "240",
+    "eva": "280",
     "exp": "240",
     "undead": "0",
     "ignore_rest": true

@@ -1,14 +1,14 @@
 {
 	"name": "小蝙蝠",
-	"attack": "68",
-    "defense": "25",
+	"attack": "130",
+    "defense": "130",
     "magic": "0",
-    "magic_def": "30",
+    "magic_def": "130",
     "level": "41",
-    "maxHP": "1100",
+    "maxHP": "2200",
     "maxMP": "0",
-    "acc": "380",
-    "eva": "250",
-    "exp": "300",
+    "acc": "270",
+    "eva": "310",
+    "exp": "360",
     "undead": "0"
 } 

@@ -1,14 +1,14 @@
 {
 	"name": "石头傀儡",
-	"attack": "65",
-    "defense": "50",
+	"attack": "125",
+    "defense": "125",
     "magic": "0",
-    "magic_def": "40",
+    "magic_def": "125",
     "level": "40",
-    "maxHP": "1300",
+    "maxHP": "2100",
     "maxMP": "0",
-    "acc": "350",
-    "eva": "120",
-    "exp": "280",
+    "acc": "260",
+    "eva": "300",
+    "exp": "340",
     "undead": "0"
 } 

@@ -1,14 +1,14 @@
 {
 	"name": "沙沙蝎",
-	"attack": "75",
-    "defense": "45",
+	"attack": "150",
+    "defense": "150",
     "magic": "0",
-    "magic_def": "30",
+    "magic_def": "150",
     "level": "44",
-    "maxHP": "1400",
+    "maxHP": "2600",
     "maxMP": "0",
-    "acc": "410",
-    "eva": "230",
-    "exp": "360",
+    "acc": "290",
+    "eva": "330",
+    "exp": "450",
     "undead": "0"
 } 
