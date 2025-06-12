@@ -9,7 +9,7 @@
 			"charge_time_max": 3,
 			"charge_damage_step": 0.1,
 			"charge_damage_step_value": 0.1,
-			"start_cd": 5,
+			"start_cd": 10,
 			"cd": 10
 		},
 		"monster_skill_000002":{
@@ -22,7 +22,7 @@
 				"monster_000041"
 			],
 			"start_cd": 5,
-			"cd": 20
+			"cd": 10
 		},
 		"monster_skill_000003":{
 			"name":"眩晕攻击",
