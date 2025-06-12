@@ -328,6 +328,8 @@ func _on_player_exp_updated(data_role: DataRole, value: int, increase_value: int
 			$CanvasLayer/UI/MsgControl.add_msg("经验值 +" + str(value))
 	else:
 		$CanvasLayer/UI/MsgControl.add_msg("经验值 " + str(value))
+	# 更新经验值统计
+	$CanvasLayer/UI/StatsInfoControl.player_exp_gain(value + increase_value)
 
 
 func _update_player_exp_bar(data_role: DataRole):

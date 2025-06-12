@@ -49,6 +49,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "蓝耗/秒："
 
+[node name="Exp" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "经验/秒："
+
 [node name="StatsTimer" type="Timer" parent="."]
 
 [node name="DetailsButton" type="Button" parent="."]

@@ -15,16 +15,18 @@ const STATS_INTERVAL: float = 5.0
 var _total_damage: int = 0
 var _total_hp_cost: int = 0
 var _total_mp_cost: int = 0
-
+var _total_exp: int = 0
 # 计算结果
 var dps: float = 0  # 伤害/秒
 var hps: float = 0  # 血耗/秒
 var mps: float = 0  # 蓝耗/秒
+var experence: float = 0  # 经验/秒
 
 # UI引用
 @onready var _dps_label: Label = $VBoxContainer/Damage
 @onready var _hps_label: Label = $VBoxContainer/HP
 @onready var _mps_label: Label = $VBoxContainer/MP
+@onready var _exp_label: Label = $VBoxContainer/Exp
 @onready var _stats_timer: Timer = $StatsTimer
 @onready var _total_damage_max_record_label: Label = $VBoxContainer/DamageMaxRecord
 @onready var _all_damage_label: Label = $VBoxContainer/AllDamage
@@ -51,6 +53,7 @@ func _on_stats_timer_timeout():
 	dps = _total_damage / STATS_INTERVAL
 	hps = _total_hp_cost / STATS_INTERVAL
 	mps = _total_mp_cost / STATS_INTERVAL
+	experence = _total_exp / STATS_INTERVAL
 	
 	# 更新最高DPS记录
 	if dps > SingletonGame.dps_max_record:
@@ -75,13 +78,15 @@ func _update_ui():
 		_hps_label.text = "血耗/秒: %d" % int(hps)
 	if _mps_label:
 		_mps_label.text = "蓝耗/秒: %d" % int(mps)
-
+	if _exp_label:
+		_exp_label.text = "经验/秒: %d" % int(experence)
 
 ## 重置统计数据
 func _reset_stats():
 	_total_damage = 0
 	_total_hp_cost = 0
 	_total_mp_cost = 0
+	_total_exp = 0
 
 
 ## 玩家造成了伤害
@@ -99,6 +104,11 @@ func player_hp_reduce(hp: int):
 ## 玩家MP消耗了
 func player_mp_reduce(mp: int):
 	_total_mp_cost += mp
+
+
+## 玩家获得了经验
+func player_exp_gain(exp: int):
+	_total_exp += exp
 
 
 func _on_button_pressed() -> void:
