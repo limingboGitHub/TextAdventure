@@ -39,6 +39,8 @@ var radius: float = -1
 var invoke_interval: float = 0
 # 上一次触发时间
 var last_invoke_time: float = 0
+# 触发蓝耗
+var mp_cost: int = 0
 
 var value_type: String = Constants.VALUE_TYPE_PERCENT
 
@@ -153,4 +155,5 @@ func copy() -> DataEffect:
 	data_effect.is_active = is_active
 	data_effect.special_skill = special_skill
 	data_effect.skill_enhance = skill_enhance
+	data_effect.mp_cost = mp_cost
 	return data_effect

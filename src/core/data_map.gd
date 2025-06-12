@@ -324,6 +324,10 @@ func _after_damage_effect(
 		# 只有常规攻击技能会触发该效果
 		if _skill.id.begins_with("skill_"):	
 			var effect = _data_player.get_effect("effect_000030")
+			# 消耗MP
+			if _data_player.mp < effect.mp_cost:
+				return
+			_data_player.recover_mp(-effect.mp_cost)
 			print("破空剑气：",effect.value)
 			var skill = effect.get_special_skill()
 			skill.direction = direction

@@ -12,27 +12,27 @@ var mp_cost_level: Array
 
 
 func update_mp_cost():
-    if mp_cost_level:
-        mp_cost = mp_cost_level[level]
+	if mp_cost_level:
+		mp_cost = mp_cost_level[level - 1]
 
 
 func get_mp_cost():
-    if mp_cost_level:
-        return mp_cost_level[level]
-    else:
-        return super.get_mp_cost()
+	if mp_cost_level:
+		return mp_cost_level[level - 1]
+	else:
+		return super.get_mp_cost()
 
 
 func is_permanent():
-    return time == -1
+	return time == -1
 
 
 func create_buff() -> DataBuff:
-    var data_buff = DataBuff.new()
-    data_buff.id = id
-    data_buff.name = name
-    data_buff.buff_type = 0
-    data_buff.duration = time
-    data_buff.remaining_time = time
-    data_buff.last_update_time = time
-    return data_buff
+	var data_buff = DataBuff.new()
+	data_buff.id = id
+	data_buff.name = name
+	data_buff.buff_type = 0
+	data_buff.duration = time
+	data_buff.remaining_time = time
+	data_buff.last_update_time = time
+	return data_buff

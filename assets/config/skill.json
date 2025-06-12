@@ -150,7 +150,7 @@
 	},
 	"skill_000004": {
 		"name": "破空剑气",
-		"desc": "普攻或者释放技能后，向前方发出一道剑气，造成{d}伤害",
+		"desc": "普攻或者释放技能后，消耗{m}MP向前方发出一道剑气，造成{d}伤害",
 		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
@@ -162,7 +162,10 @@
 					"start_value": 0.215,
 					"step_value": 0.015
 				}
-			]
+			],
+			"calculate_type": "formula",
+			"start_mp": 11,
+			"step_mp": 1
 		}
 	},
 
