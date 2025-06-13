@@ -294,20 +294,30 @@ func _after_damage_effect(
 		var attack_attach_poison_effect = _data_player.get_effect("effect_000019")
 		if attack_attach_poison_effect.value_type == Constants.VALUE_TYPE_PERCENT:
 			# 百分之20的概率中毒
-			if randf() < 1:
+			var hit_rate = 0.2
+			# 概率加成
+			hit_rate += _luck_rate_add()
+			# 概率判断
+			if randf() < hit_rate:
 				var damage_value = _data_player.get_final_attack(1) * attack_attach_poison_effect.value
 				damage_value = max(damage_value, 1)
 				var buff = _create_poison_buff(damage_value)
 				_target.add_buff(buff)
 	if _data_player.has_effect("effect_000022"):
 		var effect = _data_player.get_effect("effect_000022")
-		if randf() < effect.value:
+		var hit_rate = effect.value
+		# 概率加成
+		hit_rate += _luck_rate_add()
+		if randf() < hit_rate:
 			# 伤口撕裂
 			var deep_damage_effect = _create_deep_damage_effect()
 			_target.add_effect(deep_damage_effect)
 	if _data_player.has_effect("effect_000025"):
 		var effect = _data_player.get_effect("effect_000025")
-		if randf() < effect.value:
+		var hit_rate = effect.value
+		# 概率加成
+		hit_rate += _luck_rate_add()
+		if randf() < hit_rate:
 			# 护甲撕裂
 			var details = _target.get_final_details()
 			details.defense -= 1
@@ -317,8 +327,11 @@ func _after_damage_effect(
 		if _skill.id.begins_with("skill_"):	
 			var effect = _data_player.get_effect("effect_000005")
 			# 10%的概率命中
-			var hit_rate = randf() <= 0.1
-			if hit_rate:
+			var hit_rate = 0.1
+			# 概率加成
+			hit_rate += _luck_rate_add()
+			# 概率判断
+			if randf() < hit_rate:
 				print("赤焰爆炸：",effect.value)
 				var skill = effect.get_special_skill()
 				skill.effect_position = effect_position
@@ -353,6 +366,16 @@ func _after_damage_effect(
 					)
 					_data_player.get_hurt(self_damage)
 					print("自损八千受伤:",self_damage.value)
+
+
+## 获取概率加成
+func _luck_rate_add()-> float:
+	if data_player:
+		# 运气加持
+		if data_player.has_effect("effect_000035"):
+			var effect_luck = data_player.get_effect("effect_000035")
+			return data_player.get_final_ability().luck * effect_luck.value
+	return 0
 
 
 func _create_deep_damage_effect() -> DataEffect:
@@ -745,7 +768,10 @@ func on_monster_skill_executed(
 			# 怪物攻击被闪避时，判定相关特效
 			if data_player and data_player.has_effect("effect_000021"):
 				var effect = data_player.get_effect("effect_000021")
-				if randf() < effect.value:
+				var hit_rate = effect.value
+				# 概率加成
+				hit_rate += _luck_rate_add()
+				if randf() < hit_rate:
 					# 闪避追击
 					data_player.execute_normal_attack_no_cd()
 	elif skill is DataSpawnSkill:

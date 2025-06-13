@@ -151,7 +151,7 @@
 		"effect_000022": {
 			"name": "伤口撕裂",
 			"effect_type": "attack_attach_deep_damage",
-			"desc": "攻击时{d}概率撕裂伤口，伤害永久+1",
+			"desc": "攻击时{d}概率撕裂伤口，该对象受到的伤害永久+1",
 			"value_type": "percent",
 			"value": 0.05
 		},
