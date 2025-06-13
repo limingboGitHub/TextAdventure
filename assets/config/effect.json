@@ -264,6 +264,13 @@
 			"desc": "攻击时有{d}的概率直接削减目标1%当前生命值",
 			"value_type": "percent",
 			"value": 0.05
+		},
+		"effect_000039":{
+			"name": "幸运财宝",
+			"effect_type": "lucky_treasure",
+			"desc": "每点运气将物品原本爆率增加{d}",
+			"value_type": "percent",
+			"value": 0.002
 		}
 	}
 }

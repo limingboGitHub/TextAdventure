@@ -18,7 +18,7 @@ func _init(_res_manager: ResManager) -> void:
 	self.res_manager = _res_manager
 
 
-func get_drop_things(monster_id: String,is_elite: bool) -> Array[DataBagItem]:
+func get_drop_things(monster_id: String,is_elite: bool,data_player: DataPlayer) -> Array[DataBagItem]:
 	var result: Array[DataBagItem] = []
 	if not res_manager.monster_drops_rate.has(monster_id):
 		return result
@@ -34,6 +34,10 @@ func get_drop_things(monster_id: String,is_elite: bool) -> Array[DataBagItem]:
 			var drop_rate_info = drop_rate[drop_id]
 			# 物品爆率（精英怪10倍爆率）
 			var rate = float(drop_rate_info["rate"]) * (10 if is_elite else 1) * SingletonGame.drop_rate_multiplier
+			# 幸运财宝
+			if data_player.has_effect("effect_000039"):
+				var effect = data_player.get_effect("effect_000039")
+				rate *= 1 + effect.value * data_player.get_final_ability().luck
 			# 随机一个0-1的数字，查看是否命中
 			var random_hit = randf()
 			if random_hit < rate:

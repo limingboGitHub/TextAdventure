@@ -853,6 +853,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000038"
+		},
+		"consume_002131": {
+			"name": "[卷轴]幸运财宝",
+			"desc": "宝藏，更多的宝藏！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000039"
 		}
 	}
 }

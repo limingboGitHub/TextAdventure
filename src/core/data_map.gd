@@ -422,7 +422,7 @@ func _create_drop_thing(target: DataMonster):
 
 	# 掉落物的偏移值，方便展示
 	var offset_index = 0
-	var drop_things = drop_thing_manager.get_drop_things(target.monster_id,target.is_elite)
+	var drop_things = drop_thing_manager.get_drop_things(target.monster_id,target.is_elite,data_player)
 	for drop_thing in drop_things:
 		# 放入地图数据中
 		data_drop_things[drop_thing.uuid] = drop_thing
