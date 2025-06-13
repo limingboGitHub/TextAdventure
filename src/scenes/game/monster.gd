@@ -134,9 +134,11 @@ func _on_get_hurted(_data_role: DataRole,data_damage: DataDamage):
 
 func _on_effect_added(_data_effect: DataEffect):
 	if data_monster and _data_effect.id == "effect_000023":
-		# 撕裂
-		$DeepDamageLabel.show()
-		$DeepDamageLabel.text = "裂" + str(int(_data_effect.value))
+		var effect_on_body = data_monster.get_effect("effect_000023")
+		if effect_on_body:
+			# 撕裂
+			$DeepDamageLabel.show()
+			$DeepDamageLabel.text = "裂" + str(int(effect_on_body.value))
 	if data_monster and _data_effect.id == "effect_000029":
 		# 越战越勇
 		$TimeAddDamageLabel.show()
@@ -257,4 +259,6 @@ func _on_charge_completed(_time: float):
 
 func _on_monster_reseted(_data_monster: DataMonster):
 	_update_hp()
+	# 清除撕裂标识
+	$DeepDamageLabel.hide()
 	

@@ -46,8 +46,12 @@ var is_ignore_rest = false
 # 怪物特殊效果（配置信息）,怪物创建时注入该信息
 var effect_config: Dictionary = {}
 
-# 越战越勇特殊效果出发时间
+# 越战越勇特殊效果触发时间
 var time_add_damage_rest_time = 1.0
+# 越战越勇累计效果
+var time_add_damage_rest_value = 0
+# 护甲撕裂效果
+var armor_break_value = 0
 
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
@@ -68,6 +72,9 @@ func _init() -> void:
 
 func _on_attribute_updated(_attribute: Attribute):
 	attribute.final_details = _attribute.get_details(Attribute.ATTRIBUTE_BASE).copy()
+	attribute.final_details.attack += time_add_damage_rest_value
+	attribute.final_details.defense -= armor_break_value
+	attribute.final_details.magic_def -= armor_break_value
 
 
 func set_attribute(base_attr: AttributeDetails):
@@ -76,6 +83,12 @@ func set_attribute(base_attr: AttributeDetails):
 	attribute.final_details = base_attr.copy()
 	hp = attribute.final_details.max_hp
 	mp = attribute.final_details.max_mp
+
+
+func add_armor_break_value(value: int):
+	armor_break_value += value
+	attribute.final_details.defense -= armor_break_value
+	attribute.final_details.magic_def -= armor_break_value
 
 
 func _to_string() -> String:
@@ -104,8 +117,9 @@ func process(delta: float):
 			time_add_damage_rest_time -= delta
 		else:
 			time_add_damage_rest_time = 1.0
-			attribute.final_details.attack += effect_config["effect_000029"]["value"]
-			#print("越战越勇：", attribute.final_details.attack)
+			time_add_damage_rest_value += get_effect("effect_000029").value
+			attribute.final_details.attack += time_add_damage_rest_value
+			#print("越战越勇：", time_add_damage_rest_value)
 
 	super.process(delta)
 
@@ -284,11 +298,17 @@ func reset():
 	# 清除所有buff
 	for buff_id in buff_dic.keys():
 		remove_buff(buff_id)
+	# 清除所有特效
+	for effect in effect_dic.values():
+		remove_effect(effect)
 	# 重置属性
 	attribute.final_details = attribute.get_details(Attribute.ATTRIBUTE_BASE).copy()
 	hp = attribute.final_details.max_hp
 	mp = attribute.final_details.max_mp
 	is_hurted = false
+	# 重置“越战越勇”特殊效果
+	time_add_damage_rest_time = 1.0
+	time_add_damage_rest_value = 0
 	# 重置信号
 	monster_reseted.emit(self)
 	

@@ -27,7 +27,7 @@
 			"effect_type": "attack_explode_damage",
 			"desc": "攻击时10%几率造成目标70范围内{d}爆炸伤害(攻击+魔法力加成)",
 			"value_type": "percent",
-			"value": 0.3
+			"value": 0.2
 		},
 		"effect_000006": {
 			"name": "文韬武略",
@@ -153,7 +153,7 @@
 			"effect_type": "attack_attach_deep_damage",
 			"desc": "攻击时{d}概率撕裂伤口，该对象受到的伤害永久+1",
 			"value_type": "percent",
-			"value": 0.05
+			"value": 0.1
 		},
 		"effect_000023": {
 			"name": "撕裂",
@@ -202,7 +202,7 @@
 			"effect_type": "time_add_damage",
 			"desc": "每隔1秒增加{d}点伤害",
 			"value_type": "number", 
-			"value": 10
+			"value": 5
 		},
 		"effect_000030": {
 			"name": "破空剑气",
@@ -257,6 +257,13 @@
 			"desc": "旋转身体打出毫无章法的攻击，增加{d}普攻和致命连击的攻击范围，但是打出更小的攻击力波动值",
 			"value_type": "number",
 			"value": 50
+		},
+		"effect_000038":{
+			"name": "致命弱点",
+			"effect_type": "attack_count_add_damage",
+			"desc": "攻击时有{d}的概率直接削减目标1%最大生命值",
+			"value_type": "percent",
+			"value": 0.05
 		}
 	}
 }

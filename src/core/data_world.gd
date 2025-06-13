@@ -358,6 +358,9 @@ func load_local_player(data_player: DataPlayer):
 	data_player.normal_attack = player_manager.data_skill_bag.normal_attack
 	# 设置默认技能
 	data_player.skill = player_manager.data_skill_bag.get_skill(SingletonGame.auto_skill_id)
+	# 设置部分职业主属性
+	if data_player.job_id == "job_000202":
+		data_player.attribute.luck_more_attack = true
 	# 加载永久被动技能的属性
 	player_manager.load_attribute_buff_skill()
 	# 重新加载角色装备

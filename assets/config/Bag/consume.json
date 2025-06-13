@@ -843,6 +843,16 @@
 					"count": 1
 				}
 			]
+		},
+		"consume_002130": {
+			"name": "[卷轴]致命弱点",
+			"desc": "攻击时有{d}的概率直接削减目标1%最大生命值",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000038"
 		}
 	}
 }

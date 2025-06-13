@@ -234,7 +234,8 @@ func player_attack_skill_effect(
 	target: DataMonster,
 	skill: DataBaseSkill,
 	direction: Vector2 = Vector2.RIGHT,
-	effect_position: Vector2 = Vector2.ZERO
+	effect_position: Vector2 = Vector2.ZERO,
+	target_monster_count: int = 1
 ):
 	if target.is_dead:
 		return
@@ -249,7 +250,7 @@ func player_attack_skill_effect(
 		if _is_attack_hit(_data_player, target):
 			var damage : DataDamage
 			if skill.damage_value_type == Constants.VALUE_TYPE_PERCENT:
-				damage = _create_percent_damage(skill, damage_value, _data_player, target)
+				damage = _create_percent_damage(skill, damage_value, _data_player, target, target_monster_count)
 			else:
 				damage = _create_number_damage(skill, damage_value, _data_player, target)
 			damage.direction = direction
@@ -319,9 +320,7 @@ func _after_damage_effect(
 		hit_rate += _luck_rate_add()
 		if randf() < hit_rate:
 			# 护甲撕裂
-			var details = _target.get_final_details()
-			details.defense -= 1
-			details.magic_def -= 1
+			_target.add_armor_break_value(1)
 	if _data_player.has_effect("effect_000005"):
 		# 只有常规攻击技能会触发该效果
 		if _skill.id.begins_with("skill_"):	
@@ -433,7 +432,8 @@ func _create_percent_damage(
 	skill: DataBaseSkill,
 	_damage_rate: float,
 	_data_player: DataPlayer,
-	target: DataMonster
+	target: DataMonster,
+	target_monster_count: int = 1
 ) -> DataDamage:
 	# 计算伤害值
 	var damage_value = 0
@@ -445,7 +445,8 @@ func _create_percent_damage(
 	var attack_value_rate = randf()
 	# “毫无章法”对攻击力波动随机值影响
 	if _data_player.has_effect("effect_000037"):
-		attack_value_rate *=  0.3
+		# 攻击目标1-10，目标越少，攻击力波动值越大
+		attack_value_rate *=  max(0,((10 - target_monster_count) / 10.0))
 
 	var attack_value = 0
 	# 根据不同加成类型计算最终技能加成的伤害值

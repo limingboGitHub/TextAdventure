@@ -37,6 +37,11 @@ var recover_hp_rest_time = RECOVER_HP_INTERVAL
 # 防御常数。防御减伤率 = 防御 / (防御 + 防御常数)
 const DEFENSE_CONSTANT = 200.0
 
+# 敏捷增加更多攻击力
+var agility_more_attack = false
+# 幸运增加更多攻击力
+var luck_more_attack = false
+
 
 signal updated(attribute: Attribute)
 
@@ -103,7 +108,16 @@ func update():
 	final_details.max_hp = all_details.max_hp + all_ability.hp * 10 + all_ability.power * 1
 	final_details.max_mp = all_details.max_mp + all_ability.mp * 10 + all_ability.intelligence * 1
 	# 最终的攻击力，和能力值中的“力量”，“敏捷”有关，和属性详情中各种的“攻击力”加成有关
-	final_details.attack = all_details.attack * (all_ability.power * 1 + all_ability.agility * 0.5 + all_ability.luck * 0.5) / 20
+	final_details.attack = all_details.attack * all_ability.power /20 
+	if agility_more_attack:
+		final_details.attack += all_details.attack * all_ability.agility / 20
+	else:
+		final_details.attack += all_details.attack * all_ability.agility * 0.5 / 20
+	if luck_more_attack:
+		final_details.attack += all_details.attack * all_ability.luck / 20
+	else:
+		final_details.attack += all_details.attack * all_ability.luck * 0.5 / 20
+
 	final_details.defense = all_details.defense
 	final_details.magic = all_details.magic * (all_ability.intelligence + all_ability.luck * 0.5) / 20
 	final_details.magic_def = all_details.magic_def

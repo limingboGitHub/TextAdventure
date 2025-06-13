@@ -621,7 +621,8 @@ func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, pl
 			monster_scene.data_monster, 
 			skill, 
 			direction,
-			monster_scene.global_position)
+			monster_scene.global_position,
+			_target_monster_list.size())
 		# 如果怪物未死亡，则设定目标为攻击者
 		if not monster_scene.data_monster.is_dead:
 			monster_scene.set_attack_target(player_scene)

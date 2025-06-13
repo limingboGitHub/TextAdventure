@@ -125,7 +125,7 @@ func add_effect(data_effect: DataEffect):
 	effect_added.emit(data_effect)
 
 
-func _remove_effect(data_effect: DataEffect):
+func remove_effect(data_effect: DataEffect):
 	if data_effect.type == DataEffect.SkillEnhance:
 		# 技能增幅类特效移除
 		var skill_enhance = data_effect.skill_enhance
@@ -156,7 +156,7 @@ func remove_buff(buff_id: String):
 		attribute.remove_details(buff_id)
 		# 删除特殊效果
 		for effect in buff_dic[buff_id].get_all_effects():
-			_remove_effect(effect)
+			remove_effect(effect)
 		# 删除buff
 		buff_dic.erase(buff_id)
 
