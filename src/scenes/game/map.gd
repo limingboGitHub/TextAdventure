@@ -539,6 +539,13 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 		var skill_enhance = player_scene.data_player.get_skill_enhance(skill.id)
 		radius += skill_enhance.radius
 		count += skill_enhance.count
+	# “毫无章法”技能范围和数量增幅
+	if skill.id in ["skill_000000","skill_000201"]:
+		if player_scene.data_player.has_effect("effect_000037"):
+			var effect = player_scene.data_player.get_effect("effect_000037")
+			if effect.value_type == Constants.VALUE_TYPE_NUMBER:
+				radius += effect.value
+				count += effect.level
 	# 其他增幅
 	radius *= (1 + player_scene.data_player.attack_range_increase)
 

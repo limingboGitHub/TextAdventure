@@ -45,9 +45,6 @@ var skill: DataBaseSkill
 # 玩家的执行CD剩余时间
 var execute_cd_rest: float = 0
 
-# 玩家的拾取CD
-var pick_up_cd = 0.1
-var pick_up_cd_rest: float = 0
 
 # 玩家升级经验表
 var exp_dic = {}
@@ -330,9 +327,6 @@ func process(delta: float):
 	if execute_cd_rest > 0:
 		execute_cd_rest -= delta
 
-	if pick_up_cd_rest > 0:
-		pick_up_cd_rest -= delta
-
 	if can_not_be_hurt:
 		can_not_be_hurt_rest -= delta
 		if can_not_be_hurt_rest <= 0:
@@ -471,12 +465,12 @@ func process_charge_attack():
 
 func execute_skill(_skill: DataBaseSkill,skill_add_count: int = 0):
 	skill_executed.emit(self, _skill,skill_add_count)
-	# 重置冷却
+	# 技能CD强化
+	var skill_cd_enhance = 0
 	if has_skill_enhance(_skill.id):
-		execute_cd_rest = (_skill.cd + get_skill_enhance(_skill.id).cd) / float(SingletonGame.speed)
-	else:
-		execute_cd_rest = (_skill.cd ) / float(SingletonGame.speed)
-
+		skill_cd_enhance = get_skill_enhance(_skill.id).cd
+	# 重置冷却
+	execute_cd_rest = (_skill.cd + skill_cd_enhance) / float(SingletonGame.speed)
 
 func execute_normal_attack_no_cd():
 	# 直接发送一次普攻事件，不触发技能CD
@@ -491,11 +485,7 @@ func process_pick():
 	if is_dizziness():
 		return
 
-	if pick_up_cd_rest > 0:
-		return
-	else:
-		pick_up_executed.emit(self)
-		pick_up_cd_rest = pick_up_cd / float(SingletonGame.speed)
+	pick_up_executed.emit(self)
 
 
 ## 恢复生命值，并发出信号

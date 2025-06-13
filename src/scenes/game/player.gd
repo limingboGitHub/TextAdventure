@@ -6,6 +6,12 @@ var data_player: DataPlayer
 
 var is_selected: bool = false
 
+# 旋转特效比例
+var rotate_scale: float = 1.0
+# 旋转方向
+var rotate_direction: int = 1
+
+
 signal selected
 
 # 攻击目标
@@ -56,7 +62,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	# 当玩家加入地图中时，才处理process事件
 	if data_player and get_parent().name == "Players":
 		data_player.process(delta)
@@ -81,6 +86,9 @@ func _process(delta: float) -> void:
 			# 拾取
 			if Input.is_action_pressed("pick"):
 				data_player.process_pick()
+
+		# 处理旋转
+		_process_rotate(data_player,delta)
 
 
 func _process_attack(delta: float):
@@ -316,3 +324,32 @@ func _effect_added(data_effect: DataEffect):
 func _effect_removed(data_effect: DataEffect):
 	if data_effect.type == "dizziness":
 		$DizzinessLabel.hide()
+
+
+func _process_rotate(_data_player: DataPlayer,delta: float):
+	# 未挂机时
+	if !SingletonGame.is_auto \
+		# 玩家休息时
+		or _data_player.is_resting \
+		# 没有攻击目标
+		or !attack_target \
+		# 没有“毫无章法”技能
+		or !_data_player.has_effect("effect_000037"):
+		rotate_scale = 1.0
+		$Back.scale.x = rotate_scale
+		return
+
+	if rotate_scale > 1.0:
+		rotate_direction = -1
+	elif rotate_scale < -1.0:
+		rotate_direction = 1
+	
+	rotate_scale += rotate_direction * delta * 5
+
+	$Back.scale.x = rotate_scale
+	
+
+func _reset_rotate():
+	if rotate_scale != 1.0:
+		rotate_scale = 1.0
+		$Back.scale.x = rotate_scale

@@ -443,6 +443,10 @@ func _create_percent_damage(
 	#region 攻击力
 	# 攻击力波动的比率 0-1之间
 	var attack_value_rate = randf()
+	# “毫无章法”对攻击力波动随机值影响
+	if _data_player.has_effect("effect_000037"):
+		attack_value_rate *=  0.3
+
 	var attack_value = 0
 	# 根据不同加成类型计算最终技能加成的伤害值
 	if skill.damage_source_type == 0:
@@ -533,6 +537,9 @@ func _create_percent_damage(
 		damage_value -= defense_reduction_value
 		damage_details.append(DataDamage.DamageDetail.new("魔法防御减伤", -defense_reduction_value,0))
 	
+	# 伤害值最小为1
+	damage_value = max(1, damage_value)
+
 	var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, damage_value)
 	damage.value_show_rate = _data_player.get_show_rate(attack_value_rate)
 	damage.attack_value = attack_value

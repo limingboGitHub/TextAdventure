@@ -194,6 +194,8 @@ func _load_skill(data_skill: DataBaseSkill, one_skill_dic: Dictionary):
 					# 触发蓝耗
 					if data_skill.mp_cost_level.size() > i:
 						effect.mp_cost = data_skill.mp_cost_level[i]
+					# 等级
+					effect.level = i + 1
 					data_skill.effect_list.append(effect)
 
 		# 根据当前技能信息更新技能效果
