@@ -69,9 +69,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# 判断玩家是否有嘲讽技能
-	_process_mock_monster(delta)
-
 	# 更新击杀记录
 	_update_boss_kill_record()
 
@@ -95,22 +92,18 @@ func _update_boss_kill_record():
 		$CanvasLayer/BossStatus/CostTime.text = str(hurt_time / 1000.0)
 
 
-func _process_mock_monster(_delta: float):
-	var data_player = data_map.get_player()
-	if data_player:
-		if data_player.has_effect("effect_000031"):
-			var effect = data_player.get_effect("effect_000031")
-
-			var player_scene = $CanvasLayer/GameZone/Players.get_node(data_player.player_id)
-			for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
-				if monster_scene.data_monster.is_dead:
-					continue
-				if monster_scene.attack_target != null:
-					continue
-				var distance = player_scene.global_position.distance_to(monster_scene.global_position)
-				if distance > effect.value:
-					continue
-				monster_scene.set_attack_target(player_scene)
+# 处理玩家嘲讽怪物
+func _process_mock_monster(player_scene: Control,count: int):
+	var invoked_count = 0
+	for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
+		if monster_scene.data_monster.is_dead:
+			continue
+		if monster_scene.attack_target != null:
+			continue
+		monster_scene.set_attack_target(player_scene)
+		invoked_count += 1
+		if invoked_count >= count:
+			break
 
 
 # 添加怪物
@@ -356,6 +349,8 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 	player_scene.attack_target_changed.connect(_on_attack_target_changed)
 	# 监听玩家的技能执行
 	data_player.skill_executed.connect(_on_skill_executed)
+	# 监听玩家嘲讽怪物
+	player_scene.mock_monster_invoked.connect(_on_mock_monster_invoked)
 
 	# 加入场景
 	$CanvasLayer/GameZone/Players.add_child(player_scene)
@@ -378,11 +373,16 @@ func remove_player_scene(data_player: DataPlayer):
 	player_scene.find_target_started.disconnect(_on_find_target_started)
 	player_scene.attack_target_changed.disconnect(_on_attack_target_changed)
 	data_player.skill_executed.disconnect(_on_skill_executed)
+	player_scene.mock_monster_invoked.disconnect(_on_mock_monster_invoked)
 	# 如果地图没有玩家了，延时关闭怪物刷新
 	$CloseMonsRefreshTimer.start()
 
 	# 地图隐藏
 	scene_hide()
+
+
+func _on_mock_monster_invoked(_player_scene: Control,count: int):
+	_process_mock_monster(_player_scene,count)
 
 
 func _on_find_target_started(player_scene: Control):
@@ -501,7 +501,7 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 
 		# 技能作用到目标
 		for target in target_player_list:
-			data_map.player_buff_skill_effect(player, target, skill)
+			data_map.player_buff_skill_effect(player, target, skill)	
 
 
 # 解除链接并加入地图特效层（防止技能弹道脱手后仍然跟随玩家移动）

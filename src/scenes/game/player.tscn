@@ -149,4 +149,8 @@ text = "眩晕"
 [node name="AttackEffect3" parent="." instance=ExtResource("8_lgh6a")]
 visible = false
 
+[node name="MockMonsterTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]
+[connection signal="timeout" from="MockMonsterTimer" to="." method="_on_mock_monster_timer_timeout"]

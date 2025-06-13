@@ -21,6 +21,8 @@ signal find_target_started(player_scene: Control)
 
 signal attack_target_changed(attack_target)
 
+signal mock_monster_invoked(player_scene: Control,count: int)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -319,11 +321,15 @@ func _on_charge_completed(complete_charge_time: float):
 func _effect_added(data_effect: DataEffect):
 	if data_effect.type == "dizziness":
 		$DizzinessLabel.show()
+	elif data_effect.type == "mock_monster":
+		$MockMonsterTimer.start()
 
 
 func _effect_removed(data_effect: DataEffect):
 	if data_effect.type == "dizziness":
 		$DizzinessLabel.hide()
+	elif data_effect.type == "mock_monster":
+		$MockMonsterTimer.stop()
 
 
 func _process_rotate(_data_player: DataPlayer,delta: float):
@@ -353,3 +359,9 @@ func _reset_rotate():
 	if rotate_scale != 1.0:
 		rotate_scale = 1.0
 		$Back.scale.x = rotate_scale
+
+
+func _on_mock_monster_timer_timeout() -> void:
+	if data_player:
+		var effect = data_player.get_effect("effect_000031")
+		mock_monster_invoked.emit(self,effect.value)

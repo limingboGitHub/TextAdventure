@@ -214,9 +214,9 @@
 		"effect_000031": {
 			"name": "无端嘲讽",
 			"effect_type": "mock_monster",
-			"desc": "无缘无故嘲讽敌人，{d}范围内的敌人会主动攻击",
+			"desc": "无缘无故嘲讽敌人，地图内每隔2秒有{d}个敌人会主动攻击",
 			"value_type": "number", 
-			"value": 70
+			"value": 1
 		},
 		"effect_000032":{
 			"name": "眩晕状态",
