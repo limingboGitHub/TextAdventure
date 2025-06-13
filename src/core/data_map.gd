@@ -674,6 +674,12 @@ func _is_attack_hit(attack: DataRole, target: DataRole):
 	# 如果命中率大于100，则命中率为100
 	if accuracy_rate > 1:
 		accuracy_rate = 1
+	# 玩家的“运气加持”效果对命中率的加持
+	if attack is DataPlayer:
+		accuracy_rate += _luck_rate_add()
+	# 玩家的“运气加持”效果对回避率的加持
+	if target is DataPlayer:
+		accuracy_rate -= _luck_rate_add()
 	# 随机0-1之间的一个数，如果小于命中率，则命中，否则不命中
 	var accuracy_hit = randf()
 	if accuracy_hit < accuracy_rate:
