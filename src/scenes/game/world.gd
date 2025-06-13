@@ -858,6 +858,8 @@ func _on_debug_dialog_all_consume_added() -> void:
 		"consume_002121",
 		"consume_002122",
 		"consume_002012",
+		"consume_002128",
+		"consume_002129",
 	]
 	for scroll_id in all_scrolls:
 		var item = data_world.dropthing_manager.create_item(scroll_id)
