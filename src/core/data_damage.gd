@@ -6,6 +6,7 @@ enum TYPE {
 	MAGICAL,
 	POISON,
 	HEAL,
+	REAL
 }
 
 # 伤害来源类型

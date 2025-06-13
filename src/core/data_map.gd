@@ -365,7 +365,17 @@ func _after_damage_effect(
 					)
 					_data_player.get_hurt(self_damage)
 					print("自损八千受伤:",self_damage.value)
-
+	# 致命弱点
+	if _data_player.has_effect("effect_000038"):
+		if _skill.id.begins_with("skill_"):	
+			var effect = _data_player.get_effect("effect_000038")
+			var hit_rate = effect.value
+			# 概率加成
+			hit_rate += _luck_rate_add()
+			if randf() < hit_rate:
+				# 直接消减目标当前生命值
+				var damage_value = _target.hp * 0.01
+				_target.get_hurt(DataDamage.new(DataDamage.TYPE.REAL, DataDamage.SOURCE_TYPE.PLAYER, damage_value))
 
 ## 获取概率加成
 func _luck_rate_add()-> float:

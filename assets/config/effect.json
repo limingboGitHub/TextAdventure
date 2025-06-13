@@ -261,7 +261,7 @@
 		"effect_000038":{
 			"name": "致命弱点",
 			"effect_type": "attack_count_add_damage",
-			"desc": "攻击时有{d}的概率直接削减目标1%最大生命值",
+			"desc": "攻击时有{d}的概率直接削减目标1%当前生命值",
 			"value_type": "percent",
 			"value": 0.05
 		}
