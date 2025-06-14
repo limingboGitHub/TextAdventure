@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://fbl1dbm4i4d2" path="res://src/scenes/game/drop_thing.gd" id="1_qmxcn"]
 
 [sub_resource type="Gradient" id="Gradient_auqx8"]
-colors = PackedColorArray(0.988235, 0.745098, 0.317647, 1, 0.988235, 0.745098, 0.317647, 0)
+colors = PackedColorArray(0.878431, 0.4, 0.74902, 1, 0.988235, 0.745098, 0.317647, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mblo2"]
 gradient = SubResource("Gradient_auqx8")
@@ -22,7 +22,7 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 8.0
-color = Color(0.988235, 0.745098, 0.317647, 0.619608)
+color = Color(0.878431, 0.4, 0.74902, 0.619608)
 color_ramp = SubResource("GradientTexture1D_mblo2")
 
 [node name="DropThing" type="Control"]
@@ -65,9 +65,9 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(1, -22)
-emitting = false
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_fj4p6")
 lifetime = 2.0
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_fj4p6")

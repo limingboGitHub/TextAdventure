@@ -264,7 +264,7 @@ func _on_equip_attribute_off(item: DataEquip):
 
 	# 移除装备特殊效果
 	for data_effect in item.get_all_effects():
-		data_player.remove_buff(item.id)
+		data_player.remove_effect(data_effect)
 
 		#if data_effect.skill_enhance:
 		#	# 技能增强去除

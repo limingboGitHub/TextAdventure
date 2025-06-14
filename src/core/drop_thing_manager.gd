@@ -35,9 +35,10 @@ func get_drop_things(monster_id: String,is_elite: bool,data_player: DataPlayer) 
 			# 物品爆率（精英怪10倍爆率）
 			var rate = float(drop_rate_info["rate"]) * (10 if is_elite else 1) * SingletonGame.drop_rate_multiplier
 			# 幸运财宝
-			if data_player.has_effect("effect_000039"):
-				var effect = data_player.get_effect("effect_000039")
-				rate *= 1 + effect.value * data_player.get_final_ability().luck
+			if data_player:
+				if data_player.has_effect("effect_000039"):
+					var effect = data_player.get_effect("effect_000039")
+					rate *= 1 + effect.value * data_player.get_final_ability().luck
 			# 随机一个0-1的数字，查看是否命中
 			var random_hit = randf()
 			if random_hit < rate:

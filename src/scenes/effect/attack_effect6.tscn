@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkci5pm35sd1t"]
+
+[ext_resource type="Script" uid="uid://dmmc5r420rhvf" path="res://src/scenes/effect/attack_effect_6.gd" id="1_qt8w7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt8w7"]
+bg_color = Color(1, 0.180392, 0.133333, 0.635294)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Gradient" id="Gradient_qt8w7"]
+colors = PackedColorArray(1, 0.227451, 0.243137, 1, 1, 0.227451, 0.243137, 0.462745)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0bvnm"]
+gradient = SubResource("Gradient_qt8w7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qt8w7"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 90.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(-150, -150, 0)
+scale_min = 5.0
+scale_max = 5.0
+color = Color(1, 0.227451, 0.243137, 1)
+color_ramp = SubResource("GradientTexture1D_0bvnm")
+
+[node name="AttackEffect6" type="Node2D"]
+script = ExtResource("1_qt8w7")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt8w7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Panel"]
+position = Vector2(100, 100)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_qt8w7")

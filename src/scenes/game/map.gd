@@ -81,7 +81,9 @@ func _process_auto_lock_player():
 		return
 
 	for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
-		if monster_scene.attack_target == null and monster_scene.data_monster.auto_lock_player:
+		if monster_scene.attack_target == null \
+			and monster_scene.data_monster \
+			and monster_scene.data_monster.auto_lock_player:
 			var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.get_player().player_id)
 			monster_scene.set_attack_target(player_scene)
 
@@ -605,6 +607,11 @@ func _skill_executed_casting(
 		if skill.id == "attack_explode_damage":
 			# 添加爆炸粒子特效
 			_add_explode_particle_effect(first_target.position)
+		elif skill.id == "meteor_fall":
+			# 添加流星陨落特效
+			_add_meteor_fall_effect(skill.effect_position,call_back_cast_finished,call_back_finished)
+			# 流星陨落有自己的回调时机选择
+			return
 		# 没有释放动画的直接执行回调
 		call_back_cast_finished.call(null)
 		call_back_finished.call()
@@ -626,8 +633,6 @@ func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, pl
 		# 如果怪物未死亡，则设定目标为攻击者
 		if not monster_scene.data_monster.is_dead:
 			monster_scene.set_attack_target(player_scene)
-		# 技能作用到目标后的特殊效果
-		#_effect_after_attack_target(player_scene.data_player, skill, monster_scene,direction)
 
 
 func _add_skill_name_ani(first_target,player_scene,skill):
@@ -636,27 +641,14 @@ func _add_skill_name_ani(first_target,player_scene,skill):
 	player_scene.add_skill_executed_effect(skill,direction)
 
 
-func _effect_after_attack_target(
-	_player: DataPlayer, 
-	_skill: DataBaseSkill, 
-	_monster_scene: Control, 
-	_direction: Vector2
-):
-	if _player.has_effect("effect_000005"):
-		# 只有常规攻击技能会触发该效果
-		if _skill.id.begins_with("skill_"):	
-			var effect = _player.get_effect("effect_000005")
-			# 10%的概率命中
-			var hit_rate = randf() <= 0.1
-			if hit_rate:
-				print("赤焰爆炸：",effect.value)
-				var skill = effect.get_special_skill()
-				if skill != null:
-					skill.effect_position = _monster_scene.global_position
-					# 不触发技能释放特效
-					_on_skill_executed(_player,skill)
-					# 添加爆炸粒子特效
-					_add_explode_particle_effect(_monster_scene.position)
+func _add_meteor_fall_effect(_position: Vector2,call_back_cast_finished: Callable,call_back_finished: Callable):
+	var meteor_fall_effect = SingletonGameScenePre.MeteorFallEffectScene.instantiate()
+	$CanvasLayer/GameZone/Effects.add_child(meteor_fall_effect)
+	meteor_fall_effect.play_effect(_position)
+	meteor_fall_effect.finished.connect(func():
+		call_back_cast_finished.call(null)
+		call_back_finished.call()
+	)
 
 
 func _add_explode_particle_effect(_position: Vector2):

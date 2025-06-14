@@ -8,7 +8,7 @@ var item_data:DataBagItem
 var color_common = Color.hex(0x999999ff)
 var color_good = Color.hex(0x7ac8ffff)
 var color_rare = Color.hex(0x9973ffff)
-var color_epic = Color.hex(0xc78c51ff)
+var color_epic = Color.hex(0xe066bfff)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

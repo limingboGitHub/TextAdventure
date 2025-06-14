@@ -863,6 +863,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000039"
+		},
+		"consume_002132": {
+			"name": "[卷轴]流星陨落",
+			"desc": "一颗陨石？？？",
+			"type": "scroll",
+			"quality": "史诗",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000040"
 		}
 	}
 }

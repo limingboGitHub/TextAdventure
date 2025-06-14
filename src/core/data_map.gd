@@ -62,6 +62,11 @@ var monster_id_list: Array[String] = []
 var reward_list: Array[Dictionary] = []
 #endregion
 
+# 流星陨落触发间隔
+var meteor_fall_trigger_interval: int = 1
+# 流星陨落触发时间
+var meteor_fall_trigger_time: int = 0
+
 ## 首个玩家进入
 signal first_player_entered
 
@@ -376,6 +381,28 @@ func _after_damage_effect(
 				# 直接消减目标当前生命值
 				var damage_value = _target.hp * 0.01
 				_target.get_hurt(DataDamage.new(DataDamage.TYPE.REAL, DataDamage.SOURCE_TYPE.PLAYER, damage_value))
+	# 流星陨落
+	if _data_player.has_effect("effect_000040"):
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):	
+			if Time.get_ticks_msec() - meteor_fall_trigger_time < meteor_fall_trigger_interval * 1000:
+				return
+			meteor_fall_trigger_time = Time.get_ticks_msec()
+
+			var effect = _data_player.get_effect("effect_000040")
+			# 2%的概率命中
+			var hit_rate = 0.02
+			# 概率加成
+			hit_rate += _luck_rate_add()
+			# 概率判断
+			if randf() < hit_rate:
+				print("流星陨落：",effect.value)
+				var skill = effect.get_special_skill()
+				# 固定位置
+				skill.effect_position = Vector2(275,275)
+				if skill != null:
+					_data_player.execute_skill_no_cd(skill)
+
 
 ## 获取概率加成
 func _luck_rate_add()-> float:
