@@ -15,5 +15,6 @@
     "attack_cd": 1,
     "skills": [
         "monster_skill_000004"
-    ]
+    ],
+    "reset_status": true
 } 

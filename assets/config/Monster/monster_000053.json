@@ -16,5 +16,6 @@
     "skills": [
         "monster_skill_000001",
         "monster_skill_000002"
-    ]
+    ],
+    "reset_status": true
 } 

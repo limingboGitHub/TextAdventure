@@ -52,5 +52,8 @@ func create_monster(
 	if monster_config.has("ignore_rest"):
 		monster.is_ignore_rest = monster_config["ignore_rest"]
 
+	if monster_config.has("reset_status"):
+		monster.reset_status = monster_config["reset_status"]
+
 	return monster
 	

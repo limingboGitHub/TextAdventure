@@ -126,9 +126,9 @@ func remove_player(_player_id: String):
 	if is_endless:
 		_reset()
 	
-	# 重置"monster_000060"怪物状态
+	# 重置怪物状态（）
 	for monster in data_monsters.values():
-		if monster.monster_id == "monster_000060":
+		if monster.reset_status:
 			monster.reset()
 
 

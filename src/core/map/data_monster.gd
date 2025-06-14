@@ -53,6 +53,9 @@ var time_add_damage_rest_value = 0
 # 护甲撕裂效果
 var armor_break_value = 0
 
+# 怪物重置状态
+var reset_status = false
+
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
