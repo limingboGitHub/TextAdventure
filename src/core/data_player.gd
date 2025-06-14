@@ -657,6 +657,10 @@ func stop_rest():
 func change_job(_job_id: String,_job_name: String):
 	job_id = _job_id	
 	job_name = _job_name
+	# 混混头目 设置主属性
+	if _job_id == "job_000202":
+		attribute.luck_more_attack = true
+	
 	job_changed.emit(self)
 
 
