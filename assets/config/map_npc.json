@@ -754,7 +754,19 @@
 			"visible":true,
 			"position": {"x": 300, "y": 70},
 			"default_messages":[
-				"注意危险！"
+				"注意危险，这里的怪物即使在你休息的时候也会主动攻击你！"
+			],
+			"function": []
+		}
+	],
+	"map_000125":[
+		{
+			"id": "npc_000126",
+			"name": "警示牌",
+			"visible":true,
+			"position": {"x": 220, "y": 600},
+			"default_messages":[
+				"注意，40级以上的boss恢复能力特别强，当你逃离后，它的状态会迅速恢复。"
 			],
 			"function": []
 		}
