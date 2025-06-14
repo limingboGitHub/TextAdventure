@@ -65,7 +65,7 @@ func _on_skill_added(phase: String, data_skill: DataBaseSkill) -> void:
 		skill_group.name = phase
 		$TabContainer.add_child(skill_group)
 	
-	$TabContainer.get_node(phase).add_skill_item(data_skill)
+	$TabContainer.get_node(phase).add_skill_item(data_skill,attribute)
 
 
 ## 显示技能组
