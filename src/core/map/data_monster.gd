@@ -129,10 +129,10 @@ func process(delta: float):
 
 func upgrade(rate: float):
 	var details = attribute.final_details
-	details.max_hp *= rate
+	details.max_hp *= rate * 2
 	details.attack *= rate
 	details.defense *= rate
-	#details.accuracy *= rate
+	details.accuracy *= rate
 	#details.evasion *= rate
 	hp = attribute.final_details.max_hp
 	is_ignore_rest = true
