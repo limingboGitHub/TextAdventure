@@ -631,13 +631,13 @@
 			"rate":0.6
 		},
 		"consume_002125":{
-			"rate":0.2
+			"rate":0.02
 		},
 		"consume_002128":{
-			"rate":0.2
+			"rate":0.02
 		},
 		"consume_002129":{
-			"rate":0.2
+			"rate":0.02
 		},
 		"consume_002132":{
 			"rate":0.02
