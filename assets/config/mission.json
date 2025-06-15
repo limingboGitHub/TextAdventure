@@ -1826,7 +1826,7 @@
 		"name": "无尽之塔",
 		"enable": true,
 		"visible_limit": {
-			"level": 55
+			"level": 50
 		},
 		"mission_phase_list": [
 			{
