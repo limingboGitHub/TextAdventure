@@ -1805,7 +1805,7 @@
 		},
 		"mission_phase_list": [
 			{
-				"name": "混混",
+				"name": "混混头目",
 				"desc": "二转。",
 				"attach_npc_id": "npc_000125",
 				"messages": [
@@ -1816,6 +1816,33 @@
 					{
 						"type": "job_change",
 						"job_id": "job_000202"
+					}
+				]
+			}
+		]
+	},
+	"mission_000125": {
+		"name": "盗贼二转",
+		"enable": true,
+		"visible_limit": {
+			"level": 25,
+			"jobs": [
+				"job_000201"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "无影侠客",
+				"desc": "二转。",
+				"attach_npc_id": "npc_000127",
+				"messages": [
+					"哈哈哈，我看你很有天分。",
+					"那我就教你几招！（点击完成后转职成功，不可逆！！！请想好再点击。）"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000203"
 					}
 				]
 			}

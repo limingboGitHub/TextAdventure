@@ -114,6 +114,10 @@ func _on_auto_alloc_button_pressed() -> void:
 		# 5/5 运气
 		var luck_point = int(data_player.allot_point)
 		data_player.alloc_ability(5,luck_point)
+	elif data_player.job_id == "job_000203":
+		# 5/5 敏捷
+		var agility_point = int(data_player.allot_point)
+		data_player.alloc_ability(3,agility_point)
 
 
 func _on_power_button_pressed() -> void:

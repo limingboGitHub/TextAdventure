@@ -721,6 +721,15 @@
 				"..."
 			],
 			"function": []
+		},
+		{
+			"id": "npc_000127",
+			"name": "侠客李",
+			"position": {"x": 500, "y": 550},
+			"default_messages":[
+				"有什么困难需要我帮助吗？"
+			],
+			"function": []
 		}
 	],
 	"map_000120":[

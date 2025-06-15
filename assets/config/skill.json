@@ -318,7 +318,7 @@
 	"skill_000205": {
 		"name": "瞬身追击",
 		"desc": "每次击杀怪物后，有{d}概率瞬间移动到距离自身最远的一只怪物附近",
-		"type": "attribute_buff",
+		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
 			"effect_list": [
@@ -326,26 +326,25 @@
 					"id": "effect_000036",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.025,
-					"step_value": 0.025
+					"start_value": 0.05,
+					"step_value": 0.05
 				}
 			]
 		}
 	},
-	
 	"skill_000206": {
-		"name": "爆裂狂舞",
-		"desc": "旋转着身体发出攻击，普通攻击和致命连击都变成{d}范围的AOE伤害",
-		"type": "attribute_buff",
+		"name": "身手敏捷",
+		"desc": "每点敏捷增加{d}近战的攻击速度",
+		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
 			"effect_list": [
 				{
-					"id": "effect_000037",
+					"id": "effect_000041",
 					"calculate_type": "formula",
-					"value_type": "number",
-					"start_value": 55,
-					"step_value": 5
+					"value_type": "percent",
+					"start_value": 0.0031,
+					"step_value": 0.0001
 				}
 			]
 		}
