@@ -315,7 +315,7 @@
 			"quality": "普通",
 			"price": 200,
 			"attribute_details": {
-				"attack": 2,
+				"attack": 4,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -328,7 +328,7 @@
 			"quality": "优秀",
 			"price": 200,
 			"attribute_details": {
-				"attack": 3,
+				"attack": 6,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -341,7 +341,7 @@
 			"quality": "普通",
 			"price": 200,
 			"attribute_details": {
-				"attack": 4,
+				"attack": 8,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -354,7 +354,7 @@
 			"quality": "普通",
 			"price": 200,
 			"attribute_details": {
-				"attack": 6,
+				"attack": 12,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -367,7 +367,7 @@
 			"quality": "普通",
 			"price": 200,
 			"attribute_details": {
-				"attack": 10,
+				"attack": 20,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -380,7 +380,7 @@
 			"quality": "优秀",
 			"price": 200,
 			"attribute_details": {
-				"attack": 4,
+				"attack": 8,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -393,7 +393,7 @@
 			"quality": "优秀",
 			"price": 200,
 			"attribute_details": {
-				"attack": 6,
+				"attack": 12,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -406,7 +406,7 @@
 			"quality": "稀有",
 			"price": 200,
 			"attribute_details": {
-				"attack": 8,
+				"attack": 16,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
@@ -419,7 +419,33 @@
 			"quality": "稀有",
 			"price": 200,
 			"attribute_details": {
-				"attack": 10,
+				"attack": 20,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 7
+		},
+		"weapon_002010": {
+			"name": "邪龙之角",
+			"desc": "邪龙头上的角，散发着邪恶的气息。",
+			"require_level": 40,
+			"quality": "稀有",
+			"price": 200,
+			"attribute_details": {
+				"attack": 30,
+				"attack_min_rate":-0.3,
+				"attack_max_rate":0.5
+			},
+			"max_upgrade_times": 7
+		},
+		"weapon_002011": {
+			"name": "獠牙",
+			"desc": "人面狮身兽的牙齿，锋利无比。",
+			"require_level": 50,
+			"quality": "稀有",
+			"price": 200,
+			"attribute_details": {
+				"attack": 40,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},

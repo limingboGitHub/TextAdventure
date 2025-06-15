@@ -324,40 +324,40 @@
 			"max_upgrade_times": 6
 		},
 		"upper_body_002006": {
-			"name": "冰晶上衣",
-			"desc": "蕴含冰晶力量的轻便上衣，行动时不发出声响。",
+			"name": "幽蓝上衣",
+			"desc": "深海般的幽蓝，令人恐惧",
 			"require_level": 30,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 9000,
 			"attribute_details": {
 				"defense": 10,
 				"evasion": 5
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"upper_body_002007": {
-			"name": "熔岩上衣",
-			"desc": "注入熔岩能量的上衣，在黑暗中微微发光。",
+			"name": "魅影上衣",
+			"desc": "魅影头巾，提供极佳的隐蔽性",
 			"require_level": 40,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 16000,
 			"attribute_details": {
 				"defense": 15,
-				"evasion": 6
+				"evasion": 10
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7	
 		},
 		"upper_body_002008": {
-			"name": "沙金上衣",
-			"desc": "由沙金材质打造的上衣，轻盈如沙，坚韧如金。",
+			"name": "金丝上衣",
+			"desc": "沙漠之城的特产丝绸制作",
 			"require_level": 50,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 28000,
 			"attribute_details": {
 				"defense": 20,
-				"evasion": 8
+				"evasion": 15
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		}
 	}
 }

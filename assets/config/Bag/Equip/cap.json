@@ -275,6 +275,42 @@
 				"evasion":2
 			},
 			"max_upgrade_times":6
+		},
+		"cap_002006":{
+			"name":"幽蓝头巾",
+			"desc":"深海般的幽蓝，令人恐惧",
+			"require_level":30,
+			"quality":"稀有",
+			"price":8000,
+			"attribute_details":{
+				"defense":8,
+				"evasion":5
+			},
+			"max_upgrade_times":7
+		},
+		"cap_002007":{
+			"name":"魅影头巾",
+			"desc":"魅影头巾，提供极佳的隐蔽性",
+			"require_level":40,
+			"quality":"稀有",
+			"price":15000,
+			"attribute_details":{
+				"defense":15,
+				"evasion":10
+			},
+			"max_upgrade_times":6
+		},
+		"cap_002008":{
+			"name":"金丝头巾",
+			"desc":"沙漠之城的特产丝绸制作",
+			"require_level":50,
+			"quality":"稀有",
+			"price":25000,
+			"attribute_details":{
+				"defense":25,
+				"evasion":15
+			},
+			"max_upgrade_times":7
 		}
 	}
 }

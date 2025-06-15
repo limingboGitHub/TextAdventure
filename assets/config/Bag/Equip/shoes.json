@@ -325,40 +325,40 @@
 			"max_upgrade_times": 6
 		},
 		"shoes_002006": {
-			"name": "冰晶轻靴",
-			"desc": "蕴含冰晶力量的轻便靴子，行走时无声无息。",
+			"name": "幽蓝轻靴",
+			"desc": "深海般的幽蓝，令人恐惧",
 			"require_level": 30,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 8000,
 			"attribute_details": {
-				"defense": 8,
+				"defense": 10,
 				"evasion": 5
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"shoes_002007": {
-			"name": "熔岩轻靴",
-			"desc": "注入熔岩能量的轻靴，在暗处能微微发光指引方向。",
+			"name": "魅影轻靴",
+			"desc": "魅影头巾，提供极佳的隐蔽性",
 			"require_level": 40,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 13000,
 			"attribute_details": {
-				"defense": 12,
-				"evasion": 6
+				"defense": 15,
+				"evasion": 10
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"shoes_002008": {
-			"name": "沙金轻靴",
-			"desc": "由沙金材质打造的轻靴，轻盈如沙，坚韧如金。",
+			"name": "金丝轻靴",
+			"desc": "沙漠之城的特产丝绸制作",
 			"require_level": 50,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 22000,
 			"attribute_details": {
-				"defense": 15,
-				"evasion": 8
+				"defense": 20,
+				"evasion": 15
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		}
 
 	}
