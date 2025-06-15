@@ -186,7 +186,8 @@ func _get_upgrade_exp(
 
 func add_upgrade_exp(_exp: int) -> void:
 	upgrade_exp += _exp
-	if upgrade_exp >= upgrade_exp_max:
+
+	if upgrade_exp_max != -1 and upgrade_exp >= upgrade_exp_max:
 		upgrade_level_up()
 
 
