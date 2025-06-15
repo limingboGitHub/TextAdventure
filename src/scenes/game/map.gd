@@ -412,6 +412,19 @@ func _find_min_distance_monster(player_scene: Control) -> Control:
 	return min_distance_monster
 
 
+func _find_max_distance_monster(player_scene: Control) -> Control:
+	var max_distance = 0
+	var max_distance_monster = null
+	for monster in $CanvasLayer/GameZone/Monsters.get_children():
+		if monster.data_monster.is_dead:
+			continue
+		var monster_distance = monster.global_position.distance_to(player_scene.global_position)
+		if monster_distance > max_distance:
+			max_distance = monster_distance
+			max_distance_monster = monster
+	return max_distance_monster
+
+
 # 必须隐藏和展示CanvasLayer，根节点的show和hide无效
 func scene_hide():
 	$CanvasLayer.hide()
@@ -619,6 +632,9 @@ func _skill_executed_casting(
 
 # 伤害判定
 func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, player_scene):
+	# 判断是否有怪物因为技能死亡
+	var is_monster_dead = false
+
 	for monster_scene in _target_monster_list:
 		# 计算攻击方向
 		var direction = (monster_scene.global_position - player_scene.global_position).normalized()
@@ -633,6 +649,23 @@ func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, pl
 		# 如果怪物未死亡，则设定目标为攻击者
 		if not monster_scene.data_monster.is_dead:
 			monster_scene.set_attack_target(player_scene)
+		else:
+			is_monster_dead = true
+	
+	# 如果有怪物死亡，则判断瞬身追击
+	if is_monster_dead:
+		if data_map.data_player.has_effect("effect_000036"):
+			var effect = data_map.data_player.get_effect("effect_000036")
+			var hit_rate = effect.value
+			# 概率加成
+			hit_rate += data_map.luck_rate_add()
+			if randf() < hit_rate:
+				# 寻找距离最远的怪物，并移动到怪物坐标位置
+				var max_distance_monster = _find_max_distance_monster(player_scene)
+				if max_distance_monster:
+					# 怪物位置偏移
+					var random_offset = Vector2(20,0)
+					player_scene.position = max_distance_monster.position + random_offset
 
 
 func _add_skill_name_ani(first_target,player_scene,skill):

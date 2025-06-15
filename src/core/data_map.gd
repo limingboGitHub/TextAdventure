@@ -302,7 +302,7 @@ func _after_damage_effect(
 			# 百分之20的概率中毒
 			var hit_rate = 0.2
 			# 概率加成
-			hit_rate += _luck_rate_add()
+			hit_rate += luck_rate_add()
 			# 概率判断
 			if randf() < hit_rate:
 				var damage_value = _data_player.get_final_attack(1) * attack_attach_poison_effect.value
@@ -313,7 +313,7 @@ func _after_damage_effect(
 		var effect = _data_player.get_effect("effect_000022")
 		var hit_rate = effect.value
 		# 概率加成
-		hit_rate += _luck_rate_add()
+		hit_rate += luck_rate_add()
 		if randf() < hit_rate:
 			# 伤口撕裂
 			var deep_damage_effect = _create_deep_damage_effect()
@@ -322,7 +322,7 @@ func _after_damage_effect(
 		var effect = _data_player.get_effect("effect_000025")
 		var hit_rate = effect.value
 		# 概率加成
-		hit_rate += _luck_rate_add()
+		hit_rate += luck_rate_add()
 		if randf() < hit_rate:
 			# 护甲撕裂
 			_target.add_armor_break_value(1)
@@ -333,7 +333,7 @@ func _after_damage_effect(
 			# 10%的概率命中
 			var hit_rate = 0.1
 			# 概率加成
-			hit_rate += _luck_rate_add()
+			hit_rate += luck_rate_add()
 			# 概率判断
 			if randf() < hit_rate:
 				print("赤焰爆炸：",effect.value)
@@ -376,7 +376,7 @@ func _after_damage_effect(
 			var effect = _data_player.get_effect("effect_000038")
 			var hit_rate = effect.value
 			# 概率加成
-			hit_rate += _luck_rate_add()
+			hit_rate += luck_rate_add()
 			if randf() < hit_rate:
 				# 直接消减目标当前生命值
 				var damage_value = _target.hp * 0.01
@@ -393,7 +393,7 @@ func _after_damage_effect(
 			# 2%的概率命中
 			var hit_rate = 0.02
 			# 概率加成
-			hit_rate += _luck_rate_add()
+			hit_rate += luck_rate_add()
 			# 概率判断
 			if randf() < hit_rate:
 				print("流星陨落：",effect.value)
@@ -404,8 +404,9 @@ func _after_damage_effect(
 					_data_player.execute_skill_no_cd(skill)
 
 
+
 ## 获取概率加成
-func _luck_rate_add()-> float:
+func luck_rate_add()-> float:
 	if data_player:
 		# 运气加持
 		if data_player.has_effect("effect_000035"):
@@ -714,10 +715,10 @@ func _is_attack_hit(attack: DataRole, target: DataRole):
 		accuracy_rate = 1
 	# 玩家的“运气加持”效果对命中率的加持
 	if attack is DataPlayer:
-		accuracy_rate += _luck_rate_add()
+		accuracy_rate += luck_rate_add()
 	# 玩家的“运气加持”效果对回避率的加持
 	if target is DataPlayer:
-		accuracy_rate -= _luck_rate_add()
+		accuracy_rate -= luck_rate_add()
 	# 随机0-1之间的一个数，如果小于命中率，则命中，否则不命中
 	var accuracy_hit = randf()
 	if accuracy_hit < accuracy_rate:
@@ -821,7 +822,7 @@ func on_monster_skill_executed(
 				var effect = data_player.get_effect("effect_000021")
 				var hit_rate = effect.value
 				# 概率加成
-				hit_rate += _luck_rate_add()
+				hit_rate += luck_rate_add()
 				if randf() < hit_rate:
 					# 闪避追击
 					data_player.execute_normal_attack_no_cd()
