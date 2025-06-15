@@ -918,14 +918,32 @@ func _on_debug_dialog_all_job_2_added() -> void:
 			ToastManager.add_toast("背包已满")
 
 
-func _on_debug_dialog_all_job_3_added() -> void:
-	var all_equipments = [
-		"weapon_002009",
-		"cap_002005",
-		"lower_body_002005",
-		"shoes_002005",
-		"upper_body_002005",
-	]
+func _on_debug_dialog_all_job_3_added(level: int) -> void:
+	var all_equipments = []
+	if level == 30:
+		all_equipments = [
+			"weapon_002009",
+			"cap_002006",
+			"lower_body_002006",
+			"shoes_002006",
+			"upper_body_002006",
+		]
+	elif level == 40:
+		all_equipments = [
+			"weapon_002010",
+			"cap_002007",
+			"lower_body_002007",
+			"shoes_002007",
+			"upper_body_002007",
+		]
+	elif level == 50:
+		all_equipments = [
+			"weapon_002011",
+			"cap_002008",
+			"lower_body_002008",
+			"shoes_002008",
+			"upper_body_002008",
+		]
 	for equipment_id in all_equipments:
 		var item = data_world.dropthing_manager.create_item(equipment_id)
 		var result = data_world.get_data_bag().add_item(item)

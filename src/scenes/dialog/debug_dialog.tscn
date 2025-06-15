@@ -18,7 +18,7 @@ script = ExtResource("1_y30hp")
 [node name="Back" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 478.0
-offset_bottom = 476.0
+offset_bottom = 557.0
 theme_override_styles/panel = ExtResource("1_uw8g6")
 
 [node name="DragControl" type="Control" parent="."]
@@ -103,9 +103,9 @@ text = "设置速率"
 [node name="ScrollBt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 23.0
-offset_top = 378.0
+offset_top = 492.0
 offset_right = 151.0
-offset_bottom = 428.0
+offset_bottom = 542.0
 theme = ExtResource("2_2tysi")
 text = "全套卷轴"
 
@@ -138,21 +138,39 @@ text = "士兵50装"
 
 [node name="Job2Bt" type="Button" parent="."]
 layout_mode = 0
-offset_left = 297.0
+offset_left = 23.0
 offset_top = 379.0
-offset_right = 425.0
+offset_right = 151.0
 offset_bottom = 429.0
 theme = ExtResource("2_2tysi")
 text = "学者装备"
 
-[node name="Job3Bt" type="Button" parent="."]
+[node name="Job3_30Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 435.0
+offset_right = 151.0
+offset_bottom = 485.0
+theme = ExtResource("2_2tysi")
+text = "盗贼30装"
+
+[node name="Job3_40Bt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 159.0
-offset_top = 378.0
+offset_top = 435.0
 offset_right = 287.0
-offset_bottom = 428.0
+offset_bottom = 485.0
 theme = ExtResource("2_2tysi")
-text = "盗贼装备"
+text = "盗贼40装"
+
+[node name="Job3_50Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 435.0
+offset_right = 425.0
+offset_bottom = 485.0
+theme = ExtResource("2_2tysi")
+text = "盗贼50装"
 
 [node name="CloseButton" parent="." instance=ExtResource("4_tci6e")]
 layout_mode = 0
@@ -170,5 +188,7 @@ offset_bottom = 55.0
 [connection signal="pressed" from="Job1_40Bt" to="." method="_on_job_1_40_bt_pressed"]
 [connection signal="pressed" from="Job1_50Bt" to="." method="_on_job_1_50_bt_pressed"]
 [connection signal="pressed" from="Job2Bt" to="." method="_on_job_2_bt_pressed"]
-[connection signal="pressed" from="Job3Bt" to="." method="_on_job_3_bt_pressed"]
+[connection signal="pressed" from="Job3_30Bt" to="." method="_on_job_3_30_bt_pressed"]
+[connection signal="pressed" from="Job3_40Bt" to="." method="_on_job_3_40_bt_pressed"]
+[connection signal="pressed" from="Job3_50Bt" to="." method="_on_job_3_50_bt_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_bt_pressed"]
