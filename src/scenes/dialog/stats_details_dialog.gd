@@ -52,7 +52,7 @@ func _show_damage_percent():
 		
 	# 预计算不同数量的方块字符串，避免每次循环拼接
 	var block_strings = [""]
-	var single_block = "⬛️"
+	var single_block = "+"
 	for i in range(1, 11):  # 预计算1到10个方块的字符串
 		block_strings.append(block_strings[i-1] + single_block)
 	
@@ -93,3 +93,7 @@ func _on_damage_records_cleared() -> void:
 
 func _on_clear_button_pressed() -> void:
 	damage_info_manager.clear_all_damage_records()
+
+
+func _on_enable_button_toggled(toggled_on: bool) -> void:
+	damage_info_manager.set_enable(toggled_on)

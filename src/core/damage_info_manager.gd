@@ -13,9 +13,14 @@ var max_records: int = 1000
 var damage_dic: Dictionary
 # 总伤害值
 var total_damage: int = 0
+# 是否开启
+var enable: bool = false
 
 # 添加伤害记录，如果超出最大记录数，则移除最早的记录 (FIFO)
 func add_damage_record(damage_data: DataDamage) -> void:
+	if not enable:
+		return
+
 	if damage_records.size() > max_records:
 		clear_all_damage_records()
 	
@@ -46,12 +51,16 @@ func clear_all_damage_records() -> void:
 
 # 获取总伤害输出 (所有记录的伤害值总和)
 func get_total_damage_output() -> float:
-	var total_damage: float = 0.0
+	var _total_damage: float = 0.0
 	for record in damage_records:
 		if record != null:
-			total_damage += record.damage_value
-	return total_damage
+			_total_damage += record.damage_value
+	return _total_damage
 
 
 func get_size() -> int:
 	return damage_records.size()
+
+
+func set_enable(_enable: bool):
+	self.enable = _enable
