@@ -18,8 +18,8 @@
 			"desc":"monster_id_list:召唤的怪物列表，从中随机，monster_count: 召唤怪物的数量",
 			"monster_count": 10,
 			"monster_id_list":[
-				"monster_000040",
-				"monster_000041"
+				"monster_000047",
+				"monster_000048"
 			],
 			"start_cd": 5,
 			"cd": 10
