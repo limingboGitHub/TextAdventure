@@ -537,9 +537,13 @@ func _judge_skill_monster_flash(player_scene):
 			if max_distance_monster:
 				# 怪物位置偏移
 				var random_offset = Vector2(20,0)
-				player_scene.position = max_distance_monster.position + random_offset
-				# 重置人物目标
-				player_scene.set_attack_target(null)
+				# 瞬移到目标位置
+				player_scene.flash_to_target(max_distance_monster)
+				# 设置攻击目标
+				#player_scene.set_attack_target(max_distance_monster)
+				## 瞬移目标位置
+				#player_scene.position = max_distance_monster.position
+				
 
 
 # 解除链接并加入地图特效层（防止技能弹道脱手后仍然跟随玩家移动）

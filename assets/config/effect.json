@@ -285,6 +285,13 @@
 			"desc": "每点敏捷增加{d}近战的攻击速度",
 			"value_type": "percent",
 			"value": 0.01
+		},
+		"effect_000042":{
+			"name": "电光火石",
+			"effect_type": "flash_to_target",
+			"desc": "瞬身追击后，对沿途直线的敌人造成{d}攻击力的伤害",
+			"value_type": "percent",
+			"value": 0.2
 		}
 	}
 }

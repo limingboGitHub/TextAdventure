@@ -152,5 +152,8 @@ visible = false
 [node name="MockMonsterTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="Area2D" type="Area2D" parent="."]
+
 [connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]
 [connection signal="timeout" from="MockMonsterTimer" to="." method="_on_mock_monster_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -873,6 +873,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000040"
+		},
+		"consume_002133": {
+			"name": "[卷轴]电光火石",
+			"desc": "你看得到我么？",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000042"
 		}
 	}
 }

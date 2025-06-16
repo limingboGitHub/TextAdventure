@@ -17,6 +17,12 @@ signal selected
 # 攻击目标
 var attack_target: Control
 
+# 瞬移目标位置
+var flash_target: Vector2
+# 瞬移伤害碰撞体
+@onready var flash_area: Area2D = $Area2D
+
+
 signal find_target_started(player_scene: Control)
 
 signal attack_target_changed(attack_target)
@@ -130,7 +136,8 @@ func _move_to_attack_target(delta: float):
 	position += move_direction * speed * delta
 	#print("move_to_attack_target:",move_direction)
 	#print("move_to_attack_target:",position)
-	
+
+
 
 func init_data(data_player: DataPlayer):
 	self.data_player = data_player
@@ -342,7 +349,7 @@ func _process_rotate(_data_player: DataPlayer,delta: float):
 		or _data_player.is_resting \
 		# 没有攻击目标
 		or !attack_target \
-		# 没有“毫无章法”技能
+		# 没有"毫无章法"技能
 		or !_data_player.has_effect("effect_000037"):
 		rotate_scale = 1.0
 		$Back.scale.x = rotate_scale
@@ -368,3 +375,70 @@ func _on_mock_monster_timer_timeout() -> void:
 	if data_player:
 		var effect = data_player.get_effect("effect_000031")
 		mock_monster_invoked.emit(self,effect.value)
+
+
+func flash_to_target(target: Control):
+	# "电光火石"
+	if data_player.has_effect("effect_000042"):
+		_set_flash_damage_area(target)
+	
+	# 设置攻击目标
+	await get_tree().process_frame
+	set_attack_target(null)
+	position = target.position
+
+
+func _set_flash_damage_area(target: Control):
+	# 计算player到target的距离和方向
+	var direction = target.position - position
+	var distance = direction.length()
+	var angle = direction.angle()
+	
+	# 创建矩形形状，长度为距离，高度为50
+	var rect_shape = RectangleShape2D.new()
+	rect_shape.size = Vector2(distance, 50)
+	#rect_shape.size = Vector2(1000, 1000)
+	
+	# 确保flash_area有一个CollisionShape2D子节点
+	var collision_shape: CollisionShape2D
+	if flash_area.get_child_count() == 0 or not flash_area.get_child(0) is CollisionShape2D:
+		collision_shape = CollisionShape2D.new()
+		flash_area.add_child(collision_shape)
+	else:
+		collision_shape = flash_area.get_child(0) as CollisionShape2D
+	
+	# 设置碰撞形状
+	collision_shape.shape = rect_shape
+	
+	# 设置碰撞体的位置和旋转
+	# 位置设置为player和target之间的中点
+	var center_position = position + direction / 2
+	flash_area.position = center_position - position  # 相对于player的位置
+	flash_area.rotation = angle
+	
+	# 启用碰撞检测
+	flash_area.monitoring = true
+	
+	# 等待让碰撞检测生效
+	await get_tree().create_timer(0.1).timeout
+	
+	# 禁用碰撞检测
+	flash_area.monitoring = false
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	# 检查是否是怪物
+	if area.get_parent():
+		if not data_player.has_effect("effect_000042"):
+			return
+		var effect = data_player.get_effect("effect_000042")
+		var monster = area.get_parent()
+		print("电光火石检测目标:", monster.name)
+		var damage_value = data_player.get_final_attack(1) * effect.value
+		var damage = DataDamage.new(
+			DataDamage.TYPE.PHYSICAL, 
+			DataDamage.SOURCE_TYPE.PLAYER, 
+			damage_value)
+		monster.data_monster.get_hurt(damage)
+		if not monster.data_monster.is_dead:
+			monster.set_attack_target(self)
