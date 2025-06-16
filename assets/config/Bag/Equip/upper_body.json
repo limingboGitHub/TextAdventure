@@ -109,37 +109,37 @@
 			"name": "冰晶战甲",
 			"desc": "蕴含着冰晶的力量",
 			"require_level": 30,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 9000,
 			"attribute_details": {
 				"max_hp": 25,
 				"defense": 17
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"upper_body_000011": {
 			"name": "熔岩战甲",
 			"desc": "蕴含着熔岩的力量",
 			"require_level": 40,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 16000,
 			"attribute_details": {
 				"max_hp": 40,
 				"defense": 25
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"upper_body_000012": {
 			"name": "沙金战甲",
 			"desc": "璀璨的沙金战甲，散发着耀眼的光芒。",
 			"require_level": 50,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 28000,
 			"attribute_details": {
 				"max_hp": 60,
 				"defense": 35
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		
 		"upper_body_001001": {

@@ -109,37 +109,37 @@
 			"name": "冰晶战靴",
 			"desc": "蕴含着冰晶的力量",
 			"require_level": 30,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 7000,
 			"attribute_details": {
 				"max_hp": 20,
 				"defense": 12
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"shoes_000011": {
 			"name": "熔岩战靴",
 			"desc": "蕴含着熔岩的力量",
 			"require_level": 40,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 13000,
 			"attribute_details": {
 				"max_hp": 35,
 				"defense": 20
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"shoes_000012": {
 			"name": "沙金战靴",
 			"desc": "璀璨的沙金战靴，散发着耀眼的光芒。",
 			"require_level": 50,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 22000,
 			"attribute_details": {
 				"max_hp": 55,
 				"defense": 30
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 
 		"shoes_001001": {
