@@ -516,10 +516,10 @@
 			"rate":1.0
 		},
 		"consume_002123":{
-			"rate":0.02
+			"rate":0.6
 		},
 		"consume_002130":{
-			"rate":0.02
+			"rate":0.6
 		}
 	},
 	"monster_000047":{
