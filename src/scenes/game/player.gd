@@ -31,6 +31,9 @@ func _ready() -> void:
 		$Name.text = data_player.player_name
 		_update_hp()
 		_effect_hp_attach_scope_increase(data_player)
+		# 特效添加
+		for effect in data_player.effect_dic.values():
+			_effect_added(effect)
 
 		# 监听玩家受伤事件
 		data_player.role_hurted.connect(_on_player_get_hurted)
