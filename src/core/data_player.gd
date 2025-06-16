@@ -200,10 +200,14 @@ func _on_update_attribute() -> void:
 	final_min_attack_rate = MIN_ATTACK_RATE + attribute.final_details.attack_min_rate + \
 							sub * attribute.final_details.hand_technology / 50
 	final_max_attack_rate = MAX_ATTACK_RATE + attribute.final_details.attack_max_rate
+	if final_max_attack_rate < final_min_attack_rate:
+		final_max_attack_rate = final_min_attack_rate
 	# 根据手技属性加成，计算最终的魔法力波动范围
 	final_min_magic_rate = MIN_ATTACK_RATE + attribute.final_details.magic_min_rate + \
 							sub * attribute.final_details.hand_technology / 50
 	final_max_magic_rate = MAX_ATTACK_RATE + attribute.final_details.magic_max_rate
+	if final_max_magic_rate < final_min_magic_rate:
+		final_max_magic_rate = final_max_magic_rate
 	# 特殊效果增幅
 	if has_effect("effect_000024"):
 		var effect = get_effect("effect_000024")
