@@ -465,12 +465,28 @@ func process_charge_attack():
 
 func execute_skill(_skill: DataBaseSkill,skill_add_count: int = 0):
 	skill_executed.emit(self, _skill,skill_add_count)
+	# 计算技能CD
+	var skill_cd = _skill.cd
 	# 技能CD强化
 	var skill_cd_enhance = 0
 	if has_skill_enhance(_skill.id):
 		skill_cd_enhance = get_skill_enhance(_skill.id).cd
+		skill_cd += skill_cd_enhance
+	# 计算攻击速度加成
+	if _skill.id == "skill_000000" or _skill.id == "skill_000201":
+		if has_effect("effect_000041"):
+			var effect = get_effect("effect_000041")
+			var attack_speed_add = effect.value * get_final_ability().agility
+			# 增加n%攻速，增加攻速 = (原始CD - 减少后CD) / 减少后CD
+			# 增加攻速 + 1 = 原始CD / 减少后CD
+			# 减少后CD = 原始CD / (增加攻速 + 1)
+			var reduced_cd = _skill.cd / (attack_speed_add + 1)
+			var reduce_cd = _skill.cd - reduced_cd
+			skill_cd -= reduce_cd
+			print("攻击速度增加：",attack_speed_add," 技能CD减少：",reduce_cd)
 	# 重置冷却
-	execute_cd_rest = (_skill.cd + skill_cd_enhance) / float(SingletonGame.speed)
+	execute_cd_rest = skill_cd / float(SingletonGame.speed)
+
 
 func execute_normal_attack_no_cd():
 	# 直接发送一次普攻事件，不触发技能CD

@@ -488,20 +488,26 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 					# 确定技能作用目标
 					var _target_monster_list = _get_skill_effect_monster_list(player_scene, skill)
 
+					# 记录是否有怪物死亡
+					var is_monster_dead = false
 					if _target_monster_list and _target_monster_list.size() > 0:
-						_skill_executed_damage_judge(_target_monster_list,skill,player_scene)
+						is_monster_dead = _skill_executed_damage_judge(_target_monster_list,skill,player_scene)
 						print("第0段技能伤害判定")
 						# 如果技能追加判定为真，则执行追加技能
 						if skill_add_count > 0:
 							for i in range(skill_add_count):
-								_skill_executed_damage_judge(_target_monster_list,skill,player_scene)
+								is_monster_dead = _skill_executed_damage_judge(_target_monster_list,skill,player_scene)
 
 						# 如果技能伤害判定段数未结束，则启动剩余伤害判定定时器
 						if not skill.is_damage_array_index_end():
 							for i in range(1,skill.get_damage_array_size()):
 								await get_tree().create_timer(skill.damage_interval/2).timeout
-								_skill_executed_damage_judge(_target_monster_list,skill,player_scene)
+								is_monster_dead = _skill_executed_damage_judge(_target_monster_list,skill,player_scene)
 								print("第",i,"段技能伤害判定")
+
+						# 如果有怪物死亡，则判断瞬身追击
+						if is_monster_dead:
+							_judge_skill_monster_flash(player_scene)
 			)
 
 
@@ -517,6 +523,23 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 		# 技能作用到目标
 		for target in target_player_list:
 			data_map.player_buff_skill_effect(player, target, skill)	
+
+
+func _judge_skill_monster_flash(player_scene):
+	if data_map.data_player and data_map.data_player.has_effect("effect_000036"):
+		var effect = data_map.data_player.get_effect("effect_000036")
+		var hit_rate = effect.value
+		# 概率加成
+		hit_rate += data_map.luck_rate_add()
+		if randf() < hit_rate:
+			# 寻找距离最远的怪物，并移动到怪物坐标位置
+			var max_distance_monster = _find_max_distance_monster(player_scene)
+			if max_distance_monster:
+				# 怪物位置偏移
+				var random_offset = Vector2(20,0)
+				player_scene.position = max_distance_monster.position + random_offset
+				# 重置人物目标
+				player_scene.set_attack_target(null)
 
 
 # 解除链接并加入地图特效层（防止技能弹道脱手后仍然跟随玩家移动）
@@ -631,7 +654,7 @@ func _skill_executed_casting(
 
 
 # 伤害判定
-func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, player_scene):
+func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, player_scene) -> bool:
 	# 判断是否有怪物因为技能死亡
 	var is_monster_dead = false
 
@@ -651,21 +674,8 @@ func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, pl
 			monster_scene.set_attack_target(player_scene)
 		else:
 			is_monster_dead = true
-	
-	# 如果有怪物死亡，则判断瞬身追击
-	if is_monster_dead:
-		if data_map.data_player.has_effect("effect_000036"):
-			var effect = data_map.data_player.get_effect("effect_000036")
-			var hit_rate = effect.value
-			# 概率加成
-			hit_rate += data_map.luck_rate_add()
-			if randf() < hit_rate:
-				# 寻找距离最远的怪物，并移动到怪物坐标位置
-				var max_distance_monster = _find_max_distance_monster(player_scene)
-				if max_distance_monster:
-					# 怪物位置偏移
-					var random_offset = Vector2(20,0)
-					player_scene.position = max_distance_monster.position + random_offset
+
+	return is_monster_dead
 
 
 func _add_skill_name_ani(first_target,player_scene,skill):
