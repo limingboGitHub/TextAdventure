@@ -390,8 +390,8 @@ func _after_damage_effect(
 			meteor_fall_trigger_time = Time.get_ticks_msec()
 
 			var effect = _data_player.get_effect("effect_000040")
-			# 2%的概率命中
-			var hit_rate = 0.02
+			# 5%的概率命中
+			var hit_rate = 0.05
 			# 概率加成
 			hit_rate += luck_rate_add()
 			# 概率判断
