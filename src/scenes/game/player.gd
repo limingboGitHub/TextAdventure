@@ -378,26 +378,27 @@ func _on_mock_monster_timer_timeout() -> void:
 
 
 func flash_to_target(target: Control):
+	# 目标位置 偏移50像素
+	var direction = (target.global_position - global_position)
+	var target_position = target.position + direction.normalized() * 30
 	# "电光火石"
 	if data_player.has_effect("effect_000042"):
-		_set_flash_damage_area(target)
+		_set_flash_damage_area(direction)
 	
 	# 设置攻击目标
 	await get_tree().process_frame
 	set_attack_target(null)
-	position = target.position
+	position = target_position
 
 
-func _set_flash_damage_area(target: Control):
+func _set_flash_damage_area(direction: Vector2):
 	# 计算player到target的距离和方向
-	var direction = target.position - position
 	var distance = direction.length()
 	var angle = direction.angle()
 	
 	# 创建矩形形状，长度为距离，高度为50
 	var rect_shape = RectangleShape2D.new()
 	rect_shape.size = Vector2(distance, 80)
-	#rect_shape.size = Vector2(1000, 1000)
 	
 	# 确保flash_area有一个CollisionShape2D子节点
 	var collision_shape: CollisionShape2D

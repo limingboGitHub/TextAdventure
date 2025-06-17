@@ -539,14 +539,8 @@ func _judge_skill_monster_flash(player_scene,skill: DataBaseSkill):
 			# 寻找距离最远的怪物，并移动到怪物坐标位置
 			var max_distance_monster = _find_max_distance_monster(player_scene)
 			if max_distance_monster:
-				# 怪物位置偏移
-				var random_offset = Vector2(20,0)
 				# 瞬移到目标位置
 				player_scene.flash_to_target(max_distance_monster)
-				# 设置攻击目标
-				#player_scene.set_attack_target(max_distance_monster)
-				## 瞬移目标位置
-				#player_scene.position = max_distance_monster.position
 		else:
 			print("未击中")
 				
