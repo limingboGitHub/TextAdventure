@@ -391,6 +391,16 @@ func flash_to_target(target: Control):
 	await get_tree().process_frame
 	set_attack_target(null)
 	position = target_position
+	# 华丽登场
+	_flash_add_damage(data_player)
+
+
+func _flash_add_damage(_data_player: DataPlayer):
+	if _data_player and _data_player.has_effect("effect_000044"):
+		var effect = _data_player.get_effect("effect_000044")
+		var skill = effect.get_special_skill()
+		if skill:
+			_data_player.execute_skill_no_cd(skill)
 
 
 func _set_flash_damage_area(direction: Vector2):
@@ -437,11 +447,21 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var effect = data_player.get_effect("effect_000042")
 		var monster = area.get_parent()
 		print("电光火石检测目标:", monster.name)
-		var damage_value = data_player.get_final_attack(-1) * effect.value
+		var damage_details: Array[DataDamage.DamageDetail] = []
+		# 攻击力
+		var attack_value = data_player.get_final_details().attack
+		# 伤害值
+		var damage_value = attack_value * effect.value
+		damage_details.append(DataDamage.DamageDetail.new("电光火石",damage_value,effect.value))
 		var damage = DataDamage.new(
 			DataDamage.TYPE.PHYSICAL, 
 			DataDamage.SOURCE_TYPE.PLAYER, 
 			damage_value)
+		damage.attack_value = attack_value
+		damage.damage_details = damage_details
 		monster.data_monster.get_hurt(damage)
+		# 玩家造成伤害行为，需要记录伤害信息
+		data_player.cause_damage(damage)
+		# 如果怪物没有死亡，则设置攻击目标
 		if not monster.data_monster.is_dead:
 			monster.set_attack_target(self)

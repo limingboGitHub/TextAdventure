@@ -893,6 +893,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000043"
+		},
+		"consume_002135": {
+			"name": "[卷轴]华丽登场",
+			"desc": "华丽登场！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000044"
 		}
 	}
 }

@@ -453,6 +453,8 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 
 	# 常规的中心点半径类型的技能伤害判定
 	if skill.target_type == 1 or skill.target_type == 2:
+		if skill.name == "华丽登场":
+			pass
 		var target_monster_list = _get_skill_effect_monster_list(player_scene, skill)
 
 		if target_monster_list.size() > 0:
@@ -543,7 +545,7 @@ func _judge_skill_monster_flash(player_scene,skill: DataBaseSkill):
 				player_scene.flash_to_target(max_distance_monster)
 		else:
 			print("未击中")
-				
+			
 
 
 # 解除链接并加入地图特效层（防止技能弹道脱手后仍然跟随玩家移动）
