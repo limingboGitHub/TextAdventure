@@ -303,7 +303,7 @@
 		"effect_000044":{
 			"name": "华丽登场",
 			"effect_type": "flash_add_damage",
-			"desc": "瞬身追击后，对100范围内的所有敌人造成{d}攻击力的伤害",
+			"desc": "瞬身追击后，对150范围内的所有敌人造成{d}攻击力的伤害",
 			"value_type": "percent",
 			"value": 0.2
 		}

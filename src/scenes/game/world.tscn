@@ -447,7 +447,7 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_pgwtv")
-text = "您已死亡！"
+text = "角色已死亡！"
 
 [node name="ReviveBt" type="Button" parent="CanvasLayer/UI/Dialog/DeadDialog/Back"]
 layout_mode = 1

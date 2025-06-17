@@ -31,7 +31,7 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_82ynr")
-text = "您已死亡！"
+text = "角色已死亡！"
 
 [node name="Label2" type="Label" parent="Back"]
 layout_mode = 1
