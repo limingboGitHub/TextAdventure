@@ -403,7 +403,7 @@
 			"name": "冰牙短刀",
 			"desc": "这个牙齿用起来非常顺手...",
 			"require_level": 25,
-			"quality": "稀有",
+			"quality": "优秀",
 			"price": 200,
 			"attribute_details": {
 				"attack": 16,
