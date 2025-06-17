@@ -437,7 +437,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var effect = data_player.get_effect("effect_000042")
 		var monster = area.get_parent()
 		print("电光火石检测目标:", monster.name)
-		var damage_value = data_player.get_final_attack(1) * effect.value
+		var damage_value = data_player.get_final_attack(-1) * effect.value
 		var damage = DataDamage.new(
 			DataDamage.TYPE.PHYSICAL, 
 			DataDamage.SOURCE_TYPE.PLAYER, 

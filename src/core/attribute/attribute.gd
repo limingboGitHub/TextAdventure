@@ -117,7 +117,7 @@ func update():
 		final_details.attack += all_details.attack * all_ability.luck / 20
 	else:
 		final_details.attack += all_details.attack * all_ability.luck * 0.5 / 20
-
+	print("属性更新 attack：",final_details.attack)
 	final_details.defense = all_details.defense
 	final_details.magic = all_details.magic * (all_ability.intelligence + all_ability.luck * 0.5) / 20
 	final_details.magic_def = all_details.magic_def

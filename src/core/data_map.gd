@@ -305,7 +305,7 @@ func _after_damage_effect(
 			hit_rate += luck_rate_add()
 			# 概率判断
 			if randf() < hit_rate:
-				var damage_value = _data_player.get_final_attack(1) * attack_attach_poison_effect.value
+				var damage_value = _data_player.get_final_attack(-1) * attack_attach_poison_effect.value
 				damage_value = max(damage_value, 1)
 				var buff = _create_poison_buff(damage_value)
 				_target.add_buff(buff)
@@ -487,9 +487,13 @@ func _create_percent_damage(
 	# 攻击力波动的比率 0-1之间
 	var attack_value_rate = randf()
 	# “毫无章法”对攻击力波动随机值影响
-	if _data_player.has_effect("effect_000037"):
+	if (skill.id == "skill_000000" or skill.id == "skill_000201" ) \
+		and _data_player.has_effect("effect_000037"):
 		# 攻击目标1-10，目标越少，攻击力波动值越大
 		attack_value_rate *=  max(0,((10 - target_monster_count) / 10.0))
+	# “流星陨落”伤害为固定比例不波动
+	if skill.id == "meteor_fall":
+		attack_value_rate = -1
 
 	var attack_value = 0
 	# 根据不同加成类型计算最终技能加成的伤害值

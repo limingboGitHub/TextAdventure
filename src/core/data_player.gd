@@ -710,15 +710,20 @@ func get_final_max_magic() -> int:
 
 
 # 获取最终的攻击力，根据攻击力波动范围计算
-# @param rate 波动范围的比率，0-1之间
+# @param rate 波动范围的比率，0-1之间  -1表示不波动
 func get_final_attack(rate: float) -> int:
+	if rate == -1:
+		return attribute.final_details.attack
+
 	var attack_rate = (final_max_attack_rate - final_min_attack_rate) * rate + final_min_attack_rate
 	return int(attribute.final_details.attack * attack_rate)
 
 
 # 获取最终的魔法攻击力，根据魔法攻击力波动范围计算
-# @param rate 波动范围的比率，0-1之间
+# @param rate 波动范围的比率，0-1之间  -1表示不波动
 func get_final_magic_attack(rate: float) -> int:
+	if rate == -1:
+		return attribute.final_details.magic
 	var magic_attack_rate = (final_max_attack_rate - final_min_attack_rate) * rate + final_min_attack_rate
 	return int(attribute.final_details.magic * magic_attack_rate)
 
