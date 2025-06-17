@@ -123,7 +123,7 @@ func _show_description(data_skill: DataBaseSkill):
 				description += "(当前增加概率" + str(round(luck_value * 10000) / 100) + "%)"
 			elif data_skill.id == "skill_000206":
 				var attack_speed_value = attribute.get_all_ability().agility * effect.value
-				description += "(当前增加攻速" + str(round(attack_speed_value * 10000) / 100) + "%)"
+				description += "(当前增加攻速和移速" + str(round(attack_speed_value * 10000) / 100) + "%)"
 
 			
 			$Description.text = description

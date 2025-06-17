@@ -132,7 +132,9 @@ func _move_to_attack_target(delta: float):
 	var move_direction = attack_target.global_position - global_position
 	move_direction = move_direction.normalized()
 	# 速度
-	var speed = data_player.attribute.get_final_details().move_speed * SingletonGame.speed
+	var speed = data_player.attribute.get_final_details().move_speed \
+		* (1 + data_player.move_speed_add) \
+		* SingletonGame.speed
 	position += move_direction * speed * delta
 	#print("move_to_attack_target:",move_direction)
 	#print("move_to_attack_target:",position)

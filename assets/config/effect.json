@@ -282,7 +282,7 @@
 		"effect_000041":{
 			"name": "身手敏捷",
 			"effect_type": "attack_speed_add_damage_variance",
-			"desc": "每点敏捷增加{d}近战的攻击速度",
+			"desc": "每点敏捷增加{d}近战的攻击速度和移动速度",
 			"value_type": "percent",
 			"value": 0.01
 		},

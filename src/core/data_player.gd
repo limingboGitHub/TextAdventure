@@ -101,6 +101,9 @@ var charge_component: DataChargeComponent = DataChargeComponent.new()
 # 蓄力技能
 var charge_skill: DataBaseSkill = null
 
+# 移动速度加成
+var move_speed_add: float = 0
+
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
 
@@ -219,6 +222,11 @@ func _on_update_attribute() -> void:
 		else:
 			## 不支持
 			pass
+	if has_effect("effect_000041"):
+		var effect = get_effect("effect_000041")
+		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+			move_speed_add = effect.value * attribute.all_ability.agility
+			print("【身手敏捷】移动速度增幅：",move_speed_add)
 
 	# 计算攻击范围增幅
 	attack_range_increase = _get_attack_range_increase()
