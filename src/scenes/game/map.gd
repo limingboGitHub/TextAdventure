@@ -75,6 +75,34 @@ func _process(delta: float) -> void:
 	# 如果有怪物有自动锁定丢失目标，则重新锁定
 	_process_auto_lock_player()
 
+	# 处理黑化怪物的目标锁定
+	_process_black_monster()
+
+
+func _process_black_monster():
+	var all_monsters = $CanvasLayer/GameZone/Monsters.get_children()
+	for monster_scene in all_monsters:
+		if monster_scene.attack_target == null \
+			and monster_scene.data_monster \
+			and monster_scene.data_monster.is_black_monster \
+			and not monster_scene.data_monster.is_dead:
+			
+			var closest_distance = INF
+			var nearest_target = null
+			
+			for candidate in all_monsters:
+				if not candidate.data_monster: continue
+				if candidate.data_monster.is_black_monster: continue  # 跳过黑色怪物
+				if candidate.data_monster.is_dead: continue  # 跳过死亡怪物
+				
+				var distance = monster_scene.global_position.distance_to(candidate.global_position)
+				if distance < closest_distance:
+					closest_distance = distance
+					nearest_target = candidate
+			
+			if nearest_target:
+				monster_scene.set_attack_target(nearest_target)
+
 
 func _process_auto_lock_player():
 	if not data_map.get_player():
@@ -174,7 +202,17 @@ func _on_monster_skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 		# 怪物场景添加执行动画
 		monster_scene.add_skill_execute_effect(skill,direction)
 		# 技能执行
-		data_map.on_monster_skill_executed(data_monster, target_scene.data_player, skill, direction)
+		var target_role: DataRole = null
+		if target_scene is Player:
+			target_role = target_scene.data_player
+		elif target_scene is Monster:
+			target_role = target_scene.data_monster
+		if target_role:
+			data_map.on_monster_skill_executed(data_monster, target_role, skill, direction)
+
+		# 如果怪物没有死亡，则设定攻击目标
+		if target_scene is Monster and not target_scene.data_monster.is_dead:
+			target_scene.set_attack_target(monster_scene)
 
 
 func _add_portal(portal: DataPortal):
@@ -596,7 +634,7 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 	# 统计技能半径范围内的怪物
 	var temp_monster_list = []
 	for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
-		if monster_scene.data_monster.is_dead:
+		if monster_scene.data_monster.is_dead or monster_scene.data_monster.is_black_monster:
 			continue
 		var monster_distance = monster_scene.global_position.distance_to(effect_position)
 		if monster_distance <= radius:
@@ -634,6 +672,9 @@ func _skill_executed_casting(
 		attack_effect.global_position = player_scene.global_position
 		attack_effect.move_speed = skill.skill_move_speed
 		attack_effect.scale_duration = skill.cd
+		# 黑魔法技能颜色
+		if player_scene.data_player.has_effect("effect_000044"):
+			attack_effect.set_black_color()
 		# 技能增幅
 		if player_scene.data_player.has_skill_enhance(skill.id):
 			var skill_enhance = player_scene.data_player.get_skill_enhance(skill.id)

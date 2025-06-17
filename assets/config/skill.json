@@ -241,6 +241,40 @@
 			]
 		}
 	},
+	"skill_000103": {
+		"name": "暗黑魔法",
+		"desc": "黑魔法击败敌人后召唤并黑化，拥有原来{d}的属性，每级增加1召唤上限，每只召唤物每秒消耗5点MP",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000044",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.24,
+					"step_value": 0.04
+				}
+			]
+		}
+	},
+	"skill_000104": {
+		"name": "黑暗猎犬",
+		"desc": "召唤一只黑暗猎犬，猎犬的生命值为当前角色法力值的{d}，猎犬的攻击力为角色魔法力的{d}",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000044",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.24,
+					"step_value": 0.04
+				}
+			]
+		}
+	},
 
 	"skill_000201": {
 		"name": "致命连击",

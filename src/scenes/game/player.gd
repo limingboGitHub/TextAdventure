@@ -1,4 +1,5 @@
 extends Control
+class_name Player
 
 ## 玩家的角色场景
 

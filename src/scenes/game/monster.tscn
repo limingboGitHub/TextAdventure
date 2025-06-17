@@ -122,4 +122,8 @@ text = "裂"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_w8quf")
 
+[node name="FreeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="my_released" from="Back" to="." method="_on_panel_my_released"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

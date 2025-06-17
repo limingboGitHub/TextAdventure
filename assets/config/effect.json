@@ -306,6 +306,13 @@
 			"desc": "瞬身追击后，对150范围内的所有敌人造成{d}攻击力的伤害",
 			"value_type": "percent",
 			"value": 0.2
+		},
+		"effect_000045":{
+			"name": "暗黑魔法",
+			"effect_type": "dark_magic",
+			"desc": "黑魔法击败敌人后召唤并黑化，拥有原来{d}的属性，每级增加1召唤上限，每只召唤物每秒消耗5点MP",
+			"value_type": "percent",
+			"value": 0.2
 		}
 	}
 }

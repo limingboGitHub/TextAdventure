@@ -94,6 +94,9 @@ signal endless_ended(data_map: DataMap)
 signal boss_combat_started(data_map: DataMap, data_monster: DataMonster)
 
 signal boss_killed(data_map: DataMap, data_monster: DataMonster)
+
+signal monster_ready_blacked(data_map: DataMap, data_monster: DataMonster)
+
 ## 对外接口：玩家加入地图
 func add_player(_data_player: DataPlayer):
 	data_player = _data_player
@@ -289,6 +292,21 @@ func player_attack_skill_effect(
 			kill_monster_count_dic[target.monster_id] = kill_monster_count_dic.get(target.monster_id, 0) + 1
 			# 判断击杀类的特殊效果
 			_check_kill_monster_effect(_data_player, target)
+			# 判断“暗黑魔法”效果
+			_check_black_monster_effect(_data_player, target, skill,effect_position)
+
+
+func _check_black_monster_effect(
+	_data_player: DataPlayer, 
+	_target: DataMonster, 
+	_skill: DataBaseSkill,
+	_effect_position: Vector2
+):
+
+	if (_skill.id == "skill_000100" or _skill.id == "skill_000101") \
+		and _data_player.has_effect("effect_000044"):
+		# 发出黑化怪物准备黑化的信号（是否能黑化由黑化怪物管理器决定）
+		monster_ready_blacked.emit(self, _target)
 
 
 func _after_damage_effect(

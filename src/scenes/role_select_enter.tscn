@@ -210,9 +210,9 @@ text = "返回"
 visible = false
 layout_mode = 0
 offset_left = 41.0
-offset_top = 1022.0
+offset_top = 863.0
 offset_right = 387.0
-offset_bottom = 1178.0
+offset_bottom = 1019.0
 
 [node name="NameLabel" type="Label" parent="RoleSelect/RoleInfo"]
 layout_mode = 2

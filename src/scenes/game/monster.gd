@@ -10,6 +10,9 @@ var is_selected = false
 const dead_ani_time = 1
 var dead_ani_time_rest = dead_ani_time
 
+const black_ani_time = 1
+var black_ani_time_rest = black_ani_time
+
 var attack_target: Control = null
 
 
@@ -29,6 +32,8 @@ func _ready() -> void:
 		_update_hp()
 		# 监听受伤事件
 		data_monster.role_hurted.connect(_on_get_hurted)
+		# 监听死亡事件
+		data_monster.role_dead.connect(_on_role_dead)
 		# 监听特效添加事件
 		data_monster.effect_added.connect(_on_effect_added)
 		data_monster.effect_removed.connect(_on_effect_removed)
@@ -38,7 +43,8 @@ func _ready() -> void:
 		data_monster.charge_completed.connect(_on_charge_completed)
 		# 监听怪物重置事件
 		data_monster.monster_reseted.connect(_on_monster_reseted)
-
+		# 监听怪物黑化事件
+		data_monster.monster_blacked.connect(_on_monster_blacked)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -55,12 +61,19 @@ func _process(delta: float) -> void:
 				var alpha = dead_ani_time_rest / dead_ani_time
 				modulate.a = alpha
 			else:
-				clear()
-				queue_free()
+				# 死亡动画播放完毕，如果怪物是黑化怪物，则播放黑化动画
+				if data_monster.is_black_monster:
+					black_ani_time_rest -= delta
+					if black_ani_time_rest > 0:
+						# 更新透明度动画
+						var ani_scale = black_ani_time_rest / black_ani_time
+						var color_value = 0.3 + ani_scale * 0.7
+						modulate = Color(color_value,color_value,color_value,1 - ani_scale)
 
 
 func clear():
 	data_monster.role_hurted.disconnect(_on_get_hurted)
+	data_monster.role_dead.disconnect(_on_role_dead)
 	data_monster.effect_added.disconnect(_on_effect_added)
 	data_monster.charge_started.disconnect(_on_charge_started)
 	data_monster.charge_completed.disconnect(_on_charge_completed)
@@ -69,25 +82,44 @@ func clear():
 
 func _process_attack(delta: float):
 	if attack_target:
-		var data_player = attack_target.data_player
-		if data_player.is_dead:
-			return
-		# 普通怪物在目标休息时会丢失目标
-		if (data_player.is_resting and data_monster.type == "normal" \
-			and not data_monster.auto_lock_player and not data_monster.is_ignore_rest):
-			attack_target = null
-			return
+		if attack_target is Player:
+			_process_attack_player(attack_target,delta)
+		elif attack_target is Monster:
+			_process_attack_monster(attack_target,delta)
 
-		if not data_player.can_not_be_hurt:
-			# 如果攻击目标是玩家，且已经离开了当前地图，则不进行攻击
-			if data_player.map_id != data_monster.current_map_id:
-				set_attack_target(null)
-				return
-			# 如果目标距离大于技能距离，则移动
-			if global_position.distance_to(attack_target.global_position) > data_monster.skill.distance:
-				_move_to_attack_target(delta)
-			else:
-				data_monster.process_attack()	
+
+func _process_attack_monster(_attack_target: Monster,delta: float):
+	if _attack_target.data_monster == null or _attack_target.data_monster.is_dead:
+		return
+
+	# 如果目标距离大于技能距离，则移动
+	if global_position.distance_to(_attack_target.global_position) > data_monster.skill.distance:
+		_move_to_attack_target(delta)
+	else:
+		data_monster.process_attack()	
+
+
+func _process_attack_player(_attack_target: Player,delta: float):
+	# 攻击玩家的处理逻辑
+	var data_player = _attack_target.data_player
+	if data_player.is_dead:
+		return
+	# 普通怪物在目标休息时会丢失目标
+	if (data_player.is_resting and data_monster.type == "normal" \
+		and not data_monster.auto_lock_player and not data_monster.is_ignore_rest):
+		_attack_target = null
+		return
+
+	if not data_player.can_not_be_hurt:
+		# 如果攻击目标是玩家，且已经离开了当前地图，则不进行攻击
+		if data_player.map_id != data_monster.current_map_id:
+			set_attack_target(null)
+			return
+		# 如果目标距离大于技能距离，则移动
+		if global_position.distance_to(_attack_target.global_position) > data_monster.skill.distance:
+			_move_to_attack_target(delta)
+		else:
+			data_monster.process_attack()	
 
 
 func _move_to_attack_target(delta: float):
@@ -131,6 +163,11 @@ func _on_get_hurted(_data_role: DataRole,data_damage: DataDamage):
 		_shake_effect(data_damage.direction)
 		
 	_add_damage(data_damage)
+
+
+func _on_role_dead(data_role: DataRole):
+	# 开启释放定时器
+	$FreeTimer.start()
 
 
 func _on_effect_added(_data_effect: DataEffect):
@@ -263,3 +300,23 @@ func _on_monster_reseted(_data_monster: DataMonster):
 	# 清除撕裂标识
 	$DeepDamageLabel.hide()
 	
+
+func _on_monster_blacked(_data_monster: DataMonster):
+	print("黑化--取消释放定时器:",data_monster.monster_unique_id)
+	# 重置攻击目标
+	set_attack_target(null)
+	# 停止释放定时器
+	$FreeTimer.stop()
+	# 2秒后黑化完成，切换属性
+	await get_tree().create_timer(2.0).timeout
+	# 黑化完成
+	data_monster.set_black_finish()
+
+
+func _on_free_timer_timeout() -> void:
+	clear()
+	queue_free()
+
+
+func _reset_dead_animation():
+	dead_ani_time_rest = dead_ani_time

@@ -1848,6 +1848,33 @@
 			}
 		]
 	},
+	"mission_000126": {
+		"name": "学者二转",
+		"enable": true,
+		"visible_limit": {
+			"level": 30,
+			"jobs": [
+				"job_000101"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "黑魔法师",
+				"desc": "二转。",
+				"attach_npc_id": "npc_000128",
+				"messages": [
+					"这可不是正路。",
+					"有点资质，让你见识见识真正的黑魔法。（点击完成后转职成功，不可逆！！！请想好再点击。）"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000102"
+					}
+				]
+			}
+		]
+	},
 
 	"mission_000199": {
 		"name": "无尽之塔",

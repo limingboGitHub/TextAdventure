@@ -58,13 +58,17 @@ var armor_break_value = 0
 # 怪物重置状态
 var reset_status = false
 
+# 蓄力相关
+var charge_component = DataChargeComponent.new()
+
+# 黑化相关
+var is_black_monster = false
+
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
 signal monster_reseted(data_monster: DataMonster)
-
-# 蓄力相关
-var charge_component = DataChargeComponent.new()
+signal monster_blacked(data_monster: DataMonster)
 
 
 func _init() -> void:
@@ -314,3 +318,17 @@ func reset():
 
 func set_combat(_is_combat: bool):
 	is_combat = _is_combat
+
+
+func black_monster():
+	is_black_monster = true
+	monster_blacked.emit(self)
+
+
+func set_black_finish():
+	# 重置死亡状态
+	is_dead = false
+	# 恢复血量
+	hp = attribute.final_details.max_hp
+
+	print("黑化--黑化完毕，状态重置")

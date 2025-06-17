@@ -34,6 +34,9 @@ var npc_map_dic = {}
 # key:被依赖任务id,value:依赖任务id列表
 var mission_depend_dic = {}
 
+# 黑化怪物管理器
+var black_monster_manager: DataBlackMonsterManager = DataBlackMonsterManager.new()
+
 signal load_res_finished
 
 signal load_finished
@@ -187,6 +190,7 @@ func load_data_world(
 			map.player_added.connect(_on_map_player_added)
 			map.player_removed.connect(_on_map_player_removed)
 			map.player_killed_monster.connect(mission_manager.data_player_killed_monster)
+			map.monster_ready_blacked.connect(_on_map_monster_blacked)
 			# 监听npc的事件
 			for npc in map.data_npcs.values():
 				npc.npc_function_showed.connect(_on_map_npc_function_showed)
@@ -738,11 +742,15 @@ func _update_mission_npc_status(data_mission: DataMission):
 				phase.item_update(require.item_id, player_manager.data_bag.get_item_total_count(require.item_id))
 
 
-func _on_map_player_added(data_map: DataMap, data_player: DataPlayer):
+func _on_map_player_added(_data_map: DataMap, data_player: DataPlayer):
 	print('player_added:', data_player.player_id)
 	# 刷新NPC的任务状态
 	_set_map_npc_mission_status(data_player.map_id)
 
 
-func _on_map_player_removed(data_map: DataMap, data_player: DataPlayer):
+func _on_map_player_removed(_data_map: DataMap, data_player: DataPlayer):
 	print('player_removed:', data_player.player_id)
+
+
+func _on_map_monster_blacked(_data_map: DataMap, data_monster: DataMonster):
+	black_monster_manager.add(data_monster)

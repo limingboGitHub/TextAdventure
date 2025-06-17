@@ -26,6 +26,12 @@ const ARRIVAL_THRESHOLD: float = 5.0
 # 死亡阶段时长
 var dead_duration: float = 0.5
 
+# 技能颜色枚举
+const SKILL_COLOR_BLUE: Color = Color(0x34b4ffff)
+const SKILL_COLOR_BLACK: Color = Color(0x000000ff)
+# 当前技能颜色
+var skill_color: Color = SKILL_COLOR_BLUE
+
 # 动画全部完毕后信号
 signal ani_all_finished
 # 技能释放动画被打断信号 (例如目标死亡)
@@ -119,6 +125,10 @@ func _change_state_dead():
 	queue_redraw()
 
 
+func set_black_color():
+	skill_color = SKILL_COLOR_BLACK
+
+
 # 外部调用此函数来中断动画
 func stop():
 	if animation_state == State.SCALING:
@@ -163,16 +173,16 @@ func _on_target_dead(_data_role: DataRole):
 func _draw():
 	if animation_active:
 		if skill_id == "skill_000100":
-			draw_circle(Vector2.ZERO, 10.0 * scale.x, Color(0x34b4ffff))
+			draw_circle(Vector2.ZERO, 10.0 * scale.x, skill_color)
 			if skill_add_count > 0:
-				draw_circle(Vector2.ZERO + Vector2.RIGHT * 22, 10.0 * scale.x, Color(0x34b4ffff))
+				draw_circle(Vector2.ZERO + Vector2.RIGHT * 22, 10.0 * scale.x, skill_color)
 		elif skill_id == "skill_000101":
 			if animation_state == State.SCALING:
 				var scale_factor = elapsed_time / scale_duration
 				# 绘制圆弧
-				draw_arc(Vector2.ZERO, 10, deg_to_rad(0), deg_to_rad(360 * scale_factor), 32, Color(0x34b4ffff), 2)
+				draw_arc(Vector2.ZERO, 10, deg_to_rad(0), deg_to_rad(360 * scale_factor), 32, skill_color, 2)
 			elif animation_state == State.DEAD:
-				draw_circle(Vector2.ZERO, skill_radius, Color(0x34b4ffff),false,2,false)
+				draw_circle(Vector2.ZERO, skill_radius, skill_color,false,2,false)
 		elif skill_id == "skill_000103":
-			draw_circle(Vector2.ZERO - Vector2.RIGHT * 10, 6 * scale.x, Color(0x34b4ffff))
-			draw_circle(Vector2.ZERO + Vector2.RIGHT * 10, 6 * scale.x, Color(0x34b4ffff))
+			draw_circle(Vector2.ZERO - Vector2.RIGHT * 10, 6 * scale.x, skill_color)
+			draw_circle(Vector2.ZERO + Vector2.RIGHT * 10, 6 * scale.x, skill_color)
