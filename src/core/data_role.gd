@@ -142,7 +142,7 @@ func remove_effect(data_effect: DataEffect):
 			# 减少特效值
 			effect_dic[data_effect.id].remove(data_effect)
 			# 如果特效值为0，则删除特效
-			if effect_dic[data_effect.id].value <= 0:
+			if is_zero_approx(effect_dic[data_effect.id].value):
 				effect_dic.erase(data_effect.id)
 				# 发送特效移除信号
 				effect_removed.emit(data_effect)
