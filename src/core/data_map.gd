@@ -131,6 +131,11 @@ func remove_player(_player_id: String):
 	
 	# 重置怪物状态（）
 	for monster in data_monsters.values():
+		# 如果怪物是召唤物，则清除
+		if monster.is_spawn_monster:
+			remove_monster(monster)
+			monster.kill_role()
+			continue
 		if monster.reset_status:
 			monster.reset()
 	is_boss_combat_start = false
@@ -851,6 +856,8 @@ func on_monster_skill_executed(
 			monster.auto_lock_player = true
 			# 不掉落物品
 			monster.is_drop_item = false
+			# 标记为召唤物
+			monster.is_spawn_monster = true
 			# 随机一个位置
 			var pos = Vector2(randf(), randf())
 			_add_monster(monster, pos)

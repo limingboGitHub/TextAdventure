@@ -15,6 +15,8 @@ var type: String = "normal"
 var is_elite = false
 # 怪物是否进入战斗状态
 var is_combat = false
+# 怪物是否是召唤物
+var is_spawn_monster = false
 
 var level: int
 var exp: int
