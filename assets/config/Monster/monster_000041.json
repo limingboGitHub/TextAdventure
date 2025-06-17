@@ -11,5 +11,6 @@
     "eva": "270",
     "exp": "210",
     "undead": "0",
-    "ignore_rest": true
+    "ignore_rest": true,
+    "attack_distance": 300
 } 

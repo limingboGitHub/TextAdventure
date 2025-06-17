@@ -56,6 +56,10 @@ func create_monster(
 		monster.reset_status = monster_config["reset_status"]
 	if monster_config.has("auto_lock_player"):
 		monster.auto_lock_player = monster_config["auto_lock_player"]
+	if monster_config.has("attack_distance"):
+		monster.skill.radius = monster_config["attack_distance"]
+		# 防止怪物频繁的移动攻击
+		monster.skill.distance = monster_config["attack_distance"] - 10
 
 	return monster
 	

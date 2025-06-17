@@ -84,7 +84,7 @@ func _process_attack(delta: float):
 				set_attack_target(null)
 				return
 			# 如果目标距离大于技能距离，则移动
-			if global_position.distance_to(attack_target.global_position) > data_monster.skill.radius:
+			if global_position.distance_to(attack_target.global_position) > data_monster.skill.distance:
 				_move_to_attack_target(delta)
 			else:
 				data_monster.process_attack()	

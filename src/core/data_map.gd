@@ -840,7 +840,9 @@ func on_monster_skill_executed(
 					data_player.execute_normal_attack_no_cd()
 	elif skill is DataSpawnSkill:
 		# 召唤怪物
-		for monster_id in skill.monster_id_list:
+		for count in range(skill.monster_count):
+			var random_index = randi_range(0,skill.monster_id_list.size()-1)
+			var monster_id = skill.monster_id_list[random_index]
 			var monster_config = monster_config_dic[monster_id]
 			var monster = monster_manager.create_monster(
 				monster_id, false, monster_config,monster_skill_dic,effect_config_dic
