@@ -316,7 +316,8 @@ func _after_damage_effect(
 		hit_rate += luck_rate_add()
 		if randf() < hit_rate:
 			# 伤口撕裂
-			var deep_damage_effect = _create_deep_damage_effect()
+			var deep_damage_value = max(1,_data_player.get_final_details().attack * 0.01)
+			var deep_damage_effect = _create_deep_damage_effect(deep_damage_value)
 			_target.add_effect(deep_damage_effect)
 	if _data_player.has_effect("effect_000025"):
 		var effect = _data_player.get_effect("effect_000025")
@@ -415,10 +416,10 @@ func luck_rate_add()-> float:
 	return 0
 
 
-func _create_deep_damage_effect() -> DataEffect:
+func _create_deep_damage_effect(value: int) -> DataEffect:
 	# “撕裂”效果
 	var deep_damage_effect = DataEffect.new("effect_000023", "deep_damage")
-	deep_damage_effect.value = 1
+	deep_damage_effect.value = value
 	deep_damage_effect.value_type = Constants.VALUE_TYPE_NUMBER
 
 	return deep_damage_effect
