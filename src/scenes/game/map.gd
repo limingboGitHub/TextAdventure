@@ -148,7 +148,7 @@ func _add_monster(monster: DataMonster,_position: Vector2):
 		# 展示击杀时间
 		$CanvasLayer/BossStatus/CostTime.text = "-"
 	# 如果怪物自动锁定玩家，则设置攻击目标
-	if monster.auto_lock_player:
+	if monster.auto_lock_player and data_map.get_player():
 		var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.get_player().player_id)
 		monster_scene.set_attack_target(player_scene)
 
