@@ -507,7 +507,7 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 
 						# 如果有怪物死亡，则判断瞬身追击
 						if is_monster_dead:
-							_judge_skill_monster_flash(player_scene)
+							_judge_skill_monster_flash(player_scene,skill)
 			)
 
 
@@ -525,8 +525,12 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 			data_map.player_buff_skill_effect(player, target, skill)	
 
 
-func _judge_skill_monster_flash(player_scene):
-	if data_map.data_player and data_map.data_player.has_effect("effect_000036"):
+func _judge_skill_monster_flash(player_scene,skill: DataBaseSkill):
+	if data_map.data_player \
+		# 普攻或者技能触发
+		and (skill.id == "skill_000000" or skill.id == "skill_000201") \
+		# 瞬身追击
+		and data_map.data_player.has_effect("effect_000036"):
 		var effect = data_map.data_player.get_effect("effect_000036")
 		var hit_rate = effect.value
 		# 概率加成
@@ -543,6 +547,8 @@ func _judge_skill_monster_flash(player_scene):
 				#player_scene.set_attack_target(max_distance_monster)
 				## 瞬移目标位置
 				#player_scene.position = max_distance_monster.position
+		else:
+			print("未击中")
 				
 
 

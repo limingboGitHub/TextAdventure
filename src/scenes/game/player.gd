@@ -396,7 +396,7 @@ func _set_flash_damage_area(target: Control):
 	
 	# 创建矩形形状，长度为距离，高度为50
 	var rect_shape = RectangleShape2D.new()
-	rect_shape.size = Vector2(distance, 50)
+	rect_shape.size = Vector2(distance, 80)
 	#rect_shape.size = Vector2(1000, 1000)
 	
 	# 确保flash_area有一个CollisionShape2D子节点
