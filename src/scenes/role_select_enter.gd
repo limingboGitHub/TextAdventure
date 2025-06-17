@@ -10,7 +10,7 @@ var role_dic: Dictionary = {}
 var cache_tool: BaseCacheTool
 
 # 角色数量上限
-var role_max_num: int = 3
+var role_max_num: int = 6
 
 signal game_started(role_id: String)
 
@@ -185,6 +185,21 @@ func _add_role_id(role_id: String) -> int:
 
 
 func _on_delete_role_bt_pressed() -> void:
+	$RoleSelect/RoleDeleteDialog.show()
+
+
+# 更新角色
+func update_roles():
+	# 删除所有角色
+	for child in get_node("RoleSelect/RoleBack").get_children():
+		if child.name.begins_with("RolePlaceHold"):
+			child.remove_child(child.get_child(0))
+
+	# 重新加载角色
+	_add_role_from_cache()
+
+
+func _on_accept_dialog_confirmed() -> void:
 	if select_role_index == -1:
 		return
 	var index_str = str(select_role_index)
@@ -201,14 +216,3 @@ func _on_delete_role_bt_pressed() -> void:
 
 	select_role_index = -1
 	$RoleSelect/RoleInfo.hide()
-
-
-# 更新角色
-func update_roles():
-	# 删除所有角色
-	for child in get_node("RoleSelect/RoleBack").get_children():
-		if child.name.begins_with("RolePlaceHold"):
-			child.remove_child(child.get_child(0))
-
-	# 重新加载角色
-	_add_role_from_cache()
