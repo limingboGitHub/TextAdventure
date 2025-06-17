@@ -29,6 +29,9 @@ func set_damage(data_damage: DataDamage):
 	# 治疗的颜色
 	if data_damage.type == DataDamage.TYPE.HEAL:
 		add_theme_color_override("font_color", Color.GREEN)
+		animation_time = 0.5
+		# TODO 调整组件的透明度
+		modulate = Color(1,1,1,0.5)
 	elif data_damage.source_type == DataDamage.SOURCE_TYPE.MONSTER:
 		add_theme_color_override("font_color", Color.PURPLE)
 	elif data_damage.type == DataDamage.TYPE.POISON:
