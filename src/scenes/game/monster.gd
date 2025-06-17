@@ -102,6 +102,7 @@ func _move_to_attack_target(delta: float):
 
 func set_attack_target(target: Control):
 	attack_target = target
+	data_monster.set_combat(target!=null)
 
 
 func select():

@@ -54,6 +54,8 @@ func create_monster(
 
 	if monster_config.has("reset_status"):
 		monster.reset_status = monster_config["reset_status"]
+	if monster_config.has("auto_lock_player"):
+		monster.auto_lock_player = monster_config["auto_lock_player"]
 
 	return monster
 	

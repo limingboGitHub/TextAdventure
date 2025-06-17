@@ -13,8 +13,8 @@ var name: String
 var type: String = "normal"
 # 怪物是否为精英
 var is_elite = false
-# 怪物是否受伤
-var is_hurted = false
+# 怪物是否进入战斗状态
+var is_combat = false
 
 var level: int
 var exp: int
@@ -105,8 +105,8 @@ func process(delta: float):
 	# 处理蓄力
 	charge_component.process(delta)
 
-	# 处理怪物特殊技能剩余CD（受伤后开始计算特殊技能CD）
-	if is_hurted:
+	# 处理怪物特殊技能剩余CD（战斗开始后开始计算特殊技能CD）
+	if is_combat:
 		for monster_skill in monster_skills:
 			# -1表示永久技能，永久技能不计算CD
 			if monster_skill.cd_rest == -1:
@@ -270,12 +270,6 @@ func get_charge_progress() -> float:
 	return charge_component.get_charge_progress()
 
 
-func get_hurt(data_damage: DataDamage):
-	super.get_hurt(data_damage)
-	if not is_hurted:
-		is_hurted = true
-
-
 func _on_charge_completed(time: float):
 	charge_completed.emit(time)
 	if monster_skill_current != null and monster_skill_current is DataMonsterSkill.ChargeAttack:
@@ -308,11 +302,13 @@ func reset():
 	attribute.final_details = attribute.get_details(Attribute.ATTRIBUTE_BASE).copy()
 	hp = attribute.final_details.max_hp
 	mp = attribute.final_details.max_mp
-	is_hurted = false
+	is_combat = false
 	# 重置“越战越勇”特殊效果
 	time_add_damage_rest_time = 1.0
 	time_add_damage_rest_value = 0
 	# 重置信号
 	monster_reseted.emit(self)
 	
-	
+
+func set_combat(_is_combat: bool):
+	is_combat = _is_combat

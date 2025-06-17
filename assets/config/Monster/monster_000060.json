@@ -16,5 +16,6 @@
     "skills": [
         "monster_skill_000004"
     ],
-    "reset_status": true
+    "reset_status": true,
+    "auto_lock_player": true
 } 

@@ -15,8 +15,8 @@ const EFFECT_SKILLS = [
 	"skill_000103"
 ]
 
-# 怪物开始受伤时间 key:怪物id value:开始受伤时间
-var boss_hurt_time: Dictionary = {}
+# 怪物击杀开始时间 key:怪物id value:开始时间
+var boss_start_time: Dictionary = {}
 
 
 signal portal_updated(portal: DataPortal,map_scene: Node2D)
@@ -63,7 +63,7 @@ func _ready() -> void:
 	data_map.npc_added.connect(_on_npc_added)
 	data_map.drop_thing_dropped.connect(_on_drop_thing_dropped)
 	data_map.drop_thing_picked.connect(_on_drop_thing_picked)
-	data_map.boss_first_hurted.connect(_on_boss_first_hurted)
+	data_map.boss_combat_started.connect(_on_boss_combat_started)
 	data_map.boss_killed.connect(_on_boss_killed)
 
 
@@ -89,7 +89,7 @@ func _process_auto_lock_player():
 
 
 func _update_boss_kill_record():
-	for start_time in boss_hurt_time.values():
+	for start_time in boss_start_time.values():
 		var hurt_time = Time.get_ticks_msec() - start_time
 		$CanvasLayer/BossStatus/CostTime.text = str(hurt_time / 1000.0)
 
@@ -156,7 +156,7 @@ func _add_monster(monster: DataMonster,_position: Vector2):
 func _on_monster_reseted(data_monster: DataMonster):
 	# 如果是boss，归零击杀时间
 	if data_monster.is_boss():
-		boss_hurt_time.clear()
+		boss_start_time.clear()
 		$CanvasLayer/BossStatus/CostTime.text = "-"
 
 
@@ -317,13 +317,13 @@ func _on_drop_thing_picked(_data_map: DataMap, drop_thing: DataBagItem):
 	drop_thing_scene.set_pick_target(player_scene.global_position)
 
 
-func _on_boss_first_hurted(_data_map: DataMap, data_monster: DataMonster):
-	boss_hurt_time[data_monster.monster_unique_id] = Time.get_ticks_msec()
+func _on_boss_combat_started(_data_map: DataMap, data_monster: DataMonster):
+	boss_start_time[data_monster.monster_unique_id] = Time.get_ticks_msec()
 
 
 func _on_boss_killed(_data_map: DataMap, data_monster: DataMonster):
-	var hurt_time = Time.get_ticks_msec() - boss_hurt_time[data_monster.monster_unique_id]
-	boss_hurt_time.erase(data_monster.monster_unique_id)
+	var hurt_time = Time.get_ticks_msec() - boss_start_time[data_monster.monster_unique_id]
+	boss_start_time.erase(data_monster.monster_unique_id)
 	
 	# 更新击杀时间
 	$CanvasLayer/BossStatus/CostTime.text = str(hurt_time/1000.0)

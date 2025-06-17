@@ -67,6 +67,9 @@ var meteor_fall_trigger_interval: int = 1
 # 流星陨落触发时间
 var meteor_fall_trigger_time: int = 0
 
+# 进入boss战斗标记
+var is_boss_combat_start = false
+
 ## 首个玩家进入
 signal first_player_entered
 
@@ -88,7 +91,7 @@ signal map_explored(data_map: DataMap)
 
 signal endless_ended(data_map: DataMap)
 
-signal boss_first_hurted(data_map: DataMap, data_monster: DataMonster)
+signal boss_combat_started(data_map: DataMap, data_monster: DataMonster)
 
 signal boss_killed(data_map: DataMap, data_monster: DataMonster)
 ## 对外接口：玩家加入地图
@@ -130,6 +133,7 @@ func remove_player(_player_id: String):
 	for monster in data_monsters.values():
 		if monster.reset_status:
 			monster.reset()
+	is_boss_combat_start = false
 
 
 func _reset():
@@ -193,8 +197,7 @@ func _on_monster_hurted(data_role:DataRole,data_damage:DataDamage):
 		if data_player:
 			data_player.cause_damage(data_damage)
 		# 如果boss首次受伤，则开始计算击杀时间
-		if data_role.is_boss() and not data_role.is_hurted:
-			boss_first_hurted.emit(self, data_role)		
+		_check_boss_combat_start(data_role)	
 
 
 func _on_monster_dead(data_role:DataRole):
@@ -858,6 +861,15 @@ func on_monster_skill_executed(
 			# 给怪物添加特殊效果
 			var buff = skill.create_buff()
 			data_monster.add_buff(buff)
+
+	_check_boss_combat_start(data_monster)
+
+
+func _check_boss_combat_start(data_monster: DataMonster):
+	# 开始计算击杀时间
+	if data_monster.is_boss() and not is_boss_combat_start:
+		is_boss_combat_start = true
+		boss_combat_started.emit(self, data_monster)	
 
 
 # 判断玩家是否有魔法屏障技能的buff，如果有，则调整伤害
