@@ -10,5 +10,6 @@
     "acc": "290",
     "eva": "300",
     "exp": "340",
-    "undead": "0"
+    "undead": "0",
+    "ignore_rest": true
 } 
