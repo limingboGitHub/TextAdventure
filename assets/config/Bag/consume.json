@@ -883,6 +883,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000042"
+		},
+		"consume_002134": {
+			"name": "[卷轴]汲血之力",
+			"desc": "永动机！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000043"
 		}
 	}
 }

@@ -403,7 +403,11 @@ func _after_damage_effect(
 				skill.effect_position = Vector2(275,275)
 				if skill != null:
 					_data_player.execute_skill_no_cd(skill)
-
+	# 汲血之力
+	if _data_player.has_effect("effect_000043"):
+		var effect = _data_player.get_effect("effect_000043")
+		var recover_hp = damage.value * effect.value
+		_data_player.recover_hp_with_signal(recover_hp)
 
 
 ## 获取概率加成

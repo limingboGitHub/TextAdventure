@@ -292,6 +292,13 @@
 			"desc": "瞬身追击后，对沿途直线的敌人造成{d}攻击力的伤害",
 			"value_type": "percent",
 			"value": 0.2
+		},
+		"effect_000043":{
+			"name": "汲血之力",
+			"effect_type": "attack_recover_hp",
+			"desc": "恢复伤害值{d}的HP",
+			"value_type": "percent", 
+			"value": 0.01
 		}
 	}
 }
