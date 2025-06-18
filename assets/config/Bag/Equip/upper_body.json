@@ -287,8 +287,8 @@
 			"max_upgrade_times": 7
 		},
 		"upper_body_001013": {
-			"name": "云沙法袍",
-			"desc": "以沙漠中神秘云沙织就，穿上后如沐神力。",
+			"name": "星沙法袍",
+			"desc": "以沙漠中神秘星沙织就，穿上后如沐神力。",
 			"require_level": 50,
 			"quality": "稀有",
 			"price": 28000,

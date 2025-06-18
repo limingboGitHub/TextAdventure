@@ -287,8 +287,8 @@
 			"max_upgrade_times": 7
 		},
 		"shoes_001013": {
-			"name": "云沙法靴",
-			"desc": "注入沙漠云沙魔力的法靴，轻盈如踏云而行。",
+			"name": "星沙法靴",
+			"desc": "注入沙漠星沙魔力的法靴，轻盈如踏云而行。",
 			"require_level": 50,
 			"quality": "稀有",
 			"price": 22000,

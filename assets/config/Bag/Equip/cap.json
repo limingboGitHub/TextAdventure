@@ -240,8 +240,8 @@
 			"max_upgrade_times":7
 		},
 		"cap_001010":{
-			"name":"云沙法帽",
-			"desc":"蕴含沙漠中有魔力的云沙",
+			"name":"星沙法帽",
+			"desc":"蕴含沙漠中有魔力的星沙",
 			"require_level":50,
 			"quality":"稀有",
 			"price":8000,
