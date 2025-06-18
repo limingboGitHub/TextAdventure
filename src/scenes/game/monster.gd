@@ -91,6 +91,10 @@ func _process_attack(delta: float):
 func _process_attack_monster(_attack_target: Monster,delta: float):
 	if _attack_target.data_monster == null or _attack_target.data_monster.is_dead:
 		return
+	# 如果自身是黑化怪物，且目标是黑化怪物，则清空攻击目标
+	if data_monster.is_black_monster and _attack_target.data_monster.is_black_monster:
+		set_attack_target(null)
+		return
 
 	# 如果目标距离大于技能距离，则移动
 	if global_position.distance_to(_attack_target.global_position) > data_monster.skill.distance:
