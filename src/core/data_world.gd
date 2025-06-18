@@ -535,12 +535,19 @@ func _on_player_mp_updated(data_player: DataPlayer):
 		and !data_player.is_dizziness() \
 		and data_player.mp <= mp_warning_value:
 		#print("玩家蓝量低，尝试使用药品")
-		player_manager.data_bag.find_mp_medicine_and_use()
+		if data_player.is_copy:
+			# 处理分身的药品使用
+			var min_mp_item = player_manager.data_bag.find_mp_medicine()
+			player_manager.use_recovery_to_player(data_player,min_mp_item)
+		else:
+			# 玩家使用药品
+			player_manager.data_bag.find_mp_medicine_and_use()
 
 
 func _on_player_clone_dead(data_role: DataRole):
 	# 断开信号
 	data_role.mp_updated.disconnect(_on_player_mp_updated)
+	data_role.before_skill_executed.disconnect(_on_player_before_skill_executed)
 	data_role.role_dead.disconnect(_on_player_clone_dead)
 	# 从地图删除
 	map_dic[data_role.map_id].remove_player_clone(data_role)
@@ -812,6 +819,8 @@ func create_player_clone() -> DataPlayer:
 	player_clone_dic[player_clone.player_id] = player_clone
 	# 监听分身的MP消耗
 	player_clone.mp_updated.connect(_on_player_mp_updated)
+	# 监听玩机技能释放前
+	player_clone.before_skill_executed.connect(_on_player_before_skill_executed)
 	# 监听分身死亡
 	player_clone.role_dead.connect(_on_player_clone_dead)
 	return player_clone

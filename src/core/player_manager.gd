@@ -142,6 +142,18 @@ func _on_skill_level_changed(data_skill: DataBaseSkill):
 			data_player.add_buff(data_skill.create_buff())
 
 
+func use_recovery_to_player(_data_player: DataPlayer,item: DataConsume):
+	if item.recovery != null:
+		if item.recovery.spec_hp > 0:
+			_data_player.recover_hp(item.recovery.spec_hp)
+		if item.recovery.spec_mp > 0:
+			_data_player.recover_mp(item.recovery.spec_mp)
+		if item.recovery.spec_hp_r > 0:
+			_data_player.recover_hp_rate(item.recovery.spec_hp_r)
+		if item.recovery.spec_mp_r > 0:
+			_data_player.recover_mp_rate(item.recovery.spec_mp_r)
+
+
 func _on_item_used(item: DataBagItem):
 	if item is DataConsume:
 		print('使用了消耗品', item.name)
