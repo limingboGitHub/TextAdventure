@@ -439,7 +439,7 @@ func _find_min_distance_monster(player_scene: Control) -> Control:
 	var min_distance = INF
 	var min_distance_monster = null
 	for monster in $CanvasLayer/GameZone/Monsters.get_children():
-		if monster.data_monster.is_dead:
+		if monster.data_monster.is_dead or monster.data_monster.is_black_monster:
 			continue
 		# 怪物和玩家距离
 		var monster_distance = monster.global_position.distance_to(player_scene.global_position)
@@ -454,7 +454,7 @@ func _find_max_distance_monster(player_scene: Control) -> Control:
 	var max_distance = 0
 	var max_distance_monster = null
 	for monster in $CanvasLayer/GameZone/Monsters.get_children():
-		if monster.data_monster.is_dead:
+		if monster.data_monster.is_dead or monster.data_monster.is_black_monster:
 			continue
 		var monster_distance = monster.global_position.distance_to(player_scene.global_position)
 		if monster_distance > max_distance:
