@@ -104,6 +104,9 @@ var charge_skill: DataBaseSkill = null
 # 移动速度加成
 var move_speed_add: float = 0
 
+# 是否是分身
+var is_copy = false
+
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
 
@@ -891,3 +894,14 @@ func load(dic: Dictionary):
 	# 这里只是还原了技能的id信息，需要外层进一步根据id还原技能详情
 	if dic.has("skill"):
 		skill = DataBaseSkill.new(dic["skill"]["id"], dic["skill"]["type"])
+
+
+func copy()-> DataPlayer:
+	var dic = save()
+	var new_player = DataPlayer.new()
+	new_player.load(dic)
+	# 部分浅拷贝，分身可以和本体技能一致
+	new_player.skill = skill
+	new_player.is_copy = true
+
+	return new_player

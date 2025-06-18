@@ -313,6 +313,13 @@
 			"desc": "",
 			"value_type": "percent",
 			"value": 0.2
+		},
+		"effect_000046":{
+			"name": "暗影化身",
+			"effect_type": "shadow_clone",
+			"desc": "",
+			"value_type": "percent",
+			"value": 0.2
 		}
 	}
 }

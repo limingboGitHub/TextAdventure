@@ -78,6 +78,10 @@ func _process(delta: float) -> void:
 	if data_player and get_parent().name == "Players":
 		data_player.process(delta)
 
+		# 调试分身角色
+		if data_player.is_copy:
+			pass
+
 		if SingletonGame.is_auto:
 			if data_player.is_resting:
 				pass
@@ -466,3 +470,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		# 如果怪物没有死亡，则设置攻击目标
 		if not monster.data_monster.is_dead:
 			monster.set_attack_target(self)
+
+
+func set_black():
+	# 设置黑色
+	modulate = Color(0.3,0.3,0.3,1)

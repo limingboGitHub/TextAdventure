@@ -29,7 +29,8 @@
 		"job_000102":{
 			"job_name":"黑魔法师",
 			"skill_list":[
-				"skill_000103"
+				"skill_000103",
+				"skill_000104"
 			]
 		},
 

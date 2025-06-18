@@ -32,6 +32,8 @@ var data_monsters = {}
 var data_drop_things = {}
 var data_portals = {}
 var data_floors = {}
+# 分身数据 key:player_id value:DataPlayer
+var data_player_clone: Dictionary = {}
 
 var monster_manager = MonsterManager.new()
 var drop_thing_manager: DropThingManager
@@ -97,6 +99,10 @@ signal boss_killed(data_map: DataMap, data_monster: DataMonster)
 
 signal monster_ready_blacked(data_map: DataMap, data_monster: DataMonster)
 
+signal player_clone_added(data_map: DataMap, data_player: DataPlayer)
+
+signal player_clone_removed(data_map: DataMap, data_player: DataPlayer)
+
 ## 对外接口：玩家加入地图
 func add_player(_data_player: DataPlayer):
 	data_player = _data_player
@@ -115,6 +121,15 @@ func add_player(_data_player: DataPlayer):
 	data_player.role_hurted.connect(_on_player_hurted)
 	# 发出玩家加入地图信号
 	player_added.emit(self, data_player)
+
+
+## 添加分身
+func add_player_clone(_player_clone: DataPlayer):
+	data_player_clone[_player_clone.player_id] = _player_clone
+	_player_clone.map_id = id
+
+	# 发出玩家加入地图信号
+	player_clone_added.emit(self, _player_clone)
 
 
 func remove_player(_player_id: String):
@@ -146,6 +161,16 @@ func remove_player(_player_id: String):
 		if monster.reset_status:
 			monster.reset()
 	is_boss_combat_start = false
+
+
+## 移除分身
+func remove_player_clone(_data_player_clone: DataPlayer):
+	data_player_clone.erase(_data_player_clone.player_id)
+	# 玩家状态重置
+	_data_player_clone.reset()
+	_data_player_clone = null
+	# 发出分身离开地图信号
+	player_clone_removed.emit(self, _data_player_clone)
 
 
 func _reset():

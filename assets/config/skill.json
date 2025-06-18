@@ -259,18 +259,18 @@
 		}
 	},
 	"skill_000104": {
-		"name": "黑暗猎犬",
-		"desc": "召唤一只黑暗猎犬，猎犬的生命值为当前角色法力值的{d}，猎犬的攻击力为角色魔法力的{d}",
+		"name": "暗影化身",
+		"desc": "召唤一个暗影化身，不会被攻击，造成本体{d}的伤害",
 		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
 			"effect_list": [
 				{
-					"id": "effect_000044",
+					"id": "effect_000046",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.24,
-					"step_value": 0.04
+					"start_value": 0.215,
+					"step_value": 0.015
 				}
 			]
 		}

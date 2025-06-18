@@ -37,6 +37,9 @@ var mission_depend_dic = {}
 # 黑化怪物管理器
 var black_monster_manager: DataBlackMonsterManager = DataBlackMonsterManager.new()
 
+# 暗影化身对象管理
+var player_clone_dic: Dictionary = {}
+
 # 黑化怪物MP消耗定时器控制信号
 signal black_monster_timer_control(is_active: bool)
 
@@ -414,6 +417,10 @@ func load_local_player(data_player: DataPlayer):
 	black_monster_manager.init_data(data_player)
 	# 监听黑化怪物数量变化
 	black_monster_manager.count_changed.connect(_on_black_monster_count_changed)
+	
+	# 初始化化身
+	if data_player.has_effect("effect_000046"):
+		create_player_clone()
 
 	# 监听玩家等级变化
 	data_player.level_updated.connect(_on_player_level_updated)
@@ -771,6 +778,29 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 	# 暗黑魔法技能等级提升时，更新黑化怪物数量上限
 	if skill.id == "skill_000103":
 		black_monster_manager.update_count_limit(skill.level)
+	# 暗影化身技能
+	if skill.id == "skill_000104":
+		if skill.level == 0:
+			# 杀死并删除所有的化身
+			for player_clone in player_clone_dic.values():
+				player_clone.kill_role()
+			player_clone_dic.clear()
+		elif skill.level > 0:
+			if player_manager.data_player:
+				if not player_clone_dic.has(player_manager.data_player.player_id):
+					var player_clone = create_player_clone()
+					# 添加到地图
+					map_dic[player_clone.map_id].add_player_clone(player_clone)
+
+
+func create_player_clone() -> DataPlayer:
+	# 创建一个化身
+	var player_clone = player_manager.data_player.copy()
+	# 重新给予一个id
+	var index = player_clone_dic.size() + 1
+	player_clone.player_id = player_clone.player_id + "_clone_" + str(index)
+	player_clone_dic[player_clone.player_id] = player_clone
+	return player_clone
 
 
 # 监听黑化怪物数量变化

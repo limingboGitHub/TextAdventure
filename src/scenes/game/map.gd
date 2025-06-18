@@ -453,6 +453,26 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 	scene_show()
 
 
+## 添加分身场景
+func add_player_clone_scene(_player_clone: DataPlayer,player_scene: Control):
+	print('player_added:', _player_clone.player_id)
+	# 获取地图场景的尺寸
+	var size = $CanvasLayer/GameZone/Players.size
+	# 设置玩家位置
+	player_scene.position = Vector2(0.4 * size.x, 0.4 * size.y)
+	# 监听寻找攻击目标
+	player_scene.find_target_started.connect(_on_find_target_started)
+	# 监听攻击目标变换
+	player_scene.attack_target_changed.connect(_on_attack_target_changed)
+	# 监听玩家的技能执行
+	_player_clone.skill_executed.connect(_on_skill_executed)
+	# 监听玩家嘲讽怪物
+	player_scene.mock_monster_invoked.connect(_on_mock_monster_invoked)
+
+	# 加入场景
+	$CanvasLayer/GameZone/Players.add_child(player_scene)
+
+
 func remove_player_scene(data_player: DataPlayer):
 	print('remove_player:', data_player.player_id)
 	# 根据玩家id删除场景
@@ -478,6 +498,22 @@ func remove_player_scene(data_player: DataPlayer):
 
 	# 地图隐藏
 	scene_hide()
+
+
+## 删除分身场景
+func remove_player_clone_scene(data_player: DataPlayer):
+	print('remove_player:', data_player.player_id)
+	# 根据玩家id删除场景
+	var player_scene = $CanvasLayer/GameZone/Players.get_node(data_player.player_id)
+	$CanvasLayer/GameZone/Players.remove_child(player_scene)
+	# 移除攻击目标
+	player_scene.attack_target = null
+	
+	# 解除监听
+	player_scene.find_target_started.disconnect(_on_find_target_started)
+	player_scene.attack_target_changed.disconnect(_on_attack_target_changed)
+	data_player.skill_executed.disconnect(_on_skill_executed)
+	player_scene.mock_monster_invoked.disconnect(_on_mock_monster_invoked)
 
 
 func _on_mock_monster_invoked(_player_scene: Control,count: int):
@@ -776,7 +812,7 @@ func _skill_executed_damage_judge(_target_monster_list, skill: DataBaseSkill, pl
 			monster_scene.global_position,
 			_target_monster_list.size())
 		# 如果怪物未死亡，则设定目标为攻击者
-		if not monster_scene.data_monster.is_dead:
+		if not monster_scene.data_monster.is_dead and not player_scene.data_player.is_copy:
 			monster_scene.set_attack_target(player_scene)
 		else:
 			is_monster_dead = true
@@ -848,3 +884,5 @@ func _on_get_endless_reward():
 	data_map.get_endless_reward()
 	# 增加提示
 	ToastManager.add_toast("获得2点能力值")
+
+		

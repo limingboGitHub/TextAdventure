@@ -95,6 +95,10 @@ func on_load_finished():
 		map.player_added.connect(_on_map_player_added)
 		# 监听玩家离开地图事件
 		map.player_removed.connect(_on_map_player_removed)
+		# 监听玩家化身加入地图事件
+		map.player_clone_added.connect(_on_map_player_clone_added)
+		# 监听玩家化身离开地图事件
+		map.player_clone_removed.connect(_on_map_player_clone_removed)
 		# 把地图场景添加到当前场景
 		$Maps.add_child(map_scene)
 	
@@ -171,6 +175,9 @@ func _on_local_player_created(data_player: DataPlayer):
 	_on_player_scene_created(data_player)
 	# 玩家进入地图
 	data_world.get_data_map(data_player.map_id).add_player(data_player)
+	# 初始化化身加入地图
+	for player_clone in data_world.player_clone_dic.values():
+		data_world.get_data_map(player_clone.map_id).add_player_clone(player_clone)
 	# 更新玩家当前所在地图
 	$CanvasLayer/UI/MapGraph.update_current_map(data_player.map_id)
 	# 监听地图选择事件
@@ -735,6 +742,24 @@ func _on_map_player_added(data_map: DataMap, data_player: DataPlayer):
 func _on_map_player_removed(data_map: DataMap, data_player: DataPlayer):
 	var map_scene = $Maps.get_node(data_map.id)
 	map_scene.remove_player_scene(data_player)
+
+
+func _on_map_player_clone_added(data_map: DataMap, _player_clone: DataPlayer):
+	var map_scene = $Maps.get_node(data_map.id)
+	if not black_monster_scene_dic.has(_player_clone.player_id):
+		var clone_scene = SingletonGameScenePre.PlayerScene.instantiate()
+		clone_scene.data_player = _player_clone
+		clone_scene.name = _player_clone.player_id
+		clone_scene.set_black()
+		black_monster_scene_dic[_player_clone.player_id] = clone_scene
+
+	var player_scene = black_monster_scene_dic[_player_clone.player_id]
+	map_scene.add_player_clone_scene(_player_clone, player_scene)
+
+
+func _on_map_player_clone_removed(data_map: DataMap, data_player: DataPlayer):
+	var map_scene = $Maps.get_node(data_map.id)
+	map_scene.remove_player_clone_scene(data_player)
 
 
 func _on_map_drop_showed(data_map: DataMap):

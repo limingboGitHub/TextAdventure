@@ -40,6 +40,7 @@ func save() -> Dictionary:
 		json["luck"] = luck
 	return json
 
+
 func load(json: Dictionary) -> void:
 	hp = json.get("hp", 0)
 	mp = json.get("mp", 0)
@@ -47,3 +48,10 @@ func load(json: Dictionary) -> void:
 	agility = json.get("agility", 0)
 	intelligence = json.get("intelligence", 0)
 	luck = json.get("luck", 0)
+
+
+func copy()-> AttributeAbility:
+	var dict = save()
+	var new_ability = AttributeAbility.new()
+	new_ability.load(dict)
+	return new_ability
