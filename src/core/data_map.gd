@@ -638,6 +638,12 @@ func _create_percent_damage(
 	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details,skill,attack_value)
 	damage_value += effect_damage_value
 	#endregion
+
+	# 判断分身的伤害比例
+	if _data_player.is_copy:
+		var copy_reduce_damage = damage_value * _player_copy_damage_rate(_data_player)
+		damage_details.append(DataDamage.DamageDetail.new("分身减伤", -copy_reduce_damage,0))
+		damage_value -= copy_reduce_damage
 	
 	# 根据伤害类型计算防御减伤
 	if skill.damage_type == 0:
@@ -664,6 +670,14 @@ func _create_percent_damage(
 
 	print("伤害详情：",damage_details)
 	return damage
+
+
+## 分身的伤害系数
+func _player_copy_damage_rate(_data_player: DataPlayer)-> float:
+	if not _data_player.has_effect("effect_000046"):
+		return 1.0
+	var effect = _data_player.get_effect("effect_000046")
+	return effect.value
 
 
 func _create_number_damage(

@@ -404,6 +404,8 @@ func _on_role_equip_bt_pressed() -> void:
 
 func _on_player_dead(data_role: DataRole):
 	_dialog_show($CanvasLayer/UI/Dialog/DeadDialog)
+	# 死亡后，自动战斗状态关闭
+	$CanvasLayer/UI/ButtonControl/AutoBt.set_pressed(false)
 
 
 func _on_player_job_changed(data_player: DataPlayer):
@@ -427,8 +429,6 @@ func _on_player_mp_value_changed(_data_player: DataPlayer, change_value: int):
 func _on_revive_bt_pressed() -> void:
 	$CanvasLayer/UI/Dialog/DeadDialog.hide()
 	data_world.player_revive_and_punish()
-	# 复活后，自动战斗状态关闭
-	$CanvasLayer/UI/ButtonControl/AutoBt.set_pressed(false)
 	# 更新角色信息
 	var data_player = data_world.get_player()
 	_on_player_hp_updated(data_player)
