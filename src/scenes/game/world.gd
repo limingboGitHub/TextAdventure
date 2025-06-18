@@ -1008,8 +1008,8 @@ func _on_black_monster_mp_cost_timer_timeout() -> void:
 	if black_monster_count <= 0:
 		return
 	
-	# 计算总消耗MP（每只怪物5点）
-	var mp_cost = black_monster_count * 5
+	# 计算总消耗MP（每只怪物10点）
+	var mp_cost = black_monster_count * 10
 	
 	# 获取玩家
 	var data_player = data_world.get_player()
