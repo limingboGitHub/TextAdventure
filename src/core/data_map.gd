@@ -677,7 +677,7 @@ func _player_copy_damage_rate(_data_player: DataPlayer)-> float:
 	if not _data_player.has_effect("effect_000046"):
 		return 1.0
 	var effect = _data_player.get_effect("effect_000046")
-	return effect.value
+	return 1 - effect.value
 
 
 func _create_number_damage(

@@ -432,6 +432,8 @@ func load_local_player(data_player: DataPlayer):
 	data_player.mp_updated.connect(_on_player_mp_updated)
 	# 监听玩机技能释放前
 	data_player.before_skill_executed.connect(_on_player_before_skill_executed)
+	# 监听玩家收到伤害前
+	data_player.before_get_hurted.connect(_on_player_before_get_hurted)
 	# 监听玩家造成伤害
 	data_player.damage_caused.connect(_on_player_damage_caused)
 	# 发出玩家创建的信号
@@ -556,6 +558,10 @@ func _on_player_clone_dead(data_role: DataRole):
 
 func _on_player_before_skill_executed(data_player: DataPlayer, _skill: DataBaseSkill):
 	_on_player_mp_updated(data_player)
+
+
+func _on_player_before_get_hurted(data_player: DataPlayer):
+	_on_player_hp_updated(data_player)
 
 
 ## 判断任务可见性限制是否满足

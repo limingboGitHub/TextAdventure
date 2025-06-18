@@ -145,6 +145,8 @@ signal hp_cost_enhance_status_changed(player: DataPlayer,is_match: bool)
 
 signal damage_caused(player: DataPlayer, damage: DataDamage)
 
+signal before_get_hurted(player: DataPlayer)
+
 func _init() -> void:
 	attribute.ability_dic[ATTRIBUTE_ALLOC] = AttributeAbility.new()
 	# 监听属性的变化
@@ -581,6 +583,8 @@ func recover_mp_rate(rate: float):
 
 
 func get_hurt(data_damage: DataDamage):
+	# 发出扣血前的信号（使用药品）
+	before_get_hurted.emit(self)
 	# 魔法屏障技能判定
 	if has_effect("effect_000001"):
 		var effect = get_effect("effect_000001")
