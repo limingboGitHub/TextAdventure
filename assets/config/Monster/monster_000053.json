@@ -18,5 +18,6 @@
         "monster_skill_000002"
     ],
     "reset_status": true,
-    "auto_lock_player": true
+    "auto_lock_player": true,
+    "attack_distance": 90
 } 

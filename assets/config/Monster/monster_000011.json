@@ -11,5 +11,6 @@
     "acc": "100",
     "eva": "110",
     "exp": "1000",
-    "undead": "0"
+    "undead": "0",
+    "attack_distance": 90
 }
