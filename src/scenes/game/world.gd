@@ -14,6 +14,8 @@ func _ready() -> void:
 	data_world.load_res_finished.connect(_on_load_res_finished)
 	data_world.load_finished.connect(on_load_finished)
 	data_world.local_player_created.connect(_on_local_player_created)
+	# 监听黑化怪物定时器控制信号
+	data_world.black_monster_timer_control.connect(_on_black_monster_timer_control)
 	data_world.start()
 
 	# 监听Toast
@@ -970,3 +972,41 @@ func _on_stats_info_control_details_pressed() -> void:
 
 func _on_item_dic_dialog_item_show_bt_pressed(bag_item: BagItem) -> void:
 	_on_item_showed(bag_item)
+
+
+func _on_black_monster_timer_control(is_active: bool):
+	# 根据黑化怪物数量控制定时器的开启和关闭
+	if is_active:
+		# 开启定时器
+		$BlackMonsterMPCostTimer.start()
+	else:
+		# 关闭定时器
+		$BlackMonsterMPCostTimer.stop()
+
+
+func _on_black_monster_mp_cost_timer_timeout() -> void:
+	# 获取当前黑化怪物数量
+	var black_monster_count = data_world.black_monster_manager.black_monster_list.size()
+	if black_monster_count <= 0:
+		return
+	
+	# 计算总消耗MP（每只怪物5点）
+	var mp_cost = black_monster_count * 5
+	
+	# 获取玩家
+	var data_player = data_world.get_player()
+	if data_player.is_dead:
+		return
+		
+	# 检查玩家MP是否足够
+	if data_player.mp < mp_cost:
+		# MP不够，尝试使用药剂
+		data_world.player_manager.data_bag.find_mp_medicine_and_use()
+	
+	# 扣减玩家MP
+	if data_player.mp >= mp_cost:
+		data_player.recover_mp(-mp_cost)
+	else:
+		# MP不足且无法恢复，取消所有黑化怪物
+		data_world.black_monster_manager.clear_all()
+		ToastManager.add_toast("魔力不足，无法维持黑化召唤物")

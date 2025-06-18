@@ -562,6 +562,8 @@ script = ExtResource("13_mpr1v")
 wait_time = 60.0
 autostart = true
 
+[node name="BlackMonsterMPCostTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/UI/BigMapBt" to="." method="_on_big_map_bt_pressed"]
 [connection signal="button_down" from="CanvasLayer/UI/ButtonControl/AttackBt" to="." method="_on_attack_bt_button_down"]
 [connection signal="button_up" from="CanvasLayer/UI/ButtonControl/AttackBt" to="." method="_on_attack_bt_button_up"]
@@ -595,3 +597,4 @@ autostart = true
 [connection signal="debug_money_added" from="CanvasLayer/UI/Dialog/DebugDialog" to="." method="_on_debug_dialog_debug_money_added"]
 [connection signal="item_show_bt_pressed" from="CanvasLayer/UI/Dialog/ItemDicDialog" to="." method="_on_item_dic_dialog_item_show_bt_pressed"]
 [connection signal="timeout" from="GameSaveTimer" to="." method="_on_game_save_timer_timeout"]
+[connection signal="timeout" from="BlackMonsterMPCostTimer" to="." method="_on_black_monster_mp_cost_timer_timeout"]

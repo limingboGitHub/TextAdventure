@@ -10,6 +10,8 @@ var count_limit = 1
 # 召唤物容器
 var black_monster_list: Array[DataMonster] = []
 
+# 召唤物数量变化信号
+signal count_changed(count: int)
 
 # 添加召唤物
 func add(data_monster: DataMonster)-> bool:
@@ -21,6 +23,8 @@ func add(data_monster: DataMonster)-> bool:
 	black_monster_list.append(data_monster)
 	# 监听黑化怪物死亡事件
 	data_monster.role_dead.connect(_on_monster_dead)
+	# 触发数量变化信号
+	count_changed.emit(black_monster_list.size())
 	return true
 
 
@@ -28,6 +32,8 @@ func _on_monster_dead(data_monster: DataMonster):
 	print("黑化--怪物死亡:",data_monster.monster_unique_id)
 	data_monster.role_dead.disconnect(_on_monster_dead)
 	black_monster_list.erase(data_monster)
+	# 触发数量变化信号
+	count_changed.emit(black_monster_list.size())
 
 
 func update_count_limit(count: int):
@@ -39,3 +45,11 @@ func update_count_limit(count: int):
 			var data_monster = black_monster_list.pop_front()
 			# 删除怪物
 			data_monster.kill_role()
+		# 触发数量变化信号
+		count_changed.emit(black_monster_list.size())
+
+
+func clear_all():
+	for i in range(black_monster_list.size()):
+		var data_monster = black_monster_list.pop_front()
+		data_monster.kill_role()

@@ -37,6 +37,9 @@ var mission_depend_dic = {}
 # 黑化怪物管理器
 var black_monster_manager: DataBlackMonsterManager = DataBlackMonsterManager.new()
 
+# 黑化怪物MP消耗定时器控制信号
+signal black_monster_timer_control(is_active: bool)
+
 signal load_res_finished
 
 signal load_finished
@@ -71,6 +74,9 @@ func start():
 	# 加载资源
 	res_manager.load_res_finished.connect(_on_load_res_finished)
 	res_manager.load()
+	
+	# 监听黑化怪物数量变化
+	black_monster_manager.count_changed.connect(_on_black_monster_count_changed)
 
 
 
@@ -765,3 +771,9 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 	# 暗黑魔法技能等级提升时，更新黑化怪物数量上限
 	if skill.id == "skill_000103":
 		black_monster_manager.update_count_limit(skill.level)
+
+
+# 监听黑化怪物数量变化
+func _on_black_monster_count_changed(count: int):
+	# 当数量大于0时，开启定时器，否则关闭
+	black_monster_timer_control.emit(count > 0)
