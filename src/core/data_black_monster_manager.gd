@@ -34,7 +34,6 @@ func add(data_monster: DataMonster)-> bool:
 	# 获取玩家魔法力，进行怪物数值增幅
 	var magic_value = effect.value * data_player.get_final_details().magic
 	# 黑化怪物
-	print("黑化--添加怪物:",data_monster.monster_unique_id)
 	data_monster.black_monster(magic_value,data_player.get_final_details().accuracy)
 	black_monster_list.append(data_monster)
 	# 监听黑化怪物死亡事件

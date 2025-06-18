@@ -347,5 +347,3 @@ func set_black_finish():
 	is_dead = false
 	# 恢复血量
 	hp = attribute.final_details.max_hp
-
-	print("黑化--黑化完毕，状态重置")

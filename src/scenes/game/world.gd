@@ -4,10 +4,12 @@ extends Node2D
 
 var data_world = DataWorld.new()
 
-# 玩家场景字典 key: player_id, value: player_scene
+# 玩家场景字典 key: player_id, value: Player
 var player_scene_dic: Dictionary = {}
 # 数据保存工具
 var save_tool: BaseCacheTool = FileCacheTool.new()
+# 黑化怪物场景 key:monster_unique_id，value: Monster
+var black_monster_scene_dic: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,6 +69,7 @@ func on_load_finished():
 		map_scene.name = map.id
 		# 给地图场景注入数据
 		map_scene.data_map = map
+		map_scene.black_monster_scene_dic = black_monster_scene_dic
 		# 地图加载后，默认隐藏显示，只展示当前玩家所在地图
 		map_scene.scene_hide()
 		# 监听传送点生成完毕事件
@@ -82,6 +85,10 @@ func on_load_finished():
 		if map.is_endless:
 			# 监听无尽之塔退出事件
 			map_scene.endless_exit.connect(_on_endless_exit)
+		# 监听地图的怪物黑化事件
+		map_scene.black_monster_finish.connect(_on_black_monster_finish)
+		# 监听地图的黑化怪物死亡事件
+		map_scene.black_monster_dead.connect(_on_black_monster_dead)
 		# 监听地图探索完毕事件
 		map.map_explored.connect(_on_map_explored)
 		# 监听玩家加入地图事件
@@ -284,6 +291,9 @@ func _move_to_target_map(target_map_id: String):
 
 	# 把玩家添加到新地图
 	data_world.get_data_map(target_map_id).add_player(data_player)
+	# 将存活的黑化召唤物添加到新地图
+	data_world.add_black_monster_to_map(target_map_id)
+	
 	
 	# 更新地图
 	$CanvasLayer/UI/MapGraph.update_current_map(data_player.map_id)
@@ -828,6 +838,18 @@ func _on_npc_map_selected(map_id: String,require: Dictionary) -> void:
 
 func _on_endless_exit():
 	_back_to_main_town()
+
+
+func _on_black_monster_finish(monster_scene: Monster):
+	var unique_id = monster_scene.data_monster.monster_unique_id
+	if not black_monster_scene_dic.has(unique_id):
+		black_monster_scene_dic[unique_id] = monster_scene
+
+
+func _on_black_monster_dead(monster_scene: Monster):
+	var unique_id = monster_scene.data_monster.monster_unique_id
+	if black_monster_scene_dic.has(unique_id):
+		black_monster_scene_dic.erase(unique_id)
 
 
 func _on_debug_dialog_all_consume_added() -> void:

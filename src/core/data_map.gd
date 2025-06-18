@@ -134,7 +134,11 @@ func remove_player(_player_id: String):
 	
 	# 重置怪物状态（）
 	for monster in data_monsters.values():
-		# 如果怪物是召唤物，则清除
+		# 删除玩家的黑化召唤物
+		if monster.is_black_monster:
+			remove_monster(monster)
+			continue
+		# 如果怪物是boss召唤物，则清除
 		if monster.is_spawn_monster:
 			remove_monster(monster)
 			monster.kill_role()
@@ -155,6 +159,7 @@ func _reset():
 
 func remove_monster(data_monster: DataMonster):
 	# 解除怪物死亡监听
+	data_monster.role_hurted.disconnect(_on_monster_hurted)
 	data_monster.role_dead.disconnect(_on_monster_dead)
 	# 删除数据
 	data_monsters.erase(data_monster.monster_unique_id)
@@ -197,7 +202,7 @@ func refresh_monsters():
 				)
 				refresh_pos.data_monster = monster
 				# 添加怪物
-				_add_monster(monster,refresh_pos.pos)
+				add_monster(monster,refresh_pos.pos)
 
 
 func _on_monster_hurted(data_role:DataRole,data_damage:DataDamage):
@@ -214,7 +219,8 @@ func _on_monster_dead(data_role:DataRole):
 		if data_player:
 			data_player.add_exp(data_role.exp)
 	# 生成掉落物
-	_create_drop_thing(data_role)
+	if not data_role.is_black_monster:
+		_create_drop_thing(data_role)
 	
 	# 删除数据
 	remove_monster(data_role)
@@ -229,7 +235,7 @@ func _on_monster_dead(data_role:DataRole):
 		boss_killed.emit(self, data_role)
 
 
-func _add_monster(_monster: DataMonster,_position: Vector2):
+func add_monster(_monster: DataMonster,_position: Vector2):
 	data_monsters[_monster.monster_unique_id] = _monster
 	_monster.current_map_id = id
 	# 发出怪物添加信号
@@ -879,7 +885,7 @@ func on_monster_skill_executed(
 			monster.is_spawn_monster = true
 			# 随机一个位置
 			var pos = Vector2(randf(), randf())
-			_add_monster(monster, pos)
+			add_monster(monster, pos)
 	elif skill is DataEffectBuffSkill:
 		if skill.target_type == 0:
 			# 给玩家添加特殊效果
@@ -952,7 +958,7 @@ func start_endless():
 		# 随机一个位置
 		var pos = Vector2(randf(), randf())
 		# 添加怪物
-		_add_monster(monster,pos)
+		add_monster(monster,pos)
 
 
 func end_endless():

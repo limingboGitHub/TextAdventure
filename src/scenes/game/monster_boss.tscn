@@ -139,4 +139,8 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_dsv8w")
 
+[node name="FreeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="my_released" from="Back" to="." method="_on_panel_my_released"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

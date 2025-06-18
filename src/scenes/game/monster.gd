@@ -18,6 +18,7 @@ var attack_target: Control = null
 
 signal pressed()
 
+signal black_monster_finish(monster_scene: Monster)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,6 +46,14 @@ func _ready() -> void:
 		data_monster.monster_reseted.connect(_on_monster_reseted)
 		# 监听怪物黑化事件
 		data_monster.monster_blacked.connect(_on_monster_blacked)
+
+
+func _enter_tree() -> void:
+	if data_monster:
+		# 怪物黑化动画过程中切换地图，重新进入地图后直接触发黑化完成效果
+		if data_monster.is_black_monster and data_monster.is_dead:
+			_on_monster_black_finish()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -306,17 +315,29 @@ func _on_monster_reseted(_data_monster: DataMonster):
 	
 
 func _on_monster_blacked(_data_monster: DataMonster):
-	print("黑化--取消释放定时器:",data_monster.monster_unique_id)
 	# 重置攻击目标
 	set_attack_target(null)
 	# 停止释放定时器
 	$FreeTimer.stop()
 	# 2秒后黑化完成，切换属性
+	if get_tree() == null:
+		return
 	await get_tree().create_timer(2.0).timeout
+	_on_monster_black_finish()
+
+
+func _on_monster_black_finish():
 	# 调整名称
 	$Back/Name.text = data_monster.name + "(黑)"
+	# 颜色
+	dead_ani_time_rest = 0
+	black_ani_time_rest = 0
+	var color_value = 0.3
+	modulate = Color(color_value,color_value,color_value,1)
 	# 黑化完成
 	data_monster.set_black_finish()
+
+	black_monster_finish.emit(self)
 
 
 func _on_free_timer_timeout() -> void:

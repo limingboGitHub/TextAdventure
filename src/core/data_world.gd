@@ -777,3 +777,10 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 func _on_black_monster_count_changed(count: int):
 	# 当数量大于0时，开启定时器，否则关闭
 	black_monster_timer_control.emit(count > 0)
+
+
+# 将黑化怪物添加到地图
+func add_black_monster_to_map(map_id: String):
+	var map = map_dic[map_id]
+	for monster in black_monster_manager.black_monster_list:
+		map.add_monster(monster,Vector2(randf(),randf()))

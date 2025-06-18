@@ -18,6 +18,10 @@ const EFFECT_SKILLS = [
 # 怪物击杀开始时间 key:怪物id value:开始时间
 var boss_start_time: Dictionary = {}
 
+# 黑化怪物场景 key:monster_unique_id，value: Monster
+# 从world中注入
+var black_monster_scene_dic: Dictionary = {}
+
 
 signal portal_updated(portal: DataPortal,map_scene: Node2D)
 
@@ -30,6 +34,10 @@ signal map_drop_showed(data_map: DataMap)
 signal drop_dic_showed(data_map: DataMap)
 
 signal endless_exit()
+
+signal black_monster_finish(monster_scene: Monster)
+
+signal black_monster_dead(monster_scene: Monster)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -136,37 +144,57 @@ func _process_mock_monster(player_scene: Control,count: int):
 			break
 
 
-# 添加怪物
-func _add_monster(monster: DataMonster,_position: Vector2):
-	# 普通怪物场景
-	var monster_scene_pre = SingletonGameScenePre.MonsterScene
-	# boss怪物场景
-	if monster.type == "boss":
-		monster_scene_pre = SingletonGameScenePre.MonsterBossScene
-	# 初始化怪物场景
-	var monster_scene = monster_scene_pre.instantiate()
-	monster_scene.data_monster = monster
-	monster_scene.name = monster.monster_unique_id
-	# 设置怪物位置
-	# 获取地图场景的尺寸
-	var size = $CanvasLayer/GameZone/Monsters.size
-	if _position != Vector2.INF:
-		# 如果怪物刷新点位置不为空，则设置怪物位置
-		monster_scene.position = Vector2(_position.x * size.x, _position.y * size.y)
-	else:
-		# 如果怪物刷新点位置为空，则随机一个位置
-		monster_scene.position = Vector2(randf() * size.x, randf() * size.y)
+# 添加黑化怪物的场景
+func add_black_monster(monster_scene: Monster):
 	# 加入场景
 	$CanvasLayer/GameZone/Monsters.add_child(monster_scene)
 	# 监听点击事件
 	monster_scene.pressed.connect(_on_monster_pressed.bind(monster_scene))
 	# 监听怪物技能执行
+	monster_scene.data_monster.skill_executed.connect(_on_monster_skill_executed)
+	# 监听怪物重置事件
+	monster_scene.data_monster.monster_reseted.connect(_on_monster_reseted)
+
+
+# 添加怪物
+func _add_monster(monster: DataMonster,_position: Vector2):
+	var monster_scene: Monster = null
+	if black_monster_scene_dic.has(monster.monster_unique_id):
+		monster_scene = black_monster_scene_dic[monster.monster_unique_id]
+	else:
+		# 普通怪物场景
+		var monster_scene_pre = SingletonGameScenePre.MonsterScene
+		# boss怪物场景
+		if monster.type == "boss":
+			monster_scene_pre = SingletonGameScenePre.MonsterBossScene
+		# 初始化怪物场景
+		monster_scene = monster_scene_pre.instantiate()
+		monster_scene.data_monster = monster
+		monster_scene.name = monster.monster_unique_id
+		# 设置怪物位置
+		# 获取地图场景的尺寸
+		var size = $CanvasLayer/GameZone/Monsters.size
+		if _position != Vector2.INF:
+			# 如果怪物刷新点位置不为空，则设置怪物位置
+			monster_scene.position = Vector2(_position.x * size.x, _position.y * size.y)
+		else:
+			# 如果怪物刷新点位置为空，则随机一个位置
+			monster_scene.position = Vector2(randf() * size.x, randf() * size.y)
+	# 加入场景
+	$CanvasLayer/GameZone/Monsters.add_child(monster_scene)
+	# 监听点击事件
+	monster_scene.pressed.connect(_on_monster_pressed.bind(monster_scene))
+	# 监听黑化怪物完成事件
+	monster_scene.black_monster_finish.connect(_on_black_monster_finish)
+	# 监听怪物技能执行
 	monster.skill_executed.connect(_on_monster_skill_executed)
 	# 监听怪物重置事件
 	monster.monster_reseted.connect(_on_monster_reseted)
+	# 监听怪物死亡
+	monster.role_dead.connect(_on_monster_dead)
 
 	# 如果刷新的是boss，则展示击杀信息
-	if monster.is_boss():
+	if monster.is_boss() and not monster.is_black_monster:
 		$CanvasLayer/BossStatus.show()
 		# 展示击杀记录
 		if SingletonGame.boss_kill_time.has(monster.monster_id):
@@ -188,9 +216,32 @@ func _on_monster_reseted(data_monster: DataMonster):
 		$CanvasLayer/BossStatus/CostTime.text = "-"
 
 
+func _on_black_monster_finish(monster_scene: Monster):
+	# 黑化完成复活后，重新建立信号链接
+	monster_scene.data_monster.role_dead.connect(_on_monster_dead)
+	monster_scene.data_monster.skill_executed.connect(_on_monster_skill_executed)
+	# 发出黑化怪物完成信号
+	black_monster_finish.emit(monster_scene)
+
+
+func _on_monster_dead(data_monster: DataMonster):
+	# 断开信号
+	data_monster.role_dead.disconnect(_on_monster_dead)
+	data_monster.skill_executed.disconnect(_on_monster_skill_executed)
+	data_monster.monster_reseted.disconnect(_on_monster_reseted)
+	var monster_scene = $CanvasLayer/GameZone/Monsters.get_node(data_monster.monster_unique_id)
+	if monster_scene:
+		monster_scene.pressed.disconnect(_on_monster_pressed)
+		if data_monster.is_black_monster:
+			monster_scene.black_monster_finish.disconnect(_on_black_monster_finish)
+			black_monster_dead.emit(monster_scene)
+
+
 func _on_monster_skill_executed(data_monster: DataMonster, skill: DataBaseSkill):
 	# 获取目标和自身的方向向量
 	var monster_scene = $CanvasLayer/GameZone/Monsters.get_node(data_monster.monster_unique_id)
+	if not monster_scene:
+		return
 	var target_scene = monster_scene.attack_target
 	var direction = target_scene.global_position - monster_scene.global_position
 	# 获取目标和自身距离
@@ -409,6 +460,14 @@ func remove_player_scene(data_player: DataPlayer):
 	$CanvasLayer/GameZone/Players.remove_child(player_scene)
 	# 移除攻击目标
 	player_scene.attack_target = null
+	
+	# 删除黑化怪物场景
+	if data_map:
+		for child in $CanvasLayer/GameZone/Monsters.get_children():
+			if child.data_monster.is_black_monster:
+				child.set_attack_target(null)
+				$CanvasLayer/GameZone/Monsters.remove_child(child)
+
 	# 解除监听
 	player_scene.find_target_started.disconnect(_on_find_target_started)
 	player_scene.attack_target_changed.disconnect(_on_attack_target_changed)
