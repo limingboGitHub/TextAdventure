@@ -10,16 +10,32 @@ var count_limit = 1
 # 召唤物容器
 var black_monster_list: Array[DataMonster] = []
 
+# 玩家
+var data_player: DataPlayer
+
 # 召唤物数量变化信号
 signal count_changed(count: int)
+
+
+# 初始化数据
+func init_data(_data_player: DataPlayer):
+	self.data_player = _data_player
+
 
 # 添加召唤物
 func add(data_monster: DataMonster)-> bool:
 	if black_monster_list.size() >= count_limit:
 		return false
+	
+	# 技能数值强度
+	if not data_player.has_effect("effect_000045"):
+		return false
+	var effect = data_player.get_effect("effect_000045")
+	# 获取玩家魔法力，进行怪物数值增幅
+	var magic_value = effect.value * data_player.get_final_details().magic
 	# 黑化怪物
 	print("黑化--添加怪物:",data_monster.monster_unique_id)
-	data_monster.black_monster()
+	data_monster.black_monster(magic_value)
 	black_monster_list.append(data_monster)
 	# 监听黑化怪物死亡事件
 	data_monster.role_dead.connect(_on_monster_dead)

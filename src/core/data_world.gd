@@ -74,11 +74,6 @@ func start():
 	# 加载资源
 	res_manager.load_res_finished.connect(_on_load_res_finished)
 	res_manager.load()
-	
-	# 监听黑化怪物数量变化
-	black_monster_manager.count_changed.connect(_on_black_monster_count_changed)
-
-
 
 
 func _on_load_res_finished():
@@ -415,6 +410,11 @@ func load_local_player(data_player: DataPlayer):
 	
 	# 初始化玩家当前所在地图的NPC任务状态
 	_set_map_npc_mission_status(data_player.map_id)
+	# 初始化黑化召唤物管理器
+	black_monster_manager.init_data(data_player)
+	# 监听黑化怪物数量变化
+	black_monster_manager.count_changed.connect(_on_black_monster_count_changed)
+
 	# 监听玩家等级变化
 	data_player.level_updated.connect(_on_player_level_updated)
 	# 监听玩家血量变化

@@ -63,6 +63,8 @@ var charge_component = DataChargeComponent.new()
 
 # 黑化相关
 var is_black_monster = false
+# 黑化剩余存活时间
+var black_monster_rest_time = 20
 
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
@@ -129,6 +131,13 @@ func process(delta: float):
 			time_add_damage_rest_value += get_effect("effect_000029").value
 			attribute.final_details.attack += time_add_damage_rest_value
 			#print("越战越勇：", time_add_damage_rest_value)
+
+	# 处理黑化剩余存活时间
+	if is_black_monster:
+		black_monster_rest_time -= delta
+		if black_monster_rest_time <= 0 and not is_dead:
+			# 黑化持续时间结束，怪物死亡
+			kill_role()
 
 	super.process(delta)
 
@@ -320,7 +329,13 @@ func set_combat(_is_combat: bool):
 	is_combat = _is_combat
 
 
-func black_monster():
+func black_monster(magic_value: int):
+	# 设置黑化剩余存活时间
+	black_monster_rest_time = 20
+	# 设置黑化怪物攻击力增幅
+	attribute.final_details.attack += magic_value
+
+	# 设置黑化状态
 	is_black_monster = true
 	monster_blacked.emit(self)
 

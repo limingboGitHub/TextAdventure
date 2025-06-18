@@ -243,17 +243,17 @@
 	},
 	"skill_000103": {
 		"name": "暗黑魔法",
-		"desc": "黑魔法击败敌人后召唤并黑化，拥有原来{d}的属性，每级增加1召唤上限，每只召唤物每秒消耗5点MP",
+		"desc": "击败敌人后使其黑化复活，获得魔法力{d}的攻击增幅，每级+1数量，持续20秒，每只每秒消耗5点MP",
 		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
 			"effect_list": [
 				{
-					"id": "effect_000044",
+					"id": "effect_000045",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.24,
-					"step_value": 0.04
+					"start_value": 0.215,
+					"step_value": 0.015
 				}
 			]
 		}

@@ -673,7 +673,7 @@ func _skill_executed_casting(
 		attack_effect.move_speed = skill.skill_move_speed
 		attack_effect.scale_duration = skill.cd
 		# 黑魔法技能颜色
-		if player_scene.data_player.has_effect("effect_000044"):
+		if player_scene.data_player.has_effect("effect_000045"):
 			attack_effect.set_black_color()
 		# 技能增幅
 		if player_scene.data_player.has_skill_enhance(skill.id):

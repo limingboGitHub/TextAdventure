@@ -310,7 +310,7 @@
 		"effect_000045":{
 			"name": "暗黑魔法",
 			"effect_type": "dark_magic",
-			"desc": "黑魔法击败敌人后召唤并黑化，拥有原来{d}的属性，每级增加1召唤上限，每只召唤物每秒消耗5点MP",
+			"desc": "",
 			"value_type": "percent",
 			"value": 0.2
 		}
