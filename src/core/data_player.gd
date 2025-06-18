@@ -397,10 +397,6 @@ func _process_recover_mp(delta: float,recover_mp_value: int):
 		recover_mp_rest_time = RECOVER_MP_INTERVAL / float(SingletonGame.speed)
 
 
-func is_dizziness()-> bool:
-	return has_effect("effect_000032")
-
-
 func process_attack():
 	if is_dead:
 		return

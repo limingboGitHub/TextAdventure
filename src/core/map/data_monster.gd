@@ -111,7 +111,8 @@ func process(delta: float):
 		execute_cd_rest -= delta
 	
 	# 处理蓄力
-	charge_component.process(delta)
+	if not is_dizziness():
+		charge_component.process(delta)
 
 	# 处理怪物特殊技能剩余CD（战斗开始后开始计算特殊技能CD）
 	if is_combat:
@@ -226,7 +227,10 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 			# buff名称调整为附加状态的名称，例如“眩晕”
 			buff_skill.name = dizziness_effect_name
 			# 附加对象为玩家
-			buff_skill.target_type = 0
+			if is_black_monster:
+				buff_skill.target_type = 1
+			else:
+				buff_skill.target_type = 0
 		else:
 			buff_skill = DataSkillBag.create_buff_skill(
 				monster_skill.id,
@@ -339,6 +343,8 @@ func black_monster(magic_value: int,accuracy: int):
 
 	# 设置黑化状态
 	is_black_monster = true
+	# 自动锁玩家取消
+	auto_lock_player = false
 	monster_blacked.emit(self)
 
 

@@ -119,7 +119,8 @@ func _process_auto_lock_player():
 	for monster_scene in $CanvasLayer/GameZone/Monsters.get_children():
 		if monster_scene.attack_target == null \
 			and monster_scene.data_monster \
-			and monster_scene.data_monster.auto_lock_player:
+			and monster_scene.data_monster.auto_lock_player \
+			and not monster_scene.data_monster.is_black_monster:
 			var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.get_player().player_id)
 			monster_scene.set_attack_target(player_scene)
 

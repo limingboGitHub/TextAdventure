@@ -903,6 +903,7 @@ func _on_debug_dialog_all_consume_added() -> void:
 		"consume_002107",
 		"consume_002108",
 		"consume_002109",
+		"consume_002010",
 		"consume_002111",
 		"consume_002112",
 		"consume_002113",

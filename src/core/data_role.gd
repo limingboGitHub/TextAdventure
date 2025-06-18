@@ -65,6 +65,10 @@ func get_hurt(data_damage: DataDamage):
 		kill_role()
 
 
+func is_dizziness()-> bool:
+	return has_effect("effect_000032")
+
+
 func kill_role():
 	is_dead = true
 	# 发送角色死亡信号

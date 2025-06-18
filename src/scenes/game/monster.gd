@@ -90,6 +90,9 @@ func clear():
 
 
 func _process_attack(delta: float):
+	# 眩晕状态无法移动
+	if data_monster and data_monster.is_dizziness():
+		return
 	if attack_target:
 		if attack_target is Player:
 			_process_attack_player(attack_target,delta)
@@ -193,12 +196,18 @@ func _on_effect_added(_data_effect: DataEffect):
 	if data_monster and _data_effect.id == "effect_000029":
 		# 越战越勇
 		$TimeAddDamageLabel.show()
+	# 眩晕状态
+	if _data_effect.type == "dizziness":
+		$DizzinessLabel.show()
 
 
 func _on_effect_removed(_data_effect: DataEffect):
 	if data_monster and _data_effect.id == "effect_000029":
 		# 越战越勇
 		$TimeAddDamageLabel.hide()
+	# 眩晕状态
+	if _data_effect.type == "dizziness":
+		$DizzinessLabel.hide()
 
 
 func _update_hp():
