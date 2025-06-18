@@ -568,6 +568,8 @@ func scene_show():
 
 
 func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count: int = 0):
+	if skill == null:
+		return
 	print("skill_executed:",player.player_id,skill.name)
 	var player_scene = $CanvasLayer/GameZone/Players.get_node(player.player_id)
 	if player_scene == null:

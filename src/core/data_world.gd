@@ -39,6 +39,8 @@ var black_monster_manager: DataBlackMonsterManager = DataBlackMonsterManager.new
 
 # 暗影化身对象管理
 var player_clone_dic: Dictionary = {}
+# 分身数量限制
+var player_clone_count_limit = 1
 
 # 黑化怪物MP消耗定时器控制信号
 signal black_monster_timer_control(is_active: bool)
@@ -536,6 +538,14 @@ func _on_player_mp_updated(data_player: DataPlayer):
 		player_manager.data_bag.find_mp_medicine_and_use()
 
 
+func _on_player_clone_dead(data_role: DataRole):
+	# 断开信号
+	data_role.mp_updated.disconnect(_on_player_mp_updated)
+	data_role.role_dead.disconnect(_on_player_clone_dead)
+	# 从地图删除
+	map_dic[data_role.map_id].remove_player_clone(data_role)
+
+
 func _on_player_before_skill_executed(data_player: DataPlayer, _skill: DataBaseSkill):
 	_on_player_mp_updated(data_player)
 
@@ -787,7 +797,7 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 			player_clone_dic.clear()
 		elif skill.level > 0:
 			if player_manager.data_player:
-				if not player_clone_dic.has(player_manager.data_player.player_id):
+				if player_clone_dic.size() < player_clone_count_limit:
 					var player_clone = create_player_clone()
 					# 添加到地图
 					map_dic[player_clone.map_id].add_player_clone(player_clone)
@@ -800,6 +810,10 @@ func create_player_clone() -> DataPlayer:
 	var index = player_clone_dic.size() + 1
 	player_clone.player_id = player_clone.player_id + "_clone_" + str(index)
 	player_clone_dic[player_clone.player_id] = player_clone
+	# 监听分身的MP消耗
+	player_clone.mp_updated.connect(_on_player_mp_updated)
+	# 监听分身死亡
+	player_clone.role_dead.connect(_on_player_clone_dead)
 	return player_clone
 
 
@@ -814,3 +828,11 @@ func add_black_monster_to_map(map_id: String):
 	var map = map_dic[map_id]
 	for monster in black_monster_manager.black_monster_list:
 		map.add_monster(monster,Vector2(randf(),randf()))
+
+
+# 设置玩家默认技能
+func set_player_skill(skill: DataBaseSkill):
+	get_player().skill = skill
+	# 同步设置分身技能
+	for player_clone in player_clone_dic.values():
+		player_clone.skill = skill

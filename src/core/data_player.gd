@@ -901,7 +901,12 @@ func copy()-> DataPlayer:
 	var new_player = DataPlayer.new()
 	new_player.load(dic)
 	# 部分浅拷贝，分身可以和本体技能一致
+	new_player.attribute = attribute
+	new_player.normal_attack = normal_attack
 	new_player.skill = skill
+	new_player.buff_dic = buff_dic
+	new_player.effect_dic = effect_dic
+	new_player.skill_enhance_dic = skill_enhance_dic
 	new_player.is_copy = true
 
 	return new_player

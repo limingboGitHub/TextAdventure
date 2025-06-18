@@ -300,7 +300,9 @@ func _move_to_target_map(target_map_id: String):
 	data_world.get_data_map(target_map_id).add_player(data_player)
 	# 将存活的黑化召唤物添加到新地图
 	data_world.add_black_monster_to_map(target_map_id)
-	
+	# 将分身添加到新地图
+	for player_clone in data_world.player_clone_dic.values():
+		data_world.get_data_map(target_map_id).add_player_clone(player_clone)
 	
 	# 更新地图
 	$CanvasLayer/UI/MapGraph.update_current_map(data_player.map_id)
@@ -478,7 +480,7 @@ func _on_setting_saved(
 
 func _on_skill_fast_key_selected(skill: DataBaseSkill):
 	SingletonGame.auto_skill_id = skill.id
-	data_world.get_player().skill = skill
+	data_world.set_player_skill(skill)
 
 
 func _on_rest_bt_pressed() -> void:
@@ -757,9 +759,11 @@ func _on_map_player_clone_added(data_map: DataMap, _player_clone: DataPlayer):
 	map_scene.add_player_clone_scene(_player_clone, player_scene)
 
 
-func _on_map_player_clone_removed(data_map: DataMap, data_player: DataPlayer):
+func _on_map_player_clone_removed(data_map: DataMap, _player_clone: DataPlayer):
 	var map_scene = $Maps.get_node(data_map.id)
-	map_scene.remove_player_clone_scene(data_player)
+	if black_monster_scene_dic.has(_player_clone.player_id):
+		black_monster_scene_dic.erase(_player_clone.player_id)
+	map_scene.remove_player_clone_scene(_player_clone)
 
 
 func _on_map_drop_showed(data_map: DataMap):

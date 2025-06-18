@@ -143,6 +143,20 @@ func remove_player(_player_id: String):
 	data_player.reset()
 	data_player = null
 
+	# 清除分身
+	for player_clone_id in data_player_clone.keys():
+		if not data_player_clone.has(player_clone_id):
+			continue
+		var player_clone = data_player_clone[player_clone_id]
+		player_clone.pick_up_executed.disconnect(_on_player_pick_execute)
+		# 取消玩家受伤监听
+		player_clone.role_hurted.disconnect(_on_player_hurted)
+		# 发出玩家离开地图信号
+		player_clone_removed.emit(self, player_clone)
+		# 玩家状态重置
+		player_clone.reset()
+		data_player_clone.erase(player_clone_id)
+
 	# 无尽之塔退出，则清空怪物
 	if is_endless:
 		_reset()
@@ -168,7 +182,6 @@ func remove_player_clone(_data_player_clone: DataPlayer):
 	data_player_clone.erase(_data_player_clone.player_id)
 	# 玩家状态重置
 	_data_player_clone.reset()
-	_data_player_clone = null
 	# 发出分身离开地图信号
 	player_clone_removed.emit(self, _data_player_clone)
 
