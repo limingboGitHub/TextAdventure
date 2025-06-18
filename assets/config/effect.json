@@ -310,16 +310,16 @@
 		"effect_000045":{
 			"name": "暗黑魔法",
 			"effect_type": "dark_magic",
-			"desc": "",
+			"desc": "暗黑魔法召唤物额外获得魔法力{d}的攻击增幅",
 			"value_type": "percent",
-			"value": 0.2
+			"value": 0.1
 		},
 		"effect_000046":{
 			"name": "暗影化身",
 			"effect_type": "shadow_clone",
-			"desc": "",
+			"desc": "暗影化身提升本体{d}的伤害",
 			"value_type": "percent",
-			"value": 0.2
+			"value": 0.1
 		}
 	}
 }
