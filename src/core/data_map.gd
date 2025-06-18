@@ -253,7 +253,7 @@ func _on_monster_hurted(data_role:DataRole,data_damage:DataDamage):
 
 func _on_monster_dead(data_role:DataRole):
 	# 给玩家增加经验
-	if not is_endless:
+	if not is_endless and not data_role.is_black_monster:
 		if data_player:
 			data_player.add_exp(data_role.exp)
 	# 生成掉落物
@@ -915,8 +915,12 @@ func on_monster_skill_executed(
 			var monster = monster_manager.create_monster(
 				monster_id, false, monster_config,monster_skill_dic,effect_config_dic
 			)
-			# 自动锁定玩家
-			monster.auto_lock_player = true
+			if monster.is_black_monster:
+				# 黑化怪物
+				monster.black_monster()
+			else:
+				# 自动锁定玩家
+				monster.auto_lock_player = true
 			# 不掉落物品
 			monster.is_drop_item = false
 			# 标记为召唤物

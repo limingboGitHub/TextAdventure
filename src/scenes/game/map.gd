@@ -244,6 +244,8 @@ func _on_monster_skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 	if not monster_scene:
 		return
 	var target_scene = monster_scene.attack_target
+	if target_scene == null:
+		return
 	var direction = target_scene.global_position - monster_scene.global_position
 	# 获取目标和自身距离
 	var distance = direction.length()
@@ -482,11 +484,13 @@ func remove_player_scene(data_player: DataPlayer):
 	# 移除攻击目标
 	player_scene.attack_target = null
 	
-	# 删除黑化怪物场景
+	# 遍历所有怪物场景
 	if data_map:
 		for child in $CanvasLayer/GameZone/Monsters.get_children():
+			# 玩家离开后，清理所有攻击目标
+			child.set_attack_target(null)
+			# 黑化怪物删除场景
 			if child.data_monster.is_black_monster:
-				child.set_attack_target(null)
 				$CanvasLayer/GameZone/Monsters.remove_child(child)
 
 	# 解除监听

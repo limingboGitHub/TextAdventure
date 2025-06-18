@@ -44,6 +44,9 @@ func create_monster(
 			var monster_skill_info = monster_skill_dic[monster_skill_id]
 			var monster_skill = DataMonsterSkill.create_monster_skill(monster_skill_info)
 			monster.add_monster_skill(monster_skill)
+			# 召唤怪物技能，注入召唤怪物配置信息
+			if monster_skill_id == "monster_skill_000002":
+				monster.monster_config_dic = monster_config
 	# 注入配置信息
 	monster.effect_config = effect_config
 

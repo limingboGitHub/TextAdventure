@@ -549,6 +549,7 @@ func _on_player_clone_dead(data_role: DataRole):
 	data_role.mp_updated.disconnect(_on_player_mp_updated)
 	data_role.before_skill_executed.disconnect(_on_player_before_skill_executed)
 	data_role.role_dead.disconnect(_on_player_clone_dead)
+	data_role.damage_caused.disconnect(_on_player_damage_caused)
 	# 从地图删除
 	map_dic[data_role.map_id].remove_player_clone(data_role)
 
@@ -823,6 +824,8 @@ func create_player_clone() -> DataPlayer:
 	player_clone.before_skill_executed.connect(_on_player_before_skill_executed)
 	# 监听分身死亡
 	player_clone.role_dead.connect(_on_player_clone_dead)
+	# 监听分身造成的伤害
+	player_clone.damage_caused.connect(_on_player_damage_caused)
 	return player_clone
 
 

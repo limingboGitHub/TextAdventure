@@ -66,6 +66,9 @@ var is_black_monster = false
 # 黑化剩余存活时间
 var black_monster_rest_time = 20
 
+# 召唤怪物相关配置信息，初始化时注入
+var monster_config_dic: Dictionary = {}
+
 signal skill_executed(data_monster: DataMonster, skill: DataBaseSkill)
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
@@ -333,13 +336,15 @@ func set_combat(_is_combat: bool):
 	is_combat = _is_combat
 
 
-func black_monster(magic_value: int,accuracy: int):
+func black_monster(magic_value: int = 0,accuracy: int = 0):
 	# 设置黑化剩余存活时间
 	black_monster_rest_time = 20
 	# 设置黑化怪物攻击力增幅
-	attribute.final_details.attack += magic_value
+	if magic_value > 0:
+		attribute.final_details.attack += magic_value
 	# 设置黑化怪物命中
-	attribute.final_details.accuracy = accuracy
+	if accuracy > 0:
+		attribute.final_details.accuracy = accuracy
 
 	# 设置黑化状态
 	is_black_monster = true
