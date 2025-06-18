@@ -230,37 +230,73 @@
 			"name": "冰晶长裤",
 			"desc": "蕴含冰晶力量的长裤，能增强魔法师的施法能力。",
 			"require_level": 30,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 9000,
 			"attribute_details": {
 				"max_mp": 20,
 				"defense": 8
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"lower_body_001009": {
 			"name": "熔岩长裤",
 			"desc": "注入熔岩能量的长裤，行走时有微热的温度。",
 			"require_level": 40,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 16000,
 			"attribute_details": {
 				"max_mp": 35,
 				"defense": 15
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
 		},
 		"lower_body_001010": {
 			"name": "星沙长裤",
 			"desc": "由星辰沙粒编织而成的长裤，闪烁着神秘的光辉。",
 			"require_level": 50,
-			"quality": "优秀",
+			"quality": "稀有",
 			"price": 28000,
 			"attribute_details": {
 				"max_mp": 55,
 				"defense": 20
 			},
-			"max_upgrade_times": 6
+			"max_upgrade_times": 7
+		},
+		"lower_body_001011": {
+			"name": "冰晶长裤",
+			"desc": "蕴含着冰晶之力的长裤，行走时散发寒气。",
+			"require_level": 30,
+			"quality": "稀有",
+			"price": 9000,
+			"attribute_details": {
+				"max_mp": 25,
+				"defense": 10
+			},
+			"max_upgrade_times": 7
+		},
+		"lower_body_001012": {
+			"name": "烈焰长裤",
+			"desc": "注入熔岩精华的长裤，行走时仿佛踏在火山之上。",
+			"require_level": 40,
+			"quality": "稀有",
+			"price": 16000,
+			"attribute_details": {
+				"max_mp": 40,
+				"defense": 15
+			},
+			"max_upgrade_times": 7
+		},
+		"lower_body_001013": {
+			"name": "云沙长裤",
+			"desc": "由沙漠云沙魔力编织而成，穿上后如同行走在云端。",
+			"require_level": 50,
+			"quality": "稀有",
+			"price": 28000,
+			"attribute_details": {
+				"max_mp": 60,
+				"defense": 20
+			},
+			"max_upgrade_times": 7
 		},
 
 		"lower_body_002001": {

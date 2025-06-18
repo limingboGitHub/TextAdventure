@@ -307,6 +307,28 @@
 			},
 			"max_upgrade_times": 7
 		},
+		"weapon_001012": {
+			"name": "邪龙脊骨",
+			"desc": "邪龙的脊骨，散发着强大的魔力",
+			"require_level": 40,
+			"quality": "稀有",
+			"price": 5000,
+			"attribute_details": {
+				"magic": 30
+			},
+			"max_upgrade_times": 7
+		},
+		"weapon_001013": {
+			"name": "法老之杖",
+			"desc": "法老的权杖，散发着强大的魔力",
+			"require_level": 50,
+			"quality": "稀有",
+			"price": 10000,
+			"attribute_details": {
+				"magic": 40
+			},
+			"max_upgrade_times": 7
+		},
 
 		"weapon_002001": {
 			"name": "木刻小刀",

@@ -12,7 +12,7 @@ signal all_consume_added
 
 signal all_job1_added(level: int)
 
-signal all_job2_added
+signal all_job2_added(level: int)
 
 signal all_job3_added(level: int)
 
@@ -90,3 +90,15 @@ func _on_job_3_40_bt_pressed() -> void:
 
 func _on_job_3_50_bt_pressed() -> void:
 	all_job3_added.emit(50)
+
+
+func _on_job_2_30_bt_pressed() -> void:
+	all_job2_added.emit(30)
+
+
+func _on_job_2_40_bt_pressed() -> void:
+	all_job2_added.emit(40)
+
+
+func _on_job_2_50_bt_pressed() -> void:
+	all_job2_added.emit(50)

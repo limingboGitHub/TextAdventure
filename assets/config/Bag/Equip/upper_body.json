@@ -262,6 +262,42 @@
 			},
 			"max_upgrade_times": 6
 		},
+		"upper_body_001011": {
+			"name": "冰晶法袍",
+			"desc": "由千年寒冰结晶编织而成，穿上后周围温度骤降。",
+			"require_level": 30,
+			"quality": "稀有",
+			"price": 9000,
+			"attribute_details": {
+				"max_mp": 25,
+				"defense": 10
+			},
+			"max_upgrade_times": 7
+		},
+		"upper_body_001012": {
+			"name": "烈焰法袍",
+			"desc": "以火山熔岩丝线缝制，穿上后如同被火焰环绕。",
+			"require_level": 40,
+			"quality": "稀有",
+			"price": 16000,
+			"attribute_details": {
+				"max_mp": 40,
+				"defense": 15
+			},
+			"max_upgrade_times": 7
+		},
+		"upper_body_001013": {
+			"name": "云沙法袍",
+			"desc": "以沙漠中神秘云沙织就，穿上后如沐神力。",
+			"require_level": 50,
+			"quality": "稀有",
+			"price": 28000,
+			"attribute_details": {
+				"max_mp": 60,
+				"defense": 20
+			},
+			"max_upgrade_times": 7
+		},
 		
 		"upper_body_002001": {
 			"name": "潜行皮衣",

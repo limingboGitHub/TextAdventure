@@ -262,6 +262,42 @@
 			},
 			"max_upgrade_times": 6
 		},
+		"shoes_001011": {
+			"name": "冰晶凉鞋",
+			"desc": "蕴含着冰晶之力的凉鞋，踏过之处留下永恒的霜痕。",
+			"require_level": 30,
+			"quality": "稀有",
+			"price": 7000,
+			"attribute_details": {
+				"max_mp": 20,
+				"defense": 8
+			},
+			"max_upgrade_times": 7
+		},
+		"shoes_001012": {
+			"name": "烈焰法靴",
+			"desc": "融入熔岩精华的法靴，每一步都能感受到火焰的力量。",
+			"require_level": 40,
+			"quality": "稀有",
+			"price": 13000,
+			"attribute_details": {
+				"max_mp": 35,
+				"defense": 15
+			},
+			"max_upgrade_times": 7
+		},
+		"shoes_001013": {
+			"name": "云沙法靴",
+			"desc": "注入沙漠云沙魔力的法靴，轻盈如踏云而行。",
+			"require_level": 50,
+			"quality": "稀有",
+			"price": 22000,
+			"attribute_details": {
+				"max_mp": 55,
+				"defense": 20
+			},
+			"max_upgrade_times": 7
+		},
 
 		"shoes_002001": {
 			"name": "潜行便鞋",

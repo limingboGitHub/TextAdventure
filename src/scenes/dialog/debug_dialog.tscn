@@ -136,14 +136,32 @@ offset_bottom = 371.0
 theme = ExtResource("2_2tysi")
 text = "士兵50装"
 
-[node name="Job2Bt" type="Button" parent="."]
+[node name="Job2_30Bt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 379.0
 offset_right = 151.0
 offset_bottom = 429.0
 theme = ExtResource("2_2tysi")
-text = "学者装备"
+text = "学者30装"
+
+[node name="Job2_40Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 379.0
+offset_right = 287.0
+offset_bottom = 429.0
+theme = ExtResource("2_2tysi")
+text = "学者40装"
+
+[node name="Job2_50Bt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 379.0
+offset_right = 425.0
+offset_bottom = 429.0
+theme = ExtResource("2_2tysi")
+text = "学者50装"
 
 [node name="Job3_30Bt" type="Button" parent="."]
 layout_mode = 0
@@ -187,7 +205,9 @@ offset_bottom = 55.0
 [connection signal="pressed" from="Job1_30Bt" to="." method="_on_job_1_30_bt_pressed"]
 [connection signal="pressed" from="Job1_40Bt" to="." method="_on_job_1_40_bt_pressed"]
 [connection signal="pressed" from="Job1_50Bt" to="." method="_on_job_1_50_bt_pressed"]
-[connection signal="pressed" from="Job2Bt" to="." method="_on_job_2_bt_pressed"]
+[connection signal="pressed" from="Job2_30Bt" to="." method="_on_job_2_30_bt_pressed"]
+[connection signal="pressed" from="Job2_40Bt" to="." method="_on_job_2_40_bt_pressed"]
+[connection signal="pressed" from="Job2_50Bt" to="." method="_on_job_2_50_bt_pressed"]
 [connection signal="pressed" from="Job3_30Bt" to="." method="_on_job_3_30_bt_pressed"]
 [connection signal="pressed" from="Job3_40Bt" to="." method="_on_job_3_40_bt_pressed"]
 [connection signal="pressed" from="Job3_50Bt" to="." method="_on_job_3_50_bt_pressed"]

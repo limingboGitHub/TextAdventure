@@ -215,6 +215,42 @@
 			},
 			"max_upgrade_times":6
 		},
+		"cap_001008":{
+			"name":"冰晶法帽",
+			"desc":"蕴含冰霜力量的头冠，能大幅增强魔法威力。",
+			"require_level":30,
+			"quality":"稀有",
+			"price":8000,
+			"attribute_details":{
+				"max_mp":20,
+				"defense":8
+			},
+			"max_upgrade_times":7
+		},
+		"cap_001009":{
+			"name":"烈焰法帽",
+			"desc":"蕴含冰霜力量的头冠，能大幅增强魔法威力。",
+			"require_level":40,
+			"quality":"稀有",
+			"price":8000,
+			"attribute_details":{
+				"max_mp":35,
+				"defense":15
+			},
+			"max_upgrade_times":7
+		},
+		"cap_001010":{
+			"name":"云沙法帽",
+			"desc":"蕴含沙漠中有魔力的云沙",
+			"require_level":50,
+			"quality":"稀有",
+			"price":8000,
+			"attribute_details":{
+				"max_mp":55,
+				"defense":20
+			},
+			"max_upgrade_times":7
+		},
 
 		"cap_002001":{
 			"name":"潜行面罩",
