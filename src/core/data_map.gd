@@ -293,18 +293,14 @@ func player_attack_skill_effect(
 			# 判断击杀类的特殊效果
 			_check_kill_monster_effect(_data_player, target)
 			# 判断“暗黑魔法”效果
-			_check_black_monster_effect(_data_player, target, skill,effect_position)
+			_check_black_monster_effect(_data_player, target)
 
 
 func _check_black_monster_effect(
 	_data_player: DataPlayer, 
-	_target: DataMonster, 
-	_skill: DataBaseSkill,
-	_effect_position: Vector2
+	_target: DataMonster
 ):
-
-	if (_skill.id == "skill_000100" or _skill.id == "skill_000101") \
-		and _data_player.has_effect("effect_000045"):
+	if _data_player and _data_player.has_effect("effect_000045"):
 		# 发出黑化怪物准备黑化的信号（是否能黑化由黑化怪物管理器决定）
 		monster_ready_blacked.emit(self, _target)
 
@@ -847,6 +843,10 @@ func on_monster_skill_executed(
 			var damage = DataDamage.new(DataDamage.TYPE.PHYSICAL,DataDamage.SOURCE_TYPE.MONSTER, damage_value)
 			damage.direction = direction
 			target.get_hurt(damage)
+
+			# 如果目标是普通怪物且死亡，则判断“暗黑魔法”
+			if target is DataMonster and target.is_dead:
+				_check_black_monster_effect(data_player,target)
 		else:
 			var damage = DataDamage.new(DataDamage.TYPE.PHYSICAL,DataDamage.SOURCE_TYPE.MONSTER, 0)
 			damage.direction = direction
@@ -861,6 +861,7 @@ func on_monster_skill_executed(
 				if randf() < hit_rate:
 					# 闪避追击
 					data_player.execute_normal_attack_no_cd()
+
 	elif skill is DataSpawnSkill:
 		# 召唤怪物
 		for count in range(skill.monster_count):
