@@ -89,7 +89,6 @@ func _process(delta: float) -> void:
 				# 蓄力时不进行攻击
 				if not data_player.get_charging_status():
 					_process_attack(delta)
-				data_player.process_pick()
 		else:
 			# 监听玩家的attack事件
 			if Input.is_action_pressed("attack"):
@@ -99,9 +98,8 @@ func _process(delta: float) -> void:
 			elif Input.is_action_just_released("attack"):
 				pass
 
-			# 拾取
-			if Input.is_action_pressed("pick"):
-				data_player.process_pick()
+		# 拾取
+		data_player.process_pick()
 
 		# 处理旋转
 		_process_rotate(data_player,delta)
