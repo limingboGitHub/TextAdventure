@@ -28,3 +28,14 @@ func _on_monster_dead(data_monster: DataMonster):
 	print("黑化--怪物死亡:",data_monster.monster_unique_id)
 	data_monster.role_dead.disconnect(_on_monster_dead)
 	black_monster_list.erase(data_monster)
+
+
+func update_count_limit(count: int):
+	count_limit = count
+	# 如果召唤物数量大于上限，则移除多余的召唤物
+	if black_monster_list.size() > count_limit:
+		var remove_count = black_monster_list.size() - count_limit
+		for i in range(remove_count):
+			var data_monster = black_monster_list.pop_front()
+			# 删除怪物
+			data_monster.kill_role()

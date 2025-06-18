@@ -43,6 +43,12 @@ func init_dic(_skill_dic: Dictionary, _effect_dic: Dictionary) -> void:
 			skill.level_changed.connect(_on_skill_level_changed)
 
 
+func skill_foreach(callback: Callable):
+	for phase in data.keys():
+		for skill in data[phase]:
+			callback.call(skill)
+
+
 func add_skill(phase: String, skill: DataBaseSkill) -> void:
 	if data.has(phase):
 		data[phase].append(skill)

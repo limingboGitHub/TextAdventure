@@ -137,6 +137,11 @@ func load_data_world(
 		res_manager.effect_dic,
 		data_skill_bag_from_cache
 	)
+	# 监听技能等级变化
+	player_manager.data_skill_bag.skill_foreach(
+		func(skill: DataBaseSkill): _on_skill_level_updated(skill)
+	)
+	player_manager.data_skill_bag.skill_level_updated.connect(_on_skill_level_updated)
 
 	#region 加载地图数据
 	var map_region_dic = res_manager.get_map_region_dic()
@@ -754,3 +759,9 @@ func _on_map_player_removed(_data_map: DataMap, data_player: DataPlayer):
 
 func _on_map_monster_blacked(_data_map: DataMap, data_monster: DataMonster):
 	black_monster_manager.add(data_monster)
+
+
+func _on_skill_level_updated(skill: DataBaseSkill):
+	# 暗黑魔法技能等级提升时，更新黑化怪物数量上限
+	if skill.id == "skill_000103":
+		black_monster_manager.update_count_limit(skill.level)
