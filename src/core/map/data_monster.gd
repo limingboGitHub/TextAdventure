@@ -329,11 +329,13 @@ func set_combat(_is_combat: bool):
 	is_combat = _is_combat
 
 
-func black_monster(magic_value: int):
+func black_monster(magic_value: int,accuracy: int):
 	# 设置黑化剩余存活时间
 	black_monster_rest_time = 20
 	# 设置黑化怪物攻击力增幅
 	attribute.final_details.attack += magic_value
+	# 设置黑化怪物命中
+	attribute.final_details.accuracy = accuracy
 
 	# 设置黑化状态
 	is_black_monster = true

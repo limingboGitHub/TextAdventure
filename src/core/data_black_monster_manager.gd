@@ -35,7 +35,7 @@ func add(data_monster: DataMonster)-> bool:
 	var magic_value = effect.value * data_player.get_final_details().magic
 	# 黑化怪物
 	print("黑化--添加怪物:",data_monster.monster_unique_id)
-	data_monster.black_monster(magic_value)
+	data_monster.black_monster(magic_value,data_player.get_final_details().accuracy)
 	black_monster_list.append(data_monster)
 	# 监听黑化怪物死亡事件
 	data_monster.role_dead.connect(_on_monster_dead)

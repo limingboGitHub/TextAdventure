@@ -313,6 +313,8 @@ func _on_monster_blacked(_data_monster: DataMonster):
 	$FreeTimer.stop()
 	# 2秒后黑化完成，切换属性
 	await get_tree().create_timer(2.0).timeout
+	# 调整名称
+	$Back/Name.text = data_monster.name + "(黑)"
 	# 黑化完成
 	data_monster.set_black_finish()
 
