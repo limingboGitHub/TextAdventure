@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://thvf7u8qff4n"]
+
+[ext_resource type="Script" uid="uid://yap33ulkeynm" path="res://src/scenes/effect/attack_effect_8.gd" id="1_j8nrx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8nrx"]
+radius = 100.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt8w7"]
+bg_color = Color(1, 0.529412, 0.133333, 0.14902)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Gradient" id="Gradient_qt8w7"]
+offsets = PackedFloat32Array(0, 0.505017, 1)
+colors = PackedColorArray(1, 0.227451, 0.243137, 0, 1, 0.654902, 0.243137, 1, 1, 0.227451, 0.243137, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0bvnm"]
+gradient = SubResource("Gradient_qt8w7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qt8w7"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = 1.07288e-05
+angle_max = 30.0
+gravity = Vector3(0, -100, 0)
+scale_min = 3.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_0bvnm")
+
+[node name="AttackEffect8" type="Node2D"]
+script = ExtResource("1_j8nrx")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j8nrx")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt8w7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Panel"]
+position = Vector2(100, 100)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_qt8w7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -602,6 +602,8 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 		var target_monster_list = _get_skill_effect_monster_list(player_scene, skill)
 
 		if target_monster_list.size() > 0:
+			# 获取首个目标的位置信息
+			var first_target_position = target_monster_list[0].position
 			# 添加释放动画
 			_skill_executed_casting(
 				skill,
@@ -654,6 +656,9 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 						# 如果有怪物死亡，则判断瞬身追击
 						if is_monster_dead:
 							_judge_skill_monster_flash(player_scene,skill)
+						
+						# 释放后判断 烈火燎原
+						_judge_attack_attach_fire(player_scene,skill,first_target_position)
 			)
 
 
@@ -669,6 +674,33 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 		# 技能作用到目标
 		for target in target_player_list:
 			data_map.player_buff_skill_effect(player, target, skill)	
+
+
+func _judge_attack_attach_fire(player_scene,skill: DataBaseSkill,_position: Vector2):
+	var data_player = player_scene.data_player
+	if data_player == null:
+		return
+	if data_player \
+		# 法力爆裂 才会触发
+		and skill.id == "skill_000101" \
+		and data_player.has_effect("effect_000050"):
+
+		var effect = data_player.get_effect("effect_000050")
+		if data_player.mp < effect.mp_cost:
+			return
+		# 消耗法力
+		data_player.recover_mp(-effect.mp_cost)
+		# 生成一个火焰区域
+		_add_fire_zone_damage_effect(skill,data_player,_position)
+
+
+func _add_fire_zone_damage_effect(skill: DataAttackSkill,_data_player: DataPlayer,_position: Vector2):
+	var file_zone_scene = SingletonGameScenePre.AttackEffect8Scene.instantiate()
+	file_zone_scene.start(
+		skill,
+		_position
+	)
+	$CanvasLayer/GameZone/Effects.add_child(file_zone_scene)
 
 
 func _judge_skill_monster_flash(player_scene,skill: DataBaseSkill):
