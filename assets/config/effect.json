@@ -336,7 +336,7 @@
 			"value": 1
 		},
 		"effect_000049":{
-			"name": "火焰射线",
+			"name": "爆焰射线",
 			"effect_type": "fire_light",
 			"desc": "",
 			"value_type": "percent",

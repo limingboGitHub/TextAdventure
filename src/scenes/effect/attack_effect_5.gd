@@ -36,7 +36,7 @@ var collision_polygon: CollisionPolygon2D
 # 技能信息
 var skill: DataBaseSkill
 
-# 动画完成信号
+# 怪物检测信号
 signal monster_detected(monster: Monster,skill: DataBaseSkill)
 
 

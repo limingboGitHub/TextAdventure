@@ -475,6 +475,25 @@ func _after_damage_effect(
 		var recover_hp = damage.value * effect.value
 		_data_player.recover_hp_with_signal(recover_hp)
 
+	# 爆炎射线
+	if _data_player.has_effect("effect_000049"):
+		# 只有常规攻击技能会触发该效果
+		if _skill.id.begins_with("skill_"):	
+			# 20%的击中概率
+			var hit_rate = 0.2
+			hit_rate += luck_rate_add()
+			if randf() <= hit_rate:
+				var effect = _data_player.get_effect("effect_000049")
+				# 消耗MP
+				if _data_player.mp < effect.mp_cost:
+					return
+				_data_player.recover_mp(-effect.mp_cost)
+		
+				var skill = effect.get_special_skill()
+				skill.direction = direction
+
+				_data_player.execute_skill_no_cd(skill)
+
 
 ## 获取概率加成
 func luck_rate_add()-> float:

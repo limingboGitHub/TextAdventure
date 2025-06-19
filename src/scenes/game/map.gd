@@ -590,6 +590,10 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 				await get_tree().create_timer(0.3).timeout
 				_add_sector_damage_effect(player_scene.position,skill)
 		return
+	elif skill.id == "fire_light":
+		# 爆炎射线
+		_add_fire_light_damage_effect(player_scene.position,skill)
+	
 
 	# 常规的中心点半径类型的技能伤害判定
 	if skill.target_type == 1 or skill.target_type == 2:
@@ -848,6 +852,14 @@ func _add_explode_particle_effect(_position: Vector2):
 	explode_particle_effect.position = _position
 	$CanvasLayer/GameZone/Effects.add_child(explode_particle_effect)
 	explode_particle_effect.play_effect()
+
+
+func _add_fire_light_damage_effect(_position: Vector2, _skill: DataBaseSkill):
+	var fire_damage_effect = SingletonGameScenePre.AttackEffect7Scene.instantiate()
+	fire_damage_effect.start(_skill,_position,_skill.direction)
+	$CanvasLayer/GameZone/Effects.add_child(fire_damage_effect)
+	# 监听怪物检测
+	fire_damage_effect.monster_detected.connect(_on_monster_detected)
 
 
 func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):

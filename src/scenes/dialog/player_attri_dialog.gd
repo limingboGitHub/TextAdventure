@@ -98,7 +98,9 @@ func _on_auto_alloc_button_pressed() -> void:
 		var agility_point = int(data_player.allot_point * 1 / 5.0)
 		data_player.alloc_ability(2,power_point)
 		data_player.alloc_ability(3,agility_point)
-	elif data_player.job_id == "job_000101":
+	elif data_player.job_id == "job_000101" \
+		or data_player.job_id == "job_000102" \
+		or data_player.job_id == "job_000103":
 		# 4/5 智力 1/5 运气
 		var intel_point = int(data_player.allot_point * 4 / 5.0)
 		var luck_point = int(data_player.allot_point * 1 / 5.0)

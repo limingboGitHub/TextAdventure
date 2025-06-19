@@ -22,7 +22,7 @@ func _on_close_button_pressed() -> void:
 func _on_damage_record_added(damage_data: DataDamage) -> void:
 	var damage_details_str = "【"
 	# 攻击力
-	damage_details_str += "攻击力" + str(damage_data.attack_value) + " | "
+	damage_details_str += "攻击/魔法力" + str(damage_data.attack_value) + " | "
 	# 伤害详情
 	for damage_detail in damage_data.damage_details:
 		damage_details_str += damage_detail.name
