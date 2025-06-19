@@ -953,6 +953,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000048"
+		},
+		"consume_002141":{
+			"name": "[卷轴]火上浇油",
+			"desc": "燃烧的更猛烈些吧",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000049"
 		}
 	}
 }

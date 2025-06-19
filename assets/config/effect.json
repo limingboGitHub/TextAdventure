@@ -338,9 +338,9 @@
 		"effect_000049":{
 			"name": "爆焰射线",
 			"effect_type": "fire_light",
-			"desc": "",
+			"desc": "增加{d}爆炎射线伤害",
 			"value_type": "percent",
-			"value": 0.1
+			"value": 0.2
 		},
 		"effect_000050":{
 			"name": "烈火燎原",
