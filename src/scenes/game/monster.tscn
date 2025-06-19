@@ -119,6 +119,7 @@ text = "裂"
 
 [node name="DizzinessLabel" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -19.0
 offset_top = -5.0
 offset_right = 21.0

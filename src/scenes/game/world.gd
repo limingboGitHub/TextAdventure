@@ -1060,7 +1060,7 @@ func _on_black_monster_timer_control(is_active: bool):
 
 func _on_black_monster_mp_cost_timer_timeout() -> void:
 	# 获取当前黑化怪物数量
-	var black_monster_count = data_world.black_monster_manager.black_monster_list.size()
+	var black_monster_count = data_world.black_monster_manager.black_monster_dic.size()
 	if black_monster_count <= 0:
 		return
 	

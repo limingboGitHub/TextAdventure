@@ -844,7 +844,7 @@ func _on_black_monster_count_changed(count: int):
 # 将黑化怪物添加到地图
 func add_black_monster_to_map(map_id: String):
 	var map = map_dic[map_id]
-	for monster in black_monster_manager.black_monster_list:
+	for monster in black_monster_manager.get_all_black_monster():
 		map.add_monster(monster,Vector2(randf(),randf()))
 
 
