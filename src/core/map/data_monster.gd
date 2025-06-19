@@ -64,7 +64,7 @@ var charge_component = DataChargeComponent.new()
 # 黑化相关
 var is_black_monster = false
 # 黑化剩余存活时间
-var black_monster_rest_time = 20
+var black_monster_rest_time: float = 20
 
 # 召唤怪物相关配置信息，初始化时注入
 var monster_config_dic: Dictionary = {}
@@ -336,9 +336,9 @@ func set_combat(_is_combat: bool):
 	is_combat = _is_combat
 
 
-func black_monster(magic_value: int = 0,accuracy: int = 0):
+func black_monster(magic_value: int = 0,accuracy: int = 0,time: float = 0):
 	# 设置黑化剩余存活时间
-	black_monster_rest_time = 20
+	black_monster_rest_time = time
 	# 设置黑化怪物攻击力增幅
 	if magic_value > 0:
 		attribute.final_details.attack += magic_value

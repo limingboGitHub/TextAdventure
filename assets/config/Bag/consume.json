@@ -924,16 +924,6 @@
 				}
 			]
 		},
-		"consume_002137": {
-			"name": "[卷轴]暗夜降临",
-			"desc": "天色变得更加黑暗",
-			"type": "scroll",
-			"quality": "稀有",
-			"price": 100,
-			"slotMax": 9999999,
-			"success_rate": 1,
-			"effect": "effect_000045"
-		},
 		"consume_002138": {
 			"name": "[卷轴]喧宾夺主",
 			"desc": "你猜究竟谁才是化身呢？",
@@ -943,6 +933,26 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000046"
+		},
+		"consume_002139":{
+			"name": "[卷轴]暗力持久",
+			"desc": "更持久的生命力",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000047"
+		},
+		"consume_002140":{
+			"name": "[卷轴]掌控之力",
+			"desc": "上吧，我的黑暗大军",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000048"
 		}
 	}
 }

@@ -320,6 +320,20 @@
 			"desc": "暗影化身提升本体{d}的伤害",
 			"value_type": "percent",
 			"value": 0.1
+		},
+		"effect_000047":{
+			"name": "暗力持久",
+			"effect_type": "dark_magic_add_time",
+			"desc": "暗黑魔法召唤物存活时间增加{d}秒",
+			"value_type": "number",
+			"value": 5
+		},
+		"effect_000048":{
+			"name": "掌控之力",
+			"effect_type": "dark_control_power",
+			"desc": "增加{d}只暗黑魔法召唤物数量",
+			"value_type": "number",
+			"value": 1
 		}
 	}
 }

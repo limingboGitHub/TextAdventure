@@ -37,6 +37,7 @@ func _ready() -> void:
 		data_monster.role_dead.connect(_on_role_dead)
 		# 监听特效添加事件
 		data_monster.effect_added.connect(_on_effect_added)
+		data_monster.effect_updated.connect(_on_effect_updated)
 		data_monster.effect_removed.connect(_on_effect_removed)
 		# 监听充能开始
 		data_monster.charge_started.connect(_on_charge_started)
@@ -84,6 +85,8 @@ func clear():
 	data_monster.role_hurted.disconnect(_on_get_hurted)
 	data_monster.role_dead.disconnect(_on_role_dead)
 	data_monster.effect_added.disconnect(_on_effect_added)
+	data_monster.effect_updated.disconnect(_on_effect_updated)
+	data_monster.effect_removed.disconnect(_on_effect_removed)
 	data_monster.charge_started.disconnect(_on_charge_started)
 	data_monster.charge_completed.disconnect(_on_charge_completed)
 	data_monster.monster_reseted.disconnect(_on_monster_reseted)
@@ -188,17 +191,20 @@ func _on_role_dead(data_role: DataRole):
 
 func _on_effect_added(_data_effect: DataEffect):
 	if data_monster and _data_effect.id == "effect_000023":
-		var effect_on_body = data_monster.get_effect("effect_000023")
-		if effect_on_body:
-			# 撕裂
-			$DeepDamageLabel.show()
-			$DeepDamageLabel.text = "裂" + str(int(effect_on_body.value))
+		# 撕裂
+		$DeepDamageLabel.show()
+		$DeepDamageLabel.text = "裂" + str(int(_data_effect.value))
 	if data_monster and _data_effect.id == "effect_000029":
 		# 越战越勇
 		$TimeAddDamageLabel.show()
 	# 眩晕状态
 	if _data_effect.type == "dizziness":
 		$DizzinessLabel.show()
+
+
+func _on_effect_updated(_data_effect: DataEffect):
+	if data_monster and _data_effect.id == "effect_000023":
+		$DeepDamageLabel.text = "裂" + str(int(_data_effect.value))
 
 
 func _on_effect_removed(_data_effect: DataEffect):

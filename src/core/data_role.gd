@@ -32,6 +32,8 @@ signal buff_added(data_buff: DataBuff)
 
 signal effect_added(data_effect: DataEffect)
 
+signal effect_updated(data_effect: DataEffect)
+
 signal effect_removed(data_effect: DataEffect)
 
 func process(delta: float):
@@ -124,9 +126,10 @@ func add_effect(data_effect: DataEffect):
 		# 其他特效存储
 		if effect_dic.has(data_effect.id):
 			effect_dic[data_effect.id].append(data_effect)
+			effect_updated.emit(effect_dic[data_effect.id])
 		else:
 			effect_dic[data_effect.id] = data_effect.copy()
-	effect_added.emit(data_effect)
+			effect_added.emit(effect_dic[data_effect.id])
 
 
 func remove_effect(data_effect: DataEffect):
@@ -150,6 +153,8 @@ func remove_effect(data_effect: DataEffect):
 				effect_dic.erase(data_effect.id)
 				# 发送特效移除信号
 				effect_removed.emit(data_effect)
+			else:
+				effect_updated.emit(effect_dic[data_effect.id])
 
 
 func remove_buff(buff_id: String):

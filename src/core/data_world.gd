@@ -436,6 +436,10 @@ func load_local_player(data_player: DataPlayer):
 	data_player.before_get_hurted.connect(_on_player_before_get_hurted)
 	# 监听玩家造成伤害
 	data_player.damage_caused.connect(_on_player_damage_caused)
+	# 监听玩家特效变化
+	data_player.effect_added.connect(_on_player_effect_updated)
+	data_player.effect_updated.connect(_on_player_effect_updated)
+	data_player.effect_removed.connect(_on_player_effect_removed)
 	# 发出玩家创建的信号
 	local_player_created.emit(data_player)
 	print('本地玩家加载完成:', data_player.player_name)
@@ -443,6 +447,19 @@ func load_local_player(data_player: DataPlayer):
 
 func _on_player_damage_caused(_data_player: DataPlayer, damage: DataDamage):
 	record_damage(damage)
+
+
+
+func _on_player_effect_updated(effect: DataEffect):
+	if effect.type == "dark_control_power":
+		print("_on_player_effect_added:",effect.value)
+		black_monster_manager.update_effect_count_limit(int(effect.value))
+
+
+func _on_player_effect_removed(effect: DataEffect):
+	if effect.type == "dark_control_power":
+		print("_on_player_effect_removed:",effect.value)
+		black_monster_manager.update_effect_count_limit(0)
 
 
 func get_player_map_id():
@@ -801,7 +818,7 @@ func _on_map_monster_blacked(_data_map: DataMap, data_monster: DataMonster):
 func _on_skill_level_updated(skill: DataBaseSkill):
 	# 暗黑魔法技能等级提升时，更新黑化怪物数量上限
 	if skill.id == "skill_000103":
-		black_monster_manager.update_count_limit(skill.level)
+		black_monster_manager.update_level_count_limit(skill.level)
 	# 暗影化身技能
 	if skill.id == "skill_000104":
 		if skill.level == 0:
