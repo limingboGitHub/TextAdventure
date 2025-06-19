@@ -334,6 +334,27 @@
 			"desc": "增加{d}只暗黑魔法召唤物数量",
 			"value_type": "number",
 			"value": 1
+		},
+		"effect_000049":{
+			"name": "火焰射线",
+			"effect_type": "fire_light",
+			"desc": "",
+			"value_type": "percent",
+			"value": 0.1
+		},
+		"effect_000050":{
+			"name": "烈火燎原",
+			"effect_type": "attack_attach_on_fire",
+			"desc": "",
+			"value_type": "percent",
+			"value": 0.1
+		},
+		"effect_000051":{
+			"name": "灼烧",
+			"effect_type": "on_fire",
+			"desc": "",
+			"value_type": "percent",
+			"value": 0.1
 		}
 	}
 }

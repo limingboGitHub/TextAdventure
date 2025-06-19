@@ -1849,7 +1849,7 @@
 		]
 	},
 	"mission_000126": {
-		"name": "学者二转",
+		"name": "法师二转",
 		"enable": true,
 		"visible_limit": {
 			"level": 30,
@@ -1870,6 +1870,33 @@
 					{
 						"type": "job_change",
 						"job_id": "job_000102"
+					}
+				]
+			}
+		]
+	},
+	"mission_000127": {
+		"name": "法师二转",
+		"enable": true,
+		"visible_limit": {
+			"level": 30,
+			"jobs": [
+				"job_000101"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "爆炎术士",
+				"desc": "二转。",
+				"attach_npc_id": "npc_000129",
+				"messages": [
+					"元素之力可不是普通人能轻易掌控的。",
+					"看看你是否承受的住这份炙热（点击完成后转职成功，不可逆！！！请想好再点击。）"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000103"
 					}
 				]
 			}
