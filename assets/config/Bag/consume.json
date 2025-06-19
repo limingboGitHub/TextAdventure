@@ -963,6 +963,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000049"
+		},
+		"consume_002142":{
+			"name": "[卷轴]突破天际",
+			"desc": "就让这激光！不对，是射线，突破天际吧！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000052"
 		}
 	}
 }

@@ -14,15 +14,31 @@ func _ready():
 	$GPUParticles2D.emitting = true
 
 
-func start(_skill: DataBaseSkill,_position: Vector2, _direction: Vector2) -> void:
+func start(
+	_skill: DataBaseSkill,
+	_position: Vector2, 
+	_direction: Vector2, 
+	scale_x: float = 1.0) -> void:
+	
 	skill = _skill
 	var degree = rad_to_deg(_direction.angle())
 	position = _position
 	rotation_degrees = degree + 90
+	
+	# 设置场景缩放
+	scale.x = scale_x
+	scale.y = min(2,scale_x)
+	
+	# 根据缩放比例调整粒子数量
+	var base_amount = $GPUParticles2D.amount
+	$GPUParticles2D.amount = int(base_amount * scale_x)
+	
+	# 自动销毁
+	$Timer.start()
+
 
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
-	print("area_entered:",_area.name)
 	var parent = _area.get_parent()
 	if parent is Monster:
 		monster_detected.emit(parent,skill)

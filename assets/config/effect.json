@@ -355,6 +355,13 @@
 			"desc": "",
 			"value_type": "percent",
 			"value": 0.1
+		},
+		"effect_000052":{
+			"name": "突破天际",
+			"effect_type": "fire_light_size",
+			"desc": "增加{d}爆炎射线的宽度和长度",
+			"value_type": "percent",
+			"value": 0.5
 		}
 	}
 }

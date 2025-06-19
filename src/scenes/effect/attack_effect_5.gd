@@ -145,7 +145,6 @@ func _update_collision_shape() -> void:
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	print("area_entered:",_area.name)
 	var parent = _area.get_parent()
 	if parent is Monster:
 		monster_detected.emit(parent,skill)
