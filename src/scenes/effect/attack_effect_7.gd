@@ -27,7 +27,7 @@ func start(
 	
 	# 设置场景缩放
 	scale.x = scale_x
-	scale.y = min(2,scale_x)
+	scale.y = min(3,scale_x)
 	
 	# 根据缩放比例调整粒子数量
 	var base_amount = $GPUParticles2D.amount

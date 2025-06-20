@@ -973,6 +973,16 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000052"
+		},
+		"consume_002143":{
+			"name": "[卷轴]熊熊烈火",
+			"desc": "只有在这样的世界中，才可以尽情的玩火呀！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000053"
 		}
 	}
 }

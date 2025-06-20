@@ -714,17 +714,23 @@ func _add_fire_zone_damage_effect(
 	var file_zone_scene = SingletonGameScenePre.AttackEffect8Scene.instantiate()
 	# “灼烧”效果伤害值
 	var damage_value = _data_player.get_final_details().magic * effect.value
+	# “灼烧”间隔时间减少（秒）
+	var interval_reduce = 0.0
+	if _data_player.has_effect("effect_000053"):
+		var effect_fire_more_frequency = _data_player.get_effect("effect_000053")
+		interval_reduce = effect_fire_more_frequency.value
 	# 生成“灼烧”buff信息
-	var buff = _create_fire_buff(effect.id,damage_value)
+	var buff = _create_fire_buff(effect.id,damage_value,interval_reduce)
 	file_zone_scene.start(buff,_position,_scale)
 	$CanvasLayer/GameZone/Effects.add_child(file_zone_scene)
 
 
-func _create_fire_buff(buff_id: String,value: int) -> DataBuff:
+func _create_fire_buff(buff_id: String,value: int,interval_reduce: float) -> DataBuff:
 	# “灼烧”效果
 	var fire_effect = DataEffect.new("effect_000051", "on_fire")
 	fire_effect.value = value
 	fire_effect.not_append_value = value
+	fire_effect.invoke_interval = 1000 * (1 - interval_reduce)
 	# “灼烧”buff持续永久持续，直到区域消失
 	var buff = DataBuff.new()
 	buff.id = buff_id

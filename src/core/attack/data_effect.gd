@@ -38,9 +38,9 @@ var desc: String = ""
 # 范围 -1 表示无限大
 var radius: float = -1
 # 触发时间间隔
-var invoke_interval: float = 0
+var invoke_interval: int = 1000
 # 上一次触发时间
-var last_invoke_time: float = 0
+var last_invoke_time: int = 0
 # 触发蓝耗
 var mp_cost: int = 0
 # 等级
@@ -167,6 +167,7 @@ func save() -> Dictionary:
 		"type": type,
 		"value": value,
 		"not_append_value": not_append_value,
+		"invoke_interval": invoke_interval,
 		"desc": desc,
 		"value_type": value_type,
 	}
@@ -180,6 +181,8 @@ func load(data: Dictionary) -> void:
 		value = data["value"]
 	if data.has("not_append_value"):
 		not_append_value = data["not_append_value"]
+	if data.has("invoke_interval"):
+		invoke_interval = data["invoke_interval"]
 	if data.has("desc"):
 		desc = data["desc"]
 	if data.has("value_type"):

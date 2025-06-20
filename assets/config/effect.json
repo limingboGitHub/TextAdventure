@@ -362,6 +362,13 @@
 			"desc": "增加{d}爆炎射线的宽度和长度",
 			"value_type": "percent",
 			"value": 0.5
+		},
+		"effect_000053":{
+			"name": "熊熊烈火",
+			"effect_type": "fire_more_frequency",
+			"desc": "减少{d}秒烈火燎原的灼烧间隔时间",
+			"value_type": "number",
+			"value": 0.1
 		}
 	}
 }
