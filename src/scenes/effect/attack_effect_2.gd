@@ -29,6 +29,8 @@ var dead_duration: float = 0.5
 # 技能颜色枚举
 const SKILL_COLOR_BLUE: Color = Color(0x34b4ffff)
 const SKILL_COLOR_BLACK: Color = Color(0x000000ff)
+const SKILL_COLOR_ORANGE: Color = Color(0xff8c00ff)
+
 # 当前技能颜色
 var skill_color: Color = SKILL_COLOR_BLUE
 
@@ -127,6 +129,10 @@ func _change_state_dead():
 
 func set_black_color():
 	skill_color = SKILL_COLOR_BLACK
+
+
+func set_orange_color():
+	skill_color = SKILL_COLOR_ORANGE
 
 
 # 外部调用此函数来中断动画

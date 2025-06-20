@@ -813,6 +813,9 @@ func _skill_executed_casting(
 		# 黑魔法技能颜色
 		if player_scene.data_player.has_effect("effect_000045"):
 			attack_effect.set_black_color()
+		# 爆炎术士技能颜色
+		elif player_scene.data_player.job_id == "job_000103":
+			attack_effect.set_orange_color()
 		# 技能增幅
 		if player_scene.data_player.has_skill_enhance(skill.id):
 			var skill_enhance = player_scene.data_player.get_skill_enhance(skill.id)
