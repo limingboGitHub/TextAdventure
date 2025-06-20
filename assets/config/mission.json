@@ -1902,6 +1902,33 @@
 			}
 		]
 	},
+	"mission_000128": {
+		"name": "战士二转",
+		"enable": true,
+		"visible_limit": {
+			"level": 30,
+			"jobs": [
+				"job_000001"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "巨人领主",
+				"desc": "二转。",
+				"attach_npc_id": "npc_000130",
+				"messages": [
+					"我在这世上已经没有依靠，即使我知道巨人一族的秘密又如何。",
+					"你，你愿意接受这份力量成为领主吗？（点击完成后转职成功，不可逆！！！请想好再点击。）"
+				],
+				"rewards": [
+					{
+						"type": "job_change",
+						"job_id": "job_000003"
+					}
+				]
+			}
+		]
+	},
 
 	"mission_000199": {
 		"name": "无尽之塔",

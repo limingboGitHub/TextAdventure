@@ -767,6 +767,16 @@
 				"你还好吧？"
 			],
 			"function": []
+		},
+		{
+			"id": "npc_000130",
+			"name": "失落者雪莉",
+			"visible":true,
+			"position": {"x": 500, "y": 570},
+			"default_messages":[
+				"我该去哪里..."
+			],
+			"function": []
 		}
 	],
 	"map_000121":[

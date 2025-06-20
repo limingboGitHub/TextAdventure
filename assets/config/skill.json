@@ -168,6 +168,46 @@
 			"step_mp": 1
 		}
 	},
+	"skill_000005": {
+		"name": "巨人姿态",
+		"desc": "普攻和技能变得更缓慢，但是可以造成目标50范围内额外{d}的伤害，额外消耗{m}MP",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000054",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.215,
+					"step_value": 0.015
+				}
+			],
+			"calculate_type": "formula",
+			"start_mp": 31,
+			"step_mp": 1
+		}
+	},
+	"skill_000006": {
+		"name": "战争践踏",
+		"desc": "战斗状态时，每隔10秒准备好架势，朝着最远处的敌人猛冲，造成{d}生命值的践踏伤害。消耗{m}MP",
+		"type": "effect_buff",
+		"max_level": 20,
+		"buff": {
+			"effect_list": [
+				{
+					"id": "effect_000055",
+					"calculate_type": "formula",
+					"value_type": "percent",
+					"start_value": 0.215,
+					"step_value": 0.015
+				}
+			],
+			"calculate_type": "formula",
+			"start_mp": 31,
+			"step_mp": 1
+		}
+	},
 
 	"skill_000100": {
 		"name": "魔力飞弹",

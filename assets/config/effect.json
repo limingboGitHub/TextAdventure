@@ -32,7 +32,7 @@
 		"effect_000006": {
 			"name": "文韬武略",
 			"effect_type": "recover_mp_when_hp_recover",
-			"desc": "血量得到恢复时，同时恢复该值{d}%的法力",
+			"desc": "血量得到恢复时，同时恢复该值{d}%的MP",
 			"value_type": "percent",
 			"value": 0.2
 		},
@@ -368,6 +368,20 @@
 			"effect_type": "fire_more_frequency",
 			"desc": "减少{d}秒烈火燎原的灼烧间隔时间",
 			"value_type": "number",
+			"value": 0.1
+		},
+		"effect_000054":{
+			"name": "巨人姿态",
+			"effect_type": "giant_stance",
+			"desc": "",
+			"value_type": "percent",
+			"value": 0.1
+		},
+		"effect_000055":{
+			"name": "战争践踏",
+			"effect_type": "war_stomp",
+			"desc": "",
+			"value_type": "percent",
 			"value": 0.1
 		}
 	}
