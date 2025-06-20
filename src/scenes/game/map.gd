@@ -593,7 +593,11 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 	elif skill.id == "fire_light":
 		# 爆炎射线
 		_add_fire_light_damage_effect(player_scene.position,skill,player)
-	
+		return
+	# 巨人姿态的攻击碰撞体区域
+	if player.has_effect("effect_000054"):
+		_add_gaint_attack_zone(player_scene,skill,player_scene.position)
+		return
 
 	# 常规的中心点半径类型的技能伤害判定
 	if skill.target_type == 1 or skill.target_type == 2:
@@ -678,6 +682,17 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 		for target in target_player_list:
 			data_map.player_buff_skill_effect(player, target, skill)	
 
+# 巨人姿态攻击区域
+func _add_gaint_attack_zone(player_scene,_skill: DataBaseSkill,_position: Vector2):
+	var data_player = player_scene.data_player
+	if data_player == null:
+		return
+	if _skill.id == "skill_000000" or _skill.id == "skill_000001":
+		# 创建普攻和奋力一击的攻击区域
+		var attack_effect_scene = SingletonGameScenePre.AttackEffect9Scene.instantiate()
+		$CanvasLayer/GameZone/Effects.add_child(attack_effect_scene)
+		attack_effect_scene.start(_position,_skill,_skill.direction)
+		
 
 func _judge_attack_attach_fire(player_scene,skill: DataBaseSkill,_position: Vector2):
 	var data_player = player_scene.data_player

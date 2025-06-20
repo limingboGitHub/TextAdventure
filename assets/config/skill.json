@@ -170,7 +170,7 @@
 	},
 	"skill_000005": {
 		"name": "巨人姿态",
-		"desc": "普攻和技能变得更缓慢，但是可以造成目标50范围内额外{d}的伤害，额外消耗{m}MP",
+		"desc": "普攻和技能形态发生变化，额外增加生命值{d}的伤害，技能额外消耗{m}MP",
 		"type": "effect_buff",
 		"max_level": 20,
 		"buff": {
@@ -179,8 +179,8 @@
 					"id": "effect_000054",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.215,
-					"step_value": 0.015
+					"start_value": 0.043,
+					"step_value": 0.003
 				}
 			],
 			"calculate_type": "formula",

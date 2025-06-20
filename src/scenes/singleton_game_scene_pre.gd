@@ -35,11 +35,13 @@ const AttackEffect3Scene = preload("res://src/scenes/effect/attack_effect3.tscn"
 
 const AttackEffect5Scene = preload("res://src/scenes/effect/attack_effect5.tscn")
 
+const MeteorFallEffectScene = preload("res://src/scenes/effect/attack_effect6.tscn")
+
 const AttackEffect7Scene = preload("res://src/scenes/effect/attack_effect7.tscn")
 
 const AttackEffect8Scene = preload("res://src/scenes/effect/attack_effect8.tscn")
 
-const MeteorFallEffectScene = preload("res://src/scenes/effect/attack_effect6.tscn")
+const AttackEffect9Scene = preload("res://src/scenes/effect/attack_effect9.tscn")
 
 const EquipUpgradeEffectScene = preload("res://src/scenes/dialog/equip_upgrade_effect.tscn")
 

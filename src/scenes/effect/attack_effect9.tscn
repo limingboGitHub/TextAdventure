@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpnul5ed70sac"]
+
+[ext_resource type="Script" uid="uid://t7k6goi7evhf" path="res://src/scenes/effect/attack_effect_9.gd" id="1_hob6i"]
+
+[sub_resource type="Gradient" id="Gradient_qt8w7"]
+offsets = PackedFloat32Array(0, 0.505017, 1)
+colors = PackedColorArray(0.705882, 0.701961, 0.701961, 0, 1, 1, 1, 1, 0.705882, 0.701961, 0.701961, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0bvnm"]
+gradient = SubResource("Gradient_qt8w7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qt8w7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 40, 1)
+angle_min = 1.07288e-05
+angle_max = 30.0
+spread = 180.0
+gravity = Vector3(0, 100, 0)
+scale_min = 3.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_0bvnm")
+
+[node name="AttackEffect9" type="Node2D"]
+script = ExtResource("1_hob6i")
+
+[node name="Zone" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Zone"]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Zone/Area2D"]
+polygon = PackedVector2Array(-25, 0, 25, 0, 25, -75, 0, -100, -25, -75)
+
+[node name="Panel" type="Polygon2D" parent="Zone"]
+color = Color(1, 1, 1, 0.482353)
+polygon = PackedVector2Array(-25, 0, 25, 0, 25, -75, 0, -100, -25, -75)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Zone/Panel"]
+position = Vector2(0, -50)
+amount = 30
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_qt8w7")
+
+[connection signal="area_entered" from="Zone/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Zone/Area2D" to="." method="_on_area_2d_area_exited"]
