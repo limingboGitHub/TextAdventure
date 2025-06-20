@@ -603,7 +603,7 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 
 		if target_monster_list.size() > 0:
 			# 获取首个目标的位置信息
-			var first_target_position = target_monster_list[0].position
+			var first_target = target_monster_list[0]
 			# 添加释放动画
 			_skill_executed_casting(
 				skill,
@@ -639,6 +639,9 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 					# 记录是否有怪物死亡
 					var is_monster_dead = false
 					if _target_monster_list and _target_monster_list.size() > 0:
+						# 伤害判定前记录下首个怪物的位置（判定后可能会销毁）
+						var first_target_postion = first_target.position
+
 						is_monster_dead = _skill_executed_damage_judge(_target_monster_list,skill,player_scene)
 						print("第0段技能伤害判定")
 						# 如果技能追加判定为真，则执行追加技能
@@ -658,7 +661,7 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 							_judge_skill_monster_flash(player_scene,skill)
 						
 						# 释放后判断 烈火燎原
-						_judge_attack_attach_fire(player_scene,skill,first_target_position)
+						_judge_attack_attach_fire(player_scene,skill,first_target_postion)
 			)
 
 
@@ -691,16 +694,35 @@ func _judge_attack_attach_fire(player_scene,skill: DataBaseSkill,_position: Vect
 		# 消耗法力
 		data_player.recover_mp(-effect.mp_cost)
 		# 生成一个火焰区域
-		_add_fire_zone_damage_effect(skill,data_player,_position)
+		_add_fire_zone_damage_effect(effect,data_player,_position)
 
 
-func _add_fire_zone_damage_effect(skill: DataAttackSkill,_data_player: DataPlayer,_position: Vector2):
+func _add_fire_zone_damage_effect(effect: DataEffect,_data_player: DataPlayer,_position: Vector2):
+	if _data_player == null:
+		return
 	var file_zone_scene = SingletonGameScenePre.AttackEffect8Scene.instantiate()
+	# “灼烧”效果伤害值
+	var damage_value = _data_player.get_final_details().magic * effect.value
+	# 生成“灼烧”buff信息
+	var buff = _create_fire_buff(effect.id,damage_value)
 	file_zone_scene.start(
-		skill,
+		buff,
 		_position
 	)
 	$CanvasLayer/GameZone/Effects.add_child(file_zone_scene)
+
+
+func _create_fire_buff(buff_id: String,value: int) -> DataBuff:
+	# “灼烧”效果
+	var fire_effect = DataEffect.new("effect_000051", "on_fire")
+	fire_effect.value = value
+	fire_effect.not_append_value = value
+	# “灼烧”buff持续永久持续，直到区域消失
+	var buff = DataBuff.new()
+	buff.id = buff_id
+	buff.name = "灼烧"
+	buff.add_effect(fire_effect)
+	return buff
 
 
 func _judge_skill_monster_flash(player_scene,skill: DataBaseSkill):

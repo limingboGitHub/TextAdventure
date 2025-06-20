@@ -118,6 +118,19 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "裂"
 
+[node name="DizzinessLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -19.0
+offset_top = -5.0
+offset_right = 21.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.145098, 0, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "眩晕"
+
 [node name="TimeAddDamageLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0

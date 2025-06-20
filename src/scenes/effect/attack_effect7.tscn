@@ -30,6 +30,7 @@ color_ramp = SubResource("GradientTexture1D_b447s")
 script = ExtResource("1_piahr")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -200)

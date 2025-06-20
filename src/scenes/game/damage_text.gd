@@ -36,6 +36,8 @@ func set_damage(data_damage: DataDamage):
 		add_theme_color_override("font_color", Color.PURPLE)
 	elif data_damage.type == DataDamage.TYPE.POISON:
 		add_theme_color_override("font_color", Color.FOREST_GREEN)
+	elif data_damage.type == DataDamage.TYPE.FIRE:
+		add_theme_color_override("font_color", Color.RED)
 	elif data_damage.type == DataDamage.TYPE.REAL:
 		add_theme_color_override("font_color", Color.WHITE)
 	# 调整字体大小 根据比率

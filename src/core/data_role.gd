@@ -50,6 +50,13 @@ func process(delta: float):
 				elif effect.last_invoke_time != int(Time.get_ticks_msec() * SingletonGame.speed / 1000.0):
 					get_hurt(DataDamage.new(DataDamage.TYPE.POISON,DataDamage.SOURCE_TYPE.POISON,effect.value))
 					effect.last_invoke_time = int(Time.get_ticks_msec() * SingletonGame.speed / 1000.0)
+			elif effect.type == "on_fire":
+				if effect.last_invoke_time == 0:
+					get_hurt(DataDamage.new(DataDamage.TYPE.FIRE,DataDamage.SOURCE_TYPE.FIRE,effect.not_append_value))
+					effect.last_invoke_time = int(Time.get_ticks_msec() * SingletonGame.speed / 1000.0)
+				elif effect.last_invoke_time!= int(Time.get_ticks_msec() * SingletonGame.speed / 1000.0):
+					get_hurt(DataDamage.new(DataDamage.TYPE.FIRE,DataDamage.SOURCE_TYPE.FIRE,effect.not_append_value))
+					effect.last_invoke_time = int(Time.get_ticks_msec() * SingletonGame.speed / 1000.0)
 		if not buff.is_permanent():
 			buff.reduce_buff_time(delta)
 

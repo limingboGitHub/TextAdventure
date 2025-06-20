@@ -225,7 +225,7 @@ func _update_hp():
 func _add_damage(damage: DataDamage):
 	var damage_scene = SingletonGameScenePre.DamageTextScene.instantiate()
 	damage_scene.set_damage(damage)
-	if damage.type == DataDamage.TYPE.POISON:
+	if damage.type == DataDamage.TYPE.POISON or damage.type == DataDamage.TYPE.FIRE:
 		$PoisonDamageGroup.add(damage_scene)
 	else:
 		$DamageGroup.add(damage_scene)

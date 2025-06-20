@@ -31,6 +31,8 @@ var id: String
 var name: String
 var type: String
 var value: float
+# 不可叠加的值（用于某些特殊效果）
+var not_append_value: float
 # 描述
 var desc: String = ""
 # 范围 -1 表示无限大
@@ -135,6 +137,7 @@ func get_special_skill() -> DataBaseSkill:
 
 func append(data_effect: DataEffect) -> void:
 	value += data_effect.value
+	not_append_value = data_effect.not_append_value
 
 	# 存在特效技能，则用追加后的值替换特效技能的值
 	if special_skill != null:
@@ -163,6 +166,7 @@ func save() -> Dictionary:
 		"name": name,
 		"type": type,
 		"value": value,
+		"not_append_value": not_append_value,
 		"desc": desc,
 		"value_type": value_type,
 	}
@@ -174,6 +178,8 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	if data.has("value"):
 		value = data["value"]
+	if data.has("not_append_value"):
+		not_append_value = data["not_append_value"]
 	if data.has("desc"):
 		desc = data["desc"]
 	if data.has("value_type"):
@@ -188,6 +194,7 @@ func load(data: Dictionary) -> void:
 func copy() -> DataEffect:
 	var data_effect = DataEffect.new(id,type)
 	data_effect.value = value
+	data_effect.not_append_value = not_append_value
 	data_effect.desc = desc
 	data_effect.radius = radius
 	data_effect.invoke_interval = invoke_interval

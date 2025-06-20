@@ -106,7 +106,7 @@ func load(json: Dictionary) -> void:
 		effects = {}
 		for effect in json["effects"].values():
 			var data_effect = DataEffect.new(effect["id"],effect["type"])
-			data_effect.value = effect["value"]
+			data_effect.load(effect)
 			effects[effect["type"]] = data_effect
 	duration = json["duration"]
 	remaining_time = json["remaining_time"]

@@ -5,6 +5,7 @@ enum TYPE {
 	PHYSICAL,
 	MAGICAL,
 	POISON,
+	FIRE,
 	HEAL,
 	REAL
 }
@@ -13,7 +14,8 @@ enum TYPE {
 enum SOURCE_TYPE {
 	MONSTER,
 	PLAYER,
-	POISON
+	POISON,
+	FIRE
 }
 
 
