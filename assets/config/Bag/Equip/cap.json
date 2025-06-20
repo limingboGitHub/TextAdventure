@@ -301,7 +301,7 @@
 			"max_upgrade_times":6
 		},
 		"cap_002005":{
-			"name":"黑色头巾",
+			"name":"夜行头巾",
 			"desc":"不张扬就是最大的隐藏",
 			"require_level":20,
 			"quality":"优秀",
