@@ -693,11 +693,22 @@ func _judge_attack_attach_fire(player_scene,skill: DataBaseSkill,_position: Vect
 			return
 		# 消耗法力
 		data_player.recover_mp(-effect.mp_cost)
+		# 区域大小缩放比例计算
+		var skill_radius_enhance = 0
+		if data_player.has_skill_enhance(skill.id):
+			var skill_enhance = player_scene.data_player.get_skill_enhance(skill.id)
+			skill_radius_enhance = skill_enhance.radius
+		var zone_size = (skill.radius + skill_radius_enhance) / skill.radius
 		# 生成一个火焰区域
-		_add_fire_zone_damage_effect(effect,data_player,_position)
+		_add_fire_zone_damage_effect(effect,data_player,_position,zone_size)
 
 
-func _add_fire_zone_damage_effect(effect: DataEffect,_data_player: DataPlayer,_position: Vector2):
+func _add_fire_zone_damage_effect(
+	effect: DataEffect,
+	_data_player: DataPlayer,
+	_position: Vector2,
+	_scale: float
+	):
 	if _data_player == null:
 		return
 	var file_zone_scene = SingletonGameScenePre.AttackEffect8Scene.instantiate()
@@ -705,10 +716,7 @@ func _add_fire_zone_damage_effect(effect: DataEffect,_data_player: DataPlayer,_p
 	var damage_value = _data_player.get_final_details().magic * effect.value
 	# 生成“灼烧”buff信息
 	var buff = _create_fire_buff(effect.id,damage_value)
-	file_zone_scene.start(
-		buff,
-		_position
-	)
+	file_zone_scene.start(buff,_position,_scale)
 	$CanvasLayer/GameZone/Effects.add_child(file_zone_scene)
 
 

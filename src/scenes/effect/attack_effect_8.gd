@@ -17,6 +17,13 @@ func start(
 	
 	buff = _buff
 	position = _position
+
+	scale.x = _scale
+	scale.y = _scale
+
+	# 根据缩放比例调整粒子数量
+	var base_amount = $Panel/GPUParticles2D.amount
+	$Panel/GPUParticles2D.amount = int(base_amount * _scale)
 	
 	# 自动销毁
 	$Timer.wait_time = _time
