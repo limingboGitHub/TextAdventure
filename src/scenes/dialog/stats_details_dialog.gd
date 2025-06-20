@@ -20,9 +20,16 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_damage_record_added(damage_data: DataDamage) -> void:
+	# 伤害类型
+	var damage_type = "攻击/魔法力" + str(damage_data.attack_value)
+	if damage_data.type == DataDamage.TYPE.POISON:
+		damage_type = "中毒"
+	elif damage_data.type == DataDamage.TYPE.FIRE:
+		damage_type = "灼烧"
+		
 	var damage_details_str = "【"
 	# 攻击力
-	damage_details_str += "攻击/魔法力" + str(damage_data.attack_value) + " | "
+	damage_details_str += damage_type + " | "
 	# 伤害详情
 	for damage_detail in damage_data.damage_details:
 		damage_details_str += damage_detail.name
