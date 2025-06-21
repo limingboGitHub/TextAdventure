@@ -12,11 +12,11 @@ gradient = SubResource("Gradient_qt8w7")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qt8w7"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(30, 40, 1)
+emission_box_extents = Vector3(30, 60, 1)
 angle_min = 1.07288e-05
 angle_max = 30.0
 spread = 180.0
-gravity = Vector3(0, 100, 0)
+gravity = Vector3(0, 500, 0)
 scale_min = 3.0
 scale_max = 5.0
 color_ramp = SubResource("GradientTexture1D_0bvnm")
@@ -31,17 +31,18 @@ visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Zone/Area2D"]
-polygon = PackedVector2Array(-25, 0, 25, 0, 25, -75, 0, -100, -25, -75)
+polygon = PackedVector2Array(-25, 0, 25, 0, 25, -100, 0, -125, -25, -100)
 
 [node name="Panel" type="Polygon2D" parent="Zone"]
 color = Color(1, 1, 1, 0.482353)
-polygon = PackedVector2Array(-25, 0, 25, 0, 25, -75, 0, -100, -25, -75)
+polygon = PackedVector2Array(-25, 0, 25, 0, 25, -100, 0, -125, -25, -100)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Zone/Panel"]
 position = Vector2(0, -50)
 amount = 30
+lifetime = 0.4
 preprocess = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_qt8w7")
 
 [connection signal="area_entered" from="Zone/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Zone/Area2D" to="." method="_on_area_2d_area_exited"]

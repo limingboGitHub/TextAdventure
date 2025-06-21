@@ -687,11 +687,19 @@ func _add_gaint_attack_zone(player_scene,_skill: DataBaseSkill,_position: Vector
 	var data_player = player_scene.data_player
 	if data_player == null:
 		return
+	# 寻找一只最近的怪物
+	var target_monster = _find_min_distance_monster(player_scene)
+	var direction = player_scene.position.direction_to(target_monster.position).normalized()
+	# 创建普攻和奋力一击的攻击区域
+	var attack_effect_scene = SingletonGameScenePre.AttackEffect9Scene.instantiate()
+	$CanvasLayer/GameZone/Effects.add_child(attack_effect_scene)
 	if _skill.id == "skill_000000" or _skill.id == "skill_000001":
-		# 创建普攻和奋力一击的攻击区域
-		var attack_effect_scene = SingletonGameScenePre.AttackEffect9Scene.instantiate()
-		$CanvasLayer/GameZone/Effects.add_child(attack_effect_scene)
-		attack_effect_scene.start(_position,_skill,_skill.direction)
+		attack_effect_scene.start_stick(_position,_skill,direction)
+	elif _skill.id == "skill_000002":
+		attack_effect_scene.start_swipe(_position,_skill,direction)
+	# 监听攻击区域怪物检测
+	attack_effect_scene.monster_detected.connect(_on_monster_detected)
+		
 		
 
 func _judge_attack_attach_fire(player_scene,skill: DataBaseSkill,_position: Vector2):
