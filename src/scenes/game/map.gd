@@ -439,6 +439,7 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 	player_scene.position = Vector2(0.5 * size.x, 0.5 * size.y)
 	# 监听寻找攻击目标
 	player_scene.find_target_started.connect(_on_find_target_started)
+	player_scene.find_far_target_started.connect(_on_find_far_target_started)
 	# 监听攻击目标变换
 	player_scene.attack_target_changed.connect(_on_attack_target_changed)
 	# 监听玩家的技能执行
@@ -465,6 +466,7 @@ func add_player_clone_scene(_player_clone: DataPlayer,player_scene: Control):
 	player_scene.position = Vector2(0.4 * size.x, 0.4 * size.y)
 	# 监听寻找攻击目标
 	player_scene.find_target_started.connect(_on_find_target_started)
+	player_scene.find_far_target_started.connect(_on_find_far_target_started)
 	# 监听攻击目标变换
 	player_scene.attack_target_changed.connect(_on_attack_target_changed)
 	# 监听玩家的技能执行
@@ -495,6 +497,7 @@ func remove_player_scene(data_player: DataPlayer):
 
 	# 解除监听
 	player_scene.find_target_started.disconnect(_on_find_target_started)
+	player_scene.find_far_target_started.disconnect(_on_find_far_target_started)
 	player_scene.attack_target_changed.disconnect(_on_attack_target_changed)
 	data_player.skill_executed.disconnect(_on_skill_executed)
 	player_scene.mock_monster_invoked.disconnect(_on_mock_monster_invoked)
@@ -516,6 +519,7 @@ func remove_player_clone_scene(data_player: DataPlayer):
 	
 	# 解除监听
 	player_scene.find_target_started.disconnect(_on_find_target_started)
+	player_scene.find_far_target_started.disconnect(_on_find_far_target_started)
 	player_scene.attack_target_changed.disconnect(_on_attack_target_changed)
 	data_player.skill_executed.disconnect(_on_skill_executed)
 	player_scene.mock_monster_invoked.disconnect(_on_mock_monster_invoked)
@@ -529,6 +533,11 @@ func _on_find_target_started(player_scene: Control):
 	#print('find_target_started:')
 	var min_distance_monster = _find_min_distance_monster(player_scene)
 	player_scene.set_attack_target(min_distance_monster)
+
+
+func _on_find_far_target_started(player_scene: Control):
+	var max_distance_monster = _find_max_distance_monster(player_scene)
+	player_scene.set_attack_target(max_distance_monster)
 
 
 func _on_attack_target_changed(attack_target):
@@ -593,10 +602,6 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 	elif skill.id == "fire_light":
 		# 爆炎射线
 		_add_fire_light_damage_effect(player_scene.position,skill,player)
-		return
-	# 巨人姿态的攻击碰撞体区域
-	if player.has_effect("effect_000054"):
-		_add_gaint_attack_zone(player_scene,skill,player_scene.position)
 		return
 
 	# 常规的中心点半径类型的技能伤害判定
@@ -834,7 +839,9 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 		if monster_scene.data_monster.is_dead or monster_scene.data_monster.is_black_monster:
 			continue
 		var monster_distance = monster_scene.global_position.distance_to(effect_position)
-		if monster_distance <= radius:
+		print("monster_distance:",monster_distance)
+		# 怪物在技能范围内（1为帧率等误差）
+		if monster_distance <= (radius + 1):
 			temp_monster_list.append({"monster": monster_scene, "distance": monster_distance})
 	
 	# 按距离从小到大排序

@@ -497,13 +497,6 @@ func execute_skill(_skill: DataBaseSkill,skill_add_count: int = 0):
 			var reduce_cd = _skill.cd - reduced_cd
 			skill_cd -= reduce_cd
 			print("攻击速度增加：",attack_speed_add," 技能CD减少：",reduce_cd)
-	# 巨人姿态 效果对技能CD的影响
-	if has_effect("effect_000054"):
-		# 巨人普攻
-		if _skill.id == "skill_000000" or _skill.id =="skill_000001":
-			skill_cd = 2
-		elif _skill.id == "skill_000002":
-			skill_cd = 2
 	# 重置冷却
 	execute_cd_rest = skill_cd / float(SingletonGame.speed)
 

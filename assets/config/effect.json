@@ -371,8 +371,8 @@
 			"value": 0.1
 		},
 		"effect_000054":{
-			"name": "巨人姿态",
-			"effect_type": "giant_stance",
+			"name": "巨人冲锋",
+			"effect_type": "giant_moving",
 			"desc": "",
 			"value_type": "percent",
 			"value": 0.1

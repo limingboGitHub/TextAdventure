@@ -23,8 +23,19 @@ var flash_target: Vector2
 # 瞬移伤害碰撞体
 @onready var flash_area: Area2D = $Area2D
 
+# 巨人冲锋相关
+# 冲锋时攻击判定的碰撞体
+@onready var gaint_attack_area: Area2D = $GaintAttackArea2D
+# 冲锋目标
+var gaint_move_target_pos: Vector2 = Vector2.ZERO
+var is_gaint_moving: bool = false
+# 冲锋时攻击到的目标
+var gaint_attack_targets: Dictionary = {}
+
 
 signal find_target_started(player_scene: Control)
+
+signal find_far_target_started(player_scene: Control)
 
 signal attack_target_changed(attack_target)
 
@@ -88,13 +99,19 @@ func _process(delta: float) -> void:
 			else:
 				# 蓄力时不进行攻击
 				if not data_player.get_charging_status():
-					_process_attack(delta)
+					if data_player.has_effect("effect_000054"):
+						_process_gaint_attack(delta)
+					else:
+						_process_attack(delta)
 		else:
 			# 监听玩家的attack事件
 			if Input.is_action_pressed("attack"):
 				# 蓄力时不进行攻击
 				if not data_player.get_charging_status():
-					_process_attack(delta)
+					if data_player.has_effect("effect_000054"):
+						_process_gaint_attack(delta)
+					else:
+						_process_attack(delta)
 			elif Input.is_action_just_released("attack"):
 				pass
 
@@ -105,34 +122,82 @@ func _process(delta: float) -> void:
 		_process_rotate(data_player,delta)
 
 
-func _process_attack(delta: float):
+# 巨人冲锋的攻击逻辑处理
+func _process_gaint_attack(delta: float):
+	if attack_target and is_instance_valid(attack_target):
+		# 如果没有冲锋目标点，就计算一个
+		if not is_gaint_moving:
+			# 1.获取冲锋目标位置pos，确定移动方向向量a
+			var move_direction = (attack_target.global_position - global_position).normalized()
+			# 2.确定最终移动目标的位置为pos位置朝着方向a增加长40
+			gaint_move_target_pos = attack_target.global_position + move_direction * 40
+			is_gaint_moving = true
+			# 如果冲锋碰撞体未启动，则启动
+			if not gaint_attack_area.monitoring:
+				gaint_attack_area.monitoring = true
+
+		# 冲锋过程中，攻击范围内存在敌人时，发出data_player.process_attack()
+		if not gaint_attack_targets.is_empty():
+			data_player.process_attack()
+		
+		# 3.朝着目标移动只到到达目标位置
+		if global_position.distance_to(gaint_move_target_pos) > 1:
+			var move_direction = (gaint_move_target_pos - global_position).normalized()
+			var speed = data_player.attribute.get_final_details().move_speed \
+				* (1 + data_player.move_speed_add) \
+				* SingletonGame.speed
+			position += move_direction * speed * delta
+		else:
+			# 到达目的地，重置冲锋目标点
+			is_gaint_moving = false
+			# 取消选中的目标
+			set_attack_target(null)
+	else:
+		# 没有攻击目标，重置冲锋目标点
+		is_gaint_moving = false
+		# 发出寻找最远敌人的信号
+		find_far_target_started.emit(self)
+
+
+func _process_attack(delta: float, special_target:Control = null):
+	var target = attack_target
+	if special_target:
+		target = special_target
+
 	# 寻找目标，移动到目标身边攻击
-	if attack_target:
+	if target:
 		if data_player.skill:
 			var skill = data_player.skill
 			# 如果当前mp不足，则使用普攻的距离判定
 			if data_player.mp < data_player.skill.get_mp_cost():
 				skill = data_player.normal_attack
 
-			var distance = skill.distance
-			# 如果技能有距离增幅，则使用技能的距离
-			if data_player.has_skill_enhance(skill.id):
-				distance += data_player.get_skill_enhance(skill.id).distance
-			# 其他增幅
-			distance *= (1 + data_player.attack_range_increase)
+			var distance = _skill_distance(skill,data_player)
 			# 如果距离小于等于目标距离，则攻击
-			if global_position.distance_to(attack_target.global_position) <= distance:
+			if global_position.distance_to(target.global_position) <= distance:
 				data_player.process_attack()
-			elif not data_player.has_effect(DataEffect.DragMonster):
-				_move_to_attack_target(delta)
+			else:
+				# 未达到释放距离时，移动到目标位置
+				_move_to_attack_target(delta, target)
 	else:
 		find_target_started.emit(self)
 
 
-func _move_to_attack_target(delta: float):
+# 计算技能的释放距离（可能有各种加成）
+func _skill_distance(_skill: DataBaseSkill,_data_player: DataPlayer)-> int:
+	var distance = _skill.distance
+	# 如果技能有距离增幅，则使用技能的距离
+	if _data_player.has_skill_enhance(_skill.id):
+		distance += _data_player.get_skill_enhance(_skill.id).distance
+	# 其他增幅
+	distance *= (1 + _data_player.attack_range_increase)
+	return distance
+
+
+func _move_to_attack_target(delta: float, target: Control):
 	if not data_player or data_player.is_dead:
 		return
-	var move_direction = attack_target.global_position - global_position
+	var move_direction = target.global_position - global_position
 	move_direction = move_direction.normalized()
 	# 速度
 	var speed = data_player.attribute.get_final_details().move_speed \
@@ -473,3 +538,19 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func set_black():
 	# 设置黑色
 	modulate = Color(0.3,0.3,0.3,1)
+
+
+func _on_gaint_attack_area_2d_area_entered(area: Area2D) -> void:
+	# 检查是否是怪物
+	var parent = area.get_parent()
+	if parent is Monster:
+		print("_on_gaint_attack_area_2d_area_entered ",parent.data_monster.monster_unique_id)
+		gaint_attack_targets[parent.data_monster.monster_unique_id] = parent
+
+
+func _on_gaint_attack_area_2d_area_exited(area: Area2D) -> void:
+	# 检查是否是怪物
+	var parent = area.get_parent()
+	if parent is Monster:
+		print("_on_gaint_attack_area_2d_area_exited ",parent.data_monster.monster_unique_id)
+		gaint_attack_targets.erase(parent.data_monster.monster_unique_id)

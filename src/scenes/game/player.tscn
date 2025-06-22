@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckgolexat0dxo"]
+[gd_scene load_steps=12 format=3 uid="uid://ckgolexat0dxo"]
 
 [ext_resource type="Script" uid="uid://sdtpcokcuu21" path="res://src/scenes/game/player.gd" id="1_y2cg1"]
 [ext_resource type="PackedScene" uid="uid://bx2d4keg6x7ho" path="res://src/scenes/game/color_bar.tscn" id="2_agfvh"]
@@ -14,6 +14,9 @@ bg_color = Color(0.329412, 0.317647, 0.32549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42uq7"]
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgh6a"]
+radius = 38.0
 
 [node name="Player" type="Control"]
 layout_mode = 3
@@ -152,8 +155,14 @@ visible = false
 [node name="MockMonsterTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="GaintAttackArea2D" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GaintAttackArea2D"]
+shape = SubResource("CircleShape2D_lgh6a")
 
 [connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]
 [connection signal="timeout" from="MockMonsterTimer" to="." method="_on_mock_monster_timer_timeout"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="GaintAttackArea2D" to="." method="_on_gaint_attack_area_2d_area_entered"]
+[connection signal="area_exited" from="GaintAttackArea2D" to="." method="_on_gaint_attack_area_2d_area_exited"]
