@@ -181,7 +181,7 @@ attribute_ability
 attribute_buff
 attribute_details
 attribute_list
-attribute_random_list
+attribute_random
 boss
 buff
 calculate_type

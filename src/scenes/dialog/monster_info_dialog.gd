@@ -162,7 +162,7 @@ func _on_monster_drop_info_show(monster_id: String) -> void:
 	# 根据怪物掉落信息生成掉落物信息
 	for drop_thing_id in monster_drops_rate.keys():
 		var drop_rate = monster_drops_rate[drop_thing_id]["rate"]
-		var drop_thing = drop_thing_manager.create_item(drop_thing_id)
+		var drop_thing = drop_thing_manager.create_item(drop_thing_id,false)
 		# 创建掉落物的场景
 		var drop_thing_item = SingletonGameScenePre.MonsterInfoDropThingItemScene.instantiate()
 		drop_thing_item.set_drop_thing_item(drop_thing,drop_rate)

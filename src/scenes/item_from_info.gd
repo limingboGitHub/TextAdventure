@@ -26,6 +26,8 @@ signal item_show_bt_pressed(bag_item: BagItem)
 func _ready():
 	if bag_item:
 		var bag_item_scene = $BagItem
+		# 展示物品的随机属性列表
+		bag_item.is_random_attribute_crate = true
 		# 展示物品信息
 		$BagItem.set_item(bag_item,false)
 		# 展示掉落怪物名称

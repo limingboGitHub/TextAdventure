@@ -115,6 +115,37 @@
 				"max_hp": 25,
 				"defense": 17
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "intelligence",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "agility",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "luck",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "max_hp",
+						"min": 10,
+						"max": 30
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"upper_body_000011": {
@@ -127,6 +158,37 @@
 				"max_hp": 40,
 				"defense": 25
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "intelligence",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "agility",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "luck",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "max_hp",
+						"min": 20,
+						"max": 40
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"upper_body_000012": {
@@ -138,6 +200,37 @@
 			"attribute_details": {
 				"max_hp": 60,
 				"defense": 35
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "intelligence",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "agility",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "luck",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "max_hp",
+						"min": 30,
+						"max": 50
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		},
@@ -272,6 +365,37 @@
 				"max_mp": 25,
 				"defense": 10
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "intelligence",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "agility",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "luck",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "max_hp",
+						"min": 10,
+						"max": 30
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"upper_body_001012": {
@@ -284,6 +408,37 @@
 				"max_mp": 40,
 				"defense": 15
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "intelligence",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "agility",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "luck",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "max_hp",
+						"min": 20,
+						"max": 40
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"upper_body_001013": {
@@ -295,6 +450,37 @@
 			"attribute_details": {
 				"max_mp": 60,
 				"defense": 20
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "intelligence",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "agility",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "luck",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "max_hp",
+						"min": 30,
+						"max": 50
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		},
@@ -369,6 +555,37 @@
 				"defense": 10,
 				"evasion": 5
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "intelligence",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "agility",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "luck",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "max_hp",
+						"min": 10,
+						"max": 30
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"upper_body_002007": {
@@ -381,6 +598,37 @@
 				"defense": 15,
 				"evasion": 10
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "intelligence",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "agility",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "luck",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "max_hp",
+						"min": 20,
+						"max": 40
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7	
 		},
 		"upper_body_002008": {
@@ -392,6 +640,37 @@
 			"attribute_details": {
 				"defense": 20,
 				"evasion": 15
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "intelligence",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "agility",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "luck",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "max_hp",
+						"min": 30,
+						"max": 50
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		}

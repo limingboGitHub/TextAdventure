@@ -48,6 +48,9 @@ const QUALITY_EPIC = "史诗"
 # 当前品质
 var quality: String = QUALITY_COMMON
 
+# 随机属性是否创建（用于区分是已经生成的物品还是用于展示的物品）
+var is_random_attribute_crate: bool = false
+
 signal locked_changed(is_locked: bool)
 
 

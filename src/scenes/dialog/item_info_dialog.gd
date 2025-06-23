@@ -78,8 +78,14 @@ func _show_equip_info(item: DataEquip) -> void:
 		name_label.text += "(+" + str(item.upgrade_level) + ")"
 	
 
-	# 展示装备能力值
+	# 展示装备属性
 	attribute_text += _show_blue_color()
+
+	if item.final_details.attack != 0:
+		attribute_text += "攻击：" + str(item.final_details.attack) + "\n"
+	if item.final_details.magic != 0:
+		attribute_text += "魔法攻击：" + str(item.final_details.magic) + "\n"
+
 	if item.final_ability.power != 0:
 		attribute_text += "力量：" + str(item.final_ability.power) + "\n"
 	if item.final_ability.agility != 0:
@@ -89,11 +95,6 @@ func _show_equip_info(item: DataEquip) -> void:
 	if item.final_ability.luck != 0:
 		attribute_text += "幸运：" + str(item.final_ability.luck) + "\n"
 	
-	# 展示装备详情属性
-	if item.final_details.attack != 0:
-		attribute_text += "攻击：" + str(item.final_details.attack) + "\n"
-	if item.final_details.magic != 0:
-		attribute_text += "魔法攻击：" + str(item.final_details.magic) + "\n"
 	if item.final_details.defense != 0:
 		attribute_text += "防御：" + str(item.final_details.defense) + "\n"
 	if item.final_details.magic_def != 0:
@@ -118,8 +119,16 @@ func _show_equip_info(item: DataEquip) -> void:
 		attribute_text += "攻击力最大值：" + str(int(item.final_details.attack_max_rate * 100)) + "%\n"
 	if item.final_details.exp_gain > 0:
 		attribute_text += "增加" + str(int(item.final_details.exp_gain * 100)) + "%经验值获取\n"
+	
+	# 展示随机属性列表
+	if item.is_random_attribute_crate and item.random_attribute.size() > 0:
+		for random_attribute_dic in item.random_attribute:
+			var _name = _attribute_str_to_name(random_attribute_dic["name"])
+			var _min = str(int(random_attribute_dic["min"]))
+			var _max = str(int(random_attribute_dic["max"]))
+			attribute_text += "(" + _name + "：" + str(_min) + "-" + str(_max) + ")\n"
+	
 	attribute_text += "[/color]"
-
 	#region 紫色属性
 	attribute_text += _effect_text_color()
 
@@ -248,6 +257,39 @@ func _show_consume_info(item: DataConsume) -> void:
 			attribute_text += "持续时间：" + str(int(item.data_buff.duration)) + "秒\n"
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
+
+
+func _attribute_str_to_name(attribute_str: String) -> String:
+	if attribute_str == "power":
+		return "力量"
+	elif attribute_str == "agility":
+		return "敏捷"
+	elif attribute_str == "intelligence":
+		return "智力"
+	elif attribute_str == "luck":
+		return "幸运"
+	elif attribute_str == "attack":
+		return "攻击力"
+	elif attribute_str == "magic":
+		return "魔法攻击"
+	elif attribute_str == "defense":
+		return "防御力"
+	elif attribute_str == "magic_def":
+		return "魔法防御"
+	elif attribute_str == "accuracy":
+		return "命中"
+	elif attribute_str == "evasion":
+		return "闪避"
+	elif attribute_str == "recover_hp":
+		return "恢复生命值"
+	elif attribute_str == "recover_mp":
+		return "恢复魔法值"
+	elif attribute_str == "max_hp":
+		return "HP上限"
+	elif attribute_str == "max_mp":
+		return "MP上限"
+	else:
+		return ""
 
 
 # 属性是否可以叠加的提示

@@ -54,7 +54,7 @@ func set_data(data: Dictionary, _dropthing_manager: DropThingManager):
 		var vbox_container: VBoxContainer = VBoxContainer.new()
 		scroll_container.name = tab_name
 		for item_id in data[tab].keys():
-			var data_bag_item = dropthing_manager.create_item(item_id)
+			var data_bag_item = dropthing_manager.create_item(item_id,false)
 			var item_from_info_scene = SingletonGameScenePre.ItemFromInfoScene.instantiate()
 			item_from_info_scene.set_data(data_bag_item, data[tab][item_id])
 			vbox_container.add_child(item_from_info_scene)

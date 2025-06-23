@@ -59,6 +59,9 @@ var upgrade_ability: AttributeAbility = AttributeAbility.new()
 # 强化详情属性
 var upgrade_details: AttributeDetails = AttributeDetails.new()
 
+# 随机属性列表（用于装备掉落的随机属性值）
+var random_attribute: Array[Dictionary]
+
 # 最终属性
 var final_ability: AttributeAbility = AttributeAbility.new()
 var final_details: AttributeDetails = AttributeDetails.new()

@@ -58,9 +58,9 @@ func _get_money_drop(monster_id,money_id: String) -> DataMoney:
 	var random_hit = randi() % 10000
 	if random_hit < rate * 100:
 		# 命中
-		var min = int(money_rate["min"])
-		var max = int(money_rate["max"])
-		var random_money = randi_range(min, max)
+		var _min = int(money_rate["_min"])
+		var _max = int(money_rate["_max"])
+		var random_money = randi_range(_min, _max)
 
 		var data_money = DataMoney.new()
 		data_money.type = DataBagItem.TYPE_MONEY
@@ -72,7 +72,7 @@ func _get_money_drop(monster_id,money_id: String) -> DataMoney:
 	return null
 
 
-func create_item(drop_id) -> DataBagItem:
+func create_item(drop_id,is_create_random: bool = true) -> DataBagItem:
 	if DataConsume.is_consume(drop_id):
 		var item = DataConsume.new()
 		item.id = drop_id
@@ -86,7 +86,7 @@ func create_item(drop_id) -> DataBagItem:
 	elif DataEquip.is_equip(drop_id):
 		var data_equip = DataEquip.new()
 		data_equip.id = drop_id
-		_load_equip(data_equip)
+		_load_equip(data_equip,is_create_random)
 		return data_equip
 	else:
 		return null
@@ -203,7 +203,7 @@ func load_item(data_bag_item: DataBagItem):
 	elif data_bag_item is DataEtc:
 		_load_etc(data_bag_item)
 	elif data_bag_item is DataEquip:
-		_load_equip(data_bag_item)
+		_load_equip(data_bag_item,false)
 
 
 # 加载消耗品的详细信息
@@ -268,7 +268,7 @@ func _load_etc(data_etc: DataEtc):
 
 
 # 加载装备的详细信息
-func _load_equip(data_equip: DataEquip):
+func _load_equip(data_equip: DataEquip,is_create_random: bool = true):
 	# 装备类型 为物品id的前缀，例如：upper_body_000001，则装备类型为upper_body
 	var last_underscore_pos = data_equip.id.rfind("_")
 	var equip_type = data_equip.id.substr(0, last_underscore_pos)
@@ -311,6 +311,17 @@ func _load_equip(data_equip: DataEquip):
 			data_equip.init_details(equip_info["attribute_details"])
 		#endregion
 
+		#region 随机属性列表（用于装备掉落的随机属性值）
+		if equip_info.has("attribute_random"):
+			for attribute_dic in equip_info["attribute_random"]["pool"]:
+				data_equip.random_attribute.append(attribute_dic)
+			if is_create_random:
+				_append_attribute_random(
+					data_equip.ability,
+					data_equip.details,
+					equip_info["attribute_random"])
+		#endregion
+
 		#region 装备特殊效果
 		if equip_info.has("effect"):
 			var effect_id = equip_info["effect"]["id"]
@@ -334,6 +345,35 @@ func _load_equip(data_equip: DataEquip):
 	# 更新装备的最终属性
 	data_equip.update_final_ability()
 
+
+# 追加随机属性
+func _append_attribute_random(ability: AttributeAbility,details: AttributeDetails,dic: Dictionary):
+	# 取出pool属性池
+	var pool = dic["pool"]
+	# 根据count条数，决定从随机池中取出的属性条数
+	var count = dic["count"]
+	# 从pool中随机取出count条属性
+	pool.shuffle()
+
+	# 用于存放最终随机出来的属性
+	var random_attribute_dic = {}
+
+	for i in range(count):
+		# 取出属性名
+		var key = pool[i]["name"]
+		var min_value = int(pool[i]["min"])
+		var max_value = int(pool[i]["max"])
+		if min_value < max_value:
+			var random_value = randi_range(min_value, max_value)
+			random_attribute_dic[key] = random_value
+	
+	# 追加到装备的属性中
+	var random_ability = AttributeAbility.new()
+	random_ability.load(random_attribute_dic)
+	var random_details = AttributeDetails.new()
+	random_details.load(random_attribute_dic)
+	ability.append(random_ability)
+	details.append(random_details)
 
 
 ## 根据装备属性中的关键字获取随机范围的属性

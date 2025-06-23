@@ -15,6 +15,9 @@ func _process(delta: float) -> void:
 
 
 func set_drop_thing_item(data_bag_item: DataBagItem, drop_rate: float) -> void:
+	# 展示物品的随机属性列表
+	data_bag_item.is_random_attribute_crate = true
+	# 展示物品详情
 	$BagItem.set_item(data_bag_item,false)
 	$DropRate.text = str(drop_rate * 100) + "%"
 

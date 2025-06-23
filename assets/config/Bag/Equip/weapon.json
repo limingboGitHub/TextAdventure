@@ -157,6 +157,32 @@
 			"attribute_details": {
 				"attack": 20
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "agility",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "luck",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "max_hp",
+						"min": 10,
+						"max": 30
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"weapon_000021": {
@@ -168,6 +194,32 @@
 			"attribute_details": {
 				"attack": 30
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "agility",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "luck",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "max_hp",
+						"min": 20,
+						"max": 40
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"weapon_000022": {
@@ -178,6 +230,32 @@
 			"price": 20000,
 			"attribute_details": {
 				"attack": 40
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "agility",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "luck",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "max_hp",
+						"min": 30,
+						"max": 50
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		},
@@ -305,6 +383,32 @@
 			"attribute_details": {
 				"magic": 20
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "intelligence",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "agility",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "luck",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "max_hp",
+						"min": 10,
+						"max": 30
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"weapon_001012": {
@@ -316,6 +420,32 @@
 			"attribute_details": {
 				"magic": 30
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "intelligence",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "agility",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "luck",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "max_hp",
+						"min": 20,
+						"max": 40
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"weapon_001013": {
@@ -326,6 +456,32 @@
 			"price": 10000,
 			"attribute_details": {
 				"magic": 40
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "intelligence",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "agility",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "luck",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "max_hp",
+						"min": 30,
+						"max": 50
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		},
@@ -434,6 +590,7 @@
 			},
 			"max_upgrade_times": 6
 		},
+		
 		"weapon_002009": {
 			"name": "霜语诅咒之刃",
 			"desc": "看看我的命，能不能比诅咒硬。",
@@ -444,6 +601,32 @@
 				"attack": 20,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "agility",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "luck",
+						"min": 1,
+						"max": 3
+					},
+					{
+						"name": "max_hp",
+						"min": 10,
+						"max": 30
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		},
@@ -458,6 +641,32 @@
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
 			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "agility",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "luck",
+						"min": 2,
+						"max": 4
+					},
+					{
+						"name": "max_hp",
+						"min": 20,
+						"max": 40
+					}
+				],
+				"count": 1
+			},
 			"max_upgrade_times": 7
 		},
 		"weapon_002011": {
@@ -470,6 +679,32 @@
 				"attack": 40,
 				"attack_min_rate":-0.3,
 				"attack_max_rate":0.5
+			},
+			"attribute_random": {
+				"desc": "其中 pool 是属性随机池，count 是属性条数",
+				"pool": [
+					{
+						"name": "power",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "agility",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "luck",
+						"min": 3,
+						"max": 5
+					},
+					{
+						"name": "max_hp",
+						"min": 30,
+						"max": 50
+					}
+				],
+				"count": 1
 			},
 			"max_upgrade_times": 7
 		}
