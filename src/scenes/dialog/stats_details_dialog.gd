@@ -22,9 +22,9 @@ func _on_close_button_pressed() -> void:
 func _on_damage_record_added(damage_data: DataDamage) -> void:
 	# 伤害类型
 	var damage_type = "攻击/魔法力" + str(damage_data.attack_value)
-	if damage_data.type == DataDamage.TYPE.WAR_STOMP:
-		damage_type = "战争践踏"
-	if damage_data.type == DataDamage.TYPE.POISON:
+	if damage_data.damage_info_name != "":
+		damage_type = damage_data.damage_info_name
+	elif damage_data.type == DataDamage.TYPE.POISON:
 		damage_type = "中毒"
 	elif damage_data.type == DataDamage.TYPE.FIRE:
 		damage_type = "灼烧"

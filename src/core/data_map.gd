@@ -688,7 +688,7 @@ func _create_percent_damage(
 	damage.damage_details = damage_details
 	# 战争践踏的统计信息需要特殊处理
 	if skill.id == "war_stomp":
-		damage.type = DataDamage.TYPE.WAR_STOMP
+		damage.damage_info_name = "战争践踏"
 	
 	# 发射伤害创建信号，通知DataWorld记录伤害信息
 	damage_created.emit(damage)

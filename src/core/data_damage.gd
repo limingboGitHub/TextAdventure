@@ -7,8 +7,7 @@ enum TYPE {
 	POISON,
 	FIRE,
 	HEAL,
-	REAL,
-	WAR_STOMP
+	REAL
 }
 
 # 伤害来源类型
@@ -45,6 +44,9 @@ var value : int = 0
 var value_show_rate : float = 1.0
 # 方向向量（归一化）
 var direction : Vector2 = Vector2.RIGHT
+
+# 伤害统计名称（仅用于统计展示）
+var damage_info_name: String = ""
 
 #region 伤害详情
 var attack_value: int = 0

@@ -179,11 +179,21 @@ func _process_gaint_attack(delta: float):
 			is_gaint_moving = false
 			# 取消选中的目标
 			set_attack_target(null)
+			# 清除所有对象
+			gaint_attack_targets.clear()
+			# 重置碰撞区域检测（重新收到冲锋区域的检测事件）
+			close_gaint_moving_detecting()
+
 	else:
 		# 没有攻击目标，重置冲锋目标点
 		is_gaint_moving = false
 		# 发出寻找最远敌人的信号
 		find_far_target_started.emit(self)
+
+
+# 关闭“巨人冲锋”的碰撞体检测
+func close_gaint_moving_detecting():
+	gaint_attack_area.monitoring = false
 
 
 func _process_attack(delta: float, special_target:Control = null):
@@ -573,6 +583,21 @@ func _on_gaint_attack_area_2d_area_entered(area: Area2D) -> void:
 	if parent is Monster:
 		print("_on_gaint_attack_area_2d_area_entered ",parent.data_monster.monster_unique_id)
 		gaint_attack_targets[parent.data_monster.monster_unique_id] = parent
+		# 受到巨人冲锋的撞击伤害
+		if data_player:
+			var effect = data_player.get_effect("effect_000054")
+			var damage_value = data_player.get_final_details().max_hp * effect.value
+			var damage = DataDamage.new(
+				DataDamage.TYPE.PHYSICAL, 
+				DataDamage.SOURCE_TYPE.PLAYER, 
+				damage_value)
+			damage.damage_info_name = "巨人冲锋"
+			damage.attack_value = data_player.get_final_details().max_hp
+			var damage_details: Array[DataDamage.DamageDetail] = [DataDamage.DamageDetail.new("巨人冲锋",damage_value,effect.value)]
+			damage.damage_details = damage_details
+			parent.data_monster.get_hurt(damage)
+			# 玩家造成伤害行为，需要记录伤害信息
+			data_player.cause_damage(damage)
 
 
 func _on_gaint_attack_area_2d_area_exited(area: Area2D) -> void:
@@ -581,3 +606,10 @@ func _on_gaint_attack_area_2d_area_exited(area: Area2D) -> void:
 	if parent is Monster:
 		print("_on_gaint_attack_area_2d_area_exited ",parent.data_monster.monster_unique_id)
 		gaint_attack_targets.erase(parent.data_monster.monster_unique_id)
+
+
+# 重置玩家状态
+func reset():
+	set_attack_target(null)
+
+	close_gaint_moving_detecting()

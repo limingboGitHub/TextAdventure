@@ -485,8 +485,8 @@ func remove_player_scene(data_player: DataPlayer):
 	# 根据玩家id删除场景
 	var player_scene = $CanvasLayer/GameZone/Players.get_node(data_player.player_id)
 	$CanvasLayer/GameZone/Players.remove_child(player_scene)
-	# 移除攻击目标
-	player_scene.attack_target = null
+	# 重置玩家场景的状态
+	player_scene.reset()
 	
 	# 遍历所有怪物场景
 	if data_map:
