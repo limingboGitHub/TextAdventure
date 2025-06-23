@@ -983,6 +983,26 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000053"
+		},
+		"consume_002144": {
+			"name": "[卷轴]特级体力",
+			"desc": "强力的卷轴，可以增加属性",
+			"type": "scroll",
+			"quality": "史诗",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"attribute_random_list": [
+				{
+					"desc": "其中 pool 是属性随机池，count 是属性条数",
+					"pool": [
+						{
+							"max_hp": 30
+						}
+					],
+					"count": 1
+				}
+			]
 		}
 	}
 }
