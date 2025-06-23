@@ -607,8 +607,6 @@ func _on_gaint_attack_area_2d_area_entered(area: Area2D) -> void:
 			var damage_details: Array[DataDamage.DamageDetail] = [DataDamage.DamageDetail.new("巨人冲锋",damage_value,effect.value)]
 			damage.damage_details = damage_details
 			parent.data_monster.get_hurt(damage)
-			# 玩家造成伤害行为，需要记录伤害信息
-			data_player.cause_damage(damage)
 
 
 func _on_gaint_attack_area_2d_area_exited(area: Area2D) -> void:
