@@ -31,6 +31,8 @@ var gaint_move_target_pos: Vector2 = Vector2.ZERO
 var is_gaint_moving: bool = false
 # 冲锋时攻击到的目标
 var gaint_attack_targets: Dictionary = {}
+# 巨人冲锋移动距离记录
+var gaint_move_distance_tracker: float = 0.0
 
 
 signal find_target_started(player_scene: Control)
@@ -40,6 +42,8 @@ signal find_far_target_started(player_scene: Control)
 signal attack_target_changed(attack_target)
 
 signal mock_monster_invoked(player_scene: Control,count: int)
+
+signal war_stomp_triggered(player_scene: Control, effect: DataEffect)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -132,6 +136,8 @@ func _process_gaint_attack(delta: float):
 			# 2.确定最终移动目标的位置为pos位置朝着方向a增加长40
 			gaint_move_target_pos = attack_target.global_position + move_direction * 40
 			is_gaint_moving = true
+			# 重置移动距离
+			gaint_move_distance_tracker = 0.0
 			# 如果冲锋碰撞体未启动，则启动
 			if not gaint_attack_area.monitoring:
 				gaint_attack_area.monitoring = true
@@ -146,7 +152,28 @@ func _process_gaint_attack(delta: float):
 			var speed = data_player.attribute.get_final_details().move_speed \
 				* (1 + data_player.move_speed_add) \
 				* SingletonGame.speed
-			position += move_direction * speed * delta
+			var move_vector = move_direction * speed * delta
+			position += move_vector
+			
+			# 必须有"战争践踏"效果
+			if data_player.has_effect("effect_000055"):
+				# 记录移动距离
+				gaint_move_distance_tracker += move_vector.length()
+				# 每移动一定距离，就发出一次“战争践踏”效果的信号
+				if gaint_move_distance_tracker >= 100:
+					var effect = data_player.get_effect("effect_000055")
+					# 判断蓝耗
+					if data_player and data_player.mp >= effect.mp_cost:
+						# 计算蓝耗
+						var real_mp_cost = data_player.get_real_mp_cost(effect.mp_cost)
+						var hp_cost_replace_mp = effect.mp_cost - real_mp_cost
+						# 扣除蓝耗
+						data_player.recover_mp(-real_mp_cost)
+						# 扣除血量
+						data_player.recover_hp(-hp_cost_replace_mp)
+						# 触发战争践踏特效
+						war_stomp_triggered.emit(self, effect)
+					gaint_move_distance_tracker -= 100
 		else:
 			# 到达目的地，重置冲锋目标点
 			is_gaint_moving = false

@@ -446,6 +446,8 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 	data_player.skill_executed.connect(_on_skill_executed)
 	# 监听玩家嘲讽怪物
 	player_scene.mock_monster_invoked.connect(_on_mock_monster_invoked)
+	# 监听战争践踏
+	player_scene.war_stomp_triggered.connect(_on_war_stomp_triggered)
 
 	# 加入场景
 	$CanvasLayer/GameZone/Players.add_child(player_scene)
@@ -501,6 +503,7 @@ func remove_player_scene(data_player: DataPlayer):
 	player_scene.attack_target_changed.disconnect(_on_attack_target_changed)
 	data_player.skill_executed.disconnect(_on_skill_executed)
 	player_scene.mock_monster_invoked.disconnect(_on_mock_monster_invoked)
+	player_scene.war_stomp_triggered.disconnect(_on_war_stomp_triggered)
 	# 如果地图没有玩家了，延时关闭怪物刷新
 	$CloseMonsRefreshTimer.start()
 
@@ -527,6 +530,20 @@ func remove_player_clone_scene(data_player: DataPlayer):
 
 func _on_mock_monster_invoked(_player_scene: Control,count: int):
 	_process_mock_monster(_player_scene,count)
+
+
+func _on_war_stomp_triggered(_player_scene: Control, _effect: DataEffect):
+	print("战争践踏！")
+	# 特效相关的技能
+	var effect_skill = _effect.get_special_skill()
+	# 实例化战争践踏攻击区域场景
+	var attack_zone_scene = SingletonGameScenePre.AttackEffect10Scene.instantiate()
+	# 添加到场景树
+	$CanvasLayer/GameZone/Effects.add_child(attack_zone_scene)
+	# 开始攻击
+	attack_zone_scene.start(effect_skill,_player_scene.position,_player_scene.scale.x)
+	# 监听怪物检测
+	attack_zone_scene.monster_detected.connect(_on_monster_detected)
 
 
 func _on_find_target_started(player_scene: Control):
@@ -979,7 +996,7 @@ func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):
 
 
 func _on_monster_detected(monster: Monster,skill: DataBaseSkill):
-	print("monster_detected:",monster.name,skill.name)
+	#print("monster_detected:",monster.name,skill.name)
 	if data_map.data_player:
 		var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.data_player.player_id)
 		if player_scene:

@@ -597,6 +597,9 @@ func _create_percent_damage(
 		# 从玩家的最小魔法攻击力到最大魔法攻击力之间随机一个值
 		var magic_attack_value = _data_player.get_final_magic_attack(attack_value_rate)
 		attack_value = phy_attack_value + magic_attack_value
+	elif skill.damage_source_type == 3:
+		# 血量百分比加成
+		attack_value = _data_player.get_final_details().max_hp
 	#endregion
 
 	damage_details.append(DataDamage.DamageDetail.new(skill.name, attack_value * _damage_rate, _damage_rate))
@@ -683,11 +686,14 @@ func _create_percent_damage(
 	damage.value_show_rate = _data_player.get_show_rate(attack_value_rate)
 	damage.attack_value = attack_value
 	damage.damage_details = damage_details
-
+	# 战争践踏的统计信息需要特殊处理
+	if skill.id == "war_stomp":
+		damage.type = DataDamage.TYPE.WAR_STOMP
+	
 	# 发射伤害创建信号，通知DataWorld记录伤害信息
 	damage_created.emit(damage)
 
-	print("伤害详情：",damage_details)
+	#print("伤害详情：",damage_details)
 	return damage
 
 

@@ -43,6 +43,8 @@ const AttackEffect8Scene = preload("res://src/scenes/effect/attack_effect8.tscn"
 
 const AttackEffect9Scene = preload("res://src/scenes/effect/attack_effect9.tscn")
 
+const AttackEffect10Scene = preload("res://src/scenes/effect/attack_effect10.tscn")
+
 const EquipUpgradeEffectScene = preload("res://src/scenes/dialog/equip_upgrade_effect.tscn")
 
 const MissionItemScene = preload("res://src/scenes/dialog/mission_item.tscn")

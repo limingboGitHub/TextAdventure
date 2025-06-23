@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbox2qe22q2s3"]
+
+[ext_resource type="Script" uid="uid://ia4njyp5peqo" path="res://src/scenes/effect/attack_effect_10.gd" id="1_xlqpn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt8w7"]
+bg_color = Color(0.780392, 0.780392, 0.780392, 0.227451)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Gradient" id="Gradient_qt8w7"]
+colors = PackedColorArray(0.729412, 0.733333, 0.737255, 0.847059, 0.729412, 0.733333, 0.737255, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0bvnm"]
+gradient = SubResource("Gradient_qt8w7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qt8w7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_0bvnm")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cy0wo"]
+radius = 50.0
+
+[node name="AttackEffect10" type="Node2D"]
+script = ExtResource("1_xlqpn")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt8w7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qt8w7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cy0wo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

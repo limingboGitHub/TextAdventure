@@ -429,30 +429,17 @@ func process_attack():
 						#print("技能追加判定：",skill.name,skill_enhance.add_probability)
 
 			# 判断是否存在特效影响蓝耗
-			var hp_cost_replace_mp = 0
-			if has_effect("effect_000016"):
-				var effect = get_effect("effect_000016")
-				if effect.value_type == Constants.VALUE_TYPE_PERCENT:
-					hp_cost_replace_mp = int(mp_cost * effect.value)
-					mp_cost -= hp_cost_replace_mp
-				else:
-					hp_cost_replace_mp = effect.value
-					mp_cost -= hp_cost_replace_mp
-				#print("【血偿】蓝耗：",mp_cost,"血量：",hp_cost_replace_mp)
+			var real_mp_cost = get_real_mp_cost(mp_cost)
+			var hp_cost_replace_mp = mp_cost - real_mp_cost
 
 			if mp < mp_cost:
 				# 蓝耗不足时释放普攻
 				execute_skill(normal_attack,skill_add_count)
 			else:
 				# 扣除蓝耗
-				recover_mp(-mp_cost)
+				recover_mp(-real_mp_cost)
 				# 扣除血量
-				if hp_cost_replace_mp > 0:
-					_reduce_hp(hp_cost_replace_mp)
-					# 角色死亡判定
-					_judge_dead()
-					# 通知血量变化
-					_hp_update()
+				recover_hp(-hp_cost_replace_mp)
 				
 				if skill.id == "skill_000001" and has_effect("effect_000026"):
 					charge_skill = skill
@@ -461,6 +448,17 @@ func process_attack():
 					execute_skill(skill,skill_add_count)
 			# 退出休息状态
 			is_resting = false
+
+
+func get_real_mp_cost(mp_cost: int)-> int:
+	var hp_cost_replace_mp = 0
+	if has_effect("effect_000016"):
+		var effect = get_effect("effect_000016")
+		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+			hp_cost_replace_mp = int(mp_cost * effect.value)
+		else:
+			hp_cost_replace_mp = effect.value
+	return mp_cost - hp_cost_replace_mp
 
 
 func process_charge_attack():
@@ -537,6 +535,11 @@ func recover_hp(value: int):
 	if hp > attribute.final_details.max_hp:
 		hp = attribute.final_details.max_hp
 	_hp_update()
+
+	# 角色死亡判定
+	if value < 0:
+		_judge_dead()
+		return
 
 	#【特殊效果】血量恢复时，恢复法力
 	if has_effect(DataEffect.RecoverMpWhenHpRecover):

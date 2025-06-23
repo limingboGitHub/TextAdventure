@@ -2,7 +2,7 @@ class_name DataAttackSkill extends DataBaseSkill
 
 ## 攻击类技能
 
-## 伤害加成类型 0 攻击力 1 魔法力 2 攻击力+魔法力
+## 伤害加成类型 0 攻击力 1 魔法力 2 攻击力+魔法力 3 血量
 var damage_source_type: int = 0
 ## 最终造成的伤害类型 0 物理 1 魔法
 var damage_type: int = 0

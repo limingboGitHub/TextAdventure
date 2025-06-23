@@ -7,7 +7,8 @@ enum TYPE {
 	POISON,
 	FIRE,
 	HEAL,
-	REAL
+	REAL,
+	WAR_STOMP
 }
 
 # 伤害来源类型
