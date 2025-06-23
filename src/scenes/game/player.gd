@@ -140,8 +140,6 @@ func _process_gaint_attack(delta: float):
 			# 2.确定最终移动目标的位置为pos位置朝着方向a增加长40
 			gaint_move_target_pos = attack_target.global_position + move_direction * 40
 			is_gaint_moving = true
-			# 重置移动距离
-			gaint_move_distance_tracker = 0.0
 			# 如果冲锋碰撞体未启动，则启动
 			if not gaint_attack_area.monitoring:
 				gaint_attack_area.monitoring = true
