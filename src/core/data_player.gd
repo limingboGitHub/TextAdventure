@@ -107,6 +107,9 @@ var move_speed_add: float = 0
 # 是否是分身
 var is_copy = false
 
+# 巨人领主职业加成
+var gaint_job_scale_add = 0.5
+
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
 
@@ -245,11 +248,16 @@ func _on_update_attribute() -> void:
 
 func _get_attack_range_increase() -> float:
 	var _attack_range_increase = 0
+	# 巨人领主职业加成
+	if job_id == "job_000003":
+		_attack_range_increase += gaint_job_scale_add
+	# 泰坦之魂加成
 	if has_effect("effect_000007"):
 		var effect = get_effect("effect_000007")
 		# 每100点最大生命值，增加1点半径
-		_attack_range_increase = effect.value * attribute.final_details.max_hp / 10000.0
-		print("【泰坦之魂】攻击距离增幅：",_attack_range_increase)
+		var effect_attack_range_increase = effect.value * attribute.final_details.max_hp / 10000.0
+		_attack_range_increase += effect_attack_range_increase
+		print("【泰坦之魂】攻击距离增幅：",effect_attack_range_increase)
 	return _attack_range_increase
 
 
@@ -697,9 +705,9 @@ func change_job(_job_id: String,_job_name: String):
 	#if _job_id == "job_000202" or _job_id == "job_000203":
 	#	attribute.luck_more_attack = true
 	#	attribute.agility_more_attack = true
-	
-	
 	job_changed.emit(self)
+	# 部分职业变更后需要更新属性
+	update_attribute()
 
 
 func get_final_min_attack() -> int:

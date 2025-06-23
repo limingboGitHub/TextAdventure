@@ -90,7 +90,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# 当玩家加入地图中时，才处理process事件
-	if data_player and get_parent().name == "Players":
+	if data_player and is_scene_in_map():
 		data_player.process(delta)
 
 		# 调试分身角色
@@ -124,6 +124,10 @@ func _process(delta: float) -> void:
 
 		# 处理旋转
 		_process_rotate(data_player,delta)
+
+
+func is_scene_in_map()-> bool:
+	return get_parent().name == "Players"
 
 
 # 巨人冲锋的攻击逻辑处理
@@ -295,16 +299,23 @@ func _on_player_attribute_updated(player: DataPlayer):
 
 
 func _effect_hp_attach_scope_increase(player: DataPlayer):
+	var scale_add = 0
+	# 巨人领主职业加成
+	if player.job_id == "job_000003" and is_scene_in_map():
+		scale_add += player.gaint_job_scale_add
+	# 泰坦之魂加成
 	if player.has_effect("effect_000007"):
 		# 每100点血量增加一定量体型
 		var scale_factor = player.get_gaint_max_hp_formulate() / 100.0
 
 		var effect = player.get_effect("effect_000007")
-		var scale_add = scale_factor * effect.value / 100.0
+		var effect_scale_add = scale_factor * effect.value / 100.0
+		scale_add += effect_scale_add
+		print("【泰坦之魂】增加体型：",effect_scale_add)
+	# 设置体型
+	print("体型加成：",scale_add)
+	if scale_add > 0:
 		scale = Vector2(1 + scale_add, 1 + scale_add)
-		print("【泰坦之魂】增加体型：",scale_add)
-	else:
-		scale = Vector2(1,1)
 
 
 func _player_can_not_be_hurt_effect():
