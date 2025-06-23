@@ -60,6 +60,10 @@ func get_ability(id: String) -> AttributeAbility:
 	return ability_dic[id]
 
 
+func has_ability(id: String) -> bool:
+	return ability_dic.has(id)
+
+
 func add_details(id: String, _details: AttributeDetails):
 	self.details[id] = _details
 	update()

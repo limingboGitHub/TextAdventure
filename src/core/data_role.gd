@@ -111,13 +111,38 @@ func add_buff(data_buff: DataBuff):
 
 		# 巨人之力，增加力量属性
 		if effect.id == "effect_000007":
-			var scale_factor = attribute.final_details.max_hp / 100.0
+			var scale_factor = get_gaint_max_hp_formulate() / 100.0
 			var power = effect.value * scale_factor
 			var attribute_ability = AttributeAbility.new()
 			attribute_ability.power = power
 			attribute.add_ability(data_buff.id, attribute_ability)
 	# 监听buff的结束
 	data_buff.buff_removed.connect(self._on_buff_removed)
+
+
+# 获取泰坦之魂结算的属性
+func get_gaint_max_hp_formulate()-> int:
+	return get_final_details().max_hp
+
+
+# 更新buff
+func update_buff():
+	for data_buff in buff_dic.values():
+		if not attribute.has_ability(data_buff.id):
+			continue
+		var old_power = attribute.get_ability(data_buff.id).power
+
+		for effect in data_buff.get_all_effects():
+			# 巨人之力，增加力量属性
+			if effect.id == "effect_000007":
+				var scale_factor = get_gaint_max_hp_formulate() / 100.0
+				var power = int(effect.value * scale_factor)
+
+				# 和当前值对比，如果不同，则更新属性（防止循环更新导致溢出）
+				if power != old_power:
+					var attribute_ability = AttributeAbility.new()
+					attribute_ability.power = power
+					attribute.add_ability(data_buff.id, attribute_ability)
 
 
 func add_effect(data_effect: DataEffect):

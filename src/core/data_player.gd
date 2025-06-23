@@ -196,6 +196,8 @@ func init_exp_dic(_exp_dic: Dictionary) -> void:
 
 func _on_attribute_updated(_attribute: Attribute):
 	_on_update_attribute()
+	# 一但属性更新，需要更新buff，有些属性需要重新计算
+	update_buff()
 
 
 func update_attribute() -> void:

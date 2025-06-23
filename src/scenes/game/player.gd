@@ -297,7 +297,7 @@ func _on_player_attribute_updated(player: DataPlayer):
 func _effect_hp_attach_scope_increase(player: DataPlayer):
 	if player.has_effect("effect_000007"):
 		# 每100点血量增加一定量体型
-		var scale_factor = player.attribute.final_details.max_hp / 100.0
+		var scale_factor = player.get_gaint_max_hp_formulate() / 100.0
 
 		var effect = player.get_effect("effect_000007")
 		var scale_add = scale_factor * effect.value / 100.0
