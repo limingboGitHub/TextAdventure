@@ -93,6 +93,8 @@ func _show_quality(quality: String) -> void:
 		quality_suffix = "rare"
 	elif quality == DataBagItem.QUALITY_EPIC:
 		quality_suffix = "epic"
+	elif quality == DataBagItem.QUALITY_SUIT:
+		quality_suffix = "suit"
 	var stylebox = load("res://theme/quality/quality_" + quality_suffix + ".tres")
 	$Back.add_theme_stylebox_override("panel", stylebox)
 

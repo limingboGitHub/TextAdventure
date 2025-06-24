@@ -45,6 +45,7 @@ const QUALITY_COMMON = "普通"
 const QUALITY_GOOD = "优秀"
 const QUALITY_RARE = "稀有"
 const QUALITY_EPIC = "史诗"
+const QUALITY_SUIT = "套装"
 # 当前品质
 var quality: String = QUALITY_COMMON
 

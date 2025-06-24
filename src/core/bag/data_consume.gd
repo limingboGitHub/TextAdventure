@@ -68,6 +68,9 @@ class Scroll:
 			data_effect = DataEffect.new(json["data_effect"]["id"],json["data_effect"]["type"])
 			data_effect.value = json["data_effect"]["value"]
 
+class SuitScroll:
+	# 套装效果
+	var suit_effect: DataEffect
 
 # 恢复属性
 var recovery: Recovery
@@ -77,6 +80,9 @@ var data_buff: DataBuff
 
 # 卷轴
 var scroll: Scroll
+
+# 套装卷轴
+var suit_scroll: SuitScroll
 
 
 static func is_consume(_id: String) -> bool:
@@ -96,6 +102,8 @@ func save() -> Dictionary:
 		json["data_buff"] = data_buff.save()
 	if scroll != null:
 		json["scroll"] = scroll.save()
+	if suit_scroll != null:
+		json["scroll"] = suit_scroll.save()
 	return json
 
 
@@ -110,6 +118,9 @@ func load(json: Dictionary) -> void:
 	if json.has("scroll"):
 		scroll = Scroll.new()
 		scroll.load(json["scroll"])
+	if json.has("suit_scroll"):
+		suit_scroll = SuitScroll.new()
+		suit_scroll.load(json["suit_scroll"])
 
 
 func copy() -> DataConsume:

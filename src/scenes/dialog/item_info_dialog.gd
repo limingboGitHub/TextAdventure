@@ -261,6 +261,11 @@ func _show_consume_info(item: DataConsume) -> void:
 		# 持续时间
 		if item.data_buff.duration > 0:
 			attribute_text += "持续时间：" + str(int(item.data_buff.duration)) + "秒\n"
+	elif item.suit_scroll != null:
+		attribute_text += "[color=#41ab4c]"
+		attribute_text += _show_effect_desc(item.suit_scroll.suit_effect,false)
+		attribute_text += "[/color]"
+		attribute_text += "[color=#77ab77](5件装备激活该套装属性)[/color]\n"
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
 
@@ -306,7 +311,7 @@ func _attribute_append_str(is_append: bool) -> String:
 		return "[color=#ff0000](单件装备不可叠加)[/color]\n"
 
 
-func _show_effect_desc(data_effect: DataEffect)-> String:
+func _show_effect_desc(data_effect: DataEffect,is_show_number_color: bool = true)-> String:
 	var attribute_text = ""
 	var skill_enhance = data_effect.skill_enhance
 	if skill_enhance != null:
@@ -336,9 +341,14 @@ func _show_effect_desc(data_effect: DataEffect)-> String:
 			
 			# 判断是否有小数位并格式化显示
 			var formatted_value = str(effect_value) if fmod(effect_value, 1.0) != 0 else str(int(effect_value))
-			var effect_value_str = _effect_value_color() + formatted_value + "%[/color]"
-			var desc = data_effect.desc.replace("{d}", effect_value_str)
-			attribute_text += desc + "\n"
+			if is_show_number_color:
+				var effect_value_str = _effect_value_color() + formatted_value + "%[/color]"
+				var desc = data_effect.desc.replace("{d}", effect_value_str)
+				attribute_text += desc + "\n"
+			else:
+				var desc = data_effect.desc.replace("{d}", formatted_value)
+				attribute_text += desc + "\n"
+
 		else:
 			var effect_value = data_effect.value
 			# 优化小数和整数的展示
@@ -348,9 +358,13 @@ func _show_effect_desc(data_effect: DataEffect)-> String:
 			else:
 				effect_value_tmp = str(int(effect_value))
 
-			var effect_value_str = _effect_value_color() + effect_value_tmp + "[/color]"
-			var desc = data_effect.desc.replace("{d}", effect_value_str)
-			attribute_text += desc + "\n"
+			if is_show_number_color:
+				var effect_value_str = _effect_value_color() + effect_value_tmp + "[/color]"
+				var desc = data_effect.desc.replace("{d}", effect_value_str)
+				attribute_text += desc + "\n"
+			else:
+				var desc = data_effect.desc.replace("{d}", effect_value_tmp)
+				attribute_text += desc + "\n"
 	return attribute_text
 
 

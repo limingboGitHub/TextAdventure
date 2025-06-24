@@ -1063,6 +1063,66 @@
 			"slotMax": 9999999,
 			"success_rate": 1,
 			"effect": "effect_000057"
+		},
+		"consume_002149":{
+			"name": "[套装]狂风骤雨",
+			"desc": "谁能阻挡这般狂风骤雨！",
+			"type": "suit_scroll",
+			"quality": "套装",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000058"
+		},
+		"consume_002150":{
+			"name": "[套装]撼天动地",
+			"desc": "地震了？",
+			"type": "suit_scroll",
+			"quality": "套装",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000059"
+		},
+		"consume_002151":{
+			"name": "[套装]身外化身",
+			"desc": "那个是真身？",
+			"type": "suit_scroll",
+			"quality": "套装",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000060"
+		},
+		"consume_002152":{
+			"name": "[套装]炎灭八荒",
+			"desc": "给我灭！",
+			"type": "suit_scroll",
+			"quality": "套装",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000061"
+		},
+		"consume_002153":{
+			"name": "[套装]福星高照",
+			"desc": "绝对的百分百！",
+			"type": "suit_scroll",
+			"quality": "套装",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000062"
+		},
+		"consume_002154":{
+			"name": "[套装]踪灭神行",
+			"desc": "这世上只有我的传说。",
+			"type": "suit_scroll",
+			"quality": "套装",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000063"
 		}
 	}
 }

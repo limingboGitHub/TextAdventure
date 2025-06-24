@@ -122,17 +122,23 @@ func _create_scroll(dic: Dictionary) -> DataConsume.Scroll:
 				scroll.attribute_details.load(random_attribute)
 			
 	
+	var data_effect = _load_effect(dic)
+	scroll.data_effect = data_effect
+	return scroll
+
+
+func _load_effect(dic: Dictionary)-> DataEffect:
 	if dic.has("effect"):
 		var effect_id = dic["effect"]
 		var effect_info = res_manager.get_effect_info(effect_id)
 		var effect_type = effect_info["effect_type"]
-		scroll.data_effect = DataEffect.new(effect_id,effect_type)
+		var data_effect = DataEffect.new(effect_id,effect_type)
 		if effect_info.has("value"):
-			scroll.data_effect.value = effect_info["value"]
+			data_effect.value = effect_info["value"]
 		if effect_info.has("value_type"):
-			scroll.data_effect.value_type = effect_info["value_type"]
+			data_effect.value_type = effect_info["value_type"]
 		if effect_info.has("desc"):
-			scroll.data_effect.desc = effect_info["desc"]
+			data_effect.desc = effect_info["desc"]
 		# 技能增强类型的特效
 		if effect_info.has("skill_enhance"):
 			var skill_enhance_dic = effect_info["skill_enhance"]
@@ -145,8 +151,9 @@ func _create_scroll(dic: Dictionary) -> DataConsume.Scroll:
 	
 			# 技能名称从资源管理器中获取
 			skill_enhance.name = res_manager.get_skill_name(skill_enhance.skill_id)
-			scroll.data_effect.skill_enhance = skill_enhance
-	return scroll
+			data_effect.skill_enhance = skill_enhance
+		return data_effect
+	return null
 
 
 func _create_buff(drop_id: String,name: String,dic: Dictionary) -> DataBuff:
@@ -246,6 +253,10 @@ func _load_consume(data_consume: DataConsume):
 					data_consume.id,
 					data_consume.name,
 					consume_dic[data_consume.id]["buff"])
+		elif type == "suit_scroll":
+			var suit_scroll = DataConsume.SuitScroll.new()
+			suit_scroll.suit_effect = _load_effect(consume_dic[data_consume.id])
+			data_consume.suit_scroll = suit_scroll
 	# 物品品质
 	if consume_dic.has("quality"):
 		data_consume.quality = consume_dic["quality"]

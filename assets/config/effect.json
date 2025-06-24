@@ -397,6 +397,48 @@
 			"desc": "战争践踏的触发距离减少{d}点",
 			"value_type": "number",
 			"value": 10
+		},
+		"effect_000058":{
+			"name": "狂风骤雨",
+			"effect_type": "attack_add_more_sector_damage",
+			"desc": "额外再释放{d}道剑气",
+			"value_type": "number",
+			"value": 3
+		},
+		"effect_000059":{
+			"name": "撼天动地",
+			"effect_type": "big_war_stomp",
+			"desc": "战争践踏的触发范围减少{d}",
+			"value_type": "percent",
+			"value": 0.8
+		},
+		"effect_000060":{
+			"name": "身外化身",
+			"effect_type": "more_and_more_copy",
+			"desc": "额外增加{d}个分身",
+			"value_type": "number",
+			"value": 1
+		},
+		"effect_000061":{
+			"name": "炎灭八荒",
+			"effect_type": "fire_more_and_more_frequency",
+			"desc": "减少{d}烈火燎原的灼烧间隔时间",
+			"value_type": "percent",
+			"value": 0.8
+		},
+		"effect_000062":{
+			"name": "福星高照",
+			"effect_type": "bese_luck",
+			"desc": "运气至上效果增加{d}",
+			"value_type": "percent",
+			"value": 1
+		},
+		"effect_000063":{
+			"name": "踪灭神行",
+			"effect_type": "more_speed",
+			"desc": "身手敏捷效果增加{d}",
+			"value_type": "percent",
+			"value": 1
 		}
 	}
 }
