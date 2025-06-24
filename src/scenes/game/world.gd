@@ -895,6 +895,7 @@ func _on_debug_dialog_all_consume_added() -> void:
 		"consume_002125",
 		"consume_002126",
 		"consume_002127",
+		"consume_002113",
 		"consume_002114",
 		"consume_002115",
 		"consume_002116",
@@ -931,6 +932,8 @@ func _on_debug_dialog_all_consume_added() -> void:
 		"consume_002144",
 		"consume_002145",
 		"consume_002146",
+		"consume_002147",
+		"consume_002148",
 		
 	]
 	for scroll_id in all_scrolls:

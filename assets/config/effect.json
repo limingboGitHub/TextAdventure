@@ -383,6 +383,20 @@
 			"desc": "",
 			"value_type": "percent",
 			"value": 0.1
+		},
+		"effect_000056":{
+			"name": "血脉压制",
+			"effect_type": "bloodline_suppression",
+			"desc": "每100点HP最大值增加{d}对BOSS造成的最终伤害",
+			"value_type": "percent",
+			"value": 0.003
+		},
+		"effect_000057":{
+			"name": "雷霆碎步",
+			"effect_type": "more_war_stomp",
+			"desc": "战争践踏的触发距离减少{d}点",
+			"value_type": "number",
+			"value": 10
 		}
 	}
 }

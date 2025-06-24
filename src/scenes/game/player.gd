@@ -45,6 +45,8 @@ signal mock_monster_invoked(player_scene: Control,count: int)
 
 signal war_stomp_triggered(player_scene: Control, effect: DataEffect)
 
+signal skill_on_target_triggered(player_scene: Control, skill: DataBaseSkill,target: Control)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -161,8 +163,13 @@ func _process_gaint_attack(delta: float):
 			if data_player.has_effect("effect_000055"):
 				# 记录移动距离
 				gaint_move_distance_tracker += move_vector.length()
+				# 减少触发距离
+				var gaint_move_distance_reduce = 0
+				if data_player.has_effect("effect_000057"):
+					gaint_move_distance_reduce += data_player.get_effect("effect_000057").value
+				var tracker_distance = max(10,100 - gaint_move_distance_reduce)
 				# 每移动一定距离，就发出一次“战争践踏”效果的信号
-				if gaint_move_distance_tracker >= 100:
+				if gaint_move_distance_tracker >= tracker_distance:
 					var effect = data_player.get_effect("effect_000055")
 					# 判断蓝耗
 					if data_player and data_player.mp >= effect.mp_cost:
@@ -175,7 +182,7 @@ func _process_gaint_attack(delta: float):
 						data_player.recover_hp(-hp_cost_replace_mp)
 						# 触发战争践踏特效
 						war_stomp_triggered.emit(self, effect)
-					gaint_move_distance_tracker -= 100
+					gaint_move_distance_tracker -= tracker_distance
 		else:
 			# 到达目的地，重置冲锋目标点
 			is_gaint_moving = false
@@ -593,16 +600,8 @@ func _on_gaint_attack_area_2d_area_entered(area: Area2D) -> void:
 		# 受到巨人冲锋的撞击伤害
 		if data_player:
 			var effect = data_player.get_effect("effect_000054")
-			var damage_value = data_player.get_final_details().max_hp * effect.value
-			var damage = DataDamage.new(
-				DataDamage.TYPE.PHYSICAL, 
-				DataDamage.SOURCE_TYPE.PLAYER, 
-				damage_value)
-			damage.damage_info_name = "巨人冲锋"
-			damage.attack_value = data_player.get_final_details().max_hp
-			var damage_details: Array[DataDamage.DamageDetail] = [DataDamage.DamageDetail.new("巨人冲锋",damage_value,effect.value)]
-			damage.damage_details = damage_details
-			parent.data_monster.get_hurt(damage)
+			var effect_skill = effect.get_special_skill()
+			skill_on_target_triggered.emit(self,effect_skill,parent)
 
 
 func _on_gaint_attack_area_2d_area_exited(area: Area2D) -> void:

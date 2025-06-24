@@ -451,6 +451,8 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 	player_scene.mock_monster_invoked.connect(_on_mock_monster_invoked)
 	# 监听战争践踏
 	player_scene.war_stomp_triggered.connect(_on_war_stomp_triggered)
+	# 监听玩家场景针对指定怪物的技能触发
+	player_scene.skill_on_target_triggered.connect(_on_skill_on_target_triggered)
 
 	# 加入场景
 	$CanvasLayer/GameZone/Players.add_child(player_scene)
@@ -556,6 +558,11 @@ func _on_war_stomp_triggered(_player_scene: Control, _effect: DataEffect):
 	attack_zone_scene.start(effect_skill,_player_scene.position,_player_scene.scale.x)
 	# 监听怪物检测
 	attack_zone_scene.monster_detected.connect(_on_monster_detected)
+
+
+func _on_skill_on_target_triggered(player_scene: Control, skill: DataBaseSkill,target: Control):
+	print("技能指向怪物触发：",skill.name)
+	_skill_executed_damage_judge([target],skill,player_scene)
 
 
 func _on_find_target_started(player_scene: Control):

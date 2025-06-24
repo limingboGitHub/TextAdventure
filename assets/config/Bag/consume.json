@@ -455,7 +455,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"max_hp": 50
+							"max_hp": 40
 						}
 					],
 					"count": 1
@@ -1043,6 +1043,26 @@
 					"count": 1
 				}
 			]
+		},
+		"consume_002147":{
+			"name": "[卷轴]血脉压制",
+			"desc": "我才是领主！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000056"
+		},
+		"consume_002148":{
+			"name": "[卷轴]雷霆碎步",
+			"desc": "都给我让开！",
+			"type": "scroll",
+			"quality": "稀有",
+			"price": 100,
+			"slotMax": 9999999,
+			"success_rate": 1,
+			"effect": "effect_000057"
 		}
 	}
 }

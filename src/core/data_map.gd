@@ -644,7 +644,8 @@ func _create_percent_damage(
 			skill_damage_rate += power_add_damage
 			var record_damage_value = attack_value * _damage_rate * power_add_damage
 			damage_details.append(DataDamage.DamageDetail.new("暴力美学", record_damage_value,power_add_damage))
-	
+
+
 	_damage_rate *= 1 + skill_damage_rate
 	print("技能伤害加成：",skill_damage_rate)
 	#endregion
@@ -655,6 +656,11 @@ func _create_percent_damage(
 	#region 和技能系数无关的伤害加成
 	var effect_damage_value = _effect_damage_value(_data_player,target,damage_details,skill,attack_value)
 	damage_value += effect_damage_value
+	#endregion
+
+	#region 最终伤害结算加成
+	var final_damage_value = _final_damage_value(_data_player,target,damage_value,damage_details)
+	damage_value += final_damage_value
 	#endregion
 
 	# 判断分身的伤害比例
@@ -688,6 +694,24 @@ func _create_percent_damage(
 
 	#print("伤害详情：",damage_details)
 	return damage
+
+
+func _final_damage_value(
+	_data_player: DataPlayer,
+	_data_monster: DataMonster,
+	_damage_value: int,
+	_damage_details: Array[DataDamage.DamageDetail]
+) -> int:
+	var final_add_value = 0
+	# 血脉压制 BOSS
+	if _data_monster.is_boss() and _data_player.has_effect("effect_000056"):
+		var effect = _data_player.get_effect("effect_000056")
+		# 每100点HP为计量单位
+		var rate = _data_player.get_final_details().max_hp / 100.0
+		var add_value = effect.value * _damage_value * rate
+		final_add_value += add_value
+		_damage_details.append(DataDamage.DamageDetail.new("血脉压制", add_value, effect.value))
+	return final_add_value
 
 
 ## 分身的伤害系数
