@@ -181,6 +181,7 @@ func _get_upgrade_exp(
 		result_exp += _details.recover_hp
 		result_exp += _details.recover_mp
 		result_exp += _details.exp_gain * 50
+		result_exp += _details.move_speed * 2
 	if _effect != null:
 		result_exp += 8
 		

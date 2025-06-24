@@ -119,7 +119,9 @@ func _show_equip_info(item: DataEquip) -> void:
 		attribute_text += "攻击力最大值：" + str(int(item.final_details.attack_max_rate * 100)) + "%\n"
 	if item.final_details.exp_gain > 0:
 		attribute_text += "增加" + str(int(item.final_details.exp_gain * 100)) + "%经验值获取\n"
-	
+	if item.final_details.move_speed > 0:
+		attribute_text += "移速：" + str(item.final_details.move_speed) + "\n"
+
 	# 展示随机属性列表
 	if item.is_random_attribute_crate and item.random_attribute.size() > 0:
 		for random_attribute_dic in item.random_attribute:
@@ -240,6 +242,10 @@ func _show_consume_info(item: DataConsume) -> void:
 			# 卷轴增加经验值获取
 			if item.scroll.attribute_details.exp_gain > 0:
 				attribute_text += "增加经验值获取：" + str(int(item.scroll.attribute_details.exp_gain * 100)) + "%\n"
+				is_have_ability = true
+			# 卷轴增加移速
+			if item.scroll.attribute_details.move_speed > 0:
+				attribute_text += "增加移速：" + str(item.scroll.attribute_details.move_speed) + "\n"
 				is_have_ability = true
 			attribute_text += "[/color]"
 			if is_have_ability:

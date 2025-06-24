@@ -929,6 +929,8 @@ func _on_debug_dialog_all_consume_added() -> void:
 		"consume_002142",
 		"consume_002143",
 		"consume_002144",
+		"consume_002145",
+		"consume_002146",
 		
 	]
 	for scroll_id in all_scrolls:
