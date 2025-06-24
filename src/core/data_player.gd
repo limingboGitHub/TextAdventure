@@ -865,6 +865,14 @@ func add_allot_point(value: int):
 	attribute_updated.emit(self)
 
 
+# 判断是否触发了套装效果
+func is_suit_effect_invoked(effect_id: String) -> bool:
+	if has_effect(effect_id):
+		var effect = get_effect(effect_id)
+		return effect.suit_num >= effect.invoke_num
+	return false
+
+
 func save() -> Dictionary:
 	var json = {
 		"player_id": player_id,

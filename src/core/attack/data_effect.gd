@@ -46,6 +46,13 @@ var mp_cost: int = 0
 # 等级
 var level: int = 1
 
+#region 套装相关
+# 激活数量 0表示非套装特效
+var invoke_num: int = 0
+# 当前数量
+var suit_num: int = 1
+#endregion
+
 var value_type: String = Constants.VALUE_TYPE_PERCENT
 
 var is_active: bool = true
@@ -160,6 +167,9 @@ func get_special_skill() -> DataBaseSkill:
 func append(data_effect: DataEffect) -> void:
 	value += data_effect.value
 	not_append_value = data_effect.not_append_value
+	
+	# 套装相关
+	suit_num += 1
 
 	# 存在特效技能，则用追加后的值替换特效技能的值
 	if special_skill != null:
@@ -173,6 +183,9 @@ func append(data_effect: DataEffect) -> void:
 func remove(data_effect: DataEffect) -> void:
 	value -= data_effect.value
 
+	# 套装相关
+	suit_num -= 1
+
 	# 存在特效技能，则用减少后的值替换特效技能的值
 	if special_skill != null:
 		special_skill.damage_level = [[value]]
@@ -180,6 +193,10 @@ func remove(data_effect: DataEffect) -> void:
 	# 存在技能增强效果，则用减少后的值替换技能增强效果的值
 	if skill_enhance != null:
 		skill_enhance.remove(data_effect.skill_enhance)
+
+
+func is_suit_effect() -> bool:
+	return invoke_num > 0
 
 
 func save() -> Dictionary:
@@ -192,6 +209,8 @@ func save() -> Dictionary:
 		"invoke_interval": invoke_interval,
 		"desc": desc,
 		"value_type": value_type,
+		"invoke_num": invoke_num,
+		"suit_num": suit_num
 	}
 	if skill_enhance != null:
 		data["skill_enhance"] = skill_enhance.save()
@@ -203,6 +222,10 @@ func load(data: Dictionary) -> void:
 		value = data["value"]
 	if data.has("not_append_value"):
 		not_append_value = data["not_append_value"]
+	if data.has("invoke_num"):
+		invoke_num = data["invoke_num"]
+	if data.has("suit_num"):
+		suit_num = data["suit_num"]
 	if data.has("invoke_interval"):
 		invoke_interval = data["invoke_interval"]
 	if data.has("desc"):
@@ -230,4 +253,6 @@ func copy() -> DataEffect:
 	data_effect.skill_enhance = skill_enhance
 	data_effect.mp_cost = mp_cost
 	data_effect.level = level
+	data_effect.invoke_num = invoke_num
+	data_effect.suit_num = suit_num
 	return data_effect

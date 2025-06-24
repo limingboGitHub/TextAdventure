@@ -678,7 +678,8 @@ func _on_item_showed(ui: BagItem):
 		min(ui.global_position.x, 250),
 		ui.global_position.y + 50
 	)
-
+	# 注入玩家信息（用于展示套装激活效果）
+	$CanvasLayer/UI/Dialog/ItemInfoDialog.data_player = data_world.get_player()
 	$CanvasLayer/UI/Dialog/ItemInfoDialog.set_item(item)
 	$CanvasLayer/UI/Dialog/ItemInfoDialog.set_lock_bt_visible(ui.is_show_lock_bt)
 
@@ -692,14 +693,22 @@ func _on_scroll_ready_used(item: DataConsume, equips: Array[DataEquip]):
 
 func _on_scroll_used(ui: BagItem, scroll: DataConsume):
 	print("_on_scroll_used:", scroll.name)
-	if ui.data_bag_item.can_upgrade():
-		if scroll.count > 0:
-			data_world.get_data_bag().use_scroll(scroll, ui.data_bag_item)
-			# 如果卷轴数量为0，则隐藏卷轴使用对话框
-			if data_world.get_data_bag().get_item_total_count(scroll.id) <= 0:
-				$CanvasLayer/UI/Dialog/ScrollUseDialog.clear()
-	else:
-		ToastManager.add_toast("强化次数已达上限")
+
+	if scroll.scroll != null:
+		# 一般卷轴
+		if ui.data_bag_item.can_upgrade():
+			if scroll.count > 0:
+				data_world.get_data_bag().use_scroll(scroll, ui.data_bag_item)
+				# 如果卷轴数量为0，则隐藏卷轴使用对话框
+				if data_world.get_data_bag().get_item_total_count(scroll.id) <= 0:
+					$CanvasLayer/UI/Dialog/ScrollUseDialog.clear()
+		else:
+			ToastManager.add_toast("强化次数已达上限")
+	elif scroll.suit_scroll != null:
+		data_world.get_data_bag().use_suit_scroll(scroll, ui.data_bag_item)
+		# 如果卷轴数量为0，则隐藏卷轴使用对话框
+		if data_world.get_data_bag().get_item_total_count(scroll.id) <= 0:
+			$CanvasLayer/UI/Dialog/ScrollUseDialog.clear()
 
 
 func _on_scroll_used_success(item: DataConsume, equip: DataEquip):

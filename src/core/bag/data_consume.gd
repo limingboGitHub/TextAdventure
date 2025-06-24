@@ -72,6 +72,18 @@ class SuitScroll:
 	# 套装效果
 	var suit_effect: DataEffect
 
+	func save() -> Dictionary:
+		var json = {}
+		if suit_effect != null:
+			json["suit_effect"] = suit_effect.save()
+		return json
+
+
+	func load(json: Dictionary) -> void:
+		if json.has("suit_effect"):
+			suit_effect = DataEffect.new(json["suit_effect"]["id"],json["suit_effect"]["type"])
+			suit_effect.value = json["suit_effect"]["value"]
+
 # 恢复属性
 var recovery: Recovery
 
@@ -103,7 +115,7 @@ func save() -> Dictionary:
 	if scroll != null:
 		json["scroll"] = scroll.save()
 	if suit_scroll != null:
-		json["scroll"] = suit_scroll.save()
+		json["suit_scroll"] = suit_scroll.save()
 	return json
 
 

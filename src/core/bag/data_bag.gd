@@ -390,11 +390,33 @@ func ready_use_scroll(item: DataConsume) -> void:
 	scroll_ready_used.emit(item, equips)
 
 
+# 准备使用套装卷轴
+func ready_use_suit_scroll(item: DataConsume) -> void:
+	if item.suit_scroll == null:
+		return
+	# 根据当前卷轴的使用类型，找出背包中符合要求的装备
+	var equips: Array[DataEquip] = []
+	for equip in items_dic[DataBagItem.TYPE_EQUIP]:
+		# 判断装备是否已经包含套装卷轴的特殊效果
+		if not _is_equip_have_suit_effect(equip, item.suit_scroll):
+			equips.append(equip)
+	# 发出准备对装备进行卷轴操作的信号
+	scroll_ready_used.emit(item, equips)
+
+
 # 判断装备是否已经包含卷轴的特殊效果
 func _is_equip_have_scroll_effect(equip: DataEquip, scroll: DataConsume.Scroll) -> bool:
 	if scroll.data_effect != null:
 		for effect_id in equip.data_effects.keys():
 			if effect_id == scroll.data_effect.id:
+				return true
+	return false
+
+# 判断装备是否已经包含套装卷轴的特殊效果
+func _is_equip_have_suit_effect(equip: DataEquip, scroll: DataConsume.SuitScroll) -> bool:
+	if scroll.suit_effect != null:
+		for effect_id in equip.data_effects.keys():
+			if effect_id == scroll.suit_effect.id:
 				return true
 	return false
 
@@ -413,6 +435,15 @@ func use_scroll(item: DataConsume, equip: DataEquip) -> void:
 		equip.upgrade_failed()
 		scroll_used_failed.emit(item, equip)
 
+	# 使用后减少数量
+	consume_item(item, 1)
+
+
+func use_suit_scroll(item: DataConsume, equip: DataEquip) -> void:
+	# 根据卷轴的强化属性，增加到装备上
+	equip.add_suit_effect(item.suit_scroll.suit_effect)
+	
+	scroll_used_success.emit(item,equip)
 	# 使用后减少数量
 	consume_item(item, 1)
 

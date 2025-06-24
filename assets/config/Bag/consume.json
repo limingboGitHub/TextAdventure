@@ -1072,7 +1072,8 @@
 			"price": 100,
 			"slotMax": 9999999,
 			"success_rate": 1,
-			"effect": "effect_000058"
+			"effect": "effect_000058",
+			"invoke_num": 5
 		},
 		"consume_002150":{
 			"name": "[套装]撼天动地",
@@ -1082,7 +1083,8 @@
 			"price": 100,
 			"slotMax": 9999999,
 			"success_rate": 1,
-			"effect": "effect_000059"
+			"effect": "effect_000059",
+			"invoke_num": 5
 		},
 		"consume_002151":{
 			"name": "[套装]身外化身",
@@ -1092,7 +1094,8 @@
 			"price": 100,
 			"slotMax": 9999999,
 			"success_rate": 1,
-			"effect": "effect_000060"
+			"effect": "effect_000060",
+			"invoke_num": 5
 		},
 		"consume_002152":{
 			"name": "[套装]炎灭八荒",
@@ -1102,7 +1105,8 @@
 			"price": 100,
 			"slotMax": 9999999,
 			"success_rate": 1,
-			"effect": "effect_000061"
+			"effect": "effect_000061",
+			"invoke_num": 5
 		},
 		"consume_002153":{
 			"name": "[套装]福星高照",
@@ -1112,7 +1116,8 @@
 			"price": 100,
 			"slotMax": 9999999,
 			"success_rate": 1,
-			"effect": "effect_000062"
+			"effect": "effect_000062",
+			"invoke_num": 5
 		},
 		"consume_002154":{
 			"name": "[套装]踪灭神行",
@@ -1122,7 +1127,8 @@
 			"price": 100,
 			"slotMax": 9999999,
 			"success_rate": 1,
-			"effect": "effect_000063"
+			"effect": "effect_000063",
+			"invoke_num": 5
 		}
 	}
 }

@@ -4,6 +4,8 @@ extends Control
 
 var item: DataBagItem
 
+var data_player: DataPlayer
+
 @onready var name_label: Label = $Back/HBoxContainer/InfoContainer/HBoxContainer/Name
 @onready var lock_bt: Button = $Back/HBoxContainer/InfoContainer/HBoxContainer/LockBt
 
@@ -136,7 +138,15 @@ func _show_equip_info(item: DataEquip) -> void:
 
 	# 展示装备特殊效果
 	for data_effect in item.get_all_effects():
-		attribute_text += _show_effect_desc(data_effect)	
+		if data_effect.is_suit_effect():
+			var is_suit_invoke = false
+			if data_player and data_player.is_suit_effect_invoked(data_effect.id):
+				is_suit_invoke = true
+			attribute_text += _effect_suit_color(is_suit_invoke)
+			attribute_text += _show_effect_desc(data_effect,false)	
+			attribute_text += "[/color]"
+		else:
+			attribute_text += _show_effect_desc(data_effect)	
 	
 	attribute_text += "[/color]"
 	#endregion
@@ -262,10 +272,11 @@ func _show_consume_info(item: DataConsume) -> void:
 		if item.data_buff.duration > 0:
 			attribute_text += "持续时间：" + str(int(item.data_buff.duration)) + "秒\n"
 	elif item.suit_scroll != null:
-		attribute_text += "[color=#41ab4c]"
+		attribute_text += _effect_suit_color(true)
 		attribute_text += _show_effect_desc(item.suit_scroll.suit_effect,false)
 		attribute_text += "[/color]"
-		attribute_text += "[color=#77ab77](5件装备激活该套装属性)[/color]\n"
+		var invoke_num_str = str(item.suit_scroll.suit_effect.invoke_num)
+		attribute_text += "[color=#77ab77](" + invoke_num_str + "件装备激活该套装属性)[/color]\n"
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
 
@@ -370,6 +381,13 @@ func _show_effect_desc(data_effect: DataEffect,is_show_number_color: bool = true
 
 func _effect_value_color() -> String:
 	return "[color=#7373ff]"
+
+
+func _effect_suit_color(is_invoke: bool) -> String:
+	if is_invoke:
+		return "[color=#41ab4c]"
+	else:
+		return "[color=#99bb99]"
 
 
 func _effect_text_color() -> String:

@@ -139,6 +139,9 @@ func _load_effect(dic: Dictionary)-> DataEffect:
 			data_effect.value_type = effect_info["value_type"]
 		if effect_info.has("desc"):
 			data_effect.desc = effect_info["desc"]
+		# 激活数量
+		if dic.has("invoke_num"):
+			data_effect.invoke_num = dic["invoke_num"]
 		# 技能增强类型的特效
 		if effect_info.has("skill_enhance"):
 			var skill_enhance_dic = effect_info["skill_enhance"]

@@ -120,6 +120,11 @@ func update_final_ability() -> void:
 	updated.emit(self)
 
 
+func add_suit_effect(_effect: DataEffect):
+	add_effect(_effect)
+	updated.emit(self)
+
+
 func upgrade_success(
 	_ability: AttributeAbility, 
 	_details: AttributeDetails,
