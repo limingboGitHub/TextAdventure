@@ -666,6 +666,7 @@ func _on_buff_added(data_buff: DataBuff):
 func _on_item_showed(ui: BagItem):
 	var item = ui.data_bag_item
 	if not $CanvasLayer/UI/Dialog/ItemInfoDialog.visible:
+		# 调整位置，防止溢出
 		_dialog_show($CanvasLayer/UI/Dialog/ItemInfoDialog)
 	elif $CanvasLayer/UI/Dialog/ItemInfoDialog.get_item() == item:
 		# 相同物品再次点击，则隐藏弹窗
@@ -674,7 +675,7 @@ func _on_item_showed(ui: BagItem):
 	# 设置弹窗的位置
 	# 弹窗的x坐标范围是0-(648-300)
 	$CanvasLayer/UI/Dialog/ItemInfoDialog.position = Vector2(
-		min(ui.global_position.x, 348),
+		min(ui.global_position.x, 250),
 		ui.global_position.y + 50
 	)
 
