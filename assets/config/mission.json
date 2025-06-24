@@ -2019,6 +2019,76 @@
 			}
 		]
 	},
+	"mission_000132": {
+		"name": "偶遇贵人",
+		"enable": true,
+		"mission_phase_list": [
+			{
+				"name": "云游法师",
+				"desc": "",
+				"attach_npc_id": "npc_000133",
+				"messages": [
+					"这么点实力就要去挑战魔王？想让我帮你，先展示展示实力。"
+				]
+			},
+			{
+				"name": "贵人相助",
+				"desc": "",
+				"attach_npc_id": "npc_000133",
+				"messages": [
+					"还不快去"
+				],
+				"messages_matched": [
+					"还不错，这些东西你拿着，对你肯定有帮助。"
+				],
+				"requires": [
+					{
+						"type": "kill",
+						"id": "monster_001002",
+						"count": 100
+					},
+					{
+						"type": "kill",
+						"id": "monster_001003",
+						"count": 100
+					}
+				],
+				"rewards": [
+					{
+						"type": "alchemy",
+						"id": "alchemy_000100",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000101",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000102",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000103",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000104",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000105",
+						"count": 1
+					}
+				]
+			}
+			
+		]
+	},
 
 	"mission_000199": {
 		"name": "无尽之塔",

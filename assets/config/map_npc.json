@@ -850,6 +850,19 @@
 			"function": []
 		}
 	],
+
+	"map_000201":[
+		{
+			"id": "npc_000133",
+			"name": "云游法师莱迪",
+			"visible":true,
+			"position": {"x": 100, "y": 100},
+			"default_messages":[
+				"哼，就你这一身破烂，还想救公主？"
+			],
+			"function": []
+		}
+	],
 	"map_000204":[
 		{
 			"id": "npc_000132",

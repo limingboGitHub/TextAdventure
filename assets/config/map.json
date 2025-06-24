@@ -917,6 +917,9 @@
 				"position":{
 					"x": 270,
 					"y": 550
+				},
+				"enter_condition":{
+					"need_kill_monster_count": 100
 				}
 			}
 		}
@@ -938,6 +941,9 @@
 				"position":{
 					"x": 270,
 					"y": 550
+				},
+				"enter_condition":{
+					"need_kill_monster_count": 100
 				}
 			}
 		}
