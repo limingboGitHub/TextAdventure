@@ -777,6 +777,10 @@ func _on_mission_status_changed(data_mission: DataMission):
 			data_mission.reset()
 			# 更新NPC的任务状态
 			_update_mission_npc_status(data_mission)
+		# 特殊任务的NPC展示
+		if data_mission.id == "mission_000131":
+			# TODO 
+			print("mission_000131任务完成了")
 		
 
 func _update_mission_npc_status(data_mission: DataMission):

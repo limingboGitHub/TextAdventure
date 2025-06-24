@@ -2,10 +2,13 @@ extends Control
 
 var data_npc: DataNPC
 
+@export
+var default_name: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	if $Name.text == "":
+		$Name.text = default_name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

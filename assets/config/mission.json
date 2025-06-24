@@ -1930,11 +1930,11 @@
 		]
 	},
 
-	"mission_000198": {
+	"mission_000129": {
 		"name": "拯救公主",
 		"enable": true,
 		"visible_limit": {
-			"level": 55
+			"level": 53
 		},
 		"mission_phase_list": [
 			{
@@ -1944,11 +1944,82 @@
 				"messages": [
 					"勇敢的冒险家！你的事迹传遍了整个大陆，此时此刻我需要你的帮助。",
 					"公主被魔王抓走了，那是我的一切，请你帮我把公主安全的带回来！",
-					"我会找人带你去魔王的巢穴，务必小心！"
+					"你准备好了再来找我，我会找人带你去魔王的巢穴，务必小心！"
 				]
 			}
 		]
 	},
+	"mission_000130": {
+		"name": "拯救公主",
+		"enable": true,
+		"visible_limit": {
+			"missions":[
+				"mission_000129"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "深陷重围",
+				"desc": "",
+				"attach_npc_id": "npc_000132",
+				"messages": [
+					"请救救我~"
+				]
+			},
+			{
+				"name": "深陷重围",
+				"desc": "",
+				"attach_npc_id": "npc_000132",
+				"messages": [
+					"呜呜~"
+				],
+				"messages_matched": [
+					"谢谢你，冒险家，我十分想念我的父王。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_001008",
+						"count": 1
+					}
+				],
+				"finish_hide_npc":[
+					"npc_000132"
+				],
+				"finish_show_npc":[
+					"npc_000133"
+				]
+			}
+		]
+	},
+	"mission_000131": {
+		"name": "拯救公主",
+		"enable": true,
+		"visible_limit": {
+			"missions":[
+				"mission_000130"
+			]
+		},
+		"mission_phase_list": [
+			{
+				"name": "重归平静",
+				"desc": "",
+				"attach_npc_id": "npc_000131",
+				"messages": [
+					"真的非常感谢你，你是这个世界的英雄！",
+					"这里有一个人留下的一封信，他说希望你回“日落村”再打开它"
+				],
+				"rewards": [
+					{
+						"type": "item",
+						"id": "etc_001009",
+						"count": 1
+					}
+				]
+			}
+		]
+	},
+
 	"mission_000199": {
 		"name": "无尽之塔",
 		"enable": true,

@@ -476,13 +476,26 @@
 				{
 					"type":"teleport",
 					"visible_limit":{
-						"missions":["mission_000198"]
+						"missions":["mission_000129"]
 					},
 					"map_id_list":[
 						"map_000201"
 					]
 				}
 			]
+		},
+		{
+			"id": "npc_000133",
+			"name": "公主",
+			"visible":true,
+			"position": {
+				"x": 375,
+				"y": 180
+			},
+			"default_messages":[
+				"谢谢你，冒险家！"
+			],
+			"function": []
 		}
 	],
 	"map_000102":[
@@ -833,6 +846,18 @@
 			"position": {"x": 220, "y": 600},
 			"default_messages":[
 				"注意，40级以上的boss恢复能力特别强，当你逃离后，它的状态会迅速恢复。"
+			],
+			"function": []
+		}
+	],
+	"map_000204":[
+		{
+			"id": "npc_000132",
+			"name": "公主",
+			"visible":true,
+			"position": {"x": 550, "y": 550},
+			"default_messages":[
+				"呜呜~"
 			],
 			"function": []
 		}
