@@ -75,6 +75,12 @@ func _on_item_name_show(item: DataBagItem) -> void:
 	var lock_bt_text = "(锁)" if item.is_locked else ""
 	# 物品名称
 	$Label.text = item.name + lock_bt_text
+	# 物品名称颜色
+	if item is DataEquip:
+		for effect in item.get_all_effects():
+			if effect.is_suit_effect():
+				$Label.add_theme_color_override("font_color", Color.from_string("#00ff00",Color.GREEN))
+				break
 
 
 func _on_item_locked_changed(_is_locked: bool) -> void:

@@ -276,7 +276,7 @@ func _show_consume_info(item: DataConsume) -> void:
 		attribute_text += _show_effect_desc(item.suit_scroll.suit_effect,false)
 		attribute_text += "[/color]"
 		var invoke_num_str = str(item.suit_scroll.suit_effect.invoke_num)
-		attribute_text += "[color=#77ab77](" + invoke_num_str + "件装备激活该套装属性)[/color]\n"
+		attribute_text += "[color=#77ab77](" + invoke_num_str + "件装备激活该套装属性，不消耗强化次数)[/color]\n"
 	
 	$Back/HBoxContainer/InfoContainer/AttributeLabel.text = attribute_text
 
