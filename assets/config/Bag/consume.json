@@ -777,7 +777,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"power": 10
+							"power": 8
 						}
 					],
 					"count": 1
@@ -817,7 +817,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"agility": 10
+							"agility": 8
 						}
 					],
 					"count": 1
@@ -837,7 +837,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"luck": 10
+							"luck": 8
 						}
 					],
 					"count": 1
@@ -917,7 +917,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"intelligence": 10
+							"intelligence": 8
 						}
 					],
 					"count": 1
@@ -997,7 +997,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"max_hp": 30
+							"max_hp": 80
 						}
 					],
 					"count": 1
