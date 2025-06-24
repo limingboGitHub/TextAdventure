@@ -179,8 +179,8 @@
 					"id": "effect_000054",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.043,
-					"step_value": 0.003
+					"start_value": 0.21,
+					"step_value": 0.01
 				}
 			],
 			"calculate_type": "formula",
@@ -199,7 +199,7 @@
 					"id": "effect_000055",
 					"calculate_type": "formula",
 					"value_type": "percent",
-					"start_value": 0.01,
+					"start_value": 0.21,
 					"step_value": 0.01
 				}
 			],
