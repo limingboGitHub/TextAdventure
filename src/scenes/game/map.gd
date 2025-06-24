@@ -181,6 +181,9 @@ func _add_monster(monster: DataMonster,_position: Vector2):
 		else:
 			# 如果怪物刷新点位置为空，则随机一个位置
 			monster_scene.position = Vector2(randf() * size.x, randf() * size.y)
+		# 如果玩家不在地图，则关闭怪物的碰撞检测(防止技能穿图)
+		if data_map.data_player == null:
+			monster_scene.close_monitorable()
 	# 加入场景
 	$CanvasLayer/GameZone/Monsters.add_child(monster_scene)
 	# 监听点击事件
