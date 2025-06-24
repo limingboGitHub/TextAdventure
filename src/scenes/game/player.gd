@@ -574,8 +574,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		damage.attack_value = attack_value
 		damage.damage_details = damage_details
 		monster.data_monster.get_hurt(damage)
-		# 玩家造成伤害行为，需要记录伤害信息
-		data_player.cause_damage(damage)
 		# 如果怪物没有死亡，则设置攻击目标
 		if not monster.data_monster.is_dead:
 			monster.set_attack_target(self)

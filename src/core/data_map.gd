@@ -38,10 +38,6 @@ var data_player_clone: Dictionary = {}
 var monster_manager = MonsterManager.new()
 var drop_thing_manager: DropThingManager
 
-# 伤害创建信号，用于通知DataWorld记录伤害信息
-signal damage_created(damage: DataDamage)
-
-
 ## 已经击杀当前地图的怪物个数,key:怪物id value:击杀数量，用于解锁某些传送点限制
 var kill_monster_count_dic = {}
 
@@ -689,9 +685,6 @@ func _create_percent_damage(
 	# 战争践踏的统计信息需要特殊处理
 	if skill.id == "war_stomp":
 		damage.damage_info_name = "战争践踏"
-	
-	# 发射伤害创建信号，通知DataWorld记录伤害信息
-	damage_created.emit(damage)
 
 	#print("伤害详情：",damage_details)
 	return damage
@@ -741,8 +734,6 @@ func _create_number_damage(
 	
 	var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, damage_value)
 	damage.damage_details = damage_details
-	# 发射伤害创建信号，通知DataWorld记录伤害信息
-	damage_created.emit(damage)
 	
 	return damage
 

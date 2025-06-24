@@ -323,6 +323,15 @@ func _on_charge_completed(_time: float):
 	$ChargeEffect.hide()
 
 
+func close_monitorable():
+	# 关闭碰撞体检测（会穿图）
+	$Area2D.monitorable = false
+
+
+func start_monitorable():
+	$Area2D.monitorable = true
+
+
 func _on_monster_reseted(_data_monster: DataMonster):
 	_update_hp()
 	# 清除撕裂标识

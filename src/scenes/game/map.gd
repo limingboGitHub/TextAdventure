@@ -457,6 +457,12 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 		portal_updated.emit(portal,self)
 
 	scene_show()
+	
+	# 遍历所有怪物场景
+	if data_map:
+		for child in $CanvasLayer/GameZone/Monsters.get_children():
+			# 开启碰撞体检测
+			child.start_monitorable()
 
 
 ## 添加分身场景
@@ -480,6 +486,7 @@ func add_player_clone_scene(_player_clone: DataPlayer,player_scene: Control):
 	$CanvasLayer/GameZone/Players.add_child(player_scene)
 
 
+
 func remove_player_scene(data_player: DataPlayer):
 	print('remove_player:', data_player.player_id)
 	# 根据玩家id删除场景
@@ -493,6 +500,8 @@ func remove_player_scene(data_player: DataPlayer):
 		for child in $CanvasLayer/GameZone/Monsters.get_children():
 			# 玩家离开后，清理所有攻击目标
 			child.set_attack_target(null)
+			# 关闭碰撞体检测（会穿图）
+			child.close_monitorable()
 			# 黑化怪物删除场景
 			if child.data_monster.is_black_monster:
 				$CanvasLayer/GameZone/Monsters.remove_child(child)
@@ -996,7 +1005,7 @@ func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):
 
 
 func _on_monster_detected(monster: Monster,skill: DataBaseSkill):
-	#print("monster_detected:",monster.name,skill.name)
+	print("monster_detected:",monster.name,skill.name)
 	if data_map.data_player:
 		var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.data_player.player_id)
 		if player_scene:
