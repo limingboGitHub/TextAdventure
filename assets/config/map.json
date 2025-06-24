@@ -885,6 +885,78 @@
 			}
 		}
 	},
+
+	"map_000201":{
+		"name":"荒原入口",
+		"description":"",
+		"region": "灼热荒原",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000202",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000202":{
+		"name":"炎炎之地",
+		"description":"",
+		"region": "灼热荒原",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000201",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000203",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000203":{
+		"name":"无声高原",
+		"description":"",
+		"region": "灼热荒原",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000202",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			},
+			"portal_000002":{
+				"target_map_id":"map_000204",
+				"position":{
+					"x": 270,
+					"y": 550
+				}
+			}
+		}
+	},
+	"map_000204":{
+		"name":"魔王城堡",
+		"description":"",
+		"region": "灼热荒原",
+		"portals":{
+			"portal_000001":{
+				"target_map_id":"map_000203",
+				"position":{
+					"x": 270,
+					"y": 0
+				}
+			}
+		}
+	},
+
 	"map_000199":{
 		"name":"试炼之塔",
 		"description":"玩家满级后可进入，无尽的试炼。",

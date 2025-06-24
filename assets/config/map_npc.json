@@ -461,6 +461,28 @@
 					}
 				}
 			]
+		},
+		{
+			"id": "npc_000131",
+			"name":"银盾城主",
+			"position": {
+				"x": 305,
+				"y": 200
+			},
+			"default_messages":[
+				"嗯..."
+			],
+			"function": [
+				{
+					"type":"teleport",
+					"visible_limit":{
+						"missions":["mission_000198"]
+					},
+					"map_id_list":[
+						"map_000201"
+					]
+				}
+			]
 		}
 	],
 	"map_000102":[

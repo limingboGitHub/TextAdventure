@@ -1,0 +1,15 @@
+{
+	"name": "魔王近卫",
+	"attack": "345",
+    "defense": "345",
+    "magic": "30",
+    "magic_def": "345",
+    "level": "55",
+    "maxHP": "14000",
+    "maxMP": "200",
+    "acc": "500",
+    "eva": "400",
+    "exp": "0",
+    "undead": "0",
+    "ignore_rest": true
+} 

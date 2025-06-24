@@ -1930,6 +1930,25 @@
 		]
 	},
 
+	"mission_000198": {
+		"name": "拯救公主",
+		"enable": true,
+		"visible_limit": {
+			"level": 55
+		},
+		"mission_phase_list": [
+			{
+				"name": "打败魔王",
+				"desc": "",
+				"attach_npc_id": "npc_000131",
+				"messages": [
+					"勇敢的冒险家！你的事迹传遍了整个大陆，此时此刻我需要你的帮助。",
+					"公主被魔王抓走了，那是我的一切，请你帮我把公主安全的带回来！",
+					"我会找人带你去魔王的巢穴，务必小心！"
+				]
+			}
+		]
+	},
 	"mission_000199": {
 		"name": "无尽之塔",
 		"enable": true,

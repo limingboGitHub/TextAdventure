@@ -528,5 +528,54 @@
 				"y": 0.5
 			}
 		}
+	],
+
+
+	"map_000202": [
+		{
+			"count": 40,
+			"monster_list": [
+				{
+					"id": "monster_001002",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_001003",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000203": [
+		{
+			"count": 40,
+			"monster_list": [
+				{
+					"id": "monster_001004",
+					"refresh_rate": 0.5
+				},
+				{
+					"id": "monster_001005",
+					"refresh_rate": 0.5
+				}
+			]
+		}
+	],
+	"map_000204": [
+		{
+			"count": 1,
+			"monster_list": [
+				{
+					"id": "monster_001006",
+					"refresh_rate": 1,
+					"refresh_interval": 360,
+					"refresh_interval_desc": "怪物刷新间隔，单位：秒"
+				}
+			],
+			"position": {
+				"x": 0.7,
+				"y": 0.5
+			}
+		}
 	]
 }

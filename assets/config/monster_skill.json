@@ -40,6 +40,18 @@
 			"effect_id": "effect_000029",
 			"start_cd": 10,
 			"cd": -1
+		},
+		"monster_skill_000005":{
+			"name":"召唤近卫",
+			"type":"spawn_monster",
+			"desc":"monster_id_list:召唤的怪物列表，从中随机，monster_count: 召唤怪物的数量",
+			"monster_count": 10,
+			"monster_id_list":[
+				"monster_001004",
+				"monster_001005"
+			],
+			"start_cd": 5,
+			"cd": 10
 		}
 	}
 }
