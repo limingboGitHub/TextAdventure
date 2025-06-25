@@ -179,6 +179,9 @@ lifetime = 0.5
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_lgh6a")
 
+[node name="Flash2D" type="Area2D" parent="."]
+collision_layer = 0
+
 [connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]
 [connection signal="timeout" from="MockMonsterTimer" to="." method="_on_mock_monster_timer_timeout"]
 [connection signal="area_entered" from="GaintAttackArea2D" to="." method="_on_gaint_attack_area_2d_area_entered"]

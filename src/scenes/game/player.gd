@@ -21,7 +21,7 @@ var attack_target: Control
 # 瞬移目标位置
 var flash_target: Vector2
 # 瞬移伤害碰撞体
-@onready var flash_area: Area2D = $Area2D
+@onready var flash_area: Area2D = $Flash2D
 
 # 巨人冲锋相关
 # 冲锋时攻击判定的碰撞体
