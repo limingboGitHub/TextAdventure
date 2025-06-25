@@ -199,6 +199,10 @@ func is_suit_effect() -> bool:
 	return invoke_num > 0
 
 
+func is_suit_invoked() -> bool:
+	return suit_num >= invoke_num
+
+
 func save() -> Dictionary:
 	var data = {
 		"id": id,

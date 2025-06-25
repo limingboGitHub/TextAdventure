@@ -482,8 +482,14 @@ func add_player_clone_scene(_player_clone: DataPlayer,player_scene: Control):
 	print('player_added:', _player_clone.player_id)
 	# 获取地图场景的尺寸
 	var size = $CanvasLayer/GameZone/Players.size
-	# 设置玩家位置
-	player_scene.position = Vector2(0.4 * size.x, 0.4 * size.y)
+	# 获取玩家数量
+	var player_count = $CanvasLayer/GameZone/Players.get_child_count()
+	var offset_pos = int(player_count / 2.0)
+	if player_count % 2 == 1:
+		# 设置玩家位置
+		player_scene.position = Vector2((0.3 - offset_pos * 0.2) * size.x,(0.3 - offset_pos * 0.2) * size.y)
+	else :
+		player_scene.position = Vector2((0.5 + offset_pos * 0.2) * size.x,(0.5 - offset_pos * 0.2) * size.y)
 	# 监听寻找攻击目标
 	player_scene.find_target_started.connect(_on_find_target_started)
 	player_scene.find_far_target_started.connect(_on_find_far_target_started)

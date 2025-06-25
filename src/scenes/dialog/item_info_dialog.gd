@@ -357,7 +357,7 @@ func _show_effect_desc(data_effect: DataEffect,is_show_number_color: bool = true
 				var desc = data_effect.desc.replace("{d}", effect_value_str)
 				attribute_text += desc + "\n"
 			else:
-				var desc = data_effect.desc.replace("{d}", formatted_value)
+				var desc = data_effect.desc.replace("{d}", formatted_value + "%")
 				attribute_text += desc + "\n"
 
 		else:
@@ -385,7 +385,7 @@ func _effect_value_color() -> String:
 
 func _effect_suit_color(is_invoke: bool) -> String:
 	if is_invoke:
-		return "[color=#41ab4c]"
+		return "[color=#22ab22]"
 	else:
 		return "[color=#99bb99]"
 

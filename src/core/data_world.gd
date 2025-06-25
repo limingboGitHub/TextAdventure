@@ -40,7 +40,7 @@ var black_monster_manager: DataBlackMonsterManager = DataBlackMonsterManager.new
 # 暗影化身对象管理
 var player_clone_dic: Dictionary = {}
 # 分身数量限制
-var player_clone_count_limit = 1
+var player_clone_count_limit = 2
 
 # 黑化怪物MP消耗定时器控制信号
 signal black_monster_timer_control(is_active: bool)
@@ -416,6 +416,11 @@ func load_local_player(data_player: DataPlayer):
 	# 初始化化身
 	if data_player.has_effect("effect_000046"):
 		create_player_clone()
+	# 身外化身
+	if data_player.has_effect("effect_000060"):
+		var effect = data_player.get_effect("effect_000060")
+		if effect.is_suit_invoked():
+			create_player_clone()
 
 	# 监听玩家等级变化
 	data_player.level_updated.connect(_on_player_level_updated)
@@ -447,6 +452,12 @@ func _on_player_effect_updated(effect: DataEffect):
 	if effect.type == "dark_control_power":
 		print("_on_player_effect_added:",effect.value)
 		black_monster_manager.update_effect_count_limit(int(effect.value))
+	elif effect.type == "more_and_more_copy":
+		print("_on_player_effect_added more_and_more_copy:",effect.value)
+		if effect.is_suit_invoked():
+			_add_player_clone()
+		else:
+			_clear_last_player_clone()
 
 
 func _on_player_effect_removed(effect: DataEffect):
@@ -713,6 +724,11 @@ func alchemy_maked(data_alchemy: DataAlchemy, count: int):
 
 func _mission_rewarded(rewards: Array[MissionReward]):
 	for reward in rewards:
+		# 奖励有职业限制
+		if reward.limit_job.size() > 0:
+			if not player_manager.data_player.job_id in reward.limit_job:
+				continue
+
 		if reward is MissionRewardExp:
 			player_manager.data_player.add_exp(reward.count,false)
 		elif reward is MissionRewardMoney:
@@ -820,15 +836,38 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 	if skill.id == "skill_000104":
 		if skill.level == 0:
 			# 杀死并删除所有的化身
-			for player_clone in player_clone_dic.values():
-				player_clone.kill_role()
-			player_clone_dic.clear()
+			_clear_player_clone()
 		elif skill.level > 0:
-			if player_manager.data_player:
-				if player_clone_dic.size() < player_clone_count_limit:
-					var player_clone = create_player_clone()
-					# 添加到地图
-					map_dic[player_clone.map_id].add_player_clone(player_clone)
+			# 添加玩家分身
+			_add_player_clone()
+			# 判断 身外化身效果 额外增加1个分身
+			if get_player() and get_player().has_effect("effect_000060"):
+				var effect = get_player().get_effect("effect_000060")
+				if effect.is_suit_invoked():
+					_add_player_clone()
+			
+
+
+func _add_player_clone():
+	if player_manager.data_player:
+		if player_clone_dic.size() < player_clone_count_limit:
+			var player_clone = create_player_clone()
+			# 添加到地图
+			map_dic[player_clone.map_id].add_player_clone(player_clone)
+
+
+func _clear_player_clone():
+	for player_clone in player_clone_dic.values():
+		player_clone.kill_role()
+	player_clone_dic.clear()
+
+
+func _clear_last_player_clone():
+	# 清除最后一个分身
+	if player_clone_dic.size() > 0:
+		var last_player_clone = player_clone_dic[player_clone_dic.keys()[player_clone_dic.size() - 1]]
+		last_player_clone.kill_role()
+		player_clone_dic.erase(last_player_clone.player_id)
 
 
 func create_player_clone() -> DataPlayer:
