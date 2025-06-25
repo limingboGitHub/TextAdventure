@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://cjhlw4uxh43lk"]
+[gd_scene load_steps=32 format=3 uid="uid://cjhlw4uxh43lk"]
 
 [ext_resource type="Script" uid="uid://bgbay81accbeh" path="res://src/scenes/game/world.gd" id="1_wlcum"]
+[ext_resource type="PackedScene" uid="uid://u5cer8r8dtys" path="res://src/scenes/game/map.tscn" id="2_ajpim"]
 [ext_resource type="Script" uid="uid://b7omic3ntn17t" path="res://src/scenes/game/map_graph.gd" id="2_g74vk"]
 [ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_pgwtv"]
 [ext_resource type="Script" uid="uid://c8lc1mpnj7vtw" path="res://src/scenes/game/color_bar.gd" id="3_igcpe"]
@@ -36,6 +37,8 @@ script = ExtResource("1_wlcum")
 
 [node name="Maps" type="Node2D" parent="."]
 
+[node name="Map" parent="Maps" instance=ExtResource("2_ajpim")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="CanvasLayer"]
@@ -44,10 +47,10 @@ anchors_preset = 0
 
 [node name="BigMapBt" type="Button" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 103.0
-offset_bottom = 55.0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 108.0
+offset_bottom = 95.0
 theme = ExtResource("2_pgwtv")
 text = "大地图"
 
@@ -77,54 +80,54 @@ text = "拾取"
 [node name="RestBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 168.0
-offset_top = 1261.0
+offset_top = 1231.0
 offset_right = 236.0
-offset_bottom = 1311.0
+offset_bottom = 1281.0
 theme = ExtResource("2_pgwtv")
 text = "休息"
 
 [node name="AutoBt" type="CheckButton" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 265.0
-offset_top = 1262.0
+offset_top = 1232.0
 offset_right = 425.0
-offset_bottom = 1312.0
+offset_bottom = 1282.0
 theme = ExtResource("2_pgwtv")
 text = "挂机战斗"
 
 [node name="BagBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 440.0
-offset_top = 1365.0
+offset_top = 1335.0
 offset_right = 508.0
-offset_bottom = 1415.0
+offset_bottom = 1385.0
 theme = ExtResource("2_pgwtv")
 text = "背包"
 
 [node name="RoleEquipBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 168.0
-offset_top = 1313.0
+offset_top = 1283.0
 offset_right = 236.0
-offset_bottom = 1363.0
+offset_bottom = 1333.0
 theme = ExtResource("2_pgwtv")
 text = "装备"
 
 [node name="SkillBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 510.0
-offset_top = 1365.0
+offset_top = 1335.0
 offset_right = 578.0
-offset_bottom = 1415.0
+offset_bottom = 1385.0
 theme = ExtResource("2_pgwtv")
 text = "技能"
 
 [node name="MissionBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 580.0
-offset_top = 1365.0
+offset_top = 1335.0
 offset_right = 648.0
-offset_bottom = 1415.0
+offset_bottom = 1385.0
 theme = ExtResource("2_pgwtv")
 text = "任务"
 
@@ -141,63 +144,63 @@ text = "角色"
 [node name="OtherBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 510.0
-offset_top = 1313.0
+offset_top = 1283.0
 offset_right = 578.0
-offset_bottom = 1363.0
+offset_bottom = 1333.0
 theme = ExtResource("2_pgwtv")
 text = "其他"
 
 [node name="SaveGameBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 440.0
-offset_top = 1313.0
+offset_top = 1283.0
 offset_right = 508.0
-offset_bottom = 1363.0
+offset_bottom = 1333.0
 theme = ExtResource("2_pgwtv")
 text = "存档"
 
 [node name="AutoSettingBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
-offset_left = 440.0
-offset_top = 5.0
-offset_right = 568.0
-offset_bottom = 55.0
+offset_left = 438.0
+offset_top = 45.0
+offset_right = 566.0
+offset_bottom = 95.0
 theme = ExtResource("2_pgwtv")
 text = "挂机设置"
 
 [node name="ExitGameBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
-offset_left = 575.0
-offset_top = 5.0
-offset_right = 643.0
-offset_bottom = 55.0
+offset_left = 572.0
+offset_top = 45.0
+offset_right = 640.0
+offset_bottom = 95.0
 theme = ExtResource("2_pgwtv")
 text = "退出"
 
 [node name="DebugBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 580.0
-offset_top = 1261.0
+offset_top = 1231.0
 offset_right = 648.0
-offset_bottom = 1311.0
+offset_bottom = 1281.0
 theme = ExtResource("2_pgwtv")
 text = "调试"
 
 [node name="AlchemyBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 580.0
-offset_top = 1313.0
+offset_top = 1283.0
 offset_right = 648.0
-offset_bottom = 1363.0
+offset_bottom = 1333.0
 theme = ExtResource("2_pgwtv")
 text = "炼金"
 
 [node name="RoleInfoBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
 layout_mode = 0
 offset_left = 168.0
-offset_top = 1365.0
+offset_top = 1335.0
 offset_right = 236.0
-offset_bottom = 1415.0
+offset_bottom = 1385.0
 theme = ExtResource("2_pgwtv")
 text = "属性"
 
@@ -209,9 +212,9 @@ offset_bottom = 40.0
 [node name="Bar" type="Control" parent="CanvasLayer/UI/StatusBar"]
 anchors_preset = 0
 offset_left = 237.0
-offset_top = 1321.0
+offset_top = 1291.0
 offset_right = 237.0
-offset_bottom = 1321.0
+offset_bottom = 1291.0
 
 [node name="HpBar" type="Panel" parent="CanvasLayer/UI/StatusBar/Bar"]
 layout_mode = 0
@@ -300,9 +303,9 @@ horizontal_alignment = 1
 [node name="PlayerInfo" type="Panel" parent="CanvasLayer/UI/StatusBar"]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 1313.0
+offset_top = 1283.0
 offset_right = 166.0
-offset_bottom = 1415.0
+offset_bottom = 1385.0
 script = ExtResource("5_whnrt")
 
 [node name="Job" type="Label" parent="CanvasLayer/UI/StatusBar/PlayerInfo"]
@@ -332,9 +335,9 @@ text = "1"
 
 [node name="BuffShow" parent="CanvasLayer/UI/StatusBar" instance=ExtResource("7_hccix")]
 offset_left = 7.0
-offset_top = 1197.0
+offset_top = 1167.0
 offset_right = 7.0
-offset_bottom = 1197.0
+offset_bottom = 1167.0
 
 [node name="MsgControl" parent="CanvasLayer/UI" instance=ExtResource("24_hpdnf")]
 offset_left = 11.0
