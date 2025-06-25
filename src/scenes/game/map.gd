@@ -518,6 +518,8 @@ func remove_player_scene(data_player: DataPlayer):
 	data_player.skill_executed.disconnect(_on_skill_executed)
 	player_scene.mock_monster_invoked.disconnect(_on_mock_monster_invoked)
 	player_scene.war_stomp_triggered.disconnect(_on_war_stomp_triggered)
+	player_scene.skill_on_target_triggered.disconnect(_on_skill_on_target_triggered)
+
 	# 如果地图没有玩家了，延时关闭怪物刷新
 	$CloseMonsRefreshTimer.start()
 
