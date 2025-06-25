@@ -890,6 +890,7 @@
 		"name":"荒原入口",
 		"description":"",
 		"region": "灼热荒原",
+		"main_town":true,
 		"portals":{
 			"portal_000001":{
 				"target_map_id":"map_000202",

@@ -1,7 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjhlw4uxh43lk"]
+[gd_scene load_steps=31 format=3 uid="uid://cjhlw4uxh43lk"]
 
 [ext_resource type="Script" uid="uid://bgbay81accbeh" path="res://src/scenes/game/world.gd" id="1_wlcum"]
-[ext_resource type="PackedScene" uid="uid://u5cer8r8dtys" path="res://src/scenes/game/map.tscn" id="2_ajpim"]
 [ext_resource type="Script" uid="uid://b7omic3ntn17t" path="res://src/scenes/game/map_graph.gd" id="2_g74vk"]
 [ext_resource type="Theme" uid="uid://okeq2d56howe" path="res://theme/common.tres" id="2_pgwtv"]
 [ext_resource type="Script" uid="uid://c8lc1mpnj7vtw" path="res://src/scenes/game/color_bar.gd" id="3_igcpe"]
@@ -36,8 +35,6 @@
 script = ExtResource("1_wlcum")
 
 [node name="Maps" type="Node2D" parent="."]
-
-[node name="Map" parent="Maps" instance=ExtResource("2_ajpim")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
