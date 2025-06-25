@@ -642,13 +642,26 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 	# 碰撞体区域类型技能判定
 	if skill.id == "attack_add_sector_damage":
 		_add_sector_damage_effect(player_scene.position,skill)
+		# 临时技能方向，延时后直接用skill中的方向会异常
+		var direction = skill.direction
 		# 剑气纵横追加剑气
 		if player.has_effect("effect_000034"):
 			var effect2 = player.get_effect("effect_000034")
 			if randf() < effect2.value:
+				
 				# 延迟0.3秒释放剑气
 				await get_tree().create_timer(0.3).timeout
+				skill.direction = direction
 				_add_sector_damage_effect(player_scene.position,skill)
+		## 狂风骤雨追加剑气
+		if player.has_effect("effect_000058"):
+			var effect2 = player.get_effect("effect_000058")
+			if effect2.is_suit_invoked():
+				for i in int(effect2.get_suit_value()):
+					# 延迟0.2秒释放剑气
+					await get_tree().create_timer(0.2).timeout
+					skill.direction = direction
+					_add_sector_damage_effect(player_scene.position,skill)
 		return
 	elif skill.id == "fire_light":
 		# 爆炎射线
@@ -1030,6 +1043,7 @@ func _add_fire_light_damage_effect(_position: Vector2, _skill: DataBaseSkill,_pl
 
 
 func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):
+	print("破空剑气：添加场景",_skill.direction)
 	var sector_damage_effect = SingletonGameScenePre.AttackEffect5Scene.instantiate()
 	sector_damage_effect.start(_skill,_position,_skill.direction)
 	$CanvasLayer/GameZone/Effects.add_child(sector_damage_effect)
@@ -1038,7 +1052,7 @@ func _add_sector_damage_effect(_position: Vector2, _skill: DataBaseSkill):
 
 
 func _on_monster_detected(monster: Monster,skill: DataBaseSkill):
-	print("monster_detected:",monster.name,skill.name)
+	#print("monster_detected:",monster.name,skill.name)
 	if data_map.data_player:
 		var player_scene = $CanvasLayer/GameZone/Players.get_node(data_map.data_player.player_id)
 		if player_scene:

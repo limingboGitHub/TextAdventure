@@ -203,6 +203,10 @@ func is_suit_invoked() -> bool:
 	return suit_num >= invoke_num
 
 
+func get_suit_value()-> float:
+	return value / suit_num
+
+
 func save() -> Dictionary:
 	var data = {
 		"id": id,
