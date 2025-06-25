@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckgolexat0dxo"]
+[gd_scene load_steps=13 format=3 uid="uid://ckgolexat0dxo"]
 
 [ext_resource type="Script" uid="uid://sdtpcokcuu21" path="res://src/scenes/game/player.gd" id="1_y2cg1"]
 [ext_resource type="PackedScene" uid="uid://bx2d4keg6x7ho" path="res://src/scenes/game/color_bar.tscn" id="2_agfvh"]
@@ -17,6 +17,16 @@ bg_color = Color(0.176471, 0.176471, 0.176471, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgh6a"]
 radius = 38.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgh6a"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 38.0
+emission_ring_inner_radius = 35.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
 
 [node name="Player" type="Control"]
 layout_mode = 3
@@ -161,6 +171,13 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GaintAttackArea2D"]
 shape = SubResource("CircleShape2D_lgh6a")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="GaintAttackArea2D"]
+emitting = false
+amount = 100
+lifetime = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_lgh6a")
 
 [connection signal="my_pressed" from="Back" to="." method="_on_panel_my_pressed"]
 [connection signal="timeout" from="MockMonsterTimer" to="." method="_on_mock_monster_timer_timeout"]

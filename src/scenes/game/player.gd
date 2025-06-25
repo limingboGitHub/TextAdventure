@@ -26,6 +26,7 @@ var flash_target: Vector2
 # 巨人冲锋相关
 # 冲锋时攻击判定的碰撞体
 @onready var gaint_attack_area: Area2D = $GaintAttackArea2D
+@onready var gaint_particles: GPUParticles2D = $GaintAttackArea2D/GPUParticles2D
 # 冲锋目标
 var gaint_move_target_pos: Vector2 = Vector2.ZERO
 var is_gaint_moving: bool = false
@@ -145,6 +146,9 @@ func _process_gaint_attack(delta: float):
 			# 如果冲锋碰撞体未启动，则启动
 			if not gaint_attack_area.monitoring:
 				gaint_attack_area.monitoring = true
+				gaint_particles.emitting = true
+			# 调整特效方向
+			gaint_particles.process_material.gravity = Vector3(-move_direction.x * 200,-move_direction.y * 200,0)
 
 		# 冲锋过程中，攻击范围内存在敌人时，发出data_player.process_attack()
 		if not gaint_attack_targets.is_empty():
@@ -203,6 +207,8 @@ func _process_gaint_attack(delta: float):
 # 关闭“巨人冲锋”的碰撞体检测
 func close_gaint_moving_detecting():
 	gaint_attack_area.monitoring = false
+	gaint_particles.process_material.gravity = Vector3.ZERO
+	gaint_particles.emitting = false
 
 
 func _process_attack(delta: float, special_target:Control = null):
@@ -416,6 +422,10 @@ func set_attack_target(target: Control):
 		if not attack_target.data_monster.role_dead.is_connected(_on_attack_target_dead):
 			attack_target.data_monster.role_dead.connect(_on_attack_target_dead)
 
+		# 如果是巨人领主，则重置冲锋目标
+		if data_player and data_player.has_effect("effect_000054"):
+			is_gaint_moving = false
+
 
 func _on_attack_target_dead(_data_role: DataRole):
 	set_attack_target(null)
@@ -423,6 +433,8 @@ func _on_attack_target_dead(_data_role: DataRole):
 
 func _on_player_rest_started(_player: DataPlayer):
 	set_attack_target(null)
+	# 关闭“巨人冲锋”的碰撞体检测
+	close_gaint_moving_detecting()
 
 
 func _on_mp_cost_enhance_status_changed(_player: DataPlayer,is_match: bool):
