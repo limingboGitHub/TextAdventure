@@ -37,4 +37,16 @@ func _on_cancel_bt_pressed() -> void:
 
 
 func _on_batch_bt_pressed() -> void:
-	$LineEdit.text = "100"
+	if $LineEdit.text != "":
+		var num = int($LineEdit.text)
+		$LineEdit.text = str(num + 100)
+	else:
+		$LineEdit.text = "100"
+
+
+func _on_batch_bt_2_pressed() -> void:
+	if $LineEdit.text != "":
+		var num = int($LineEdit.text)
+		$LineEdit.text = str(num + 1000)
+	else:
+		$LineEdit.text = "1000"

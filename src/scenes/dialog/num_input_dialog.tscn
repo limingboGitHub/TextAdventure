@@ -7,8 +7,8 @@
 [node name="NumInputDialog" type="Panel"]
 offset_left = 103.0
 offset_top = 204.0
-offset_right = 520.0
-offset_bottom = 285.0
+offset_right = 461.0
+offset_bottom = 334.0
 theme_override_styles/panel = ExtResource("1_r0wdh")
 script = ExtResource("2_g4y6k")
 
@@ -16,7 +16,7 @@ script = ExtResource("2_g4y6k")
 layout_mode = 0
 offset_left = 90.0
 offset_top = 16.0
-offset_right = 210.0
+offset_right = 270.0
 offset_bottom = 66.0
 theme = ExtResource("2_y4rnx")
 placeholder_text = "数量"
@@ -25,21 +25,30 @@ virtual_keyboard_type = 2
 
 [node name="OKBt" type="Button" parent="."]
 layout_mode = 0
-offset_left = 332.0
+offset_left = 278.0
 offset_top = 15.0
-offset_right = 400.0
+offset_right = 346.0
 offset_bottom = 65.0
 theme = ExtResource("2_y4rnx")
 text = "确认"
 
 [node name="BatchBt" type="Button" parent="."]
 layout_mode = 0
-offset_left = 216.0
-offset_top = 15.0
-offset_right = 316.0
-offset_bottom = 65.0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 180.0
+offset_bottom = 120.0
 theme = ExtResource("2_y4rnx")
-text = "批量100"
+text = "+100"
+
+[node name="BatchBt2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 70.0
+offset_right = 346.0
+offset_bottom = 120.0
+theme = ExtResource("2_y4rnx")
+text = "+1000"
 
 [node name="CancelBt" type="Button" parent="."]
 layout_mode = 0
@@ -52,4 +61,5 @@ text = "取消"
 
 [connection signal="pressed" from="OKBt" to="." method="_on_ok_bt_pressed"]
 [connection signal="pressed" from="BatchBt" to="." method="_on_batch_bt_pressed"]
+[connection signal="pressed" from="BatchBt2" to="." method="_on_batch_bt_2_pressed"]
 [connection signal="pressed" from="CancelBt" to="." method="_on_cancel_bt_pressed"]
