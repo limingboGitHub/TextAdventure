@@ -143,6 +143,13 @@ func _show_description(data_skill: DataBaseSkill):
 				description += "(当前增加概率" + str(round(luck_value * 10000) / 100) + "%)"
 			elif data_skill.id == "skill_000206":
 				var attack_speed_value = data_player.attribute.get_all_ability().agility * effect.value
+				# 身手敏捷加成
+				if data_player and data_player.has_effect("effect_000063"):
+					var speed_effect = data_player.get_effect("effect_000063")
+					if speed_effect.is_suit_invoked():
+						var speed_add = speed_effect.get_suit_value()
+						attack_speed_value *= 1 + speed_add
+
 				description += "(当前增加攻速和移速" + str(round(attack_speed_value * 10000) / 100) + "%)"
 
 			

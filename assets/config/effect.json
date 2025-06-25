@@ -438,7 +438,7 @@
 			"effect_type": "more_speed",
 			"desc": "身手敏捷效果增加{d}",
 			"value_type": "percent",
-			"value": 1
+			"value": 2
 		}
 	}
 }

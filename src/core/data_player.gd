@@ -497,16 +497,27 @@ func execute_skill(_skill: DataBaseSkill,skill_add_count: int = 0):
 		skill_cd += skill_cd_enhance
 	# 计算攻击速度加成
 	if _skill.id == "skill_000000" or _skill.id == "skill_000201":
+		# 身手敏捷 攻速加成
 		if has_effect("effect_000041"):
 			var effect = get_effect("effect_000041")
 			var attack_speed_add = effect.value * get_final_ability().agility
+			# 踪灭神行 攻速加成
+			if has_effect("effect_000063"):
+				var speed_effect = get_effect("effect_000063")
+				if speed_effect.is_suit_invoked():
+					attack_speed_add *= 1 + speed_effect.get_suit_value()
+
 			# 增加n%攻速，增加攻速 = (原始CD - 减少后CD) / 减少后CD
 			# 增加攻速 + 1 = 原始CD / 减少后CD
 			# 减少后CD = 原始CD / (增加攻速 + 1)
 			var reduced_cd = _skill.cd / (attack_speed_add + 1)
 			var reduce_cd = _skill.cd - reduced_cd
+		
 			skill_cd -= reduce_cd
 			print("攻击速度增加：",attack_speed_add," 技能CD减少：",reduce_cd)
+					
+
+		
 	# 重置冷却
 	execute_cd_rest = skill_cd / float(SingletonGame.speed)
 
