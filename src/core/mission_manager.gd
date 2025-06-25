@@ -168,39 +168,41 @@ func _get_require_from_config(require_info: Dictionary) -> MissionRequire:
 
 func _get_reward_from_config(reward_info: Dictionary) -> MissionReward:
 	var type = reward_info["type"]
+
+	var mission_reward: MissionReward
+	# 奖励类型
 	if type == "exp":
-		var mission_reward = MissionRewardExp.new()
+		mission_reward = MissionRewardExp.new()
 		mission_reward.count = reward_info["count"]
-		return mission_reward
 	elif type == "money":
-		var mission_reward = MissionRewardMoney.new()
+		mission_reward = MissionRewardMoney.new()
 		mission_reward.count = reward_info["count"]
-		return mission_reward
 	elif type == "item":
-		var mission_reward = MissionRewardItem.new()
+		mission_reward = MissionRewardItem.new()
 		mission_reward.item_id = reward_info["id"]
 		mission_reward.item_name = _get_item_name_from_config(reward_info["id"])
 		mission_reward.count = reward_info["count"]
-		return mission_reward
 	elif type == "job_change":
-		var mission_reward = MissionRewardJob.new()
+		mission_reward = MissionRewardJob.new()
 		mission_reward.job_id = reward_info["job_id"]
 		mission_reward.job_name = res_manager.get_job_name(reward_info["job_id"])
-		return mission_reward
 	elif type == "alchemy":
-		var mission_reward = MissionRewardAlchemy.new()
+		mission_reward = MissionRewardAlchemy.new()
 		mission_reward.alchemy_id = reward_info["id"]
 		mission_reward.alchemy_name = res_manager.alchemy_dic[reward_info["id"]]["name"]
-		return mission_reward
 	elif type == "skill":
-		var mission_reward = MissionRewardSkill.new()
+		mission_reward = MissionRewardSkill.new()
 		mission_reward.skill_id = reward_info["id"]
 		mission_reward.skill_name = res_manager.get_skill_name(reward_info["id"])
 		mission_reward.skill_phase = reward_info["skill_phase"]
-		return mission_reward
 	else:
-		assert(false, "未知的奖励类型：" + type)
-		return null
+		pass
+	if mission_reward != null:
+		if reward_info.has("limit_job"):
+			for job_id in reward_info["limit_job"]:
+				mission_reward.limit_job.append(job_id)
+
+	return mission_reward
 
 
 func _get_items_from_config(items_config: Array) -> Array[MissionItem]:

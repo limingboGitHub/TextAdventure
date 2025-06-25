@@ -182,8 +182,22 @@ func _next_message():
 		_ok_bt_text(mission_phase_ok_bt_type),
 		null,
 		requires,
-		rewards
+		_filter_rewards(rewards)
 	)
+
+
+func _filter_rewards(rewards):
+	if rewards == null:
+		return null
+	var new_rewards: Array[MissionReward] = []
+	for reward in rewards:
+		if reward.limit_job.size() == 0:
+			new_rewards.append(reward)
+		else:
+			for limit_job in reward.limit_job:
+				if player_manager.data_player.job_id == limit_job:
+					new_rewards.append(reward)
+	return new_rewards
 
 
 ## 用户选择任务
@@ -242,7 +256,7 @@ func select_mission_phase(phase: DataMissionPhase):
 				rewards = null
 			
 	# 展示对话框消息
-	message_showed.emit(title, message, ok_bt_text, null, requires, rewards)
+	message_showed.emit(title, message, ok_bt_text, null, requires, _filter_rewards(rewards))
 
 
 # 如果还有下一条消息，则展示“继续”按钮

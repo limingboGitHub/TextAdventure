@@ -2057,32 +2057,50 @@
 					{
 						"type": "alchemy",
 						"id": "alchemy_000100",
-						"count": 1
+						"count": 1,
+						"limit_job":[
+							"job_000002"
+						]
 					},
 					{
 						"type": "alchemy",
 						"id": "alchemy_000101",
-						"count": 1
+						"count": 1,
+						"limit_job":[
+							"job_000003"
+						]
 					},
 					{
 						"type": "alchemy",
 						"id": "alchemy_000102",
-						"count": 1
+						"count": 1,
+						"limit_job":[
+							"job_000102"
+						]
 					},
 					{
 						"type": "alchemy",
 						"id": "alchemy_000103",
-						"count": 1
+						"count": 1,
+						"limit_job":[
+							"job_000103"
+						]
 					},
 					{
 						"type": "alchemy",
 						"id": "alchemy_000104",
-						"count": 1
+						"count": 1,
+						"limit_job":[
+							"job_000203"
+						]
 					},
 					{
 						"type": "alchemy",
 						"id": "alchemy_000105",
-						"count": 1
+						"count": 1,
+						"limit_job":[
+							"job_000204"
+						]
 					}
 				]
 			}

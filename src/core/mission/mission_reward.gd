@@ -4,6 +4,9 @@ class_name MissionReward
 
 var count: int
 
+# 针对职业可见
+var limit_job: Array[String] = []
+
 
 func save() -> Dictionary:
 	return {
