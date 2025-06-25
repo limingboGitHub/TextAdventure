@@ -416,11 +416,11 @@ func load_local_player(data_player: DataPlayer):
 	# 初始化化身
 	if data_player.has_effect("effect_000046"):
 		create_player_clone()
-	# 身外化身
-	if data_player.has_effect("effect_000060"):
-		var effect = data_player.get_effect("effect_000060")
-		if effect.is_suit_invoked():
-			create_player_clone()
+		# 身外化身
+		if data_player.has_effect("effect_000060"):
+			var effect = data_player.get_effect("effect_000060")
+			if effect.is_suit_invoked():
+				create_player_clone()
 
 	# 监听玩家等级变化
 	data_player.level_updated.connect(_on_player_level_updated)

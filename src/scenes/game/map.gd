@@ -797,7 +797,15 @@ func _add_fire_zone_damage_effect(
 	var interval_reduce = 0.0
 	if _data_player.has_effect("effect_000053"):
 		var effect_fire_more_frequency = _data_player.get_effect("effect_000053")
-		interval_reduce = effect_fire_more_frequency.value
+		interval_reduce += effect_fire_more_frequency.value
+	# 炎灭八荒 间隔时间减少
+	if _data_player.has_effect("effect_000061"):
+		var effect_fire_more_frequency = _data_player.get_effect("effect_000061")
+		if effect_fire_more_frequency.is_suit_invoked():
+			var effect_value = effect_fire_more_frequency.value / effect_fire_more_frequency.suit_num
+			interval_reduce += (1 - interval_reduce) * effect_value
+	# 设定间隔最小值
+	interval_reduce = min(0.95,interval_reduce)
 	# 生成“灼烧”buff信息
 	var buff = _create_fire_buff(effect.id,damage_value,interval_reduce)
 	file_zone_scene.start(buff,_position,_scale)

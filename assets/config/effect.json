@@ -424,7 +424,7 @@
 			"effect_type": "fire_more_and_more_frequency",
 			"desc": "减少{d}烈火燎原的灼烧间隔时间",
 			"value_type": "percent",
-			"value": 0.8
+			"value": 0.5
 		},
 		"effect_000062":{
 			"name": "福星高照",
