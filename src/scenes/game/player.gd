@@ -167,11 +167,20 @@ func _process_gaint_attack(delta: float):
 			if data_player.has_effect("effect_000055"):
 				# 记录移动距离
 				gaint_move_distance_tracker += move_vector.length()
-				# 减少触发距离
+
+				#region 减少触发距离
+				# 雷霆碎步效果
 				var gaint_move_distance_reduce = 0
 				if data_player.has_effect("effect_000057"):
 					gaint_move_distance_reduce += data_player.get_effect("effect_000057").value
+				# 撼天动地效果
+				if data_player.has_effect("effect_000059"):
+					var effect = data_player.get_effect("effect_000059")
+					if effect.is_suit_invoked():
+						gaint_move_distance_reduce += (100 - gaint_move_distance_reduce) * effect.get_suit_value()
 				var tracker_distance = max(10,100 - gaint_move_distance_reduce)
+				#endregion
+
 				# 每移动一定距离，就发出一次“战争践踏”效果的信号
 				if gaint_move_distance_tracker >= tracker_distance:
 					var effect = data_player.get_effect("effect_000055")
