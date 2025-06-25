@@ -634,7 +634,7 @@ func _create_percent_damage(
 		skill_damage_rate += charge_damage_rate
 		# 评估该效果最终的伤害值
 		var record_damage_value = attack_value * _damage_rate * charge_damage_rate
-		damage_details.append(DataDamage.DamageDetail.new("深蹲蓄力", record_damage_value, charge_damage_rate))
+		damage_details.append(DataDamage.DamageDetail.new("拔刀蓄力", record_damage_value, charge_damage_rate))
 	
 	# 暴力美学
 	if _data_player.has_effect("effect_000033"):
