@@ -114,7 +114,7 @@ class BuffSkill extends DataMonsterSkill:
 		effect_id = data.get("effect_id", "")
 
 
-static func create_monster_skill(monster_config) -> DataMonsterSkill:
+static func create_monster_skill(monster_skill_id:String,monster_config:Dictionary) -> DataMonsterSkill:
 	var _type = monster_config["type"]
 	var monster_skill: DataMonsterSkill = null
 	if _type == "charge_attack":
@@ -126,5 +126,6 @@ static func create_monster_skill(monster_config) -> DataMonsterSkill:
 	# 初始化剩余cd
 	if monster_skill != null:
 		monster_skill.from_dict(monster_config)
+		monster_skill.id = monster_skill_id
 		monster_skill.cd_rest = monster_skill.start_cd
 	return monster_skill

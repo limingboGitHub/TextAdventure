@@ -134,7 +134,7 @@ func process(delta: float):
 			time_add_damage_rest_time = 1.0
 			time_add_damage_rest_value += get_effect("effect_000029").value
 			attribute.final_details.attack += time_add_damage_rest_value
-			#print("越战越勇：", time_add_damage_rest_value)
+			print("越战越勇：", time_add_damage_rest_value)
 
 	# 处理黑化剩余存活时间
 	if is_black_monster:

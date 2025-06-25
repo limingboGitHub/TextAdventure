@@ -319,8 +319,14 @@ func _on_first_player_entered():
 func _on_monster_refresh_timer_timeout() -> void:
 	# print('_on_monster_refresh_timer_timeout')
 	data_map.refresh_monsters()
+	# 判断当前地图是否有正常怪物
+	var has_monster = false
+	for _data_monster in data_map.data_monsters.values():
+		if not _data_monster.is_black_monster:
+			has_monster = true
+			break
 	# 如果目前还无怪物，则遍历刷新点信息，更新刷新时间
-	if data_map.data_monsters.is_empty():
+	if not has_monster:
 		for refresh_pos in data_map.map_monster_refresh_pos:
 			for refresh_info in refresh_pos.monster_refresh_list:
 				# 怪物刷新CD开始时间
@@ -878,7 +884,7 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 		if monster_scene.data_monster.is_dead or monster_scene.data_monster.is_black_monster:
 			continue
 		var monster_distance = monster_scene.global_position.distance_to(effect_position)
-		print("monster_distance:",monster_distance)
+		#print("monster_distance:",monster_distance)
 		# 怪物在技能范围内（1为帧率等误差）
 		if monster_distance <= (radius + 1):
 			temp_monster_list.append({"monster": monster_scene, "distance": monster_distance})
