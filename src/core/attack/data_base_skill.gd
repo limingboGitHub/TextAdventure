@@ -10,7 +10,7 @@ var id: String
 var type: String
 # 技能名称
 var name: String
-# 作用目标类型 0玩家 1敌人 2都有作用
+# 作用目标类型 0玩家 1敌人 2都有作用 3 目标对象
 var target_type: int
 # 作用目标数量
 var count: int

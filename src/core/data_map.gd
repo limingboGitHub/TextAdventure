@@ -983,14 +983,16 @@ func on_monster_skill_executed(
 			var pos = Vector2(randf(), randf())
 			add_monster(monster, pos)
 	elif skill is DataEffectBuffSkill:
+		var buff = skill.create_buff()
 		if skill.target_type == 0:
 			# 给玩家添加特殊效果
-			var buff = skill.create_buff()
 			data_player.add_buff(buff)
 		elif skill.target_type == 1:
 			# 给怪物添加特殊效果
-			var buff = skill.create_buff()
 			data_monster.add_buff(buff)
+		elif skill.target_type == 3:
+			# 给目标对象添加特殊效果
+			target.add_buff(buff)
 
 	_check_boss_combat_start(data_monster)
 

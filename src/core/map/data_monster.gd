@@ -229,10 +229,12 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 			buff_skill.effect_list.append(dizziness_effect)
 			# buff名称调整为附加状态的名称，例如“眩晕”
 			buff_skill.name = dizziness_effect_name
-			# 附加对象为玩家
+			# 技能的作用对象
 			if is_black_monster:
-				buff_skill.target_type = 1
+				# 作用于攻击目标
+				buff_skill.target_type = 3
 			else:
+				# 作用于玩家
 				buff_skill.target_type = 0
 		else:
 			buff_skill = DataSkillBag.create_buff_skill(

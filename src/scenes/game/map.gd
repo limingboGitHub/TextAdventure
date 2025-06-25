@@ -417,16 +417,17 @@ func _on_boss_combat_started(_data_map: DataMap, data_monster: DataMonster):
 
 
 func _on_boss_killed(_data_map: DataMap, data_monster: DataMonster):
-	var hurt_time = Time.get_ticks_msec() - boss_start_time[data_monster.monster_unique_id]
-	boss_start_time.erase(data_monster.monster_unique_id)
+	if boss_start_time.has(data_monster.monster_unique_id):
+		var hurt_time = Time.get_ticks_msec() - boss_start_time[data_monster.monster_unique_id]
+		boss_start_time.erase(data_monster.monster_unique_id)
 	
-	# 更新击杀时间
-	$CanvasLayer/BossStatus/CostTime.text = str(hurt_time/1000.0)
-	# 更新击杀记录
-	if not SingletonGame.boss_kill_time.has(data_monster.monster_id) \
-		or hurt_time < SingletonGame.boss_kill_time[data_monster.monster_id]:
-		SingletonGame.boss_kill_time[data_monster.monster_id] = hurt_time
-		$CanvasLayer/BossStatus/RecordTime.text = str(hurt_time/1000.0)
+		# 更新击杀时间
+		$CanvasLayer/BossStatus/CostTime.text = str(hurt_time/1000.0)
+		# 更新击杀记录
+		if not SingletonGame.boss_kill_time.has(data_monster.monster_id) \
+			or hurt_time < SingletonGame.boss_kill_time[data_monster.monster_id]:
+			SingletonGame.boss_kill_time[data_monster.monster_id] = hurt_time
+			$CanvasLayer/BossStatus/RecordTime.text = str(hurt_time/1000.0)
 
 
 func _on_npc_added(data_npc: DataNPC):
