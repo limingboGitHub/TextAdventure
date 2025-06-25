@@ -493,12 +493,18 @@ func _after_damage_effect(
 
 ## 获取概率加成
 func luck_rate_add()-> float:
+	var rate_add = 0.0
 	if data_player:
 		# 运气加持
 		if data_player.has_effect("effect_000035"):
 			var effect_luck = data_player.get_effect("effect_000035")
-			return data_player.get_final_ability().luck * effect_luck.value
-	return 0
+			rate_add += data_player.get_final_ability().luck * effect_luck.value
+		# 福星高照 运气加持翻倍
+		if data_player.has_effect("effect_000062"):
+			var effect_luck = data_player.get_effect("effect_000062")
+			if effect_luck.is_suit_invoked():
+				rate_add += rate_add * effect_luck.get_suit_value()
+	return rate_add
 
 
 func _create_deep_damage_effect(value: int) -> DataEffect:

@@ -713,7 +713,9 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 					var is_monster_dead = false
 					if _target_monster_list and _target_monster_list.size() > 0:
 						# 伤害判定前记录下首个怪物的位置（判定后可能会销毁）
-						var first_target_postion = first_target.position
+						var first_target_postion = _target_monster_list[0].position
+						if first_target:
+							first_target_postion = first_target.position
 
 						is_monster_dead = _skill_executed_damage_judge(_target_monster_list,skill,player_scene)
 						print("第0段技能伤害判定")

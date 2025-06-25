@@ -5,7 +5,7 @@ extends Control
 var data_skill: DataBaseSkill
 
 # 玩家的属性，技能的某些信息需要依赖属性计算详情
-var attribute: Attribute
+var data_player: DataPlayer
 
 signal skill_add_pressed(data_skill: DataBaseSkill)
 
@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func set_data(data_skill: DataBaseSkill, _attribute: Attribute) -> void:
+func set_data(data_skill: DataBaseSkill, _data_player: DataPlayer) -> void:
 	self.data_skill = data_skill
-	self.attribute = _attribute
+	self.data_player = _data_player
 	$Name.text = data_skill.name
 	$MaxLevel/Label.text = str(data_skill.max_level)
 	$Level/Label.text = str(data_skill.level)
@@ -39,8 +39,21 @@ func set_data(data_skill: DataBaseSkill, _attribute: Attribute) -> void:
 
 	# 监听技能等级变化
 	data_skill.level_changed.connect(_on_level_changed)
-	# 监听属性变化
-	attribute.updated.connect(_on_attribute_changed)
+	
+	
+	# 这两个技能需要监听角色特效和属性变化
+	if data_skill.id == "skill_000203" or data_skill.id == "skill_000206":
+		# 监听属性变化
+		_data_player.attribute.updated.connect(_on_attribute_changed)
+		# 监听特效变化 
+		_data_player.effect_updated.connect(_on_effect_updated)
+
+
+func _on_effect_updated(data_effect: DataEffect):
+	# 如果是这两个特殊效果更新，需要刷新技能详情
+	if data_effect.id in ["effect_000062","effect_000063"]:
+		_show_description(data_skill)
+
 
 
 func _on_attribute_changed(_attribute: Attribute) -> void:
@@ -119,10 +132,17 @@ func _show_description(data_skill: DataBaseSkill):
 
 			# 增加属性结算
 			if data_skill.id == "skill_000203":
-				var luck_value = attribute.get_all_ability().luck * effect.value
+				var luck_value = data_player.attribute.get_all_ability().luck * effect.value
+				# 福星高照加成
+				if data_player and data_player.has_effect("effect_000062"):
+					var luck_effect = data_player.get_effect("effect_000062")
+					if luck_effect.is_suit_invoked():
+						var luck_add = luck_effect.get_suit_value()
+						luck_value *= 1 + luck_add
+
 				description += "(当前增加概率" + str(round(luck_value * 10000) / 100) + "%)"
 			elif data_skill.id == "skill_000206":
-				var attack_speed_value = attribute.get_all_ability().agility * effect.value
+				var attack_speed_value = data_player.attribute.get_all_ability().agility * effect.value
 				description += "(当前增加攻速和移速" + str(round(attack_speed_value * 10000) / 100) + "%)"
 
 			

@@ -428,7 +428,7 @@
 		},
 		"effect_000062":{
 			"name": "福星高照",
-			"effect_type": "bese_luck",
+			"effect_type": "best_luck",
 			"desc": "运气至上效果增加{d}",
 			"value_type": "percent",
 			"value": 1

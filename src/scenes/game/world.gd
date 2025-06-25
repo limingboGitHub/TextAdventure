@@ -185,7 +185,7 @@ func _on_local_player_created(data_player: DataPlayer):
 	# 初始化技能栏
 	$CanvasLayer/UI/Dialog/SkillDialog.set_data_skill_bag(
 		data_world.get_data_skill_bag(),
-		data_world.get_player().attribute)
+		data_world.get_player())
 
 	# 监听玩家状态变化
 	data_player.hp_updated.connect(_on_player_hp_updated)

@@ -267,6 +267,8 @@ func _get_attack_range_increase() -> float:
 ## @param value 经验值
 ## @param enable_exp_gain 是否启用经验加成，如果为false，则只增加基础经验值
 func add_exp(value: int,enable_exp_gain: bool = true):
+	if value == 0:
+		return
 	# 基础经验值（会受到全局经验加成）
 	var base_value = int(value * SingletonGame.exp_multiplier)
 	# 增加经验值的特殊效果
