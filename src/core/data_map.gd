@@ -762,6 +762,7 @@ func _create_number_damage(
 	damage_value -= defense_reduction_value
 	damage_details.append(DataDamage.DamageDetail.new("防御减伤", -defense_reduction_value,0))
 	
+	damage_value = max(1, damage_value)
 	var damage = DataDamage.new(skill.damage_type, DataDamage.SOURCE_TYPE.PLAYER, damage_value)
 	damage.damage_details = damage_details
 	

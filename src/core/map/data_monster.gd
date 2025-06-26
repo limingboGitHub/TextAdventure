@@ -301,7 +301,10 @@ func _on_charge_completed(time: float):
 		var charge_num = time / monster_skill_current.charge_damage_step
 		var damage_rate = 1 + charge_num * monster_skill_current.charge_damage_step_value
 		# 执行技能
-		var _skill = DataSkillBag.create_monster_attack(monster_skill_current.name,damage_rate)
+		var _skill = DataSkillBag.create_monster_attack(
+			monster_skill_current.name,
+			damage_rate,
+			skill.radius)
 		execute_skill(_skill)
 		# 充值怪物特殊技能CD
 		monster_skill_current.cd_rest = monster_skill_current.cd

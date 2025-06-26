@@ -188,6 +188,7 @@ offset_right = 621.0
 offset_bottom = 945.0
 theme = ExtResource("2_ux6g7")
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_font_sizes/font_size = 25
 text = "选择名字："
 
 [node name="ItemList" type="ItemList" parent="."]
