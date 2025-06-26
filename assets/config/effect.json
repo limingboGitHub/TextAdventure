@@ -172,9 +172,9 @@
 		"effect_000025": {
 			"name": "护甲撕裂",
 			"effect_type": "armor_break",
-			"desc": "攻击时{d}概率降低目标双抗1点",
+			"desc": "攻击时{d}概率降低目标双抗10点",
 			"value_type": "percent", 
-			"value": 0.10
+			"value": 0.20
 		},
 		"effect_000026": {
 			"name": "拔刀蓄力",
