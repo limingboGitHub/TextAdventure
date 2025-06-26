@@ -18,7 +18,7 @@
 		"effect_000004": {
 			"name": "自损八千",
 			"effect_type": "attack_lost_hp_attach_damage",
-			"desc": "每次攻击额外附加攻击力{d}伤害，自身承受该伤害的50%",
+			"desc": "每次攻击额外附加攻击力{d}伤害，自身承受该伤害的10%",
 			"value_type": "percent",
 			"value": 0.2
 		},

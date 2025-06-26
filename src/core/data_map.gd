@@ -425,7 +425,7 @@ func _after_damage_effect(
 			# 承受自损八千伤害的50%
 			for damage_detail in damage.damage_details:
 				if damage_detail.name == "自损八千":
-					var damage_value = damage_detail.value * 0.5
+					var damage_value = damage_detail.value * 0.1
 					var self_damage = DataDamage.new(
 						DataDamage.TYPE.MAGICAL, 
 						DataDamage.SOURCE_TYPE.MONSTER, 
