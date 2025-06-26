@@ -217,4 +217,4 @@ func _on_refresh_timer_timeout() -> void:
 
 
 func _on_item_list_item_selected(index: int) -> void:
-	$Player/Name.text = role_name_table[index]
+	$RoleNameLineEdit.text = role_name_table[index]
