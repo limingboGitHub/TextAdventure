@@ -145,6 +145,13 @@ func _process_mock_monster(player_scene: Control,count: int):
 			break
 
 
+func add_all_player_names(_names: Array):
+	var scene = SingletonGameScenePre.AllPlayersScene.instantiate()
+	scene.show_names(_names)
+	scene.position = Vector2(10,100)
+	$CanvasLayer.add_child(scene)
+
+
 # 添加黑化怪物的场景
 func add_black_monster(monster_scene: Monster):
 	# 加入场景
@@ -475,6 +482,12 @@ func add_player_scene(data_player: DataPlayer,player_scene: Control):
 		for child in $CanvasLayer/GameZone/Monsters.get_children():
 			# 开启碰撞体检测
 			child.start_monitorable()
+		
+	# 日落村彩蛋播放
+	if data_map.id == "map_000001":
+		var all_players_scene = get_node("CanvasLayer/AllPlayers")
+		if all_players_scene:
+			all_players_scene.start_ani()
 
 
 ## 添加分身场景

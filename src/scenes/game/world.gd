@@ -72,6 +72,11 @@ func on_load_finished():
 		map_scene.black_monster_scene_dic = black_monster_scene_dic
 		# 地图加载后，默认隐藏显示，只展示当前玩家所在地图
 		map_scene.scene_hide()
+		# 日落村加载留念地图
+		if map.id == "map_000001":
+			# 完成了最终彩蛋任务
+			if data_world.mission_manager.is_mission_finished("mission_000131"):
+				map_scene.add_all_player_names(data_world.res_manager.player_name_list)
 		# 监听传送点生成完毕事件
 		map_scene.portal_updated.connect(_on_portal_updated)
 		# 监听角色传送事件
@@ -605,6 +610,11 @@ func _on_mission_phase_added(data_mission_phase: DataMissionPhase):
 func _on_mission_phase_finished(data_mission_phase: DataMissionPhase):
 	print("_on_mission_phase_finished:", data_mission_phase.name)
 	$CanvasLayer/UI/Dialog/MissionDialog.mission_phase_updated(data_mission_phase)
+	# 特殊任务的NPC展示
+	if data_mission_phase.data_mission.id == "mission_000131":
+		print("彩蛋完成")
+		var map_scene = $Maps.get_node("map_000001")
+		map_scene.add_all_player_names(data_world.res_manager.player_name_list)
 
 
 func _on_mission_phase_require_updated(data_mission_phase: DataMissionPhase):

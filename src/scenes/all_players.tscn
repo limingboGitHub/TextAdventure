@@ -1,8 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddyrwv10h8p8q"]
 
-[ext_resource type="PackedScene" uid="uid://w3nyh8a5qqiy" path="res://src/scenes/game/npc.tscn" id="1_4uwkp"]
+[ext_resource type="Script" uid="uid://5xghfjq5s3ct" path="res://src/scenes/all_players.gd" id="1_4uwkp"]
 
 [node name="AllPlayers" type="Control"]
+z_index = 100
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,31 +13,5 @@ offset_right = -28.0
 offset_bottom = -805.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="1" parent="." instance=ExtResource("1_4uwkp")]
-offset_left = 31.0
-offset_top = 45.0
-offset_right = 31.0
-offset_bottom = 45.0
-default_name = "啊弎"
-
-[node name="2" parent="." instance=ExtResource("1_4uwkp")]
-offset_left = 88.0
-offset_top = 60.0
-offset_right = 88.0
-offset_bottom = 60.0
-default_name = "艾德里布库"
-
-[node name="3" parent="." instance=ExtResource("1_4uwkp")]
-offset_left = 157.0
-offset_top = 80.0
-offset_right = 157.0
-offset_bottom = 80.0
-default_name = "艾德里布库"
-
-[node name="4" parent="." instance=ExtResource("1_4uwkp")]
-offset_left = 237.0
-offset_top = 100.0
-offset_right = 237.0
-offset_bottom = 100.0
-default_name = "奥利奥与爽歪歪"
+mouse_filter = 2
+script = ExtResource("1_4uwkp")

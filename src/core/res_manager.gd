@@ -60,6 +60,9 @@ var item_source_dict = {}
 ## 按物品类型分类的物品出处词典
 var categorized_item_source_dict = {}
 
+## 玩家名称信息
+var player_name_list = []
+
 # 必要资源加载完成
 signal load_res_finished()
 
@@ -127,6 +130,9 @@ func load():
 	
 	# 构建物品出处词典
 	_build_item_source_dict()
+
+	# 加载玩家名称信息
+	player_name_list = _read_config_json(res_path + "all_player.json")
 
 	load_res_finished.emit()
 

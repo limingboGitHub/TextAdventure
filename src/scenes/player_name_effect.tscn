@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpm21u86qbydj"]
+
+[ext_resource type="Script" uid="uid://kwwii6dety2h" path="res://src/scenes/player_name_effect.gd" id="1_m2mxm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il538"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 0.568627)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PlayerNameEffect" type="PanelContainer"]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_il538")
+script = ExtResource("1_m2mxm")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "123"
