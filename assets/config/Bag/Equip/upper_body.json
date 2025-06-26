@@ -242,7 +242,7 @@
 			"quality": "普通",
 			"price": 2000,
 			"attribute_details": {
-				"max_mp": 10,
+				"recover_mp": 1,
 				"defense": 2
 			},
 			"max_upgrade_times": 5
@@ -254,7 +254,7 @@
 			"quality": "普通",
 			"price": 5000,
 			"attribute_details": {
-				"max_mp": 15,
+				"recover_mp": 2,
 				"defense": 4
 			},
 			"max_upgrade_times": 5
@@ -266,7 +266,7 @@
 			"quality": "普通",
 			"price": 9000,
 			"attribute_details": {
-				"max_mp": 20,
+				"recover_mp": 4,
 				"defense": 8
 			},
 			"max_upgrade_times": 5
@@ -278,7 +278,7 @@
 			"quality": "普通",
 			"price": 16000,
 			"attribute_details": {
-				"max_mp": 35,
+				"recover_mp": 6,
 				"defense": 15
 			},
 			"max_upgrade_times": 5
@@ -290,7 +290,7 @@
 			"quality": "普通",
 			"price": 28000,
 			"attribute_details": {
-				"max_mp": 55,
+				"recover_mp": 10,
 				"defense": 20
 			},
 			"max_upgrade_times": 5
@@ -302,7 +302,7 @@
 			"quality": "优秀",
 			"price": 2000,
 			"attribute_details": {
-				"max_mp": 10,
+				"recover_mp": 1,
 				"defense": 2
 			},
 			"max_upgrade_times": 6
@@ -314,7 +314,7 @@
 			"quality": "优秀",
 			"price": 5000,
 			"attribute_details": {
-				"max_mp": 15,
+				"recover_mp": 2,
 				"defense": 4
 			},
 			"max_upgrade_times": 6
@@ -326,7 +326,7 @@
 			"quality": "优秀",
 			"price": 9000,
 			"attribute_details": {
-				"max_mp": 20,
+				"recover_mp": 4,
 				"defense": 8
 			},
 			"max_upgrade_times": 6
@@ -338,7 +338,7 @@
 			"quality": "优秀",
 			"price": 16000,
 			"attribute_details": {
-				"max_mp": 35,
+				"recover_mp": 6,
 				"defense": 15
 			},
 			"max_upgrade_times": 6
@@ -350,7 +350,7 @@
 			"quality": "优秀",
 			"price": 28000,
 			"attribute_details": {
-				"max_mp": 55,
+				"recover_mp": 10,
 				"defense": 20
 			},
 			"max_upgrade_times": 6
@@ -362,7 +362,7 @@
 			"quality": "稀有",
 			"price": 9000,
 			"attribute_details": {
-				"max_mp": 25,
+				"recover_mp": 4,
 				"defense": 10
 			},
 			"attribute_random": {
@@ -405,7 +405,7 @@
 			"quality": "稀有",
 			"price": 16000,
 			"attribute_details": {
-				"max_mp": 40,
+				"recover_mp": 6,
 				"defense": 15
 			},
 			"attribute_random": {
@@ -448,7 +448,7 @@
 			"quality": "稀有",
 			"price": 28000,
 			"attribute_details": {
-				"max_mp": 60,
+				"recover_mp": 10,
 				"defense": 20
 			},
 			"attribute_random": {
