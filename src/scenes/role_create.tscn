@@ -18,7 +18,7 @@ layout_mode = 0
 offset_left = 12.0
 offset_top = 644.0
 offset_right = 639.0
-offset_bottom = 1156.0
+offset_bottom = 1184.0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -150,9 +150,9 @@ editable = false
 [node name="OKCreateBt" type="Button" parent="."]
 layout_mode = 0
 offset_left = 228.0
-offset_top = 1101.0
+offset_top = 1120.0
 offset_right = 428.0
-offset_bottom = 1151.0
+offset_bottom = 1170.0
 theme = ExtResource("3_ovwvj")
 text = "确认创建"
 
@@ -181,6 +181,22 @@ offset_top = 961.0
 offset_right = 277.0
 offset_bottom = 961.0
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 471.0
+offset_top = 911.0
+offset_right = 621.0
+offset_bottom = 945.0
+theme = ExtResource("2_ux6g7")
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+text = "选择名字："
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 967.0
+offset_right = 630.0
+offset_bottom = 1171.0
+
 [node name="AttributeDes" type="Label" parent="."]
 layout_mode = 0
 offset_left = 50.0
@@ -201,4 +217,5 @@ wait_time = 0.1
 [connection signal="pressed" from="OKCreateBt" to="." method="_on_ok_create_bt_pressed"]
 [connection signal="pressed" from="RandomNameBt" to="." method="_on_random_name_bt_pressed"]
 [connection signal="pressed" from="BackBt" to="." method="_on_back_bt_pressed"]
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
 [connection signal="timeout" from="RefreshTimer" to="." method="_on_refresh_timer_timeout"]

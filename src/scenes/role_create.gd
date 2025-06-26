@@ -20,6 +20,12 @@ var random_num = 0
 
 # 角色名（随机角色名）
 var role_name_table = [
+	"雷鸣战士土包",
+	"荒",
+	"荒天帝",
+	"迪迦奥特曼",
+	"钟岳",
+	
 	"钢铁之拳",
 	"雷鸣战士",
 	"盾墙守护者",
@@ -56,7 +62,7 @@ var role_name_table = [
 	"诡术大师",    
 	"致命毒师",    
 	"幻影舞者",    
-	"暗影猎手"     
+	"暗影猎手"
 ]
 
 '''
@@ -80,6 +86,9 @@ func _ready() -> void:
 	_random_allocate()
 	# 随机一个角色名称
 	_random_role_name()
+
+	for name in role_name_table:
+		$ItemList.add_item(name)
 
 
 
@@ -205,3 +214,7 @@ func _on_auto_refresh_bt_pressed() -> void:
 
 func _on_refresh_timer_timeout() -> void:
 	_random_allocate()
+
+
+func _on_item_list_item_selected(index: int) -> void:
+	$Player/Name.text = role_name_table[index]
