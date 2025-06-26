@@ -1037,7 +1037,7 @@
 					"desc": "其中 pool 是属性随机池，count 是属性条数",
 					"pool": [
 						{
-							"move_speed": 10
+							"move_speed": 8
 						}
 					],
 					"count": 1

@@ -170,6 +170,7 @@ func remove_player(_player_id: String):
 			continue
 		if monster.reset_status:
 			monster.reset()
+			# boss状态重置时，重置战斗开始状态
 			is_boss_combat_start = false
 
 
@@ -278,6 +279,10 @@ func add_monster(_monster: DataMonster,_position: Vector2):
 	_monster.role_hurted.connect(_on_monster_hurted)
 	# 监听怪物死亡
 	_monster.role_dead.connect(_on_monster_dead)
+
+	# 如果添加了boss，需要重置boss的战斗状态
+	if _monster.is_boss():
+		is_boss_combat_start = false
 
 
 func has_monster_refresh_pos():

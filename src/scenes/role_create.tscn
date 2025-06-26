@@ -53,6 +53,7 @@ theme_override_font_sizes/font_size = 25
 text = "当前随机次数："
 
 [node name="Num" type="Label" parent="RandomNum"]
+layout_mode = 0
 offset_top = 30.0
 offset_right = 175.0
 offset_bottom = 59.0
@@ -182,6 +183,7 @@ offset_right = 277.0
 offset_bottom = 961.0
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 471.0
 offset_top = 911.0
 offset_right = 621.0
