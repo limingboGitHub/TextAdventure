@@ -41,6 +41,26 @@ theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
 text = "初始属性值：
 (单项最高12)"
 
+[node name="RandomNum" type="Label" parent="."]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 741.0
+offset_right = 642.0
+offset_bottom = 770.0
+theme = ExtResource("2_ux6g7")
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_font_sizes/font_size = 25
+text = "当前随机次数："
+
+[node name="Num" type="Label" parent="RandomNum"]
+offset_top = 30.0
+offset_right = 175.0
+offset_bottom = 59.0
+theme = ExtResource("2_ux6g7")
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+
 [node name="AttributeRoot" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 210.0
@@ -174,7 +194,11 @@ text = "属性说明：
 智力：影响魔法力，少量影响MP上限
 运气：影响闪避，命中，少量攻击/魔法力"
 
-[connection signal="pressed" from="AttributeRoot/RandomBt" to="." method="_on_random_bt_pressed"]
+[node name="RefreshTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="pressed" from="AttributeRoot/RandomBt" to="." method="_on_auto_refresh_bt_pressed"]
 [connection signal="pressed" from="OKCreateBt" to="." method="_on_ok_create_bt_pressed"]
 [connection signal="pressed" from="RandomNameBt" to="." method="_on_random_name_bt_pressed"]
 [connection signal="pressed" from="BackBt" to="." method="_on_back_bt_pressed"]
+[connection signal="timeout" from="RefreshTimer" to="." method="_on_refresh_timer_timeout"]

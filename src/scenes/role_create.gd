@@ -16,6 +16,8 @@ var rate_table = {
 	3: 10
 }
 
+var random_num = 0
+
 # 角色名（随机角色名）
 var role_name_table = [
 	"钢铁之拳",
@@ -92,7 +94,10 @@ func _random_allocate() -> void:
 	4种属性点，每种属性点的值在3-12之间
 	属性点随机到的概率见表格@rate_table
 	'''
+	random_num += 1
+
 	var attributes = []
+	var sum = 0
 	for i in 4:
 		var rate = randi() % 100
 		var value = 0
@@ -100,17 +105,39 @@ func _random_allocate() -> void:
 			var v = rate_table[k]
 			if rate < v:
 				value = k
+				sum += value
 				break
 			rate -= v
 		attributes.append(value)
-	print(attributes)
+	
 	$AttributeRoot/Attribute/Power/Value.text = str(attributes[0])
 	$AttributeRoot/Attribute/Agility/Value.text = str(attributes[1])
 	$AttributeRoot/Attribute/Intell/Value.text = str(attributes[2])
 	$AttributeRoot/Attribute/Luck/Value.text = str(attributes[3])
-	
-	
+	$RandomNum/Num.text = str(random_num)
+
+	# 判断总值是否为46
+	if sum >= 46:
+		$RefreshTimer.stop()
+		_high_light_attribute_modulate()
+		
+
+func _high_light_attribute_modulate():
+	$AttributeRoot/Attribute/Power.modulate = Color.GREEN
+	$AttributeRoot/Attribute/Agility.modulate = Color.GREEN
+	$AttributeRoot/Attribute/Intell.modulate = Color.GREEN
+	$AttributeRoot/Attribute/Luck.modulate = Color.GREEN
+
+
+func _clear_attribute_modulate():
+	$AttributeRoot/Attribute/Power.modulate = Color.WHITE
+	$AttributeRoot/Attribute/Agility.modulate = Color.WHITE
+	$AttributeRoot/Attribute/Intell.modulate = Color.WHITE
+	$AttributeRoot/Attribute/Luck.modulate = Color.WHITE
+
+
 func _on_ok_create_bt_pressed() -> void:
+	$RefreshTimer.stop()
 	# 检查角色名是否为空
 	var role_name = $RoleNameLineEdit.text
 	if role_name == "":
@@ -147,8 +174,12 @@ func show_this():
 	# 随机一个角色名称
 	_random_role_name()
 
+	random_num = 0
+	$RandomNum/Num.text = str(random_num)
+
 
 func _on_back_bt_pressed() -> void:
+	$RefreshTimer.stop()
 	go_back.emit()
 	hide()
 
@@ -164,3 +195,13 @@ func _random_role_name() -> void:
 		var random_index = randi() % role_name_table.size()
 		var selected_name = role_name_table[random_index]
 		$RoleNameLineEdit.text = selected_name
+
+
+func _on_auto_refresh_bt_pressed() -> void:
+	if $RefreshTimer.is_stopped():
+		$RefreshTimer.start()
+		_clear_attribute_modulate()
+
+
+func _on_refresh_timer_timeout() -> void:
+	_random_allocate()
