@@ -170,7 +170,7 @@ func remove_player(_player_id: String):
 			continue
 		if monster.reset_status:
 			monster.reset()
-	is_boss_combat_start = false
+			is_boss_combat_start = false
 
 
 ## 移除分身
