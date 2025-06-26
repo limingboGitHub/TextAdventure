@@ -834,8 +834,10 @@ func _add_fire_zone_damage_effect(
 			interval_reduce += (1 - interval_reduce) * effect_value
 	# 设定间隔最小值
 	interval_reduce = min(0.95,interval_reduce)
+	# “灼烧”buff的id，需要保证唯一，否则会覆盖，导致旧buff删除，引发问题
+	var buff_id = effect.id + "_" + str(Time.get_ticks_msec())
 	# 生成“灼烧”buff信息
-	var buff = _create_fire_buff(effect.id,damage_value,interval_reduce)
+	var buff = _create_fire_buff(buff_id,damage_value,interval_reduce)
 	file_zone_scene.start(buff,_position,_scale)
 	$CanvasLayer/GameZone/Effects.add_child(file_zone_scene)
 
