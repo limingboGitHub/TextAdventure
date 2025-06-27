@@ -155,7 +155,7 @@
 			]
 		},
 		"alchemy_000100": {
-			"name":"狂风骤雨",
+			"name":"[套装]狂风骤雨",
 			"requires":[
 				{
 					"type":"item",
@@ -177,7 +177,7 @@
 			]
 		},
 		"alchemy_000101": {
-			"name":"撼天动地",
+			"name":"[套装]撼天动地",
 			"requires":[
 				{
 					"type":"item",
@@ -199,7 +199,7 @@
 			]
 		},
 		"alchemy_000102": {
-			"name":"身外化身",
+			"name":"[套装]身外化身",
 			"requires":[
 				{
 					"type":"item",
@@ -221,7 +221,7 @@
 			]
 		},
 		"alchemy_000103": {
-			"name":"炎灭八荒",
+			"name":"[套装]炎灭八荒",
 			"requires":[
 				{
 					"type":"item",
@@ -243,7 +243,7 @@
 			]
 		},
 		"alchemy_000104": {
-			"name":"福星高照",
+			"name":"[套装]福星高照",
 			"requires":[
 				{
 					"type":"item",
@@ -265,7 +265,7 @@
 			]
 		},
 		"alchemy_000105": {
-			"name":"踪灭神行",
+			"name":"[套装]踪灭神行",
 			"requires":[
 				{
 					"type":"item",

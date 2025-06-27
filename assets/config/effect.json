@@ -275,7 +275,7 @@
 		"effect_000040":{
 			"name": "流星陨落",
 			"effect_type": "meteor_fall",
-			"desc": "攻击时5%概率召唤一颗陨石，造成{d}(攻击+魔法力)的全屏伤害(CD:1秒)",
+			"desc": "攻击时10%概率召唤一颗陨石，造成{d}(攻击+魔法力)的全屏伤害(CD:1秒)",
 			"value_type": "percent",
 			"value": 1
 		},
