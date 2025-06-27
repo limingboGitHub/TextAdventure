@@ -58,10 +58,10 @@ func set_data(items: Array, shop_button: String = "") -> void:
 				item_scene.set_shop_bt(shop_button)
 				# 监听商店按钮点击事件
 				item_scene.shop_bt_pressed.connect(_on_shop_bt_pressed)
-				# 监听物品展示按钮点击事件
-				item_scene.item_show_bt_pressed.connect(func(ui:BagItem):
-					item_show_pressed.emit(ui)
-				)
+			# 监听物品展示按钮点击事件
+			item_scene.item_show_bt_pressed.connect(func(ui:BagItem):
+				item_show_pressed.emit(ui)
+			)
 
 			$ScrollContainer/GridContainer.add_child(item_scene)
 		else:

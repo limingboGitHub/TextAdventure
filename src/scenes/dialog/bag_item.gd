@@ -52,8 +52,6 @@ func _show_item_info(item: DataBagItem) -> void:
 		$Label2.text = _equip_desc(item)
 		
 		if item.upgrade_level > 0:
-			# 强化等级
-			$Label.text += "(" + str(item.upgrade_level) + ")"
 			# 强化特效
 			_show_upgrade_effect(item.upgrade_level)
 	elif item is DataConsume:
@@ -73,8 +71,12 @@ func _show_item_info(item: DataBagItem) -> void:
 func _on_item_name_show(item: DataBagItem) -> void:
 	# 物品锁定状态
 	var lock_bt_text = "(锁)" if item.is_locked else ""
+	# 物品强化等级
+	var upgrade_level = ""
+	if item is DataEquip and item.upgrade_level > 0:
+		upgrade_level = "(" + str(item.upgrade_level) + ")"
 	# 物品名称
-	$Label.text = item.name + lock_bt_text
+	$Label.text = item.name + upgrade_level + lock_bt_text
 	# 物品名称颜色
 	if item is DataEquip:
 		for effect in item.get_all_effects():
