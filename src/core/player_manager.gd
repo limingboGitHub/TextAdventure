@@ -178,8 +178,7 @@ func _on_item_used(item: DataBagItem):
 		if item.scroll != null:
 			# 使用卷轴
 			data_bag.ready_use_scroll(item)
-
-		if item.suit_scroll != null:
+		elif item.suit_scroll != null:
 			# 使用套装卷轴
 			data_bag.ready_use_suit_scroll(item)
 		else:
