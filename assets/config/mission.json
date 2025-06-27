@@ -2151,6 +2151,112 @@
 			
 		]
 	},
+	"mission_000134": {
+		"name": "远古邪龙",
+		"enable": true,
+		"visible_limit": {
+			"level": 40
+		},
+		"mission_phase_list": [
+			{
+				"name": "地下深处",
+				"desc": "",
+				"attach_npc_id": "npc_000136",
+				"messages": [
+					"咳咳，你是来救我们的吗？"
+				]
+			},
+			{
+				"name": "消灭远古邪龙",
+				"desc": "",
+				"attach_npc_id": "npc_000136",
+				"messages": [
+					"这矿洞深处原来一直封印着一只可怕的龙，不断的有怪物冒出来。看你这样子也是误入此地吧，诶，完蛋了。"
+				],
+				"messages_matched": [
+					"？？？你，把邪龙干掉了？太好了，这下终于可以回家了！感谢你朋友！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000053",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "alchemy",
+						"id": "alchemy_000010",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000011",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000012",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000013",
+						"count": 1
+					},
+					{
+						"type": "alchemy",
+						"id": "alchemy_000014",
+						"count": 1
+					}
+				]
+			}
+			
+		]
+	},
+	"mission_000135": {
+		"name": "沙漠小虫",
+		"enable": true,
+		"visible_limit": {
+			"level": 30
+		},
+		"mission_phase_list": [
+			{
+				"name": "划算的交易",
+				"desc": "",
+				"attach_npc_id": "npc_000138",
+				"messages": [
+					"嘿嘿，朋友，我看你身手不错，做个交易怎么样？"
+				]
+			},
+			{
+				"name": "沙虫鳞片",
+				"desc": "",
+				"attach_npc_id": "npc_000138",
+				"messages": [
+					"我需要一些沙虫的鳞片，你能给我找一些来的话我就给你个好东西。"
+				],
+				"messages_matched": [
+					"太好了，这是你的报酬。"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000055",
+						"count": 10
+					}
+				],
+				"rewards": [
+					{
+						"type": "alchemy",
+						"id": "alchemy_000015",
+						"count": 1
+					}
+				]
+			}
+			
+		]
+	},
 
 	"mission_000199": {
 		"name": "无尽之塔",

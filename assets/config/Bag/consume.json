@@ -127,13 +127,13 @@
 		},
 		"consume_001004": {
 			"name": "体力药水",
-			"desc": "增加100点HP上限",
+			"desc": "增加40点HP上限",
 			"type": "buff",
 			"price": 100,
 			"slotMax": 9999999,
 			"buff": {
 				"details": {
-					"max_hp": 100
+					"max_hp": 40
 				},
 				"duration": 300
 			}
@@ -199,6 +199,84 @@
 			"buff": {
 				"ability": {
 					"luck": 4
+				},
+				"duration": 300
+			}
+		},
+		"consume_001010": {
+			"name": "邪龙之力",
+			"desc": "增加力量8点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 9999999,
+			"buff": {
+				"ability": {
+					"power": 8
+				},
+				"duration": 300
+			}
+		},
+		"consume_001011": {
+			"name": "邪龙之智",
+			"desc": "增加智力8点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 9999999,
+			"buff": {
+				"ability": {
+					"intelligence": 8
+				},
+				"duration": 300
+			}
+		},
+		"consume_001012": {
+			"name": "邪龙之敏",
+			"desc": "增加敏捷8点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 9999999,
+			"buff": {
+				"ability": {
+					"agility": 8
+				},
+				"duration": 300
+			}
+		},
+		"consume_001013": {
+			"name": "邪龙之运",
+			"desc": "增加运气8点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 9999999,
+			"buff": {
+				"ability": {
+					"luck": 8
+				},
+				"duration": 300
+			}
+		},
+		"consume_001014": {
+			"name": "邪龙之体",
+			"desc": "增加HP上限80点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 9999999,
+			"buff": {
+				"details": {
+					"max_hp": 80
+				},
+				"duration": 300
+			}
+		},
+		"consume_001015": {
+			"name": "神行药水",
+			"desc": "增加敏捷4点",
+			"type": "buff",
+			"price": 100,
+			"slotMax": 9999999,
+			"buff": {
+				"ability": {
+					"agility": 8
 				},
 				"duration": 300
 			}

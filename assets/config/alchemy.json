@@ -154,6 +154,109 @@
 				}
 			]
 		},
+		"alchemy_000010": {
+			"name":"邪龙之力",
+			"requires":[
+				{
+					"type":"item",
+					"id":"etc_000053",
+					"count":1
+				}
+			],
+			"rewards":[
+				{
+					"type":"item",
+					"id":"consume_001010",
+					"count":1
+				}
+			]
+		},
+		"alchemy_000011": {
+			"name":"邪龙之智",
+			"requires":[
+				{
+					"type":"item",
+					"id":"etc_000053",
+					"count":1
+				}
+			],
+			"rewards":[
+				{
+					"type":"item",
+					"id":"consume_001011",
+					"count":1
+				}
+			]
+		},
+		"alchemy_000012": {
+			"name":"邪龙之敏",
+			"requires":[
+				{
+					"type":"item",
+					"id":"etc_000053",
+					"count":1
+				}
+			],
+			"rewards":[
+				{
+					"type":"item",
+					"id":"consume_001012",
+					"count":1
+				}
+			]
+		},
+		"alchemy_000013": {
+			"name":"邪龙之运",
+			"requires":[
+				{
+					"type":"item",
+					"id":"etc_000053",
+					"count":1
+				}
+			],
+			"rewards":[
+				{
+					"type":"item",
+					"id":"consume_001013",
+					"count":1
+				}
+			]
+		},
+		"alchemy_000014": {
+			"name":"邪龙之体",
+			"requires":[
+				{
+					"type":"item",
+					"id":"etc_000053",
+					"count":1
+				}
+			],
+			"rewards":[
+				{
+					"type":"item",
+					"id":"consume_001014",
+					"count":1
+				}
+			]
+		},
+		"alchemy_000015": {
+			"name":"神行药水",
+			"requires":[
+				{
+					"type":"item",
+					"id":"etc_000055",
+					"count":10
+				}
+			],
+			"rewards":[
+				{
+					"type":"item",
+					"id":"consume_001015",
+					"count":1
+				}
+			]
+		},
+
 		"alchemy_000100": {
 			"name":"[套装]狂风骤雨",
 			"requires":[
