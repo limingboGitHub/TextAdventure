@@ -393,7 +393,7 @@ func _after_damage_effect(
 		hit_rate += luck_rate_add()
 		if randf() < hit_rate:
 			# 护甲撕裂
-			_target.add_armor_break_value(10)
+			_target.add_armor_break_value(5)
 	if _data_player.has_effect("effect_000005"):
 		# 只有常规攻击技能会触发该效果
 		if _skill.id.begins_with("skill_"):	

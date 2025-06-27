@@ -2108,6 +2108,50 @@
 		]
 	},
 
+	"mission_000133": {
+		"name": "水晶守卫",
+		"enable": true,
+		"visible_limit": {
+			"level": 30
+		},
+		"mission_phase_list": [
+			{
+				"name": "水之精灵",
+				"desc": "",
+				"attach_npc_id": "npc_000135",
+				"messages": [
+					"最近水晶洞窟出现了一只守卫，它太强大了，好多族人们都受伤了"
+				]
+			},
+			{
+				"name": "消灭守卫",
+				"desc": "",
+				"attach_npc_id": "npc_000135",
+				"messages": [
+					"你能帮我们制服守卫么？"
+				],
+				"messages_matched": [
+					"太感谢了你冒险家！"
+				],
+				"requires": [
+					{
+						"type": "item",
+						"id": "etc_000046",
+						"count": 1
+					}
+				],
+				"rewards": [
+					{
+						"type": "alchemy",
+						"id": "alchemy_000002",
+						"count": 1
+					}
+				]
+			}
+			
+		]
+	},
+
 	"mission_000199": {
 		"name": "无尽之塔",
 		"enable": true,

@@ -848,6 +848,16 @@
 				"注意，40级以上的boss恢复能力特别强，当你逃离后，它的状态会迅速恢复。"
 			],
 			"function": []
+		},
+		{
+			"id": "npc_000135",
+			"name": "水之精灵眸",
+			"visible":true,
+			"position": {"x": 500, "y": 100},
+			"default_messages":[
+				"天呐，你居然能来到这里"
+			],
+			"function": []
 		}
 	],
 

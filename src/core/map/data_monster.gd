@@ -101,8 +101,8 @@ func set_attribute(base_attr: AttributeDetails):
 
 func add_armor_break_value(value: int):
 	armor_break_value += value
-	attribute.final_details.defense -= armor_break_value
-	attribute.final_details.magic_def -= armor_break_value
+	attribute.final_details.defense -= value
+	attribute.final_details.magic_def -= value
 
 
 func _to_string() -> String:

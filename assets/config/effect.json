@@ -172,7 +172,7 @@
 		"effect_000025": {
 			"name": "护甲撕裂",
 			"effect_type": "armor_break",
-			"desc": "攻击时{d}概率降低目标双抗10点",
+			"desc": "攻击时{d}概率降低目标双抗5点",
 			"value_type": "percent", 
 			"value": 0.20
 		},
@@ -195,7 +195,7 @@
 			"effect_type": "attack_attach_dizziness",
 			"desc": "攻击会导致目标进入{d}秒眩晕状态",
 			"value_type": "number", 
-			"value": 5
+			"value": 4
 		},
 		"effect_000029": {
 			"name": "越战越勇",
