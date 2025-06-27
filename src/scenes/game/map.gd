@@ -357,8 +357,12 @@ func _on_close_mons_refresh_timer_timeout() -> void:
 
 
 func _on_monster_pressed(monster_scene) -> void:
+	if monster_scene.data_monster and monster_scene.data_monster.is_black_monster:
+		return
 	#print("_on_monster_pressed:", monster_scene.data_monster.monster_id)
 	var data_player = data_map.get_player()
+	if data_player == null:
+		return
 	var player_scene = $CanvasLayer/GameZone/Players.get_node(data_player.player_id)
 	if monster_scene.is_selected:
 		player_scene.set_attack_target(null)

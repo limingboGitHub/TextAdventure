@@ -10,7 +10,7 @@
     "maxMP": "2000",
     "acc": "500",
     "eva": "420",
-    "exp": "0",
+    "exp": "100000",
     "undead": "0",
     "attack_cd": 1,
     "skills": [
