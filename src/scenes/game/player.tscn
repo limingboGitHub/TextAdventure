@@ -166,6 +166,7 @@ visible = false
 wait_time = 2.0
 
 [node name="GaintAttackArea2D" type="Area2D" parent="."]
+visible = false
 monitoring = false
 monitorable = false
 
@@ -186,3 +187,4 @@ collision_layer = 0
 [connection signal="timeout" from="MockMonsterTimer" to="." method="_on_mock_monster_timer_timeout"]
 [connection signal="area_entered" from="GaintAttackArea2D" to="." method="_on_gaint_attack_area_2d_area_entered"]
 [connection signal="area_exited" from="GaintAttackArea2D" to="." method="_on_gaint_attack_area_2d_area_exited"]
+[connection signal="area_entered" from="Flash2D" to="." method="_on_area_2d_area_entered"]

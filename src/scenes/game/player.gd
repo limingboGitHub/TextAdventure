@@ -587,24 +587,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if not data_player.has_effect("effect_000042"):
 			return
 		var effect = data_player.get_effect("effect_000042")
-		var monster = area.get_parent()
-		print("电光火石检测目标:", monster.name)
-		var damage_details: Array[DataDamage.DamageDetail] = []
-		# 攻击力
-		var attack_value = data_player.get_final_details().attack
-		# 伤害值
-		var damage_value = attack_value * effect.value
-		damage_details.append(DataDamage.DamageDetail.new("电光火石",damage_value,effect.value))
-		var damage = DataDamage.new(
-			DataDamage.TYPE.PHYSICAL, 
-			DataDamage.SOURCE_TYPE.PLAYER, 
-			damage_value)
-		damage.attack_value = attack_value
-		damage.damage_details = damage_details
-		monster.data_monster.get_hurt(damage)
-		# 如果怪物没有死亡，则设置攻击目标
-		if not monster.data_monster.is_dead:
-			monster.set_attack_target(self)
+
+		var skill = effect.get_special_skill()
+		
+		skill_on_target_triggered.emit(self,skill,area.get_parent())
 
 
 func set_black():

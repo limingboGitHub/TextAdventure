@@ -714,10 +714,10 @@ func stop_rest():
 func change_job(_job_id: String,_job_name: String):
 	job_id = _job_id	
 	job_name = _job_name
-	# 混混头目 无影侠客 设置主属性
-	#if _job_id == "job_000202" or _job_id == "job_000203":
-	#	attribute.luck_more_attack = true
-	#	attribute.agility_more_attack = true
+	# 无影侠客 设置主属性
+	if _job_id == "job_000203":
+		attribute.luck_more_attack = true
+		attribute.agility_more_attack = true
 	job_changed.emit(self)
 	# 部分职业变更后需要更新属性
 	update_attribute()
