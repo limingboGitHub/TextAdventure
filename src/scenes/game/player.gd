@@ -81,7 +81,7 @@ func _ready() -> void:
 		# 监听蓄力完成事件
 		data_player.charge_completed.connect(_on_charge_completed)
 		# 监听特效添加
-		data_player.effect_added.connect(_effect_added)
+		data_player.effect_created.connect(_effect_added)
 		# 监听特效删除
 		data_player.effect_removed.connect(_effect_removed)
 

@@ -46,7 +46,10 @@ func set_data(data_skill: DataBaseSkill, _data_player: DataPlayer) -> void:
 		# 监听属性变化
 		_data_player.attribute.updated.connect(_on_attribute_changed)
 		# 监听特效变化 
-		_data_player.effect_updated.connect(_on_effect_updated)
+		_data_player.effect_created.connect(_on_effect_updated)
+		_data_player.effect_added.connect(_on_effect_updated)
+		_data_player.effect_reduced.connect(_on_effect_updated)
+		_data_player.effect_removed.connect(_on_effect_updated)
 
 
 func _on_effect_updated(data_effect: DataEffect):
