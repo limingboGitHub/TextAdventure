@@ -50,13 +50,15 @@ offset_bottom = 770.0
 theme = ExtResource("2_ux6g7")
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
 theme_override_font_sizes/font_size = 25
-text = "当前随机次数："
+text = "当前随机次数：
+(总属性46以上
+自动停止)"
 
 [node name="Num" type="Label" parent="RandomNum"]
 layout_mode = 0
-offset_top = 30.0
+offset_top = 100.0
 offset_right = 175.0
-offset_bottom = 59.0
+offset_bottom = 129.0
 theme = ExtResource("2_ux6g7")
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
 theme_override_font_sizes/font_size = 25
