@@ -435,8 +435,9 @@ func load_local_player(data_player: DataPlayer):
 	# 监听玩家造成伤害
 	data_player.damage_caused.connect(_on_player_damage_caused)
 	# 监听玩家特效变化
-	data_player.effect_added.connect(_on_player_effect_updated)
-	data_player.effect_updated.connect(_on_player_effect_updated)
+	data_player.effect_created.connect(_on_player_effect_created)
+	data_player.effect_added.connect(_on_player_effect_added)
+	data_player.effect_reduced.connect(_on_player_effect_reduced)
 	data_player.effect_removed.connect(_on_player_effect_removed)
 	# 发出玩家创建的信号
 	local_player_created.emit(data_player)
@@ -448,22 +449,41 @@ func _on_player_damage_caused(_data_player: DataPlayer, damage: DataDamage):
 
 
 
-func _on_player_effect_updated(effect: DataEffect):
+func _on_player_effect_created(effect: DataEffect):
 	if effect.type == "dark_control_power":
-		print("_on_player_effect_added:",effect.value)
+		# 更新黑化召唤物数量
 		black_monster_manager.update_effect_count_limit(int(effect.value))
 	elif effect.type == "more_and_more_copy":
-		print("_on_player_effect_added more_and_more_copy:",effect.value)
 		if effect.is_suit_invoked():
 			_add_player_clone()
-		else:
+
+
+func _on_player_effect_added(effect: DataEffect):
+	if effect.type == "dark_control_power":
+		# 更新黑化召唤物数量
+		black_monster_manager.update_effect_count_limit(int(effect.value))
+	elif effect.type == "more_and_more_copy":
+		if effect.is_suit_invoked():
+			_add_player_clone()
+
+
+func _on_player_effect_reduced(effect: DataEffect):
+	if effect.type == "dark_control_power":
+		# 更新黑化召唤物数量
+		black_monster_manager.update_effect_count_limit(0)
+	elif effect.type == "more_and_more_copy":
+		# 取消套装激活
+		if not effect.is_suit_invoked() and effect.suit_num == effect.invoke_num - 1:
 			_clear_last_player_clone()
 
 
 func _on_player_effect_removed(effect: DataEffect):
 	if effect.type == "dark_control_power":
-		print("_on_player_effect_removed:",effect.value)
+		# 更新黑化召唤物数量
 		black_monster_manager.update_effect_count_limit(0)
+	elif effect.type == "more_and_more_copy":
+		if not effect.is_suit_invoked() and effect.suit_num == effect.invoke_num - 1:
+			_clear_last_player_clone()
 
 
 func get_player_map_id():
