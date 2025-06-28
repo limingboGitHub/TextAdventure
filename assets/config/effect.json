@@ -408,7 +408,7 @@
 		"effect_000059":{
 			"name": "撼天动地",
 			"effect_type": "big_war_stomp",
-			"desc": "战争践踏的触发范围减少{d}",
+			"desc": "战争践踏的触发距离减少{d}",
 			"value_type": "percent",
 			"value": 0.5
 		},
