@@ -122,6 +122,7 @@ max_length = 5
 virtual_keyboard_type = 2
 
 [node name="MpReduceButton" type="Button" parent="MpWarningLine"]
+layout_mode = 0
 offset_left = 395.0
 offset_top = -25.0
 offset_right = 430.0
@@ -129,6 +130,7 @@ offset_bottom = 23.0
 text = "-"
 
 [node name="MpAddButton" type="Button" parent="MpWarningLine"]
+layout_mode = 0
 offset_left = 434.0
 offset_top = -25.0
 offset_right = 469.0
