@@ -82,3 +82,36 @@ func _on_ok_button_pressed() -> void:
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	auto_use_alchemy = toggled_on
+
+
+func _on_hp_add_button_pressed() -> void:
+	var hp_str = $HpWarningLine/LineEdit.text
+	if hp_str.is_valid_int():
+		var hp: int= int(hp_str)
+		hp = min(99,(int(hp / 5.0) + 1) * 5)
+		$HpWarningLine/LineEdit.text = str(hp)
+
+
+func _on_hp_reduce_button_pressed() -> void:
+	var hp_str = $HpWarningLine/LineEdit.text
+	if hp_str.is_valid_int():
+		var hp: int= int(hp_str)
+		hp = max(1,(int(hp / 5.0) - 1) * 5)
+		$HpWarningLine/LineEdit.text = str(hp)
+
+
+func _on_mp_reduce_button_pressed() -> void:
+	var mp_str = $MpWarningLine/LineEdit.text
+	if mp_str.is_valid_int():
+		var mp: int= int(mp_str)
+		mp = max(1,(int(mp / 5.0) - 1) * 5)
+		$MpWarningLine/LineEdit.text = str(mp)
+	
+
+func _on_mp_add_button_pressed() -> void:
+	var mp_str = $MpWarningLine/LineEdit.text
+	if mp_str.is_valid_int():
+		var mp: int= int(mp_str)
+		mp = min(99,(int(mp / 5.0) + 1) * 5)
+		$MpWarningLine/LineEdit.text = str(mp)
+

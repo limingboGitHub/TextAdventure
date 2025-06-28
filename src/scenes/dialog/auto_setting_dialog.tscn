@@ -71,6 +71,22 @@ text = "30"
 max_length = 5
 virtual_keyboard_type = 2
 
+[node name="HpReduceButton" type="Button" parent="HpWarningLine"]
+layout_mode = 0
+offset_left = 395.0
+offset_top = -25.0
+offset_right = 430.0
+offset_bottom = 23.0
+text = "-"
+
+[node name="HpAddButton" type="Button" parent="HpWarningLine"]
+layout_mode = 0
+offset_left = 434.0
+offset_top = -25.0
+offset_right = 469.0
+offset_bottom = 23.0
+text = "+"
+
 [node name="MpWarningLine" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 23.0
@@ -105,6 +121,20 @@ text = "30"
 max_length = 5
 virtual_keyboard_type = 2
 
+[node name="MpReduceButton" type="Button" parent="MpWarningLine"]
+offset_left = 395.0
+offset_top = -25.0
+offset_right = 430.0
+offset_bottom = 23.0
+text = "-"
+
+[node name="MpAddButton" type="Button" parent="MpWarningLine"]
+offset_left = 434.0
+offset_top = -25.0
+offset_right = 469.0
+offset_bottom = 23.0
+text = "+"
+
 [node name="CheckButton" type="CheckButton" parent="."]
 layout_mode = 1
 offset_left = 14.0
@@ -135,6 +165,10 @@ offset_top = 6.0
 offset_right = 492.0
 offset_bottom = 56.0
 
+[connection signal="pressed" from="HpWarningLine/HpReduceButton" to="." method="_on_hp_reduce_button_pressed"]
+[connection signal="pressed" from="HpWarningLine/HpAddButton" to="." method="_on_hp_add_button_pressed"]
+[connection signal="pressed" from="MpWarningLine/MpReduceButton" to="." method="_on_mp_reduce_button_pressed"]
+[connection signal="pressed" from="MpWarningLine/MpAddButton" to="." method="_on_mp_add_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="OKButton" to="." method="_on_ok_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
