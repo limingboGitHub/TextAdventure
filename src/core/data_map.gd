@@ -453,23 +453,23 @@ func _after_damage_effect(
 	if _data_player.has_effect("effect_000040"):
 		# 只有常规攻击技能会触发该效果
 		if _skill.id.begins_with("skill_"):	
-			if Time.get_ticks_msec() - meteor_fall_trigger_time < meteor_fall_trigger_interval * 1000:
-				return
-			meteor_fall_trigger_time = Time.get_ticks_msec()
+			if Time.get_ticks_msec() - meteor_fall_trigger_time >= meteor_fall_trigger_interval * 1000:
+				meteor_fall_trigger_time = Time.get_ticks_msec()
 
-			var effect = _data_player.get_effect("effect_000040")
-			# 10%的概率命中
-			var hit_rate = 0.1
-			# 概率加成
-			hit_rate += luck_rate_add()
-			# 概率判断
-			if randf() < hit_rate:
-				print("流星陨落：",effect.value)
-				var skill = effect.get_special_skill()
-				# 固定位置
-				skill.effect_position = Vector2(275,275)
-				if skill != null:
-					_data_player.execute_skill_no_cd(skill)
+				var effect = _data_player.get_effect("effect_000040")
+				# 10%的概率命中
+				var hit_rate = 0.1
+				# 概率加成
+				hit_rate += luck_rate_add()
+				# 概率判断
+				if randf() < hit_rate:
+					print("流星陨落：",effect.value)
+					var skill = effect.get_special_skill()
+					# 固定位置
+					skill.effect_position = Vector2(275,275)
+					if skill != null:
+						_data_player.execute_skill_no_cd(skill)
+						
 	# 汲血之力
 	if damage.value > 0 and _data_player.has_effect("effect_000043"):
 		var effect = _data_player.get_effect("effect_000043")
@@ -483,7 +483,9 @@ func _after_damage_effect(
 			# 20%的击中概率
 			var hit_rate = 0.2
 			hit_rate += luck_rate_add()
-			if randf() <= hit_rate:
+			var rate = randf()
+			print("爆炎射线概率判定:",rate," ",rate <= hit_rate)
+			if rate <= hit_rate:
 				var effect = _data_player.get_effect("effect_000049")
 				# 消耗MP
 				if _data_player.mp < effect.mp_cost:
