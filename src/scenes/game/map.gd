@@ -753,6 +753,8 @@ func _on_skill_executed(player: DataPlayer, skill: DataBaseSkill,skill_add_count
 							_judge_skill_monster_flash(player_scene,skill)
 						
 						# 释放后判断 烈火燎原
+						if player_scene.attack_target:
+							first_target_postion = player_scene.attack_target.position
 						_judge_attack_attach_fire(player_scene,skill,first_target_postion)
 			)
 

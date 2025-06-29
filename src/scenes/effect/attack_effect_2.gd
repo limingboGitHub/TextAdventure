@@ -170,6 +170,7 @@ func set_target_scene(_target_scene: Control):
 func _on_target_dead(_data_role: DataRole):
 	# 确保只在释放阶段目标死亡才算中断
 	if animation_state == State.SCALING:
+		# fix 目标死亡对释放过程的打断有致命手感的影响
 		pass
 		#_interrupt()
 	elif animation_state == State.MOVING:
