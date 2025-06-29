@@ -427,7 +427,7 @@ func _after_damage_effect(
 	# 自损八千
 	if _data_player.has_effect("effect_000004"):
 		if _skill.id.begins_with("skill_"):	
-			# 承受自损八千伤害的50%
+			# 承受自损八千伤害的10%
 			for damage_detail in damage.damage_details:
 				if damage_detail.name == "自损八千":
 					var damage_value = damage_detail.value * 0.1
@@ -469,7 +469,7 @@ func _after_damage_effect(
 					skill.effect_position = Vector2(275,275)
 					if skill != null:
 						_data_player.execute_skill_no_cd(skill)
-						
+
 	# 汲血之力
 	if damage.value > 0 and _data_player.has_effect("effect_000043"):
 		var effect = _data_player.get_effect("effect_000043")

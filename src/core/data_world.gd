@@ -453,6 +453,15 @@ func _on_player_effect_created(effect: DataEffect):
 	if effect.type == "dark_control_power":
 		# 更新黑化召唤物数量
 		black_monster_manager.update_effect_count_limit(int(effect.value))
+	elif effect.type == "shadow_clone":
+		# 暗影化身效果创建时，添加分身
+		_add_player_clone()
+		var data_player = get_player()
+		# 如果还有“身外化身”效果，额外添加分身
+		if data_player and data_player.has_effect("effect_000060"):
+			var more_effect = data_player.get_effect("effect_000060")
+			if more_effect.is_suit_invoked():
+				_add_player_clone()
 	elif effect.type == "more_and_more_copy":
 		if effect.is_suit_invoked():
 			_add_player_clone()
@@ -463,7 +472,10 @@ func _on_player_effect_added(effect: DataEffect):
 		# 更新黑化召唤物数量
 		black_monster_manager.update_effect_count_limit(int(effect.value))
 	elif effect.type == "more_and_more_copy":
-		if effect.is_suit_invoked():
+		var data_player = get_player()
+		# 身外化身必须先拥有“暗影化身”技能
+		if effect.is_suit_invoked() and data_player and data_player.has_effect("effect_000046"):
+			# 添加分身
 			_add_player_clone()
 
 
@@ -481,6 +493,9 @@ func _on_player_effect_removed(effect: DataEffect):
 	if effect.type == "dark_control_power":
 		# 更新黑化召唤物数量
 		black_monster_manager.update_effect_count_limit(0)
+	elif effect.type == "shadow_clone":
+		# 暗影化身效果移除时，清除所有分身
+		_clear_player_clone()
 	elif effect.type == "more_and_more_copy":
 		if not effect.is_suit_invoked() and effect.suit_num == effect.invoke_num - 1:
 			_clear_last_player_clone()
@@ -851,18 +866,18 @@ func _on_skill_level_updated(skill: DataBaseSkill):
 	if skill.id == "skill_000103":
 		black_monster_manager.update_level_count_limit(skill.level)
 	# 暗影化身技能
-	if skill.id == "skill_000104":
-		if skill.level == 0:
-			# 杀死并删除所有的化身
-			_clear_player_clone()
-		elif skill.level > 0:
-			# 添加玩家分身
-			_add_player_clone()
-			# 判断 身外化身效果 额外增加1个分身
-			if get_player() and get_player().has_effect("effect_000060"):
-				var effect = get_player().get_effect("effect_000060")
-				if effect.is_suit_invoked():
-					_add_player_clone()
+	#if skill.id == "skill_000104":
+	#	if skill.level == 0:
+	#		# 杀死并删除所有的化身
+	#		_clear_player_clone()
+	#	elif skill.level > 0:
+	#		# 添加玩家分身
+	#		_add_player_clone()
+	#		# 判断 身外化身效果 额外增加1个分身
+	#		if get_player() and get_player().has_effect("effect_000060"):
+	#			var effect = get_player().get_effect("effect_000060")
+	#			if effect.is_suit_invoked():
+	#				_add_player_clone()
 			
 
 
