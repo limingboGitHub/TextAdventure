@@ -530,7 +530,8 @@ func flash_to_target(target: Control):
 		_set_flash_damage_area(direction)
 	
 	# 设置攻击目标
-	await get_tree().process_frame
+	#await get_tree().process_frame
+	await get_tree().create_timer(0.1).timeout
 	set_attack_target(null)
 	position = target_position
 	# 华丽登场
