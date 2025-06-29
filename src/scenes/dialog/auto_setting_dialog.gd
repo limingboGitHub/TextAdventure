@@ -114,4 +114,3 @@ func _on_mp_add_button_pressed() -> void:
 		var mp: int= int(mp_str)
 		mp = min(99,(int(mp / 5.0) + 1) * 5)
 		$MpWarningLine/LineEdit.text = str(mp)
-
