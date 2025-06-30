@@ -33,9 +33,9 @@ func is_empty() -> bool:
 		and accuracy == 0 and evasion == 0 \
 		and hand_technology == 0 and move_speed == 0 \
 		and jump_power == 0 and recover_hp == 0 and recover_mp == 0 \
-		and attack_speed == 0 and exp_gain == 0.0 \
-		and attack_min_rate == 0.0 and attack_max_rate == 0.0 \
-		and magic_min_rate == 0.0 and magic_max_rate == 0.0
+		and attack_speed == 0 and is_zero_approx(exp_gain) \
+		and is_zero_approx(attack_min_rate) and is_zero_approx(attack_max_rate) \
+		and is_zero_approx(magic_min_rate) and is_zero_approx(magic_max_rate)
 
 
 func append(attribute: AttributeDetails):
@@ -141,6 +141,47 @@ func load(json: Dictionary):
 	if json.has("magic_min_rate"):
 		magic_min_rate = json.get("magic_min_rate", 0.0)
 	if json.has("magic_max_rate"):
+		magic_max_rate = json.get("magic_max_rate", 0.0)
+
+
+func load_not_override(json: Dictionary):
+	if json.has("max_hp") and max_hp == 0:
+		max_hp = json.get("max_hp", 0)
+	if json.has("max_mp") and max_mp == 0:
+		max_mp = json.get("max_mp", 0)
+	if json.has("attack") and attack == 0:
+		attack = json.get("attack", 0)
+	if json.has("defense") and defense == 0:
+		defense = json.get("defense", 0)
+	if json.has("magic") and magic == 0:
+		magic = json.get("magic", 0)
+	if json.has("magic_def") and magic_def == 0:
+		magic_def = json.get("magic_def", 0)
+	if json.has("accuracy") and accuracy == 0:
+		accuracy = json.get("accuracy", 0)
+	if json.has("evasion") and evasion == 0:
+		evasion = json.get("evasion", 0)
+	if json.has("hand_technology") and hand_technology == 0:
+		hand_technology = json.get("hand_technology", 0)
+	if json.has("move_speed") and move_speed == 0:
+		move_speed = json.get("move_speed", 0)
+	if json.has("jump_power") and jump_power == 0:
+		jump_power = json.get("jump_power", 0)
+	if json.has("recover_hp") and recover_hp == 0:
+		recover_hp = json.get("recover_hp", 0)
+	if json.has("recover_mp") and recover_mp == 0:
+		recover_mp = json.get("recover_mp", 0)
+	if json.has("attack_speed") and attack_speed == 0:
+		attack_speed = json.get("attack_speed", 0)
+	if json.has("exp_gain") and is_zero_approx(exp_gain):
+		exp_gain = json.get("exp_gain", 0.0)
+	if json.has("attack_min_rate") and is_zero_approx(attack_min_rate):
+		attack_min_rate = json.get("attack_min_rate", 0.0)
+	if json.has("attack_max_rate") and is_zero_approx(attack_max_rate):
+		attack_max_rate = json.get("attack_max_rate", 0.0)
+	if json.has("magic_min_rate") and is_zero_approx(magic_min_rate):
+		magic_min_rate = json.get("magic_min_rate", 0.0)
+	if json.has("magic_max_rate") and is_zero_approx(magic_max_rate):
 		magic_max_rate = json.get("magic_max_rate", 0.0)
 
 

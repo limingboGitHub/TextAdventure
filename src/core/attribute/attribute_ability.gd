@@ -50,6 +50,21 @@ func load(json: Dictionary) -> void:
 	luck = json.get("luck", 0)
 
 
+func load_not_override(json: Dictionary) -> void:
+	if hp == 0:
+		hp = json.get("hp", 0)
+	if mp == 0:
+		mp = json.get("mp", 0)
+	if power == 0:
+		power = json.get("power", 0)
+	if agility == 0:
+		agility = json.get("agility", 0)
+	if intelligence == 0:
+		intelligence = json.get("intelligence", 0)
+	if luck == 0:
+		luck = json.get("luck", 0)
+
+
 func copy()-> AttributeAbility:
 	var dict = save()
 	var new_ability = AttributeAbility.new()

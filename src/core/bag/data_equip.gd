@@ -85,12 +85,12 @@ func _init() -> void:
 
 
 func init_ability(ability_json):
-	ability.load(ability_json)
+	ability.load_not_override(ability_json)
 	final_ability = get_all_ability()
 
 
 func init_details(details_json):
-	details.load(details_json)
+	details.load_not_override(details_json)
 	final_details = get_all_details()
 
 
