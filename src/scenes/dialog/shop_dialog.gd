@@ -243,6 +243,10 @@ func _on_buy_num_input_ok(data_bag_item:DataBagItem,num: int):
 
 
 func _on_sell_all_tab_bt_pressed() -> void:
+	$ConfirmationDialog.show()
+
+
+func _on_confirmation_dialog_confirmed() -> void:
 	# 获取当前tab
 	var tab_control = $PlayerBag.get_current_tab_control()
 	var tab_name = tab_control.name

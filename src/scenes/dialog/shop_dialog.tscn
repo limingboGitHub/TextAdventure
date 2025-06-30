@@ -153,6 +153,17 @@ offset_top = 6.0
 offset_right = 465.0
 offset_bottom = 56.0
 
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = ""
+initial_position = 3
+size = Vector2i(224, 100)
+current_screen = 0
+ok_button_text = "确定"
+dialog_text = "确认出售当前页全部物品？"
+dialog_autowrap = true
+cancel_button_text = "取消"
+
 [connection signal="pressed" from="SellAllTabBt" to="." method="_on_sell_all_tab_bt_pressed"]
 [connection signal="pressed" from="Test/AddMoneyBt" to="." method="_on_add_money_bt_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
