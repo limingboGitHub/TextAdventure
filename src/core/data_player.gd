@@ -110,6 +110,11 @@ var is_copy = false
 # 巨人领主职业加成
 var gaint_job_scale_add = 0.5
 
+# 流星陨落触发间隔
+var meteor_fall_trigger_interval: int = 1
+# 流星陨落触发时间
+var meteor_fall_trigger_time: int = 0
+
 signal charge_started
 signal charge_completed(complete_charge_time: float)  # 0表示失败，大于0表示成功
 

@@ -60,10 +60,6 @@ var monster_id_list: Array[String] = []
 var reward_list: Array[Dictionary] = []
 #endregion
 
-# 流星陨落触发间隔
-var meteor_fall_trigger_interval: int = 1
-# 流星陨落触发时间
-var meteor_fall_trigger_time: int = 0
 
 # 进入boss战斗标记
 var is_boss_combat_start = false
@@ -414,15 +410,14 @@ func _after_damage_effect(
 		if _skill.id.begins_with("skill_"):	
 			var effect = _data_player.get_effect("effect_000030")
 			# 消耗MP
-			if _data_player.mp < effect.mp_cost:
-				return
-			_data_player.recover_mp(-effect.mp_cost)
-			print("破空剑气：",effect.value)
-			var skill = effect.get_special_skill()
-			skill.direction = direction
-			skill.damage_value_type = Constants.VALUE_TYPE_NUMBER
-			skill.damage_level = [[damage.value * effect.value]]
-			_data_player.execute_skill_no_cd(skill)
+			if _data_player.mp >= effect.mp_cost:
+				_data_player.recover_mp(-effect.mp_cost)
+				print("破空剑气：",effect.value)
+				var skill = effect.get_special_skill()
+				skill.direction = direction
+				skill.damage_value_type = Constants.VALUE_TYPE_NUMBER
+				skill.damage_level = [[damage.value * effect.value]]
+				_data_player.execute_skill_no_cd(skill)
 			
 	# 自损八千
 	if _data_player.has_effect("effect_000004"):
@@ -453,20 +448,25 @@ func _after_damage_effect(
 	if _data_player.has_effect("effect_000040"):
 		# 只有常规攻击技能会触发该效果
 		if _skill.id.begins_with("skill_"):	
-			if Time.get_ticks_msec() - meteor_fall_trigger_time >= meteor_fall_trigger_interval * 1000:
-				meteor_fall_trigger_time = Time.get_ticks_msec()
-
+			if Time.get_ticks_msec() - _data_player.meteor_fall_trigger_time >= _data_player.meteor_fall_trigger_interval * 1000:
 				var effect = _data_player.get_effect("effect_000040")
-				# 10%的概率命中
-				var hit_rate = 0.1
+				# 3%的概率命中
+				var hit_rate = 0.03
 				# 概率加成
 				hit_rate += luck_rate_add()
+				var rate = randf()
+				print("流星陨落概率判定：",rate)
 				# 概率判断
-				if randf() < hit_rate:
+				if rate < hit_rate:
+					# 只有命中时才会计算CD
+					_data_player.meteor_fall_trigger_time = Time.get_ticks_msec()
+
 					print("流星陨落：",effect.value)
 					var skill = effect.get_special_skill()
-					# 固定位置
-					skill.effect_position = Vector2(275,275)
+					# 随机偏移位置
+					var offset_x = randf_range(-50, 50)
+					var offset_y = randf_range(-50, 50)
+					skill.effect_position = Vector2(275 + offset_x, 275 + offset_y)
 					if skill != null:
 						_data_player.execute_skill_no_cd(skill)
 
