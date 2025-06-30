@@ -609,6 +609,9 @@ func recover_mp_rate(rate: float):
 
 
 func get_hurt(data_damage: DataDamage):
+	# 如果是分身，不会受到伤害
+	if is_copy:
+		return
 	# 发出扣血前的信号（使用药品）
 	before_get_hurted.emit(self)
 	# 魔法屏障技能判定
