@@ -769,6 +769,8 @@ func get_final_magic_attack(rate: float) -> int:
 # 用于展示该伤害比率最终的视觉效果，例如初始波动范围是0.5-1.2，最终波动范围是1.0-1.2，那么1.1的比率最终的视觉效果是0.87而不是0.5
 # @param rate 波动范围的比率，0-1之间
 func get_show_rate(rate: float) -> float:
+	if rate == -1:
+		return 1
 	var attack_rate = (final_max_attack_rate - final_min_attack_rate) * rate + final_min_attack_rate
 	return (attack_rate - MIN_ATTACK_RATE) / (MAX_ATTACK_RATE - MIN_ATTACK_RATE)
 
