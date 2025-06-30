@@ -9,7 +9,7 @@ class_name FileCacheTool
 var game_save_dir = "user://game_save"
 
 # 配置文件版本号
-const CONFIG_VERSION = 8
+const CONFIG_VERSION = 9
 
 # 配置资源目录内部目录
 var config_res_dir = "res://assets/config"
