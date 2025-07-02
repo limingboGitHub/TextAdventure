@@ -473,7 +473,7 @@ func _after_damage_effect(
 	# 汲血之力
 	if damage.value > 0 and _data_player.has_effect("effect_000043"):
 		var effect = _data_player.get_effect("effect_000043")
-		var recover_hp = damage.value * effect.value
+		var recover_hp = max(1,damage.value * effect.value)
 		_data_player.recover_hp_with_signal(recover_hp)
 
 	# 爆炎射线
