@@ -754,25 +754,25 @@
 			"rate":0.2
 		},
 		"consume_002125":{
-			"rate":0.05
+			"rate":0.1
 		},
 		"consume_002128":{
-			"rate":0.05
+			"rate":0.1
 		},
 		"consume_002129":{
-			"rate":0.05
+			"rate":0.1
 		},
 		"consume_002132":{
-			"rate":0.05
+			"rate":0.1
 		},
 		"consume_002144":{
-			"rate":0.05
+			"rate":0.1
 		},
 		"consume_002146":{
-			"rate":0.05
+			"rate":0.1
 		},
 		"consume_002136":{
-			"rate":0.05
+			"rate":0.1
 		}
 	},
 	"monster_001002":{
