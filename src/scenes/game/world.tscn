@@ -176,6 +176,7 @@ theme = ExtResource("2_pgwtv")
 text = "退出"
 
 [node name="DebugBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
+visible = false
 layout_mode = 0
 offset_left = 580.0
 offset_top = 1231.0
@@ -547,6 +548,7 @@ offset_right = 74.0
 offset_bottom = 86.0
 
 [node name="JobIntroduceDialog" parent="CanvasLayer/UI/Dialog" instance=ExtResource("30_ajpim")]
+visible = false
 offset_left = 86.0
 offset_top = 406.0
 offset_right = 86.0
