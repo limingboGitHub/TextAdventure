@@ -99,8 +99,11 @@ alignment = 0
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="AutoNextTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="Panel1/TitleBt" to="." method="_on_title_bt_pressed"]
 [connection signal="pressed" from="Panel1/ExitBt" to="." method="_on_exit_bt_pressed"]
 [connection signal="pressed" from="Panel1/StartBt" to="." method="_on_start_bt_pressed"]
 [connection signal="pressed" from="Panel2" to="." method="_on_panel_2_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AutoNextTimer" to="." method="_on_auto_next_timer_timeout"]

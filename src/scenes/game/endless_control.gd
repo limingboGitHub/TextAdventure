@@ -6,6 +6,9 @@ var data_map: DataMap
 var start_time : int = 0
 var end_time : int = 0
 
+# 自动下一层时间
+var auto_next_time: int = 3
+
 signal endless_exit()
 
 signal get_endless_reward()
@@ -31,7 +34,10 @@ func _on_endless_ended(_data_map: DataMap):
 	if data_map.is_endless_max():
 		$Panel1/StartBt.text = "领取奖励"
 	else:
-		$Panel1/StartBt.text = "下一层"
+		# 3秒自动下一层
+		auto_next_time = 3
+		$Panel1/StartBt.text = "下一层(" + str(auto_next_time) + ")"
+		$AutoNextTimer.start()
 
 
 func reset():
@@ -64,7 +70,8 @@ func _on_start_bt_pressed() -> void:
 		get_endless_reward.emit()
 		endless_exit.emit()
 		return
-
+	# 停止自动下一层计时
+	$AutoNextTimer.stop()
 	# 开始记时
 	$Timer.start()
 	start_time = Time.get_ticks_msec()
@@ -97,3 +104,10 @@ func _on_timer_timeout() -> void:
 
 func _on_exit_bt_pressed() -> void:
 	endless_exit.emit()
+
+
+func _on_auto_next_timer_timeout() -> void:
+	auto_next_time -= 1
+	$Panel1/StartBt.text = "下一层(" + str(auto_next_time) + ")"
+	if auto_next_time <= 0:
+		_on_start_bt_pressed()
