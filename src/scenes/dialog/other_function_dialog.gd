@@ -3,6 +3,7 @@ extends Control
 
 signal monster_info_bt_pressed()
 
+signal job_introduce_bt_pressed()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,3 +21,7 @@ func _on_monster_info_bt_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	hide()
+
+
+func _on_job_introduce_bt_pressed() -> void:
+	job_introduce_bt_pressed.emit()

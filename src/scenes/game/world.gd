@@ -229,6 +229,8 @@ func _on_local_player_created(data_player: DataPlayer):
 	$CanvasLayer/UI/SkillFastKey.skill_selected.connect(_on_skill_fast_key_selected)
 	# 监听怪物手册按钮点击事件
 	$CanvasLayer/UI/Dialog/OtherFunctionDialog.monster_info_bt_pressed.connect(_on_monster_info_bt_pressed)
+	# 监听职业介绍按钮点击事件
+	$CanvasLayer/UI/Dialog/OtherFunctionDialog.job_introduce_bt_pressed.connect(_on_job_introduce_bt_pressed)
 	# 监听技能使用事件
 	$CanvasLayer/UI/Dialog/SkillDialog.skill_used.connect(_on_skill_used)
 	# 监听技能激活事件
@@ -749,6 +751,13 @@ func _on_monster_info_bt_pressed() -> void:
 		$CanvasLayer/UI/Dialog/MonsterInfoDialog.hide()
 	else:
 		_dialog_show($CanvasLayer/UI/Dialog/MonsterInfoDialog)
+
+
+func _on_job_introduce_bt_pressed() -> void:
+	if $CanvasLayer/UI/Dialog/JobIntroduceDialog.visible:
+		$CanvasLayer/UI/Dialog/JobIntroduceDialog.hide()
+	else:
+		_dialog_show($CanvasLayer/UI/Dialog/JobIntroduceDialog)
 
 
 func _on_map_explored(data_map: DataMap):
