@@ -245,6 +245,8 @@ func _on_monster_hurted(data_role:DataRole,data_damage:DataDamage):
 
 
 func _on_monster_dead(data_role:DataRole):
+	# 发出玩家击杀怪物信号
+	player_killed_monster.emit(data_player, data_role)
 	# 给玩家增加经验
 	if not is_endless and not data_role.is_black_monster:
 		if data_player:
@@ -327,8 +329,6 @@ func player_attack_skill_effect(
 
 		# 判断目标是否死亡，给玩家增加经验
 		if target.is_dead:
-			# 发出玩家击杀怪物信号
-			player_killed_monster.emit(_data_player, target)
 			# 增加击杀怪物数量
 			kill_monster_count_dic[target.monster_id] = kill_monster_count_dic.get(target.monster_id, 0) + 1
 			# 判断击杀类的特殊效果
