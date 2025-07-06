@@ -67,9 +67,10 @@ func get_map_by_config(
 							var data_teleport = DataTeleport.new()
 							for teleport_map_id in function["map_id_list"]:
 								data_teleport.map_id_list.append(teleport_map_id)
-							data_teleport.visible_limit = MissionManager.get_visible_limit_from_config(
-								function["visible_limit"]
-							)
+							if function.has("visible_limit"):
+								data_teleport.visible_limit = MissionManager.get_visible_limit_from_config(
+									function["visible_limit"]
+								)
 							npc.teleport_data = data_teleport
 							# 传送限制条件
 							if function.has("requires"):
