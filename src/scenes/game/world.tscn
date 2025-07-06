@@ -176,7 +176,6 @@ theme = ExtResource("2_pgwtv")
 text = "退出"
 
 [node name="DebugBt" type="Button" parent="CanvasLayer/UI/ButtonControl"]
-visible = false
 layout_mode = 0
 offset_left = 580.0
 offset_top = 1231.0

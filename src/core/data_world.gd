@@ -516,10 +516,11 @@ func get_player():
 func _on_map_drop_thing_picked(data_map: DataMap, drop_thing: DataBagItem):
 	var result = player_manager.data_bag.add_item(drop_thing)
 	if not result:
-		ToastManager.add_toast("背包已满")
-	else:
-		data_map.remove_drop_thing(drop_thing)
-		drop_thing_picked.emit(drop_thing)
+		ToastManager.add_toast("背包已满，自动半价出售")
+		player_manager.get_data_bag().add_money(drop_thing.price * 0.5)
+	# 拾取物品
+	data_map.remove_drop_thing(drop_thing)
+	drop_thing_picked.emit(drop_thing)
 
 
 func _on_map_npc_function_showed(data_npc: DataNPC):
