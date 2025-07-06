@@ -23,6 +23,8 @@ var mp_warning_line = 30
 var auto_skill_id: String = "skill_000000"
 # 自动连续使用炼金药剂
 var auto_use_alchemy = false
+# 省电挂机模式
+var perform_mode = false
 #endregion
 
 #region 通用配置
@@ -42,7 +44,8 @@ func save() -> Dictionary:
 		"all_damage": all_damage,
 		"dps_max_record": dps_max_record,
 		"boss_kill_time": boss_kill_time,
-		"auto_use_alchemy": auto_use_alchemy
+		"auto_use_alchemy": auto_use_alchemy,
+		"perform_mode": perform_mode
 	}
 	return dic
 
@@ -59,3 +62,5 @@ func load(dic: Dictionary) -> void:
 		boss_kill_time = dic["boss_kill_time"]
 	if dic.has("auto_use_alchemy"):
 		auto_use_alchemy = dic["auto_use_alchemy"]
+	if dic.has("perform_mode"):
+		perform_mode = dic["perform_mode"]

@@ -225,6 +225,8 @@ func _update_hp():
 
 
 func _add_damage(damage: DataDamage):
+	if SingletonGame.perform_mode:
+		return
 	var damage_scene = SingletonGameScenePre.DamageTextScene.instantiate()
 	damage_scene.set_damage(damage)
 	if damage.type == DataDamage.TYPE.POISON or damage.type == DataDamage.TYPE.FIRE:
@@ -243,6 +245,9 @@ func _on_panel_my_released(_ui: Control) -> void:
 
 	
 func add_skill_execute_effect(skill: DataBaseSkill,direction: Vector2):
+	# 性能模式不展示该信息
+	if SingletonGame.perform_mode:
+		return
 	# 实例化技能名称场景
 	var skill_name_scene = SingletonGameScenePre.SkillNameScene.instantiate()
 	skill_name_scene.set_skill(skill)

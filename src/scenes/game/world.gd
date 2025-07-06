@@ -468,18 +468,21 @@ func _on_auto_setting_bt_pressed() -> void:
 		$CanvasLayer/UI/Dialog/AutoSettingDialog.set_data(
 			SingletonGame.hp_warning_line,
 			SingletonGame.mp_warning_line,
-			SingletonGame.auto_use_alchemy
+			SingletonGame.auto_use_alchemy,
+			SingletonGame.perform_mode
 		)
 
 
 func _on_setting_saved(
 	hp_warning_line: int,
 	mp_warning_line: int,
-	auto_use_alchemy: bool
+	auto_use_alchemy: bool,
+	perform_mode: bool
 ):
 	SingletonGame.hp_warning_line = hp_warning_line
 	SingletonGame.mp_warning_line = mp_warning_line
 	SingletonGame.auto_use_alchemy = auto_use_alchemy
+	SingletonGame.perform_mode = perform_mode
 	if save_tool is FileCacheTool:
 		save_tool.save_singleton_game(data_world.get_player().player_id)
 

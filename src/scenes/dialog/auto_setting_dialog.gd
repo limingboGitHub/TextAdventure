@@ -8,13 +8,16 @@ var hp_warning_line: int
 var mp_warning_line: int
 # 自动连续使用炼金药剂
 var auto_use_alchemy: bool
+# 省电挂机模式
+var perform_mode: bool = false
 # 技能列表
 var data_skill_bag: DataSkillBag
 
 signal setting_saved(
 	hp_warning_line: int, 
 	mp_warning_line: int,
-	auto_use_alchemy: bool
+	auto_use_alchemy: bool,
+	perform_mode: bool
 )
 
 # Called when the node enters the scene tree for the first time.
@@ -30,15 +33,18 @@ func _process(delta: float) -> void:
 func set_data(
 	hp_warning_line: int, 
 	mp_warning_line: int,
-	auto_use_alchemy: bool
+	auto_use_alchemy: bool,
+	perform_mode: bool
 ) -> void:
 	self.hp_warning_line = hp_warning_line
 	self.mp_warning_line = mp_warning_line
 	self.auto_use_alchemy = auto_use_alchemy
-	
+	self.perform_mode = perform_mode
+
 	$HpWarningLine/LineEdit.text = str(hp_warning_line)
 	$MpWarningLine/LineEdit.text = str(mp_warning_line)
 	$CheckButton.button_pressed = auto_use_alchemy
+	$PerformModeButton.button_pressed = perform_mode
 
 
 func _on_close_button_pressed() -> void:
@@ -77,7 +83,7 @@ func _on_ok_button_pressed() -> void:
 	hp_warning_line = hp_value
 	mp_warning_line = mp_value
 	print('挂机设置保存:', hp_warning_line, mp_warning_line)
-	setting_saved.emit(hp_warning_line, mp_warning_line, auto_use_alchemy)
+	setting_saved.emit(hp_warning_line, mp_warning_line, auto_use_alchemy,perform_mode)
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
@@ -114,3 +120,7 @@ func _on_mp_add_button_pressed() -> void:
 		var mp: int= int(mp_str)
 		mp = min(99,(int(mp / 5.0) + 1) * 5)
 		$MpWarningLine/LineEdit.text = str(mp)
+
+
+func _on_perform_mode_button_toggled(toggled_on: bool) -> void:
+	perform_mode = toggled_on

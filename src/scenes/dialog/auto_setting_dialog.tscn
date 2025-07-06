@@ -18,7 +18,7 @@ script = ExtResource("1_wfjhl")
 [node name="Back" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 500.0
-offset_bottom = 342.0
+offset_bottom = 400.0
 theme_override_styles/panel = ExtResource("1_8npu4")
 
 [node name="Label" type="Label" parent="."]
@@ -147,15 +147,25 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "自动连续使用炼金药剂"
 
+[node name="PerformModeButton" type="CheckButton" parent="."]
+layout_mode = 1
+offset_left = 14.0
+offset_top = 275.0
+offset_right = 244.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "省电挂机模式"
+
 [node name="OKButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 200.0
-offset_top = 280.0
+offset_top = 335.0
 offset_right = 320.0
-offset_bottom = 330.0
+offset_bottom = 385.0
 grow_horizontal = 2
 theme = ExtResource("2_em0jk")
 text = "保存"
@@ -172,5 +182,6 @@ offset_bottom = 56.0
 [connection signal="pressed" from="MpWarningLine/MpReduceButton" to="." method="_on_mp_reduce_button_pressed"]
 [connection signal="pressed" from="MpWarningLine/MpAddButton" to="." method="_on_mp_add_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="PerformModeButton" to="." method="_on_perform_mode_button_toggled"]
 [connection signal="pressed" from="OKButton" to="." method="_on_ok_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

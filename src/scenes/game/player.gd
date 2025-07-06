@@ -281,6 +281,9 @@ func clear_data():
 
 
 func _add_damage_ani(damage: DataDamage):
+	# 性能模式不展示该信息
+	if SingletonGame.perform_mode:
+		return
 	var damage_scene = SingletonGameScenePre.DamageTextScene.instantiate()
 	damage_scene.set_damage(damage)
 	if damage.type == DataDamage.TYPE.POISON:
