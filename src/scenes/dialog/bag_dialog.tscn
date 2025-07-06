@@ -54,6 +54,13 @@ offset_bottom = 54.0
 theme = ExtResource("2_8h33t")
 text = "背包"
 
+[node name="Tip" type="Label" parent="Label"]
+offset_top = 40.0
+offset_right = 630.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 16
+text = "(点击名称左边黑色区域查看详情，右边白色区域使用。背包每页500，满时自动半价出售)"
+
 [node name="DragControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0

@@ -354,6 +354,8 @@ func _player_can_not_be_hurt_effect():
 
 
 func add_skill_executed_effect(skill: DataBaseSkill,direction: Vector2):
+	if SingletonGame.perform_mode:
+		return
 	# 实例化技能名称场景
 	#var skill_name_scene = SkillNameScene.instantiate()
 	var skill_name_scene = SingletonGameScenePre.SkillNameScene.instantiate()
