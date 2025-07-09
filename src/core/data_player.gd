@@ -325,19 +325,40 @@ func _level_up() -> int:
 func alloc_ability(type: int,count: int):
 	if allot_point < count:
 		return
-	allot_point -= count
+	
 	if type == 0:
+		# 如果是减少属性点，且属性点不够减，则退出
+		if count < 0 and attribute.ability_dic[ATTRIBUTE_ALLOC].hp + count < 0:
+			return
 		attribute.ability_dic[ATTRIBUTE_ALLOC].hp += count
 	elif type == 1:
+		# 如果是减少属性点，且属性点不够减，则退出
+		if count < 0 and attribute.ability_dic[ATTRIBUTE_ALLOC].mp + count < 0:
+			return
 		attribute.ability_dic[ATTRIBUTE_ALLOC].mp += count
 	elif type == 2:
+		# 如果是减少属性点，且属性点不够减，则退出
+		if count < 0 and attribute.ability_dic[ATTRIBUTE_ALLOC].power + count < 0:
+			return
 		attribute.ability_dic[ATTRIBUTE_ALLOC].power += count
 	elif type == 3:
+		# 如果是减少属性点，且属性点不够减，则退出
+		if count < 0 and attribute.ability_dic[ATTRIBUTE_ALLOC].agility + count < 0:
+			return
 		attribute.ability_dic[ATTRIBUTE_ALLOC].agility += count
 	elif type == 4:
+		# 如果是减少属性点，且属性点不够减，则退出
+		if count < 0 and attribute.ability_dic[ATTRIBUTE_ALLOC].intelligence + count < 0:
+			return
 		attribute.ability_dic[ATTRIBUTE_ALLOC].intelligence += count
 	elif type == 5:
+		# 如果是减少属性点，且属性点不够减，则退出
+		if count < 0 and attribute.ability_dic[ATTRIBUTE_ALLOC].luck + count < 0:
+			return
 		attribute.ability_dic[ATTRIBUTE_ALLOC].luck += count
+
+	allot_point -= count
+
 	attribute.update()
 
 

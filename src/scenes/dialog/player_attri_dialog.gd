@@ -180,3 +180,27 @@ func _on_hp_all_bt_pressed() -> void:
 
 func _on_mpl_all_bt_pressed() -> void:
 	data_player.alloc_ability(1,data_player.allot_point)
+
+
+func _on_hp_reduce_bt_pressed() -> void:
+	data_player.alloc_ability(0,-1)
+
+
+func _on_mp_reduce_bt_pressed() -> void:
+	data_player.alloc_ability(1,-1)
+
+
+func _on_power_reduce_bt_pressed() -> void:
+	data_player.alloc_ability(2,-1)
+
+
+func _on_agility_reduce_bt_pressed() -> void:
+	data_player.alloc_ability(3,-1)
+
+
+func _on_intel_reduce_bt_pressed() -> void:
+	data_player.alloc_ability(4,-1)
+
+
+func _on_luck_reduce_bt_pressed() -> void:
+	data_player.alloc_ability(5,-1)

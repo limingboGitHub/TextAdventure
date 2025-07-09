@@ -33,10 +33,10 @@ bg_color = Color(0.356863, 0.356863, 0.356863, 0.588235)
 
 [node name="PlayerAttriDialog" type="Panel"]
 custom_minimum_size = Vector2(0, 485)
-offset_left = 10.0
-offset_top = 799.0
-offset_right = 353.0
-offset_bottom = 1284.0
+offset_left = 2.0
+offset_top = 798.0
+offset_right = 393.0
+offset_bottom = 1283.0
 theme_override_styles/panel = ExtResource("1_2paxl")
 script = ExtResource("1_rwbjo")
 
@@ -119,6 +119,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "+"
 
+[node name="HpReduceBt" type="Button" parent="Hp"]
+layout_mode = 0
+offset_left = 335.0
+offset_right = 380.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "-"
+
 [node name="HpAllBt" type="Button" parent="Hp"]
 layout_mode = 0
 offset_left = 235.0
@@ -177,6 +188,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
+[node name="MpReduceBt" type="Button" parent="Mp"]
+offset_left = 335.0
+offset_right = 380.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "-"
+
 [node name="AllocPoint" type="Label" parent="."]
 layout_mode = 0
 offset_left = 5.0
@@ -196,8 +217,8 @@ text = "0"
 
 [node name="Button" type="Button" parent="AllocPoint"]
 layout_mode = 1
-offset_left = 230.0
-offset_right = 330.0
+offset_left = 285.0
+offset_right = 379.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
@@ -208,8 +229,8 @@ text = "自动分配"
 
 [node name="ResetBt" type="Button" parent="AllocPoint"]
 layout_mode = 1
-offset_left = 177.0
-offset_right = 227.0
+offset_left = 235.0
+offset_right = 280.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
@@ -257,6 +278,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
+[node name="PowerReduceBt" type="Button" parent="Power"]
+offset_left = 335.0
+offset_right = 380.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "-"
+
 [node name="Agility" type="Label" parent="."]
 layout_mode = 0
 offset_left = 5.0
@@ -295,6 +326,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
+
+[node name="AgilityReduceBt" type="Button" parent="Agility"]
+offset_left = 335.0
+offset_right = 380.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "-"
 
 [node name="Intelligence" type="Label" parent="."]
 layout_mode = 0
@@ -335,6 +376,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
+[node name="IntelReduceBt" type="Button" parent="Intelligence"]
+offset_left = 335.0
+offset_right = 380.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "-"
+
 [node name="Luck" type="Label" parent="."]
 layout_mode = 0
 offset_left = 5.0
@@ -374,12 +425,22 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
+[node name="LuckReduceBt" type="Button" parent="Luck"]
+offset_left = 335.0
+offset_right = 380.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qmf2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cqxu2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
+text = "-"
+
 [node name="Details" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 96.0
-offset_right = 627.0
-offset_bottom = 489.0
+offset_left = 390.0
+offset_top = 93.0
+offset_right = 643.0
+offset_bottom = 486.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_isblt")
 
 [node name="Attack" type="Label" parent="Details"]
@@ -394,7 +455,7 @@ text = "攻击力："
 [node name="Label" type="Label" parent="Details/Attack"]
 layout_mode = 0
 offset_left = 100.0
-offset_right = 251.0
+offset_right = 237.0
 offset_bottom = 42.0
 theme = ExtResource("4_d51le")
 text = "10000-99999"
@@ -411,7 +472,7 @@ text = "魔法力："
 [node name="Label" type="Label" parent="Details/Magic"]
 layout_mode = 0
 offset_left = 100.0
-offset_right = 220.0
+offset_right = 237.0
 offset_bottom = 42.0
 theme = ExtResource("4_d51le")
 text = "0"
@@ -580,23 +641,29 @@ script = ExtResource("4_jcbrs")
 
 [node name="CloseButton" parent="." instance=ExtResource("5_78p0c")]
 layout_mode = 0
-offset_left = 285.0
+offset_left = 335.0
 offset_top = 6.0
-offset_right = 335.0
+offset_right = 385.0
 offset_bottom = 56.0
 
 [connection signal="pressed" from="Hp/Button" to="." method="_on_hp_button_pressed"]
+[connection signal="pressed" from="Hp/HpReduceBt" to="." method="_on_hp_reduce_bt_pressed"]
 [connection signal="pressed" from="Hp/HpAllBt" to="." method="_on_hp_all_bt_pressed"]
 [connection signal="pressed" from="Mp/Button" to="." method="_on_mp_button_pressed"]
 [connection signal="pressed" from="Mp/MplAllBt" to="." method="_on_mpl_all_bt_pressed"]
+[connection signal="pressed" from="Mp/MpReduceBt" to="." method="_on_mp_reduce_bt_pressed"]
 [connection signal="pressed" from="AllocPoint/Button" to="." method="_on_auto_alloc_button_pressed"]
 [connection signal="pressed" from="AllocPoint/ResetBt" to="." method="_on_reset_bt_pressed"]
 [connection signal="pressed" from="Power/Button" to="." method="_on_power_button_pressed"]
 [connection signal="pressed" from="Power/PowerAllBt" to="." method="_on_power_all_bt_pressed"]
+[connection signal="pressed" from="Power/PowerReduceBt" to="." method="_on_power_reduce_bt_pressed"]
 [connection signal="pressed" from="Agility/Button" to="." method="_on_agility_button_pressed"]
 [connection signal="pressed" from="Agility/AgilityAllBt" to="." method="_on_agility_all_bt_pressed"]
+[connection signal="pressed" from="Agility/AgilityReduceBt" to="." method="_on_agility_reduce_bt_pressed"]
 [connection signal="pressed" from="Intelligence/Button" to="." method="_on_intelligence_button_pressed"]
 [connection signal="pressed" from="Intelligence/IntelAllBt" to="." method="_on_intel_all_bt_pressed"]
+[connection signal="pressed" from="Intelligence/IntelReduceBt" to="." method="_on_intel_reduce_bt_pressed"]
 [connection signal="pressed" from="Luck/Button" to="." method="_on_luck_button_pressed"]
 [connection signal="pressed" from="Luck/LuckAllBt" to="." method="_on_luck_all_bt_pressed"]
+[connection signal="pressed" from="Luck/LuckReduceBt" to="." method="_on_luck_reduce_bt_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
