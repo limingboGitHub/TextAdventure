@@ -55,6 +55,7 @@ theme = ExtResource("2_8h33t")
 text = "背包"
 
 [node name="Tip" type="Label" parent="Label"]
+layout_mode = 0
 offset_top = 40.0
 offset_right = 630.0
 offset_bottom = 59.0

@@ -811,7 +811,7 @@ func _judge_attack_attach_fire(player_scene,skill: DataBaseSkill,_position: Vect
 		if data_player.has_skill_enhance(skill.id):
 			var skill_enhance = player_scene.data_player.get_skill_enhance(skill.id)
 			skill_radius_enhance = skill_enhance.radius
-		var zone_size = (skill.radius + skill_radius_enhance) / skill.radius
+		var zone_size = (skill.radius + skill_radius_enhance) / float(skill.radius)
 		# 生成一个火焰区域
 		_add_fire_zone_damage_effect(effect,data_player,_position,zone_size)
 
