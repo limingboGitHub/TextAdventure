@@ -189,6 +189,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
 [node name="MpReduceBt" type="Button" parent="Mp"]
+layout_mode = 0
 offset_left = 335.0
 offset_right = 380.0
 offset_bottom = 45.0
@@ -279,6 +280,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
 [node name="PowerReduceBt" type="Button" parent="Power"]
+layout_mode = 0
 offset_left = 335.0
 offset_right = 380.0
 offset_bottom = 45.0
@@ -328,6 +330,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
 [node name="AgilityReduceBt" type="Button" parent="Agility"]
+layout_mode = 0
 offset_left = 335.0
 offset_right = 380.0
 offset_bottom = 45.0
@@ -377,6 +380,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
 [node name="IntelReduceBt" type="Button" parent="Intelligence"]
+layout_mode = 0
 offset_left = 335.0
 offset_right = 380.0
 offset_bottom = 45.0
@@ -426,6 +430,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_40mwk")
 text = "++"
 
 [node name="LuckReduceBt" type="Button" parent="Luck"]
+layout_mode = 0
 offset_left = 335.0
 offset_right = 380.0
 offset_bottom = 45.0
