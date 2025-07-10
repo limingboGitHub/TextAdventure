@@ -670,7 +670,6 @@ func _create_percent_damage(
 	# 判断分身的伤害比例
 	if _data_player.is_copy:
 		var copy_reduce_damage = damage_value * _player_copy_damage_rate(_data_player)
-		damage_details.append(DataDamage.DamageDetail.new("分身减伤", -copy_reduce_damage,0))
 		damage_value -= copy_reduce_damage
 	
 	# 根据伤害类型计算防御减伤
@@ -955,6 +954,11 @@ func on_monster_skill_executed(
 			damage_value = max(1, damage_value)
 			var damage = DataDamage.new(DataDamage.TYPE.PHYSICAL,DataDamage.SOURCE_TYPE.MONSTER, damage_value)
 			damage.direction = direction
+			# 判断目标是否为黑化怪物，如果是，则记录黑化怪物的伤害信息
+			if data_monster.is_black_monster:
+				var damage_details: Array[DataDamage.DamageDetail] = []
+				damage_details.append(DataDamage.DamageDetail.new("暗黑魔法", damage.value,skill_damage_rate))
+				damage.damage_details = damage_details
 			target.get_hurt(damage)
 
 			# 如果目标是普通怪物且死亡，则判断“暗黑魔法”

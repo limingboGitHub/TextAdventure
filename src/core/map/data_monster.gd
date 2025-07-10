@@ -347,9 +347,13 @@ func black_monster(magic_value: int = 0,accuracy: int = 0,time: float = 0):
 	# 设置黑化怪物攻击力增幅
 	if magic_value > 0:
 		attribute.final_details.attack += magic_value
+		# 移速翻倍
+		attribute.final_details.move_speed *= 2
 	# 设置黑化怪物命中
 	if accuracy > 0:
 		attribute.final_details.accuracy = accuracy
+	# 攻速翻倍
+	execute_cd *= 0.5
 
 	# 设置黑化状态
 	is_black_monster = true
