@@ -887,7 +887,7 @@ func _process_drop_thing_pick(_data_player: DataPlayer):
 		if drop_thing.owner == null:
 			drop_thing_picked.emit(self, drop_thing)
 			# 一次只能拾取一个物品
-			break
+			#break
 
 
 func remove_drop_thing(drop_thing: DataBagItem):
