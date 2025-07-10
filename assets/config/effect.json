@@ -226,7 +226,7 @@
 		"effect_000033":{
 			"name": "暴力美学",
 			"effect_type": "power_add_damage",
-			"desc": "每1点力量附加{d}技能伤害",
+			"desc": "每1点力量增加{d}最终伤害",
 			"value_type": "percent", 
 			"value": 0.0005
 		},

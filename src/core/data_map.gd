@@ -649,15 +649,6 @@ func _create_percent_damage(
 		var record_damage_value = attack_value * _damage_rate * charge_damage_rate
 		damage_details.append(DataDamage.DamageDetail.new("拔刀蓄力", record_damage_value, charge_damage_rate))
 	
-	# 暴力美学
-	if _data_player.has_effect("effect_000033"):
-		var effect = _data_player.get_effect("effect_000033")
-		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
-			var power_add_damage = _data_player.get_final_ability().power * effect.value
-			skill_damage_rate += power_add_damage
-			var record_damage_value = attack_value * _damage_rate * power_add_damage
-			damage_details.append(DataDamage.DamageDetail.new("暴力美学", record_damage_value,power_add_damage))
-
 
 	_damage_rate *= 1 + skill_damage_rate
 	print("技能伤害加成：",skill_damage_rate)
@@ -724,6 +715,16 @@ func _final_damage_value(
 		var add_value = effect.value * _damage_value * rate
 		final_add_value += add_value
 		_damage_details.append(DataDamage.DamageDetail.new("血脉压制", add_value, effect.value))
+	# 暴力美学
+	if _data_player.has_effect("effect_000033"):
+		var effect = _data_player.get_effect("effect_000033")
+		if effect.value_type == Constants.VALUE_TYPE_PERCENT:
+			var power_add_damage = _data_player.get_final_ability().power * effect.value
+
+			var add_value = _damage_value * power_add_damage
+			final_add_value += add_value
+			_damage_details.append(DataDamage.DamageDetail.new("暴力美学", add_value,power_add_damage))
+
 	return final_add_value
 
 
