@@ -501,11 +501,11 @@ func get_real_mp_cost(mp_cost: int)-> int:
 
 func process_charge_attack():
 	# 计算蓄力时间
-	var _charge_time = 2.0
+	var _charge_time = 1.0
 	# 其他蓄力效果增幅
 	if has_effect("effect_000027"):
 		var effect = get_effect("effect_000027")
-		var effect_value = effect.value * get_final_ability().power / 10.0
+		var effect_value = effect.value * get_final_ability().power / 20.0
 		print("蓄力时间增加：",effect_value)
 		_charge_time += effect_value
 	# 进入蓄力状态

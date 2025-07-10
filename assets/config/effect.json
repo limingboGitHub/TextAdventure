@@ -184,9 +184,9 @@
 			"value": 0.1
 		},
 		"effect_000027": {
-			"name": "暴力蓄力",
+			"name": "强化蓄力",
 			"effect_type": "power_charge",
-			"desc": "每10点力量增加{d}秒拔刀蓄力时间",
+			"desc": "每20点力量增加{d}秒拔刀蓄力时间",
 			"value_type": "number", 
 			"value": 0.1
 		},
