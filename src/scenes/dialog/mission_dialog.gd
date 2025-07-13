@@ -2,6 +2,8 @@ extends Control
 
 var mission_containers = []
 
+var selected_phase: DataMissionPhase
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -97,6 +99,10 @@ func _on_mission_status_changed(mission: DataMission) -> void:
 		remove_mission(mission)
 		# 在已完成tab添加
 		add_mission(mission)
+		# 清空详情
+		if selected_phase and selected_phase.data_mission == mission:
+			clear_message(mission_containers[0])
+		
 
 
 func clear_missions() -> void:
@@ -131,6 +137,13 @@ func mission_phase_updated(phase: DataMissionPhase) -> void:
 		container.get_node("Content/Message").text = phase.messages[0]
 		# 展示任务要求或者奖励，如果都存在，则展示要求
 		mission_phase_require_updated(phase)
+
+	selected_phase = phase
+
+
+func clear_message(container: Control):
+	container.get_node("Content/Message").text = ""
+	container.get_node("Content/ScrollContainer/RequireOrReward").hide()
 	
 
 func mission_phase_require_updated(phase: DataMissionPhase) -> void:
@@ -145,3 +158,4 @@ func mission_phase_require_updated(phase: DataMissionPhase) -> void:
 			container.get_node("Content/ScrollContainer/RequireOrReward").set_mission_requires(phase.requires)
 		else:
 			container.get_node("Content/ScrollContainer/RequireOrReward").hide()
+
