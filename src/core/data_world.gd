@@ -576,19 +576,36 @@ func player_revive_and_punish():
 	player_manager.data_player.punish_exp()
 
 
+var is_using_hp_medicine = false
 func _on_player_hp_updated(data_player: DataPlayer):
+	# 防止循环用药过程中的递归调用
+	if is_using_hp_medicine:
+		return
+	is_using_hp_medicine = true
+
 	var hp_warning_value = data_player.get_max_hp() * SingletonGame.hp_warning_line / 100.0
 	if !data_player.is_dead \
 		and !data_player.is_dizziness() \
 		and data_player.hp <= hp_warning_value:
 		#print("玩家血量低，尝试使用药品")
 		var use_success = player_manager.data_bag.find_hp_medicine_and_use()
+		# 如果使用成功，且血量仍然低，继续尝试使用
+		while use_success and data_player.hp <= hp_warning_value:
+			use_success = player_manager.data_bag.find_hp_medicine_and_use()
+
 		if not use_success and SingletonGame.is_auto:
 			# 自动进入休息状态
 			data_player.rest()
+	
+	is_using_hp_medicine = false
 
 
+var is_using_mp_medicine = false
 func _on_player_mp_updated(data_player: DataPlayer):
+	if is_using_mp_medicine:
+		return
+	is_using_mp_medicine = true
+
 	var mp_warning_value = data_player.get_max_mp() * SingletonGame.mp_warning_line / 100.0
 	if !data_player.is_dead \
 		and !data_player.is_dizziness() \
@@ -601,6 +618,7 @@ func _on_player_mp_updated(data_player: DataPlayer):
 		else:
 			# 玩家使用药品
 			player_manager.data_bag.find_mp_medicine_and_use()
+	is_using_mp_medicine = false
 
 
 func _on_player_clone_dead(data_role: DataRole):
