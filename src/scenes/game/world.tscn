@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjhlw4uxh43lk"]
+[gd_scene load_steps=33 format=3 uid="uid://cjhlw4uxh43lk"]
 
 [ext_resource type="Script" uid="uid://bgbay81accbeh" path="res://src/scenes/game/world.gd" id="1_wlcum"]
 [ext_resource type="Script" uid="uid://b7omic3ntn17t" path="res://src/scenes/game/map_graph.gd" id="2_g74vk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c8lc1mpnj7vtw" path="res://src/scenes/game/color_bar.gd" id="3_igcpe"]
 [ext_resource type="Script" uid="uid://ncw4cbq13qp8" path="res://src/scenes/widget/touch_button.gd" id="5_whnrt"]
 [ext_resource type="PackedScene" uid="uid://dyd4y7jhs3t5b" path="res://src/scenes/dialog/player_attri_dialog.tscn" id="6_58rbw"]
+[ext_resource type="ButtonGroup" uid="uid://rgcmc1kaqllu" path="res://theme/fast_equip_group.tres" id="6_f8mo6"]
 [ext_resource type="PackedScene" uid="uid://dyxpmgfjunylo" path="res://src/scenes/dialog/bag_dialog.tscn" id="7_8gm2p"]
 [ext_resource type="PackedScene" uid="uid://c1e0n06mrg3cd" path="res://src/scenes/game/buff_show.tscn" id="7_hccix"]
 [ext_resource type="PackedScene" uid="uid://6jqmon4r3h48" path="res://src/scenes/dialog/role_equip_dialog.tscn" id="8_8v1w8"]
@@ -337,6 +338,35 @@ offset_top = 1167.0
 offset_right = 7.0
 offset_bottom = 1167.0
 
+[node name="EquipTab" type="HBoxContainer" parent="CanvasLayer/UI/StatusBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1231.0
+offset_right = 167.0
+offset_bottom = 1280.0
+theme_override_constants/separation = 3
+
+[node name="FastEquip1Bt" type="Button" parent="CanvasLayer/UI/StatusBar/EquipTab"]
+custom_minimum_size = Vector2(51, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("6_f8mo6")
+text = "第1套"
+
+[node name="FastEquip2Bt" type="Button" parent="CanvasLayer/UI/StatusBar/EquipTab"]
+custom_minimum_size = Vector2(51, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("6_f8mo6")
+text = "第2套"
+
+[node name="FastEquip3Bt" type="Button" parent="CanvasLayer/UI/StatusBar/EquipTab"]
+custom_minimum_size = Vector2(51, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("6_f8mo6")
+text = "第3套"
+
 [node name="MsgControl" parent="CanvasLayer/UI" instance=ExtResource("24_hpdnf")]
 offset_left = 11.0
 offset_top = 780.0
@@ -593,6 +623,9 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer/UI/ButtonControl/AlchemyBt" to="." method="_on_alchemy_bt_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonControl/RoleInfoBt" to="." method="_on_role_info_bt_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/StatusBar/PlayerInfo" to="." method="_on_player_info_pressed"]
+[connection signal="toggled" from="CanvasLayer/UI/StatusBar/EquipTab/FastEquip1Bt" to="." method="_on_fast_equip_1_bt_toggled"]
+[connection signal="toggled" from="CanvasLayer/UI/StatusBar/EquipTab/FastEquip2Bt" to="." method="_on_fast_equip_2_bt_toggled"]
+[connection signal="toggled" from="CanvasLayer/UI/StatusBar/EquipTab/FastEquip3Bt" to="." method="_on_fast_equip_3_bt_toggled"]
 [connection signal="details_pressed" from="CanvasLayer/UI/StatsInfoControl" to="." method="_on_stats_info_control_details_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/MapGraph/MapCloseBt" to="." method="_on_map_close_bt_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Dialog/DeadDialog/Back/ReviveBt" to="." method="_on_revive_bt_pressed"]

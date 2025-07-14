@@ -171,6 +171,8 @@ func on_load_finished():
 	$CanvasLayer/UI/Dialog/AlchemyDialog.alchemy_maked.connect(_on_alchemy_maked)
 	# 监听地图选择事件
 	$CanvasLayer/UI/Dialog/MapSelectDialog.map_selected.connect(_on_npc_map_selected)
+	# 监听装备栏索引切换
+	data_world.get_data_role_equip().current_equip_index_changed.connect(_on_current_equip_index_changed)
 
 
 func _on_local_player_created(data_player: DataPlayer):
@@ -1133,3 +1135,26 @@ func _on_black_monster_mp_cost_timer_timeout() -> void:
 		# MP不足且无法恢复，取消所有黑化怪物
 		data_world.black_monster_manager.clear_all()
 		ToastManager.add_toast("魔力不足，无法维持黑化召唤物")
+
+
+func _on_fast_equip_1_bt_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		$CanvasLayer/UI/Dialog/RoleEquipDialog.click_tab(0)
+		#data_world.get_data_role_equip().set_current_equip_index(0)
+
+
+func _on_fast_equip_2_bt_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		#data_world.get_data_role_equip().set_current_equip_index(1)
+		$CanvasLayer/UI/Dialog/RoleEquipDialog.click_tab(1)
+
+
+func _on_fast_equip_3_bt_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		#data_world.get_data_role_equip().set_current_equip_index(2)
+		$CanvasLayer/UI/Dialog/RoleEquipDialog.click_tab(2)
+
+
+func _on_current_equip_index_changed(index: int,items: Dictionary) -> void:
+	var tab_bt: Button = $CanvasLayer/UI/StatusBar/EquipTab.get_node("FastEquip" +str(index+1)+ "Bt")
+	tab_bt.button_pressed = true

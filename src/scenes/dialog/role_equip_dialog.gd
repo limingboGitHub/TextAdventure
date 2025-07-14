@@ -110,3 +110,7 @@ func _on_current_equip_index_changed(index: int,_items: Dictionary) -> void:
 
 func _on_tab_container_tab_changed(tab: int) -> void:
 	role_equip.set_current_equip_index(tab)
+
+
+func click_tab(index: int):
+	equip_tab_container.current_tab = index
