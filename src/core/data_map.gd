@@ -962,7 +962,7 @@ func on_monster_skill_executed(
 			target.get_hurt(damage)
 
 			# 如果目标是普通怪物且死亡，则判断“暗黑魔法”
-			if target is DataMonster and target.is_dead:
+			if target is DataMonster and not target.is_black_monster and target.is_dead:
 				_check_black_monster_effect(data_player,target)
 		else:
 			var damage = DataDamage.new(DataDamage.TYPE.PHYSICAL,DataDamage.SOURCE_TYPE.MONSTER, 0)
