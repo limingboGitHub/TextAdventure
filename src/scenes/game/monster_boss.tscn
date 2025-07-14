@@ -12,7 +12,7 @@
 bg_color = Color(0.176471, 0.176471, 0.176471, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsv8w"]
-size = Vector2(5, 5)
+size = Vector2(200, 160)
 
 [node name="Monster" type="Control"]
 layout_mode = 3

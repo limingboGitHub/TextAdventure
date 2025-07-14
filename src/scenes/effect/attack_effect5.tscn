@@ -9,6 +9,7 @@ size = Vector2(70, 8)
 script = ExtResource("1_hkvih")
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
