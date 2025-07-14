@@ -940,7 +940,12 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 			temp_monster_list.append({"monster": monster_scene, "distance": monster_distance})
 	
 	# 按距离从小到大排序
-	temp_monster_list.sort_custom(func(a, b): return a.distance < b.distance)
+	temp_monster_list.sort_custom(func(a, b):
+		# 优先选中玩家锁定的目标
+		if a['monster'] == player_scene.attack_target:
+			return -1
+		return a.distance < b.distance
+	)
 		
 	# 取前skill.count个最近的怪物
 	var target_monster_list = []
