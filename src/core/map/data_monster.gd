@@ -182,7 +182,7 @@ func process_attack():
 			# 技能CD结束
 			# 处理怪物特殊技能
 			process_monster_skill(monster_skill)
-			return
+			continue
 
 	# 如果没有执行特殊技能，则执行普通攻击
 	if skill is DataAttackSkill:
@@ -202,6 +202,10 @@ func process_monster_skill(monster_skill: DataMonsterSkill):
 	elif monster_skill.type == "spawn_monster":
 		# 召唤技能
 		var _skill = DataSpawnSkill.new(monster_skill.id,"spawn")
+		# 过短的技能释放和作用范围会导致召唤技能释放失败
+		_skill.distance = 9999
+		_skill.radius = 9999
+		_skill.name = monster_skill.name
 		_skill.monster_id_list = monster_skill.monster_id_list
 		_skill.monster_count = monster_skill.monster_count
 		execute_skill(_skill)

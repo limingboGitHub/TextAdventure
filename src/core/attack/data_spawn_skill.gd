@@ -6,8 +6,3 @@ class_name DataSpawnSkill extends DataBaseSkill
 var monster_id_list: Array[String] = []
 # 召唤怪物数量
 var monster_count: int = 0
-
-
-
-
-

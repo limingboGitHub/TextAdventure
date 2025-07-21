@@ -981,6 +981,9 @@ func on_monster_skill_executed(
 					data_player.execute_normal_attack_no_cd()
 
 	elif skill is DataSpawnSkill:
+		# 黑化邪龙的召唤导致了过度复杂的未知情况，停用处理
+		if data_monster.is_black_monster:
+			return
 		# 召唤怪物
 		for count in range(skill.monster_count):
 			var random_index = randi_range(0,skill.monster_id_list.size()-1)
@@ -989,12 +992,8 @@ func on_monster_skill_executed(
 			var monster = monster_manager.create_monster(
 				monster_id, false, monster_config,monster_skill_dic,effect_config_dic
 			)
-			if monster.is_black_monster:
-				# 黑化怪物
-				monster.black_monster()
-			else:
-				# 自动锁定玩家
-				monster.auto_lock_player = true
+			# 自动锁定玩家
+			monster.auto_lock_player = true
 			# 不掉落物品
 			monster.is_drop_item = false
 			# 标记为召唤物

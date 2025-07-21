@@ -537,9 +537,15 @@ func remove_player_scene(data_player: DataPlayer):
 			child.set_attack_target(null)
 			# 关闭碰撞体检测（会穿图）
 			child.close_monitorable()
-			# 黑化怪物删除场景
+			# 黑化怪物删除场景。
 			if child.data_monster.is_black_monster:
 				$CanvasLayer/GameZone/Monsters.remove_child(child)
+				# 黑化怪物场景删除后，add_monster添加的相关信号解除。
+				child.pressed.disconnect(_on_monster_pressed)
+				child.black_monster_finish.disconnect(_on_black_monster_finish)
+				child.data_monster.skill_executed.disconnect(_on_monster_skill_executed)
+				child.data_monster.monster_reseted.disconnect(_on_monster_reseted)
+				child.data_monster.role_dead.disconnect(_on_monster_dead)
 
 	# 解除监听
 	player_scene.find_target_started.disconnect(_on_find_target_started)
