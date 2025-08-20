@@ -30,6 +30,11 @@ func set_player(player: DataPlayer):
 	player.attribute_updated.connect(_on_attribute_updated)
 	player.hp_updated.connect(_on_hp_updated)
 	player.mp_updated.connect(_on_mp_updated)
+	player.job_changed.connect(_on_job_changed)
+
+
+func _on_job_changed(_data_player: DataPlayer) -> void:
+	$Job/Label.text = _data_player.job_name
 
 
 func _update_attribute(player: DataPlayer) -> void:
