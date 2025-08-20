@@ -949,7 +949,9 @@ func _get_skill_effect_monster_list(player_scene: Control, skill: DataBaseSkill)
 	temp_monster_list.sort_custom(func(a, b):
 		# 优先选中玩家锁定的目标
 		if a['monster'] == player_scene.attack_target:
-			return -1
+			return true
+		if b['monster'] == player_scene.attack_target:
+			return false
 		return a.distance < b.distance
 	)
 		
