@@ -579,6 +579,8 @@ func recover_hp_rate_with_signal(rate: float):
 func recover_hp(value: int):
 	if value == 0:
 		return
+	if is_copy:
+		return
 
 	hp += value
 	if hp > attribute.final_details.max_hp:

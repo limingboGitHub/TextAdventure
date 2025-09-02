@@ -25,7 +25,7 @@ SingletonGameScenePre="*res://src/scenes/singleton_game_scene_pre.gd"
 
 window/size/viewport_width=648
 window/size/viewport_height=1425
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
